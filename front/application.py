@@ -11,4 +11,7 @@ def search():
     query = request.args.get('q')
     return jsonify()
 
+if __name__ == '__main__':
+    app.run()
+
 # vim: ft=python et sw=4 sts=4
