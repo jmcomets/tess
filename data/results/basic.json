@@ -18,6 +18,7 @@
                         "unit": "GBP",
                         "value": "375"
                     },
+                    "thumbnail": "http://madestatic.com/media/catalog/product/cache/1/gallery/965x500/9df78eab33525d08d6e5fb8d27136e95/l/u/lulu_occasional_chair_drop_weave_lb4.jpg",
                     "title": "Bouji Chair, Tudor Red and Black",
                     "url": "http://www.made.com/chairs/accent-chairs/lulu-scoop-chair-drop-weavee"
                 },
@@ -28,5 +29,5 @@
         "total": 1
     },
     "timed_out": false,
-    "took": 2
+    "took": 1
 }
