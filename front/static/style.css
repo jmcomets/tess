@@ -7,3 +7,7 @@
 .search-form button {
   width: 50px;
 }
+
+.result img {
+  max-width: 300px;
+}
