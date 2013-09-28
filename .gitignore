@@ -37,3 +37,6 @@ nosetests.xml
 
 # Vim temp
 *.swp
+
+# Test data
+test_data
