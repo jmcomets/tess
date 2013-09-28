@@ -4,7 +4,7 @@ from scrapy.settings import Settings
 from scrapy import log
 from spiders.generic import generate_spider
 from scrapy.utils.project import get_project_settings
-import debug_settings
+from pipelines import PushPipeline
 
 import sys
 
@@ -28,8 +28,8 @@ def setup_crawler(domain, category, spider_cache={}):
 if __name__ == '__main__':
     
     settings = get_project_settings()
-    debug_settings.push = '--prod' in sys.argv
-
+    PushPipeline.push = '--prod' in sys.argv
+    print sys.argv
     domains = list()
     for arg in sys.argv:
         if ':' in arg:

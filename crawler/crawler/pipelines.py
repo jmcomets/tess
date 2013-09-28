@@ -9,6 +9,7 @@ from scrapy.utils.project import get_project_settings
 import debug_settings
 
 class PushPipeline(object):
+    push = False
     def process_item(self, item, spider):
         # TODO : Image URLsmay be relative (e.g : '/images/stuff.png')        
         # log.msg('#' *200)
@@ -18,7 +19,10 @@ class PushPipeline(object):
         settings = get_project_settings()
         item.clean()
 
-        if debug_settings.push:
+        log.msg('#'*80)
+        log.msg(str(debug_settings.push))
+
+        if PushPipeline.push:
             data = dict(item.items())
             r = requests.post('http://92.39.246.129:9200/object/product/{}'.format(item['_id']), data=json.dumps(data))
 
