@@ -1,8 +1,8 @@
-<% for (var i=0; i<results.length; i++) { %>
+<% for (var i=0; i < results.length; i++) { %>
 <div class="result row">
-  <div class="col-sm-6 col-md-3">
+  <div>  <!-- class="col-sm-6 col-md-3"> -->
     <div class="thumbnail">
-      <h3><%= results[i].title %></h3>
+      <h3 class="product-title"><%= results[i].name %></h3>
       <a href="<%= results[i].url %>">
         <img src="<%= results[i].thumbnail %>">
       </a>
