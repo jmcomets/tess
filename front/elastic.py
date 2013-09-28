@@ -1,9 +1,5 @@
 import json
-try:
-    import requests
-except ImportError:
-    print 'requests module is required (pip install requests)'
-    raise
+import requests
 
 SEARCH_URL = 'http://92.39.246.129:9200/object/product/_search'
 
@@ -19,9 +15,7 @@ def format_results(results):
     return [hit['_source'] for hit in results['hits']['hits']]
 
 def format_matchall(query):
-    """
-    Specialized query formatter
-    """
+    """ Specialized query formatter """
     return '{"query":{"bool":{"must":[{"query_string":{"default_field":"_all","query":"%s"}}],"must_not":[],"should":[]}},"from":0,"size":50,"sort":[],"facets":{}}' % query
 
 def search(query):
