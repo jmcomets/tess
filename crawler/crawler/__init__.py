@@ -28,8 +28,8 @@ def setup_crawler(domain, category, spider_cache={}):
 if __name__ == '__main__':
     
     settings = get_project_settings()
-    PushPipeline.push = '--prod' in sys.argv
-    print sys.argv
+    if '--prod' in sys.argv:
+        PushPipeline.push_to_server()
     domains = list()
     for arg in sys.argv:
         if ':' in arg:
