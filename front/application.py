@@ -6,10 +6,14 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-@app.route('/search')
+@app.route('/search', methods=['POST'])
 def search():
-    query = request.args.get('q')
-    return jsonify()
+    query = request.form('query')
+    # TODO parse request *better*
+    return jsonify({
+        'query': query,
+        'results': [],
+        })
 
 if __name__ == '__main__':
     app.run()
