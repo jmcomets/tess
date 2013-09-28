@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <title>How to write to file in Ruby? - Stack Overflow</title>
+    <link rel="shortcut icon" href="//cdn.sstatic.net/stackoverflow/img/favicon.ico">
+    <link rel="apple-touch-icon image_src" href="//cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png">
+    <link rel="search" type="application/opensearchdescription+xml" title="Stack Overflow" href="/opensearch.xml">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:domain" content="stackoverflow.com"/>
+    <meta name="og:type" content="website" />
+    <meta name="og:image" content="http://cdn.sstatic.net/stackoverflow/img/apple-touch-icon@2.png?v=fde65a5a78c6"/>
+    <meta name="og:title" content="How to write to file in Ruby?" />
+    <meta name="og:description" content="I need to read the data out of database and then save it in a text file, how can I do that in Ruby? Is there any file management system in Ruby? 
+
+Thanks
+" />
+    <meta name="og:url" content="http://stackoverflow.com/questions/2777802/how-to-write-to-file-in-ruby"/>
+
+    
+    
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdn.sstatic.net/js/stub.js?v=095532d92c98"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.sstatic.net/stackoverflow/all.css?v=b656995f60e4">
+    
+        <link rel="alternate" type="application/atom+xml" title="Feed for question &#39;How to write to file in Ruby?&#39;" href="/feeds/question/2777802">
+        <script type="text/javascript">
+        
+            StackExchange.ready(function () {
+                StackExchange.using("postValidation", function () {
+                StackExchange.postValidation.initOnBlurAndSubmit($('#post-form'), 2, 'answer');
+            });
+
+            
+            StackExchange.question.init({votesCast:[],autoShowCommentHelp:true,showAnswerHelp:true,totalCommentCount:0,shownCommentCount:0,highlightColor:'#F4A83D',backgroundColor:'#FFF',questionId:2777802});
+
+            styleCode();
+
+                StackExchange.realtime.subscribeToQuestion('1', '2777802');
+            
+                    });
+        </script>
+
+
+    <script type="text/javascript">
+        StackExchange.init({"stackAuthUrl":"https://stackauth.com","serverTime":1380400726,"styleCode":true,"enableUserHovercards":true,"site":{"name":"Stack Overflow","description":"Q&A for professional and enthusiast programmers","isNoticesTabEnabled":true,"recaptchaPublicKey":"6LdchgIAAAAAAJwGpIzRQSOFaO0pU6s44Xt8aTwc","enableSocialMediaInSharePopup":true},"user":{"fkey":"3d73635e815ab7ad9101ff72de56dc1f","isRegistered":true,"userType":3,"userId":633348,"accountId":316940,"gravatar":"<div class=\"\"><img src=\"https://www.gravatar.com/avatar/3543988abe79a398c4e60f65389e2f9d?s=32&d=identicon&r=PG\" alt=\"\" width=\"32\" height=\"32\"></div>","profileUrl":"http://stackoverflow.com/users/633348/supernuber","notificationsUnviewedCount":0,"inboxUnviewedCount":0,"ab":{"askpageemailsubscription":{"v":"reverse","g":2}}}});
+        StackExchange.using.setCacheBreakers({"js/prettify-full.js":"6c261bebf56a","js/moderator.js":"ed7a8238b2f8","js/full-anon.js":"7dee54417135","js/full.js":"3d9ee77c1fc8","js/wmd.js":"12e251f7c6c3","js/third-party/jquery.autocomplete.min.js":"e5f01e97f7c3","js/mobile.js":"75f8938d6753","js/help.js":"6e6623243cf6","js/tageditor.js":"450c9e8426fc","js/tageditornew.js":"b6c68ad4c7dd","js/inline-tag-editing.js":"8e84e8a137f7","js/revisions.js":"d3e781ee5528","js/review.js":"947758ba83ea","js/tagsuggestions.js":"aa48ef6154df","js/post-validation.js":"bb996020492a","js/explore-qlist.js":"ec8bb4899db9","js/events.js":"fa1c73bcef48"});
+        
+    </script>
+    <script type="text/javascript">
+        StackExchange.using("gps", function() {
+             StackExchange.gps.init(true);
+        });
+    </script>
+    
+</head>
+<body class="question-page">
+    <noscript><div id="noscript-padding"></div></noscript>
+    <div id="notify-container"></div>
+    <div id="overlay-header"></div>
+    <div id="custom-header"></div>
+
+    <div class="container">
+        <div id="header" >
+            <div id="portalLink">
+                <a class="genu" href="http://stackexchange.com" onclick="StackExchange.ready(function(){genuwine.click();});return false;">Stack Exchange</a>
+            </div>
+            <div id="topbar">
+                <div id="hlinks">
+                    
+<span id="hlinks-user">        <span class="profile-triangle">▼</span><a href="/users/633348/supernuber" class="profile-link">supernuber</a>&nbsp;<a href="/users/633348/supernuber?tab=reputation"><span class="reputation-score" title="your reputation; view reputation changes" dir="ltr">6</span></a><span title="3 bronze badges"><span class="badge3"></span><span class="badgecount">3</span></span>
+ <span class="lsep">|</span>
+
+</span>
+<span id="hlinks-nav"></span>
+<span id="hlinks-custom">            <a href="http://chat.stackoverflow.com">chat</a>
+
+ <span class="lsep">|</span>
+                <a href="http://meta.stackoverflow.com">meta</a>
+
+ <span class="lsep">|</span>
+            <a href="/about">about</a>
+
+ <span class="lsep">|</span>
+            <a href="/help">help</a>
+</span>
+                </div>
+                <div id="hsearch">
+                    <form id="search" action="/search" method="get" autocomplete="off">
+                        <div>
+                            <input autocomplete="off" name="q" class="textbox" placeholder="search" tabindex="1" type="text" maxlength="240" size="28" value="">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <br class="cbt">
+            <div id="hlogo">
+                <a href="/">
+                    Stack Overflow
+                </a>
+            </div>
+            <div id="hmenus">
+                <div class="nav mainnavs ">
+                    <ul>
+                            <li class="youarehere"><a id="nav-questions" href="/questions">Questions</a></li>
+                            <li><a id="nav-tags" href="/tags">Tags</a></li>
+                            <li><a id="nav-users" href="/users">Users</a></li>
+                            <li><a id="nav-badges" href="/help/badges">Badges</a></li>
+                            <li><a id="nav-unanswered" href="/unanswered">Unanswered</a></li>
+                    </ul>
+                </div>
+                <div class="nav askquestion">
+                    <ul>
+                        <li>
+                            <a id="nav-askquestion"  href="/questions/ask">Ask Question</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+
+
+
+        <div id="content">
+            
+
+<div itemscope itemtype="http://schema.org/Article">
+    <link itemprop="image" href="//cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png">
+            <div id="question-header">
+            <h1 itemprop="name"><a href="/questions/2777802/how-to-write-to-file-in-ruby" class="question-hyperlink">How to write to file in Ruby?</a></h1>
+        </div>
+            <div id="mainbar">
+
+            
+
+<div class="question" data-questionid="2777802"  id="question">
+    
+                <script type="text/javascript">
+                var ados = ados || {};ados.run = ados.run || [];
+                ados.run.push(function() { ados_add_placement(22,8277,"adzerk839474021",4).setZone(43) ; });                    
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk839474021">
+            </div>  
+
+
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="2777802">
+    <a class="vote-up-off" title="This question shows research effort; it is useful and clear (click again to undo)">up vote</a>
+    <span class="vote-count-post ">51</span>
+    <a class="vote-down-off" title="This question does not show any research effort; it is unclear or not useful (click again to undo)">down vote</a>
+    
+    <a class="star-off" href="#" title="This is a favorite question (click again to undo)">favorite</a>
+    <div class="favoritecount"><b>3</b></div>   
+
+</div>
+
+            </td>
+            
+<td class="postcell">
+<div>
+    <div class="post-text" itemprop="description">
+
+        <p>I need to read the data out of database and then save it in a text file, how can I do that in Ruby? Is there any file management system in Ruby? </p>
+
+<p>Thanks</p>
+
+    </div>
+    <div class="post-taglist">
+        <a href="/questions/tagged/ruby" class="post-tag" title="show questions tagged 'ruby'" rel="tag">ruby</a> 
+    </div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+
+
+
+
+
+
+
+
+
+
+
+<div class="post-menu"><a href="/q/2777802/633348" title="short permalink to this question" class="short-link" id="link-post-2777802">share</a><span class="lsep">|</span><a href="/posts/2777802/edit" class="suggest-edit-post" title="revise and improve this post">edit</a></div>        
+    </td>
+    <td align="right" class="post-signature">
+
+
+    <div class="user-info user-hover">
+        <div class="user-action-time">
+            
+
+            <a href="/posts/2777802/revisions" title="show all edits to this post">edited <span title="2010-05-06 06:05:04Z" class="relativetime">May 6 '10 at 6:05</span></a>
+
+        </div>
+        <div class="user-gravatar32">
+            <a href="/users/8279/marc-andre-lafortune"><div class=""><img src="https://www.gravatar.com/avatar/d4758ccc3cc586f01e740733f3fd8b7e?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+        </div>
+        <div class="user-details">
+            <a href="/users/8279/marc-andre-lafortune">Marc-Andr&#233; Lafortune</a><br>
+            <span class="reputation-score" title="reputation score 26329" dir="ltr">26.3k</span><span title="5 gold badges"><span class="badge1"></span><span class="badgecount">5</span></span><span title="57 silver badges"><span class="badge2"></span><span class="badgecount">57</span></span><span title="89 bronze badges"><span class="badge3"></span><span class="badgecount">89</span></span>
+        </div>
+    </div>
+    </td>
+    <td class="post-signature owner">
+        
+
+    <div class="user-info ">
+        <div class="user-action-time">
+            
+
+                    asked <span title="2010-05-06 01:11:39Z" class="relativetime">May 6 '10 at 1:11</span>
+        </div>
+        <div class="user-gravatar32">
+            <a href="/users/326349/ohana"><div class=""><img src="https://www.gravatar.com/avatar/7e31c1742a331606a330ba3ac3c043c9?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+        </div>
+        <div class="user-details">
+            <a href="/users/326349/ohana">ohana</a><br>
+            <span class="reputation-score" title="reputation score" dir="ltr">260</span><span title="1 gold badge"><span class="badge1"></span><span class="badgecount">1</span></span><span title="3 silver badges"><span class="badge2"></span><span class="badgecount">3</span></span><span title="5 bronze badges"><span class="badge3"></span><span class="badgecount">5</span></span>
+        </div>
+    </div>
+
+    </td>
+    </tr>
+    </table>
+</div>
+</td>
+        </tr>
+
+
+<tr>
+<td class="votecell"></td>
+<td>
+    <div id="comments-2777802" class="comments dno">
+        <table>
+        <tbody>
+        
+            <tr><td></td><td></td></tr>
+        
+        </tbody>
+    
+        </table>
+    </div>
+    <span id="comments-link-2777802" class="comments-link" data-comments-counts="0" title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add comment <span>(requires <a href="http://stackoverflow.com/help/privileges/comment">50 reputation</a>)</span></span>
+</td>
+</tr>            </table>    
+</div>
+
+
+            <div id="answers">
+
+                <a name="tab-top"></a>
+                <div id="answers-header">
+                    <div class="subheader answers-subheader">
+                        <h2>
+                                3 Answers
+                        </h2>
+                        <div>
+                            <div id="tabs">
+        <a class="youarehere" href="/questions/2777802/how-to-write-to-file-in-ruby?answertab=active#tab-top" title="Answers with the latest activity first">active</a>
+        <a href="/questions/2777802/how-to-write-to-file-in-ruby?answertab=oldest#tab-top" title="Answers in the order they were provided">oldest</a>
+        <a href="/questions/2777802/how-to-write-to-file-in-ruby?answertab=votes#tab-top" title="Answers with the highest score first">votes</a>
+</div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+  
+<a name="2777872"></a>
+<div id="answer-2777872" class="answer accepted-answer" data-answerid="2777872" >
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="2777872">
+    <a class="vote-up-off" title="This answer is useful (click again to undo)">up vote</a>
+    <span class="vote-count-post ">30</span>
+    <a class="vote-down-off" title="This answer is not useful (click again to undo)">down vote</a>
+    
+
+
+        <span class="vote-accepted-on load-accepted-answer-date" title="loading when this answer was accepted...">accepted</span>
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text"><p>This is a Ruby question that is very well documented.</p>
+
+<p>The Ruby <a href="http://ruby-doc.org/core/classes/File.html">File class</a> will give you the ins and outs of <code>::new</code> and <code>::open</code> but its parent, the <a href="http://www.ruby-doc.org/core-1.9.3/IO.html">IO class</a>, gets into the depth of <code>#read</code> and <code>#write</code>.</p>
+</div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+
+
+
+
+
+
+
+
+
+
+
+<div class="post-menu"><a href="/a/2777872/633348" title="short permalink to this answer" class="short-link" id="link-post-2777872">share</a><span class="lsep">|</span><a href="/posts/2777872/edit" class="suggest-edit-post" title="revise and improve this post">edit</a></div>                    </td>
+    <td align="right" class="post-signature">
+
+
+    <div class="user-info ">
+        <div class="user-action-time">
+            
+
+            <a href="/posts/2777872/revisions" title="show all edits to this post">edited <span title="2012-10-10 19:27:40Z" class="relativetime">Oct 10 '12 at 19:27</span></a>
+
+        </div>
+        <div class="user-gravatar32">
+            <a href="/users/887078/geoff-petrie"><div class=""><img src="https://www.gravatar.com/avatar/71e5c7e9a86b98fc12a880450762d9d5?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+        </div>
+        <div class="user-details">
+            <a href="/users/887078/geoff-petrie">Geoff Petrie</a><br>
+            <span class="reputation-score" title="reputation score" dir="ltr">54</span><span title="7 bronze badges"><span class="badge3"></span><span class="badgecount">7</span></span>
+        </div>
+    </div>
+    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    
+
+    <div class="user-info user-hover">
+        <div class="user-action-time">
+            
+
+                        answered <span title="2010-05-06 01:31:45Z" class="relativetime">May 6 '10 at 1:31</span>
+        </div>
+        <div class="user-gravatar32">
+            <a href="/users/9465/jdl"><div class=""><img src="https://www.gravatar.com/avatar/119af50160cabfe1fb6f2f05f5018c64?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+        </div>
+        <div class="user-details">
+            <a href="/users/9465/jdl">jdl</a><br>
+            <span class="reputation-score" title="reputation score 11072" dir="ltr">11.1k</span><span title="1 gold badge"><span class="badge1"></span><span class="badgecount">1</span></span><span title="24 silver badges"><span class="badge2"></span><span class="badgecount">24</span></span><span title="35 bronze badges"><span class="badge3"></span><span class="badgecount">35</span></span>
+        </div>
+    </div>
+
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+
+
+
+<tr>
+<td class="votecell"></td>
+<td>
+    <div id="comments-2777872" class="comments">
+        <table>
+        <tbody>
+                    
+    <tr id="comment-17379989" class="comment" data-commentid="17379989">
+        <td class="comment-actions"><table><tbody><tr>
+<td class="comment-score">
+<span title="number of 'useful comment' votes received" class="cool">2</span>
+</td>
+<td>
+&nbsp;
+</td></tr>
+</tbody></table></td>
+        <td class="comment-text"><div><span class="comment-copy">Thanks @Geoff. It&#39;s good to see new users cleaning up outdated questions and answers. Makes for a better site overall.</span> &ndash;&nbsp;<a href="/users/9465/jdl" title="11072 reputation" class="comment-user">jdl</a> <span class="comment-date" dir="ltr"><span title="2012-10-11 16:43:53Z" class="relativetime-clean">Oct 11 '12 at 16:43</span></span></div></td>
+    </tr>
+
+        </tbody>
+    
+        </table>
+    </div>
+    <span id="comments-link-2777872" class="comments-link" data-comments-counts="0" title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add comment <span>(requires <a href="http://stackoverflow.com/help/privileges/comment">50 reputation</a>)</span></span>
+</td>
+</tr>
+    </table>
+</div>
+            <script type="text/javascript">
+                var ados = ados || {};ados.run = ados.run || [];
+                ados.run.push(function() { ados_add_placement(22,8277,"adzerk1630303388",4).setZone(44) ; });                    
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk1630303388">
+            </div>  
+
+
+
+  
+<a name="12903031"></a>
+<div id="answer-12903031" class="answer" data-answerid="12903031" >
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="12903031">
+    <a class="vote-up-off" title="This answer is useful (click again to undo)">up vote</a>
+    <span class="vote-count-post ">31</span>
+    <a class="vote-down-off" title="This answer is not useful (click again to undo)">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text"><p>This is preferred approach in most cases:</p>
+
+<pre><code> File.open(yourfile, 'w') { |file| file.write("your text") }
+</code></pre>
+
+<p>When a block is passed to <code>File.open</code>, the File object will be automatically closed when the block terminates. </p>
+
+<p>If you don't pass a block to <code>File.open</code>, you have to make sure that file is correctly closed and the content was written to file.</p>
+
+<pre><code>begin
+  file = File.open("/tmp/some_file", "w")
+  file.write("your text") 
+rescue IOError =&gt; e
+  #some error occur, dir not writable etc.
+ensure
+  file.close unless file == nil
+end
+</code></pre>
+
+<p>You can find it in <a href="http://ruby-doc.org/core-2.0/File.html#method-c-new-label-Examples">documentation</a>:</p>
+
+<pre><code>static VALUE rb_io_s_open(int argc, VALUE *argv, VALUE klass)
+{
+    VALUE io = rb_class_new_instance(argc, argv, klass);
+    if (rb_block_given_p()) {
+        return rb_ensure(rb_yield, io, io_close, io);
+    }
+    return io;
+}
+</code></pre>
+</div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+
+
+
+
+
+
+
+
+
+
+
+<div class="post-menu"><a href="/a/12903031/633348" title="short permalink to this answer" class="short-link" id="link-post-12903031">share</a><span class="lsep">|</span><a href="/posts/12903031/edit" class="suggest-edit-post" title="revise and improve this post">edit</a></div>                    </td>
+    <td align="right" class="post-signature">
+
+
+    <div class="user-info ">
+        <div class="user-action-time">
+            
+
+            <a href="/posts/12903031/revisions" title="show all edits to this post">edited <span title="2013-04-27 09:20:42Z" class="relativetime">Apr 27 at 9:20</span></a>
+
+        </div>
+        <div class="user-gravatar32">
+            
+        </div>
+        <div class="user-details">
+            <br>
+            
+        </div>
+    </div>
+    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    
+
+    <div class="user-info ">
+        <div class="user-action-time">
+            
+
+                        answered <span title="2012-10-15 19:55:21Z" class="relativetime">Oct 15 '12 at 19:55</span>
+        </div>
+        <div class="user-gravatar32">
+            <a href="/users/334831/tombart"><div class=""><img src="https://www.gravatar.com/avatar/bf2a7f4d71e1d892ce564fe4bd81193f?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+        </div>
+        <div class="user-details">
+            <a href="/users/334831/tombart">Tombart</a><br>
+            <span class="reputation-score" title="reputation score" dir="ltr">2,389</span><span title="14 silver badges"><span class="badge2"></span><span class="badgecount">14</span></span><span title="23 bronze badges"><span class="badge3"></span><span class="badgecount">23</span></span>
+        </div>
+    </div>
+
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+
+
+
+<tr>
+<td class="votecell"></td>
+<td>
+    <div id="comments-12903031" class="comments">
+        <table>
+        <tbody>
+                    
+    <tr id="comment-20549192" class="comment" data-commentid="20549192">
+        <td></td>
+        <td class="comment-text"><div><span class="comment-copy">Yes, using the block syntax with { |file| .... } will close the file when the block closes.</span> &ndash;&nbsp;<a href="/users/62140/wesgarrison" title="3080 reputation" class="comment-user">wesgarrison</a> <span class="comment-date" dir="ltr"><span title="2013-02-04 20:38:56Z" class="relativetime-clean">Feb 4 at 20:38</span></span></div></td>
+    </tr>
+            
+    <tr id="comment-20587138" class="comment" data-commentid="20587138">
+        <td></td>
+        <td class="comment-text"><div><span class="comment-copy">Cool, thanks. I wasn&#39;t sure about that. Here&#39;s some more info about blocks and <code>File.open</code> <a href="http://blog.rubybestpractices.com/posts/rklemme/001-Using_blocks_for_Robustness.html" rel="nofollow">blog.rubybestpractices.com/posts/rklemme/&hellip;</a> it&#39;s also mentioned in the official documentation</span> &ndash;&nbsp;<a href="/users/334831/tombart" title="2389 reputation" class="comment-user">Tombart</a> <span class="comment-date" dir="ltr"><span title="2013-02-05 21:26:14Z" class="relativetime-clean">Feb 5 at 21:26</span></span></div></td>
+    </tr>
+
+        </tbody>
+    
+        </table>
+    </div>
+    <span id="comments-link-12903031" class="comments-link" data-comments-counts="0" title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add comment <span>(requires <a href="http://stackoverflow.com/help/privileges/comment">50 reputation</a>)</span></span>
+</td>
+</tr>
+    </table>
+</div>
+
+  
+<a name="2777863"></a>
+<div id="answer-2777863" class="answer" data-answerid="2777863" >
+    <table>
+        <tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="2777863">
+    <a class="vote-up-off" title="This answer is useful (click again to undo)">up vote</a>
+    <span class="vote-count-post ">114</span>
+    <a class="vote-down-off" title="This answer is not useful (click again to undo)">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text"><p>Are you looking for the following:</p>
+
+<pre><code>File.open(yourfile, 'w') { |file| file.write("your text") }
+</code></pre>
+</div>
+    <table class="fw">
+    <tr>
+    <td class="vt">
+
+
+
+
+
+
+
+
+
+
+
+<div class="post-menu"><a href="/a/2777863/633348" title="short permalink to this answer" class="short-link" id="link-post-2777863">share</a><span class="lsep">|</span><a href="/posts/2777863/edit" class="suggest-edit-post" title="revise and improve this post">edit</a></div>                    </td>
+    <td align="right" class="post-signature">
+
+
+    <div class="user-info user-hover">
+        <div class="user-action-time">
+            
+
+            <a href="/posts/2777863/revisions" title="show all edits to this post">edited <span title="2012-09-05 06:14:04Z" class="relativetime">Sep 5 '12 at 6:14</span></a>
+
+        </div>
+        <div class="user-gravatar32">
+            <a href="/users/84631/mischa"><div class=""><img src="https://www.gravatar.com/avatar/181035f8aac1cb68d50dc58b67dc0349?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+        </div>
+        <div class="user-details">
+            <a href="/users/84631/mischa">Mischa</a><br>
+            <span class="reputation-score" title="reputation score 21572" dir="ltr">21.6k</span><span title="4 gold badges"><span class="badge1"></span><span class="badgecount">4</span></span><span title="32 silver badges"><span class="badge2"></span><span class="badgecount">32</span></span><span title="58 bronze badges"><span class="badge3"></span><span class="badgecount">58</span></span>
+        </div>
+    </div>
+    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    
+
+    <div class="user-info user-hover">
+        <div class="user-action-time">
+            
+
+                        answered <span title="2010-05-06 01:29:55Z" class="relativetime">May 6 '10 at 1:29</span>
+        </div>
+        <div class="user-gravatar32">
+            <a href="/users/61592/todd-r"><div class=""><img src="https://www.gravatar.com/avatar/55ff1426273f950b43135f619d025476?s=32&d=identicon&r=PG" alt="" width="32" height="32"></div></a>
+        </div>
+        <div class="user-details">
+            <a href="/users/61592/todd-r">Todd R</a><br>
+            <span class="reputation-score" title="reputation score" dir="ltr">3,130</span><span title="3 gold badges"><span class="badge1"></span><span class="badgecount">3</span></span><span title="11 silver badges"><span class="badge2"></span><span class="badgecount">11</span></span><span title="21 bronze badges"><span class="badge3"></span><span class="badgecount">21</span></span>
+        </div>
+    </div>
+
+    </td>
+    </tr>
+    </table>
+</td>
+        </tr>
+
+
+
+<tr>
+<td class="votecell"></td>
+<td>
+    <div id="comments-2777863" class="comments">
+        <table>
+        <tbody>
+                    
+    <tr id="comment-16862473" class="comment" data-commentid="16862473">
+        <td class="comment-actions"><table><tbody><tr>
+<td class="comment-score">
+<span title="number of 'useful comment' votes received" class="cool">1</span>
+</td>
+<td>
+&nbsp;
+</td></tr>
+</tbody></table></td>
+        <td class="comment-text"><div><span class="comment-copy">It probably returning the number of characters affected. I need file object in return. Any ideas?</span> &ndash;&nbsp;<a href="/users/524740/prem" title="926 reputation" class="comment-user">prem</a> <span class="comment-date" dir="ltr"><span title="2012-09-21 07:05:52Z" class="relativetime-clean">Sep 21 '12 at 7:05</span></span><span class="edited-yes" title="this comment was edited"></span></div></td>
+    </tr>
+            
+    <tr id="comment-17059211" class="comment" data-commentid="17059211">
+        <td class="comment-actions"><table><tbody><tr>
+<td class="comment-score">
+<span title="number of 'useful comment' votes received" class="cool">2</span>
+</td>
+<td>
+&nbsp;
+</td></tr>
+</tbody></table></td>
+        <td class="comment-text"><div><span class="comment-copy"><code>yourfile</code> is a variable that holds the name of the file to be written.</span> &ndash;&nbsp;<a href="/users/336920/b-seven" title="4576 reputation" class="comment-user">B Seven</a> <span class="comment-date" dir="ltr"><span title="2012-09-28 21:13:04Z" class="relativetime-clean">Sep 28 '12 at 21:13</span></span></div></td>
+    </tr>
+            
+    <tr id="comment-18481101" class="comment" data-commentid="18481101">
+        <td class="comment-actions"><table><tbody><tr>
+<td class="comment-score">
+<span title="number of 'useful comment' votes received" class="cool">4</span>
+</td>
+<td>
+&nbsp;
+</td></tr>
+</tbody></table></td>
+        <td class="comment-text"><div><span class="comment-copy">Alternatively: f = File.open(&#39;name&#39;,&#39;w&#39;);
+f.write(&#39;text&#39;);
+f.close</span> &ndash;&nbsp;<a href="/users/405120/vish" title="727 reputation" class="comment-user">vish</a> <span class="comment-date" dir="ltr"><span title="2012-11-21 22:32:00Z" class="relativetime-clean">Nov 21 '12 at 22:32</span></span><span class="edited-yes" title="this comment was edited 2 times"></span></div></td>
+    </tr>
+            
+    <tr id="comment-20159463" class="comment" data-commentid="20159463">
+        <td class="comment-actions"><table><tbody><tr>
+<td class="comment-score">
+<span title="number of 'useful comment' votes received" class="cool">3</span>
+</td>
+<td>
+&nbsp;
+</td></tr>
+</tbody></table></td>
+        <td class="comment-text"><div><span class="comment-copy">@vish: I wouldn&#39;t recommend this solution as the file descriptor would be left open if <code>f.write</code> raises an Exception.</span> &ndash;&nbsp;<a href="/users/488054/nbarraille" title="2393 reputation" class="comment-user">nbarraille</a> <span class="comment-date" dir="ltr"><span title="2013-01-23 01:25:01Z" class="relativetime-clean">Jan 23 at 1:25</span></span></div></td>
+    </tr>
+            
+    <tr id="comment-24941014" class="comment" data-commentid="24941014">
+        <td class="comment-actions"><table><tbody><tr>
+<td class="comment-score">
+<span title="number of 'useful comment' votes received" class="cool">2</span>
+</td>
+<td>
+&nbsp;
+</td></tr>
+</tbody></table></td>
+        <td class="comment-text"><div><span class="comment-copy">Short and sweet: <code>File.write(&#39;filename&#39;, &#39;content&#39;)</code></span> &ndash;&nbsp;<a href="/users/146764/benjamin-oakes" title="3173 reputation" class="comment-user">Benjamin Oakes</a> <span class="comment-date" dir="ltr"><span title="2013-06-20 14:57:58Z" class="relativetime-clean">Jun 20 at 14:57</span></span></div></td>
+    </tr>
+
+        </tbody>
+    
+        </table>
+    </div>
+    <span id="comments-link-2777863" class="comments-link" data-comments-counts="0" title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add comment <span>(requires <a href="http://stackoverflow.com/help/privileges/comment">50 reputation</a>)</span></span>
+</td>
+</tr>
+    </table>
+</div>
+                                    <a name='new-answer'></a>
+                    <form id="post-form" action="/questions/2777802/answer/submit" method="post"  class="post-form">
+                        <input type="hidden" id="post-id" value="2777802" />
+                        <h2 class="space">Your Answer</h2>
+
+
+
+    
+
+<script type="text/javascript">
+    StackExchange.ready(function() {
+        initTagRenderer("".split(" "), "".split(" "));
+         
+        prepareEditor({
+            heartbeatType: 'answer',
+            bindNavPrevention: true,
+            postfix: "",
+            onDemand: false,
+            discardSelector: ".discard-answer"
+            ,immediatelyShowMarkdownHelp:true
+        });
+        
+
+    });  
+</script>
+
+
+<div id="post-editor" class="post-editor">
+
+    <div style="position: relative;">     
+        <div class="wmd-container">
+            <div id="wmd-button-bar" class="wmd-button-bar"></div>
+            <textarea id="wmd-input" class="wmd-input" name="post-text" cols="92" rows="15" tabindex="101" data-min-length=""></textarea>
+        </div>
+    </div>
+
+    <div class="fl" style="margin-top: 8px; height:24px;">&nbsp;</div>
+    <div id="draft-saved" class="draft-saved community-option fl" style="margin-top: 8px; height:24px; display:none;">draft saved</div>
+
+    <div id="draft-discarded" class="draft-discarded community-option fl" style="margin-top: 8px; height:24px; display:none;">draft discarded</div>
+
+
+
+    <div id="wmd-preview" class="wmd-preview"></div>
+    <div></div>
+    <div class="edit-block">
+        <input id="fkey" name="fkey" type="hidden" value="3d73635e815ab7ad9101ff72de56dc1f">
+        <input id="author" name="author" type="text">
+    </div>
+</div>
+                        <div style="position: relative;">
+                            
+                        </div>
+
+                                                    <div class="form-submit cbt">
+                                <input id="submit-button" type="submit" value="Post Your Answer" tabindex="110">
+                                <a href="#" class="discard-answer dno">discard</a>
+                            </div>
+                    </form>
+
+
+
+                    <h2 class="bottom-notice">
+Not the answer you&#39;re looking for?                        Browse other questions tagged <a href="/questions/tagged/ruby" class="post-tag" title="show questions tagged 'ruby'" rel="tag">ruby</a>  or <a href="/questions/ask">ask your own question</a>.                    </h2>
+            </div>
+        </div>
+                <div id="sidebar" class="show-votes">
+
+
+
+<script type="text/javascript">
+    window.showNewUser = false;
+
+</script>
+
+<div class="module newuser newuser-greeting" id="newuser-box" style="display:none;">
+    <h4>Hello World!</h4>
+    <div>
+        <p>This is a collaboratively edited question and answer site for <b>professional and enthusiast programmers</b>. It's 100% free, no registration required.</p>
+        <p class="ar">
+                <a href="/about?mnu=1">about &raquo;</a>&nbsp;&nbsp;&nbsp;
+            <a href="/help?mnu=1">help &raquo;</a>
+        </p>
+    </div>
+</div>
+    <script type="text/javascript">
+    if (showNewUser) {
+        document.getElementById('newuser-box').style.display = '';
+    }
+    </script>                            <div class="module question-stats">
+                    <p class="label-key">tagged</p>
+                    <div class="tagged"><a href="/questions/tagged/ruby" class="post-tag" title="show questions tagged 'ruby'" rel="tag">ruby</a>&nbsp;<span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">83232</span></span><br>
+</div>
+                    <table id="qinfo">
+                        <tr>
+                            <td>
+                                <p class="label-key">asked</p>
+                            </td>
+                            <td style="padding-left: 10px">
+                                <p class="label-key" title="2010-05-06 01:11:39Z"><b>3 years ago</b></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p class="label-key">viewed</p>
+                            </td>
+
+                            <td style="padding-left: 10px">
+                                <p class="label-key">
+                                    <b>51668 times</b>
+                                </p>
+                            </td>
+                        </tr>
+                            <tr>
+                                <td>
+                                    <p class="label-key">active</p>
+                                </td>
+                                <td style="padding-left: 10px">
+                                    <p class="label-key"><b><a href="?lastactivity" class="lastactivity-link" title="2013-04-27 09:20:42Z">5 months ago</a></b></p>
+                                </td>
+                            </tr>
+                    </table>
+                </div>
+            <div class="module community-bulletin" data-tracker="cb=1">
+    <h4>Community Bulletin</h4>
+    <div class="related">
+
+            <div class="spacer">
+                <div class="bulletin-item-type"><a href="http://blog.stackoverflow.com" class="event-date" target="_blank">blog</a></div>
+                <div class="bulletin-item-content">
+                    <a href="http://blog.stackoverflow.com/2013/09/summer-hiring-happened-so-fast/" class="question-hyperlink" target="_blank">Summer Hiring, Happened So Fast</a>
+                </div>
+                <br class="cbt" />
+            </div>
+    </div>
+</div>
+
+            
+                        <script type="text/javascript">
+                var ados = ados || {};ados.run = ados.run || [];
+                ados.run.push(function() { ados_add_placement(22,8277,"adzerk1426905366",17).setZone(45) ; });                    
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk1426905366">
+            </div>  
+    <div id="hireme">
+        <script type="text/javascript">
+window.careers_adurl="http://careers.stackoverflow.com/gethired/js",window.careers_cssurl="//cdn-careers.sstatic.net/careers/gethired/sidebar.min.css?v=7ae83073b37e",window.careers_leaderboardcssurl="//cdn-careers.sstatic.net/careers/gethired/ninja.min.css?v=78ccbfa5c59f",window.careers_companycssurl="//cdn-careers.sstatic.net/careers/gethired/company",window.careers_adselector="div.hireme, div#hireme",StackExchange.ready(function(){$.ajax({url:"//cdn-careers.sstatic.net/careers/gethired/loader.min.js?v=607ab2dda910",dataType:"script",cache:!0})})        </script>
+    </div>
+
+
+
+            
+
+                            <div class="module sidebar-related">
+                    <h4 id="h-related">Related</h4>
+                    <div class="related" data-tracker="rq=1">
+                        <div class="spacer">
+<a href="/q/374326" title="Vote score (upvotes - downvotes)">
+        <div class="answer-votes answered-accepted large">102</div>
+</a>
+<a href="/questions/374326/get-filename-from-file-path-in-ruby" class="question-hyperlink">Get Filename from file path in Ruby</a>
+</div>
+<div class="spacer">
+<a href="/q/941856" title="Vote score (upvotes - downvotes)">
+        <div class="answer-votes answered-accepted default">14</div>
+</a>
+<a href="/questions/941856/write-binary-file-in-ruby" class="question-hyperlink">Write binary file in Ruby</a>
+</div>
+<div class="spacer">
+<a href="/q/948135" title="Vote score (upvotes - downvotes)">
+        <div class="answer-votes answered-accepted large">578</div>
+</a>
+<a href="/questions/948135/how-can-i-write-a-switch-statement-in-ruby" class="question-hyperlink">How can I write a switch statement in Ruby?</a>
+</div>
+<div class="spacer">
+<a href="/q/1113611" title="Vote score (upvotes - downvotes)">
+        <div class="answer-votes answered-accepted large">266</div>
+</a>
+<a href="/questions/1113611/what-does-ruby-have-that-python-doesnt-and-vice-versa" class="question-hyperlink">What does Ruby have that Python doesn&#39;t, and vice versa?</a>
+</div>
+<div class="spacer">
+<a href="/q/2437326" title="Vote score (upvotes - downvotes)">
+        <div class="answer-votes answered-accepted default">6</div>
+</a>
+<a href="/questions/2437326/ruby-how-to-write-a-new-file-with-output-from-script" class="question-hyperlink">Ruby - How to write a new file with output from script</a>
+</div>
+<div class="spacer">
+<a href="/q/3558656" title="Vote score (upvotes - downvotes)">
+        <div class="answer-votes answered-accepted large">255</div>
+</a>
+<a href="/questions/3558656/how-to-remove-rvm-ruby-version-manager-from-my-system" class="question-hyperlink">How to remove rvm (ruby version manager) from my system?</a>
+</div>
+<div class="spacer">
+<a href="/q/6321229" title="Vote score (upvotes - downvotes)">
+        <div class="answer-votes answered-accepted default">4</div>
+</a>
+<a href="/questions/6321229/how-do-i-open-a-web-page-and-write-it-to-a-file-in-ruby" class="question-hyperlink">How do I open a web page and write it to a file in ruby?</a>
+</div>
+<div class="spacer">
+<a href="/q/10676421" title="Vote score (upvotes - downvotes)">
+        <div class="answer-votes answered-accepted default">2</div>
+</a>
+<a href="/questions/10676421/using-ruby-how-to-avoid-writing-extra-lines-to-file" class="question-hyperlink">Using Ruby How To Avoid Writing Extra Lines To File</a>
+</div>
+<div class="spacer">
+<a href="/q/13322924" title="Vote score (upvotes - downvotes)">
+        <div class="answer-votes answered-accepted default">0</div>
+</a>
+<a href="/questions/13322924/using-ruby-to-write-file-from-template" class="question-hyperlink">Using ruby to write file from template</a>
+</div>
+<div class="spacer">
+<a href="/q/14402901" title="Vote score (upvotes - downvotes)">
+        <div class="answer-votes default">0</div>
+</a>
+<a href="/questions/14402901/how-do-i-format-text-before-writing-to-a-text-file-in-ruby" class="question-hyperlink">How do i format text before writing to a text file in Ruby?</a>
+</div>
+
+                    </div>
+                </div>
+        </div>
+    
+<div id="feed-link">
+    <div id="feed-link-text"><a href="/feeds/question/2777802" title="feed of this question and its answers"><span class="feed-icon"></span>question feed</a></div>
+</div>
+    <script type="text/javascript">
+StackExchange.ready(function(){$.get('/posts/2777802/ivc/123d');});
+</script>
+<noscript>
+    <div><img src="/posts/2777802/ivc/123d" class="dno" alt="" width="0" height="0"></div>
+</noscript><div style="display:none" id="prettify-lang">lang-rb</div></div>
+
+
+        </div>
+    </div>
+    <div id="footer" class="categories">
+        <div class="footerwrap">
+            <div id="footer-menu">
+                <div class="top-footer-links">
+                        <a href="/about">about</a>
+                    <a href="/help">help</a>
+                    <a href="http://blog.stackexchange.com?blb=1">blog</a>
+                        <a href="http://chat.stackoverflow.com">chat</a>
+                    <a href="http://data.stackexchange.com">data</a>
+                    <a href="http://stackexchange.com/legal">legal</a>
+                    <a href="http://stackexchange.com/legal/privacy-policy">privacy policy</a>
+                    <a href="http://stackexchange.com/about/hiring">jobs</a>
+                    <a href="http://engine.adzerk.net/r?e=eyJhdiI6NDE0LCJhdCI6MjAsImNtIjo5NTQsImNoIjoxMTc4LCJjciI6Mjc3NiwiZG0iOjQsImZjIjoyODYyLCJmbCI6Mjc1MSwibnciOjIyLCJydiI6MCwicHIiOjExNSwic3QiOjAsInVyIjoiaHR0cDovL3N0YWNrb3ZlcmZsb3cuY29tL2Fib3V0L2NvbnRhY3QiLCJyZSI6MX0&amp;s=hRods5B22XvRBwWIwtIMekcyNF8">advertising info</a>
+
+                    <a onclick='StackExchange.switchMobile("on", "/questions/2777802/how-to-write-to-file-in-ruby")'>mobile</a>
+                    <b><a href="/contact">contact us</a></b>
+                        <b><a href="http://meta.stackoverflow.com">feedback</a></b>
+                    
+                </div>
+                <div id="footer-sites">
+                    <table>
+    <tr>
+            <th colspan=3>
+                Technology
+            </th>
+            <th >
+                Life / Arts
+            </th>
+            <th >
+                Culture / Recreation
+            </th>
+            <th >
+                Science
+            </th>
+            <th >
+                Other
+            </th>
+    </tr>
+    <tr>
+            <td>
+                <ol>
+                        <li><a href="http://stackoverflow.com" title="professional and enthusiast programmers">Stack Overflow</a></li>
+                        <li><a href="http://serverfault.com" title="professional system and network administrators">Server Fault</a></li>
+                        <li><a href="http://superuser.com" title="computer enthusiasts and power users">Super User</a></li>
+                        <li><a href="http://webapps.stackexchange.com" title="power users of web applications">Web Applications</a></li>
+                        <li><a href="http://askubuntu.com" title="Ubuntu users and developers">Ask Ubuntu</a></li>
+                        <li><a href="http://webmasters.stackexchange.com" title="pro webmasters">Webmasters</a></li>
+                        <li><a href="http://gamedev.stackexchange.com" title="professional and independent game developers">Game Development</a></li>
+                        <li><a href="http://tex.stackexchange.com" title="users of TeX, LaTeX, ConTeXt, and related typesetting systems">TeX - LaTeX</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="http://programmers.stackexchange.com" title="professional programmers interested in conceptual questions about software development">Programmers</a></li>
+                        <li><a href="http://unix.stackexchange.com" title="users of Linux, FreeBSD and other Un*x-like operating systems.">Unix &amp; Linux</a></li>
+                        <li><a href="http://apple.stackexchange.com" title="power users of Apple hardware and software">Ask Different (Apple)</a></li>
+                        <li><a href="http://wordpress.stackexchange.com" title="WordPress developers and administrators">WordPress Answers</a></li>
+                        <li><a href="http://gis.stackexchange.com" title="cartographers, geographers and GIS professionals">Geographic Information Systems</a></li>
+                        <li><a href="http://electronics.stackexchange.com" title="electronics and electrical engineering professionals, students, and enthusiasts">Electrical Engineering</a></li>
+                        <li><a href="http://android.stackexchange.com" title="enthusiasts and power users of the Android operating system">Android Enthusiasts</a></li>
+                        <li><a href="http://security.stackexchange.com" title="IT security professionals">IT Security</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="http://dba.stackexchange.com" title="database professionals who wish to improve their database skills and learn from others in the community">Database Administrators</a></li>
+                        <li><a href="http://drupal.stackexchange.com" title="Drupal developers and administrators">Drupal Answers</a></li>
+                        <li><a href="http://sharepoint.stackexchange.com" title="SharePoint enthusiasts">SharePoint</a></li>
+                        <li><a href="http://ux.stackexchange.com" title="user experience researchers and experts">User Experience</a></li>
+                        <li><a href="http://mathematica.stackexchange.com" title="users of Mathematica">Mathematica</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#technology" class="more">
+                                more (13)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://photo.stackexchange.com" title="professional, enthusiast and amateur photographers">Photography</a></li>
+                        <li><a href="http://scifi.stackexchange.com" title="science fiction and fantasy enthusiasts">Science Fiction &amp; Fantasy</a></li>
+                        <li><a href="http://cooking.stackexchange.com" title="professional and amateur chefs">Seasoned Advice (cooking)</a></li>
+                        <li><a href="http://diy.stackexchange.com" title="contractors and serious DIYers">Home Improvement</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#lifearts" class="more">
+                                more (13)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://english.stackexchange.com" title="linguists, etymologists, and serious English language enthusiasts">English Language &amp; Usage</a></li>
+                        <li><a href="http://skeptics.stackexchange.com" title="scientific skepticism">Skeptics</a></li>
+                        <li><a href="http://judaism.stackexchange.com" title="those who base their lives on Jewish law and tradition and anyone interested in learning more">Mi Yodeya (Judaism)</a></li>
+                        <li><a href="http://travel.stackexchange.com" title="road warriors and seasoned travelers">Travel</a></li>
+                        <li><a href="http://christianity.stackexchange.com" title="committed Christians, experts in Christianity and those interested in learning more">Christianity</a></li>
+                        <li><a href="http://gaming.stackexchange.com" title="passionate videogamers on all platforms">Arqade (gaming)</a></li>
+                        <li><a href="http://bicycles.stackexchange.com" title="people who build and repair bicycles, people who train cycling, or commute on bicycles">Bicycles</a></li>
+                        <li><a href="http://rpg.stackexchange.com" title="gamemasters and players of tabletop, paper-and-pencil role-playing games">Role-playing Games</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#culturerecreation" class="more">
+                                more (21)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://math.stackexchange.com" title="people studying math at any level and professionals in related fields">Mathematics</a></li>
+                        <li><a href="http://stats.stackexchange.com" title="statisticians, data analysts, data miners and data visualization experts">Cross Validated (stats)</a></li>
+                        <li><a href="http://cstheory.stackexchange.com" title="theoretical computer scientists and researchers in related fields">Theoretical Computer Science</a></li>
+                        <li><a href="http://physics.stackexchange.com" title="active researchers, academics and students of physics">Physics</a></li>
+                        <li><a href="http://mathoverflow.net" title="professional mathematicians">MathOverflow</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#science" class="more">
+                                more (7)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://stackapps.com" title="apps, scripts, and development with the Stack Exchange API">Stack Apps</a></li>
+                        <li><a href="http://meta.stackoverflow.com" title="meta-discussion of the Stack Exchange family of Q&amp;A websites">Meta Stack Overflow</a></li>
+                        <li><a href="http://area51.stackexchange.com" title="proposing new sites in the Stack Exchange network">Area 51</a></li>
+                        <li><a href="http://careers.stackoverflow.com">Stack Overflow Careers</a></li>
+                    
+                </ol>
+            </td>
+    </tr>
+</table>
+                </div>
+            </div>
+
+            <div id="copyright">
+                site design / logo &#169; 2013 stack exchange inc; user contributions licensed under <a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license">cc-wiki</a> 
+                with <a href="http://blog.stackoverflow.com/2009/06/attribution-required/" rel="license">attribution required</a>
+            </div>
+            <div id="footer-flair">
+                <a href="http://creativecommons.org/licenses/by-sa/3.0/" class="cc-wiki-link"></a>
+            </div>
+            <div id="svnrev">
+                rev 2013.9.27.1039
+            </div>
+            
+        </div>
+    </div>
+    <noscript>
+        <div id="noscript-warning">Stack Overflow works best with JavaScript enabled<img src="http://pixel.quantserve.com/pixel/p-c1rF4kxgLUzNc.gif" alt="" class="dno"></div>
+    </noscript>
+<script type="text/javascript">var p = "http", d = "static"; if (document.location.protocol == "https:") { p += "s"; d = "engine"; } var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = p + "://" + d + ".adzerk.net/ados.js"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script>
+<script type="text/javascript">
+    var ados = ados || {};
+    ados.run = ados.run || [];
+    ados.run.push(function () { ados_setKeywords('ruby,x-user-registered');; ados_load(); });         
+</script>
+
+    <script type="text/javascript">var _gaq=_gaq||[];_gaq.push(['_setAccount','UA-5620270-1']);
+        _gaq.push(['_setCustomVar', 1, 'tags', '|ruby|']); 
+        _gaq.push(['_setCustomVar', 2, 'accountid', '316940',2]); 
+_gaq.push(['_trackPageview']);
+    var _qevents = _qevents || [];
+    (function () {
+        var ssl='https:'==document.location.protocol,
+            s=document.getElementsByTagName('script')[0],
+            ga=document.createElement('script');
+        ga.type='text/javascript';
+        ga.async=true;
+        ga.src=(ssl?'https://ssl':'http://www')+'.google-analytics.com/ga.js';
+        s.parentNode.insertBefore(ga,s);
+        var sc=document.createElement('script');
+        sc.type='text/javascript';
+        sc.async=true;
+        sc.src=(ssl?'https://secure':'http://edge')+'.quantserve.com/quant.js';
+        s.parentNode.insertBefore(sc,s);
+    })();
+    _qevents.push({ qacct: "p-c1rF4kxgLUzNc" });
+    </script>        
+    
+</body>
+</html>

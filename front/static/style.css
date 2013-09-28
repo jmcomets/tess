@@ -32,3 +32,8 @@
     letter-spacing: -2px;
     color: rgb(40, 40, 40);
 }
+
+.prix {
+  font-size: 22px;
+  color: #FFC70F;
+}

@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <title>Tags - Stack Overflow</title>
+    <link rel="shortcut icon" href="//cdn.sstatic.net/stackoverflow/img/favicon.ico">
+    <link rel="apple-touch-icon image_src" href="//cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png">
+    <link rel="search" type="application/opensearchdescription+xml" title="Stack Overflow" href="/opensearch.xml">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:domain" content="stackoverflow.com"/>
+    <meta name="og:type" content="website" />
+    <meta name="og:image" content="http://cdn.sstatic.net/stackoverflow/img/apple-touch-icon@2.png?v=fde65a5a78c6"/>
+    <meta name="og:title" content="Tags" />
+    <meta name="og:description" content="Q&amp;A for professional and enthusiast programmers" />
+    <meta name="og:url" content="http://stackoverflow.com/tags"/>
+
+    
+    
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdn.sstatic.net/js/stub.js?v=095532d92c98"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.sstatic.net/stackoverflow/all.css?v=b656995f60e4">
+    
+<meta name="robots" content="noindex">
+    <style type="text/css">
+        .excerpt, .stats-row
+        {
+            font-family: Arial,Liberation Sans,DejaVu Sans,sans-serif;  
+            font-size: 12px;
+            color: #888;     
+        }
+        .excerpt
+        {
+          font-size: 12px;
+          height: 39px;
+          line-height: 14px;
+          overflow: hidden;
+          margin-bottom: 4px;
+        }
+        .stats-row, .stats-row a, .stats-row a:visited
+        {
+            font-size: 11px;
+            color: #444;
+        }
+        .stats-row .caption
+        {
+            color: #888;
+        }
+        .tags-browser
+        {
+            width: 25%;    
+        }
+        .tag-cell
+        {
+            width: 230px;
+            border-bottom: 1px dotted #E0E0E0;
+            padding-bottom: 12px;
+            padding-right: 6px;
+            padding-top: 6px;
+            vertical-align: top;
+        }
+        #tags-browser tr:last-child td { border-bottom: none; }
+        .edit-link
+        {
+            float: right;
+            margin-right: 18px;
+            display: none;
+            font-size: 11px;
+        }
+    </style>
+
+
+    <script type="text/javascript">
+        StackExchange.init({"stackAuthUrl":"https://stackauth.com","serverTime":1380403760,"styleCode":true,"enableUserHovercards":true,"site":{"name":"Stack Overflow","description":"Q&A for professional and enthusiast programmers","isNoticesTabEnabled":true,"recaptchaPublicKey":"6LdchgIAAAAAAJwGpIzRQSOFaO0pU6s44Xt8aTwc","enableSocialMediaInSharePopup":true},"user":{"fkey":"3d73635e815ab7ad9101ff72de56dc1f","isRegistered":true,"userType":3,"userId":633348,"accountId":316940,"gravatar":"<div class=\"\"><img src=\"https://www.gravatar.com/avatar/3543988abe79a398c4e60f65389e2f9d?s=32&d=identicon&r=PG\" alt=\"\" width=\"32\" height=\"32\"></div>","profileUrl":"http://stackoverflow.com/users/633348/supernuber","notificationsUnviewedCount":0,"inboxUnviewedCount":0,"ab":{"askpageemailsubscription":{"v":"reverse","g":2}}}});
+        StackExchange.using.setCacheBreakers({"js/prettify-full.js":"6c261bebf56a","js/moderator.js":"ed7a8238b2f8","js/full-anon.js":"7dee54417135","js/full.js":"3d9ee77c1fc8","js/wmd.js":"12e251f7c6c3","js/third-party/jquery.autocomplete.min.js":"e5f01e97f7c3","js/mobile.js":"75f8938d6753","js/help.js":"6e6623243cf6","js/tageditor.js":"450c9e8426fc","js/tageditornew.js":"b6c68ad4c7dd","js/inline-tag-editing.js":"8e84e8a137f7","js/revisions.js":"d3e781ee5528","js/review.js":"947758ba83ea","js/tagsuggestions.js":"aa48ef6154df","js/post-validation.js":"bb996020492a","js/explore-qlist.js":"ec8bb4899db9","js/events.js":"fa1c73bcef48"});
+        
+    </script>
+    <script type="text/javascript">
+        StackExchange.using("gps", function() {
+             StackExchange.gps.init(true);
+        });
+    </script>
+    
+</head>
+<body class="tags-page">
+    <noscript><div id="noscript-padding"></div></noscript>
+    <div id="notify-container"></div>
+    <div id="overlay-header"></div>
+    <div id="custom-header"></div>
+
+    <div class="container">
+        <div id="header" >
+            <div id="portalLink">
+                <a class="genu" href="http://stackexchange.com" onclick="StackExchange.ready(function(){genuwine.click();});return false;">Stack Exchange</a>
+            </div>
+            <div id="topbar">
+                <div id="hlinks">
+                    
+<span id="hlinks-user">        <span class="profile-triangle">▼</span><a href="/users/633348/supernuber" class="profile-link">supernuber</a>&nbsp;<a href="/users/633348/supernuber?tab=reputation"><span class="reputation-score" title="your reputation; view reputation changes" dir="ltr">6</span></a><span title="3 bronze badges"><span class="badge3"></span><span class="badgecount">3</span></span>
+ <span class="lsep">|</span>
+
+</span>
+<span id="hlinks-nav"></span>
+<span id="hlinks-custom">            <a href="http://chat.stackoverflow.com">chat</a>
+
+ <span class="lsep">|</span>
+                <a href="http://meta.stackoverflow.com">meta</a>
+
+ <span class="lsep">|</span>
+            <a href="/about">about</a>
+
+ <span class="lsep">|</span>
+            <a href="/help">help</a>
+</span>
+                </div>
+                <div id="hsearch">
+                    <form id="search" action="/search" method="get" autocomplete="off">
+                        <div>
+                            <input autocomplete="off" name="q" class="textbox" placeholder="search" tabindex="1" type="text" maxlength="240" size="28" value="">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <br class="cbt">
+            <div id="hlogo">
+                <a href="/">
+                    Stack Overflow
+                </a>
+            </div>
+            <div id="hmenus">
+                <div class="nav mainnavs ">
+                    <ul>
+                            <li><a id="nav-questions" href="/questions">Questions</a></li>
+                            <li class="youarehere"><a id="nav-tags" href="/tags">Tags</a></li>
+                            <li><a id="nav-users" href="/users">Users</a></li>
+                            <li><a id="nav-badges" href="/help/badges">Badges</a></li>
+                            <li><a id="nav-unanswered" href="/unanswered">Unanswered</a></li>
+                    </ul>
+                </div>
+                <div class="nav askquestion">
+                    <ul>
+                        <li>
+                            <a id="nav-askquestion"  href="/questions/ask">Ask Question</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+
+
+
+        <div id="content">
+            
+<div id="mainbar-full">
+    <div class="subheader">
+        <h1 id="h-tags">Tags</h1>
+        <div id="tabs">
+        <a class="youarehere" href="/tags?tab=popular" title="most popular tags">popular</a>
+        <a href="/tags?tab=name" title="tags in alphabetical order">name</a>
+        <a href="/tags?tab=new" title="recently created tags">new</a>
+</div>
+    </div>
+    <div class="page-description">
+        <p>
+            A tag is a keyword or label that categorizes your question with other, similar questions. Using the right tags makes it easier for others to find and answer your question.
+        </p>
+        <table>
+            <tr>
+                <td>Type to find tags:</td>
+                <td style="padding-left:5px"><input id="tagfilter" name="tagfilter" type="text"></td>            
+            </tr>
+        </table>
+    </div>
+    <div id="tags_list">
+          
+<table id='tags-browser'>
+    
+            <tr>
+                <td class="tag-cell">
+                    <a href="/questions/tagged/c%23" class="post-tag" title="show questions tagged 'c#'" rel="tag">c#</a><span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">521237</span></span>
+                        <div class='excerpt'>a multi-paradigm programming language encompassing strong typing, imperative, declarative, functional, generic, object-oriented (class-based), and component-oriented programming disciplines.</div>
+                    <div>
+                        <div class='stats-row fl'>    <a href="/questions/tagged/c%23?sort=newest&days=1" 
+       title="281 questions tagged c# in the last 24 hours">
+       281 asked today
+    </a>,     <a href="/questions/tagged/c%23?sort=newest&days=7" 
+       title="3965 questions tagged c# in the last 7 days">
+       3965 this week
+    </a></div>
+                        <div class="cbt"></div>
+                    </div>
+                </td>
+                <td class="tag-cell">
+                    <a href="/questions/tagged/java" class="post-tag" title="show questions tagged 'java'" rel="tag">java</a><span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">483825</span></span>
+                        <div class='excerpt'>Java (not to be confused with JavaScript) is a class-based, object-oriented, strongly typed, reflective language and runtime environment (JRE). Java programs are compiled to bytecode and run in a virt&hellip;</div>
+                    <div>
+                        <div class='stats-row fl'>    <a href="/questions/tagged/java?sort=newest&days=1" 
+       title="467 questions tagged java in the last 24 hours">
+       467 asked today
+    </a>,     <a href="/questions/tagged/java?sort=newest&days=7" 
+       title="5045 questions tagged java in the last 7 days">
+       5045 this week
+    </a></div>
+                        <div class="cbt"></div>
+                    </div>
+                </td>
+                <td class="tag-cell">
+                    <a href="/questions/tagged/javascript" class="post-tag" title="show questions tagged 'javascript'" rel="tag">javascript</a><span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">449802</span></span>
+                        <div class='excerpt'>a dynamically-typed language commonly used for client-side scripting. Use this tag for questions regarding ECMAScript and its dialects/implementations (excluding ActionScript). Unless a &hellip;</div>
+                    <div>
+                        <div class='stats-row fl'>    <a href="/questions/tagged/javascript?sort=newest&days=1" 
+       title="425 questions tagged javascript in the last 24 hours">
+       425 asked today
+    </a>,     <a href="/questions/tagged/javascript?sort=newest&days=7" 
+       title="5115 questions tagged javascript in the last 7 days">
+       5115 this week
+    </a></div>
+                        <div class="cbt"></div>
+                    </div>
+                </td>
+                <td class="tag-cell">
+                    <a href="/questions/tagged/php" class="post-tag" title="show questions tagged 'php'" rel="tag">php</a><span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">447327</span></span>
+                        <div class='excerpt'>an open-source server-side scripting language widely used in web development. Use this tag for questions about PHP classes, methods, functions, syntax and use.</div>
+                    <div>
+                        <div class='stats-row fl'>    <a href="/questions/tagged/php?sort=newest&days=1" 
+       title="439 questions tagged php in the last 24 hours">
+       439 asked today
+    </a>,     <a href="/questions/tagged/php?sort=newest&days=7" 
+       title="4338 questions tagged php in the last 7 days">
+       4338 this week
+    </a></div>
+                        <div class="cbt"></div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="tag-cell">
+                    <a href="/questions/tagged/android" class="post-tag" title="show questions tagged 'android'" rel="tag"><img src="http://i.stack.imgur.com/tKsDb.png" height="16" width="18" alt="" class="sponsor-tag-img">android</a><span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">390578</span></span>
+                        <div class='excerpt'>Google&#39;s software stack for mobile devices. Please use the Android-specific tags such as [android-intent], not [intent]. For non-developer questions, see http://android.stackexchange.com.</div>
+                    <div>
+                        <div class='stats-row fl'>    <a href="/questions/tagged/android?sort=newest&days=1" 
+       title="399 questions tagged android in the last 24 hours">
+       399 asked today
+    </a>,     <a href="/questions/tagged/android?sort=newest&days=7" 
+       title="4006 questions tagged android in the last 7 days">
+       4006 this week
+    </a></div>
+                        <div class="cbt"></div>
+                    </div>
+                </td>
+                <td class="tag-cell">
+                    <a href="/questions/tagged/jquery" class="post-tag" title="show questions tagged 'jquery'" rel="tag">jquery</a><span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">367606</span></span>
+                        <div class='excerpt'>a cross-browser JavaScript library that facilitates DOM traversal, event handling, animation and AJAX interactions.</div>
+                    <div>
+                        <div class='stats-row fl'>    <a href="/questions/tagged/jquery?sort=newest&days=1" 
+       title="302 questions tagged jquery in the last 24 hours">
+       302 asked today
+    </a>,     <a href="/questions/tagged/jquery?sort=newest&days=7" 
+       title="3706 questions tagged jquery in the last 7 days">
+       3706 this week
+    </a></div>
+                        <div class="cbt"></div>
+                    </div>
+                </td>
+                <td class="tag-cell">
+                    <a href="/questions/tagged/c%2b%2b" class="post-tag" title="show questions tagged 'c++'" rel="tag">c++</a><span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">228345</span></span>
+                        <div class='excerpt'>a widely-used, statically-typed, free-form, compiled, multi-paradigm, multi-level, imperative, general-purpose, object-oriented programming language based on C.</div>
+                    <div>
+                        <div class='stats-row fl'>    <a href="/questions/tagged/c%2b%2b?sort=newest&days=1" 
+       title="198 questions tagged c++ in the last 24 hours">
+       198 asked today
+    </a>,     <a href="/questions/tagged/c%2b%2b?sort=newest&days=7" 
+       title="1835 questions tagged c++ in the last 7 days">
+       1835 this week
+    </a></div>
+                        <div class="cbt"></div>
+                    </div>
+                </td>
+                <td class="tag-cell">
+                    <a href="/questions/tagged/python" class="post-tag" title="show questions tagged 'python'" rel="tag">python</a><span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">223763</span></span>
+                        <div class='excerpt'>a dynamically and strongly typed programming language whose design philosophy emphasizes code readability. Two significantly different versions of Python (2 and 3) are in use. Please mention&hellip;</div>
+                    <div>
+                        <div class='stats-row fl'>    <a href="/questions/tagged/python?sort=newest&days=1" 
+       title="227 questions tagged python in the last 24 hours">
+       227 asked today
+    </a>,     <a href="/questions/tagged/python?sort=newest&days=7" 
+       title="2213 questions tagged python in the last 7 days">
+       2213 this week
+    </a></div>
+                        <div class="cbt"></div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="tag-cell">
+                    <a href="/questions/tagged/html" class="post-tag" title="show questions tagged 'html'" rel="tag">html</a><span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">205742</span></span>
+                        <div class='excerpt'>the principal markup language used for structuring web pages and formatting content. The most recent iteration of HTML is HTML5.</div>
+                    <div>
+                        <div class='stats-row fl'>    <a href="/questions/tagged/html?sort=newest&days=1" 
+       title="243 questions tagged html in the last 24 hours">
+       243 asked today
+    </a>,     <a href="/questions/tagged/html?sort=newest&days=7" 
+       title="2491 questions tagged html in the last 7 days">
+       2491 this week
+    </a></div>
+                        <div class="cbt"></div>
+                    </div>
+                </td>
+                <td class="tag-cell">
+                    <a href="/questions/tagged/mysql" class="post-tag" title="show questions tagged 'mysql'" rel="tag">mysql</a><span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">189886</span></span>
+                        <div class='excerpt'>an open-source, relational database management system.</div>
+                    <div>
+                        <div class='stats-row fl'>    <a href="/questions/tagged/mysql?sort=newest&days=1" 
+       title="185 questions tagged mysql in the last 24 hours">
+       185 asked today
+    </a>,     <a href="/questions/tagged/mysql?sort=newest&days=7" 
+       title="1801 questions tagged mysql in the last 7 days">
+       1801 this week
+    </a></div>
+                        <div class="cbt"></div>
+                    </div>
+                </td>
+                <td class="tag-cell">
+                    <a href="/questions/tagged/asp.net" class="post-tag" title="show questions tagged 'asp.net'" rel="tag">asp.net</a><span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">187420</span></span>
+                        <div class='excerpt'>a web application framework developed by Microsoft to allow programmers to build dynamic web sites and web applications. </div>
+                    <div>
+                        <div class='stats-row fl'>    <a href="/questions/tagged/asp.net?sort=newest&days=1" 
+       title="99 questions tagged asp.net in the last 24 hours">
+       99 asked today
+    </a>,     <a href="/questions/tagged/asp.net?sort=newest&days=7" 
+       title="1217 questions tagged asp.net in the last 7 days">
+       1217 this week
+    </a></div>
+                        <div class="cbt"></div>
+                    </div>
+                </td>
+                <td class="tag-cell">
+                    <a href="/questions/tagged/iphone" class="post-tag" title="show questions tagged 'iphone'" rel="tag">iphone</a><span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">180624</span></span>
+                        <div class='excerpt'>Specific to Apple&#39;s iPhone and/or iPod touch, but inapplicable to iPad. For questions not dependent on hardware, use the &quot;iOS&quot; tag. Another tag to consider is &quot;cocoa-touch&quot; (but not &quot;cocoa&quot;). Please r&hellip;</div>
+                    <div>
+                        <div class='stats-row fl'>    <a href="/questions/tagged/iphone?sort=newest&days=1" 
+       title="56 questions tagged iphone in the last 24 hours">
+       56 asked today
+    </a>,     <a href="/questions/tagged/iphone?sort=newest&days=7" 
+       title="752 questions tagged iphone in the last 7 days">
+       752 this week
+    </a></div>
+                        <div class="cbt"></div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="tag-cell">
+                    <a href="/questions/tagged/ios" class="post-tag" title="show questions tagged 'ios'" rel="tag">ios</a><span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">176033</span></span>
+                        <div class='excerpt'>Apple&#39;s operating system for mobile devices, such as the iPhone, iPod touch, iPad and Apple TV (2nd generation and up). It shares a lot with OS X, but is optimized for touch-based interfaces.</div>
+                    <div>
+                        <div class='stats-row fl'>    <a href="/questions/tagged/ios?sort=newest&days=1" 
+       title="203 questions tagged ios in the last 24 hours">
+       203 asked today
+    </a>,     <a href="/questions/tagged/ios?sort=newest&days=7" 
+       title="2379 questions tagged ios in the last 7 days">
+       2379 this week
+    </a></div>
+                        <div class="cbt"></div>
+                    </div>
+                </td>
+                <td class="tag-cell">
+                    <a href="/questions/tagged/.net" class="post-tag" title="show questions tagged '.net'" rel="tag">.net</a><span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">165782</span></span>
+                        <div class='excerpt'>a software framework designed mainly for the Microsoft Windows operating system. It includes an implementation of the Base Class Library, Common Language Runtime (commonly referr&hellip;</div>
+                    <div>
+                        <div class='stats-row fl'>    <a href="/questions/tagged/.net?sort=newest&days=1" 
+       title="46 questions tagged .net in the last 24 hours">
+       46 asked today
+    </a>,     <a href="/questions/tagged/.net?sort=newest&days=7" 
+       title="699 questions tagged .net in the last 7 days">
+       699 this week
+    </a></div>
+                        <div class="cbt"></div>
+                    </div>
+                </td>
+                <td class="tag-cell">
+                    <a href="/questions/tagged/css" class="post-tag" title="show questions tagged 'css'" rel="tag">css</a><span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">160200</span></span>
+                        <div class='excerpt'>a language used to control the visual presentation of HTML and XML documents including (but not limited to) colors, layout and fonts.</div>
+                    <div>
+                        <div class='stats-row fl'>    <a href="/questions/tagged/css?sort=newest&days=1" 
+       title="157 questions tagged css in the last 24 hours">
+       157 asked today
+    </a>,     <a href="/questions/tagged/css?sort=newest&days=7" 
+       title="1858 questions tagged css in the last 7 days">
+       1858 this week
+    </a></div>
+                        <div class="cbt"></div>
+                    </div>
+                </td>
+                <td class="tag-cell">
+                    <a href="/questions/tagged/sql" class="post-tag" title="show questions tagged 'sql'" rel="tag">sql</a><span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">156554</span></span>
+                        <div class='excerpt'>a language for querying databases. Questions should include code examples and table structure. This tag refers to the standard language, not for questions about vend&hellip;</div>
+                    <div>
+                        <div class='stats-row fl'>    <a href="/questions/tagged/sql?sort=newest&days=1" 
+       title="128 questions tagged sql in the last 24 hours">
+       128 asked today
+    </a>,     <a href="/questions/tagged/sql?sort=newest&days=7" 
+       title="1649 questions tagged sql in the last 7 days">
+       1649 this week
+    </a></div>
+                        <div class="cbt"></div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="tag-cell">
+                    <a href="/questions/tagged/objective-c" class="post-tag" title="show questions tagged 'objective-c'" rel="tag">objective-c</a><span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">149909</span></span>
+                        <div class='excerpt'>should be used only on questions that are about Objective-C features or depend on code in the language. The tags &quot;cocoa&quot; and &quot;cocoa-touch&quot; should be used to ask about Apple&#39;s frameworks or cl&hellip;</div>
+                    <div>
+                        <div class='stats-row fl'>    <a href="/questions/tagged/objective-c?sort=newest&days=1" 
+       title="113 questions tagged objective-c in the last 24 hours">
+       113 asked today
+    </a>,     <a href="/questions/tagged/objective-c?sort=newest&days=7" 
+       title="1250 questions tagged objective-c in the last 7 days">
+       1250 this week
+    </a></div>
+                        <div class="cbt"></div>
+                    </div>
+                </td>
+                <td class="tag-cell">
+                    <a href="/questions/tagged/ruby-on-rails" class="post-tag" title="show questions tagged 'ruby-on-rails'" rel="tag">ruby-on-rails</a><span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">132212</span></span>
+                        <div class='excerpt'>an open source full-stack web application framework written in Ruby. It follows the popular MVC framework model and is known for its &quot;convention over configuration&quot; approach to applic&hellip;</div>
+                    <div>
+                        <div class='stats-row fl'>    <a href="/questions/tagged/ruby-on-rails?sort=newest&days=1" 
+       title="72 questions tagged ruby-on-rails in the last 24 hours">
+       72 asked today
+    </a>,     <a href="/questions/tagged/ruby-on-rails?sort=newest&days=7" 
+       title="1066 questions tagged ruby-on-rails in the last 7 days">
+       1066 this week
+    </a></div>
+                        <div class="cbt"></div>
+                    </div>
+                </td>
+                <td class="tag-cell">
+                    <a href="/questions/tagged/c" class="post-tag" title="show questions tagged 'c'" rel="tag">c</a><span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">108780</span></span>
+                        <div class='excerpt'>a general-purpose computer programming language used for operating systems, games and other high performance work and is clearly distinct from C++. It was developed in 1972 by Dennis Ritchie for &hellip;</div>
+                    <div>
+                        <div class='stats-row fl'>    <a href="/questions/tagged/c?sort=newest&days=1" 
+       title="115 questions tagged c in the last 24 hours">
+       115 asked today
+    </a>,     <a href="/questions/tagged/c?sort=newest&days=7" 
+       title="1021 questions tagged c in the last 7 days">
+       1021 this week
+    </a></div>
+                        <div class="cbt"></div>
+                    </div>
+                </td>
+                <td class="tag-cell">
+                    <a href="/questions/tagged/ruby" class="post-tag" title="show questions tagged 'ruby'" rel="tag">ruby</a><span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">83233</span></span>
+                        <div class='excerpt'>an open-source dynamic object-oriented interpreted language created by Yukihiro Matsumoto (Matz) in 1993.</div>
+                    <div>
+                        <div class='stats-row fl'>    <a href="/questions/tagged/ruby?sort=newest&days=1" 
+       title="53 questions tagged ruby in the last 24 hours">
+       53 asked today
+    </a>,     <a href="/questions/tagged/ruby?sort=newest&days=7" 
+       title="632 questions tagged ruby in the last 7 days">
+       632 this week
+    </a></div>
+                        <div class="cbt"></div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="tag-cell">
+                    <a href="/questions/tagged/sql-server" class="post-tag" title="show questions tagged 'sql-server'" rel="tag">sql-server</a><span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">77084</span></span>
+                        <div class='excerpt'>a relational database management system from Microsoft. Use this tag for all SQL Server editions including Compact, Express, Azure, FastTrack and PDW.</div>
+                    <div>
+                        <div class='stats-row fl'>    <a href="/questions/tagged/sql-server?sort=newest&days=1" 
+       title="47 questions tagged sql-server in the last 24 hours">
+       47 asked today
+    </a>,     <a href="/questions/tagged/sql-server?sort=newest&days=7" 
+       title="698 questions tagged sql-server in the last 7 days">
+       698 this week
+    </a></div>
+                        <div class="cbt"></div>
+                    </div>
+                </td>
+                <td class="tag-cell">
+                    <a href="/questions/tagged/xml" class="post-tag" title="show questions tagged 'xml'" rel="tag">xml</a><span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">71871</span></span>
+                        <div class='excerpt'>a structured document format that defines human- and machine-readable encoding rules.
+
+
+</div>
+                    <div>
+                        <div class='stats-row fl'>    <a href="/questions/tagged/xml?sort=newest&days=1" 
+       title="45 questions tagged xml in the last 24 hours">
+       45 asked today
+    </a>,     <a href="/questions/tagged/xml?sort=newest&days=7" 
+       title="661 questions tagged xml in the last 7 days">
+       661 this week
+    </a></div>
+                        <div class="cbt"></div>
+                    </div>
+                </td>
+                <td class="tag-cell">
+                    <a href="/questions/tagged/ajax" class="post-tag" title="show questions tagged 'ajax'" rel="tag">ajax</a><span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">71647</span></span>
+                        <div class='excerpt'>a technique for creating seamless interactive websites via asynchronous data exchange between client and server. AJAX facilitates communication with the serve&hellip;</div>
+                    <div>
+                        <div class='stats-row fl'>    <a href="/questions/tagged/ajax?sort=newest&days=1" 
+       title="51 questions tagged ajax in the last 24 hours">
+       51 asked today
+    </a>,     <a href="/questions/tagged/ajax?sort=newest&days=7" 
+       title="712 questions tagged ajax in the last 7 days">
+       712 this week
+    </a></div>
+                        <div class="cbt"></div>
+                    </div>
+                </td>
+                <td class="tag-cell">
+                    <a href="/questions/tagged/wpf" class="post-tag" title="show questions tagged 'wpf'" rel="tag">wpf</a><span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">71379</span></span>
+                        <div class='excerpt'>a subsystem for rendering user interfaces in Windows-based applications.</div>
+                    <div>
+                        <div class='stats-row fl'>    <a href="/questions/tagged/wpf?sort=newest&days=1" 
+       title="31 questions tagged wpf in the last 24 hours">
+       31 asked today
+    </a>,     <a href="/questions/tagged/wpf?sort=newest&days=7" 
+       title="445 questions tagged wpf in the last 7 days">
+       445 this week
+    </a></div>
+                        <div class="cbt"></div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="tag-cell">
+                    <a href="/questions/tagged/regex" class="post-tag" title="show questions tagged 'regex'" rel="tag">regex</a><span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">68481</span></span>
+                        <div class='excerpt'>Regular expressions (often shortened to &quot;regex&quot;) are a declarative language used for pattern matching within strings. Please also include a tag specifying the programming language or tool you are usin&hellip;</div>
+                    <div>
+                        <div class='stats-row fl'>    <a href="/questions/tagged/regex?sort=newest&days=1" 
+       title="54 questions tagged regex in the last 24 hours">
+       54 asked today
+    </a>,     <a href="/questions/tagged/regex?sort=newest&days=7" 
+       title="582 questions tagged regex in the last 7 days">
+       582 this week
+    </a></div>
+                        <div class="cbt"></div>
+                    </div>
+                </td>
+                <td class="tag-cell">
+                    <a href="/questions/tagged/asp.net-mvc" class="post-tag" title="show questions tagged 'asp.net-mvc'" rel="tag">asp.net-mvc</a><span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">68418</span></span>
+                        <div class='excerpt'>a Microsoft web application framework that implements the model-view-controller (MVC) pattern. The latest release of the framework 
+offers REST-style web services develop&hellip;</div>
+                    <div>
+                        <div class='stats-row fl'>    <a href="/questions/tagged/asp.net-mvc?sort=newest&days=1" 
+       title="41 questions tagged asp.net-mvc in the last 24 hours">
+       41 asked today
+    </a>,     <a href="/questions/tagged/asp.net-mvc?sort=newest&days=7" 
+       title="535 questions tagged asp.net-mvc in the last 7 days">
+       535 this week
+    </a></div>
+                        <div class="cbt"></div>
+                    </div>
+                </td>
+                <td class="tag-cell">
+                    <a href="/questions/tagged/arrays" class="post-tag" title="show questions tagged 'arrays'" rel="tag">arrays</a><span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">62514</span></span>
+                        <div class='excerpt'>an ordered data structure consisting of a collection of elements (values or variables), each identified by one (single dimensional array, or vector) or multiple indexes. </div>
+                    <div>
+                        <div class='stats-row fl'>    <a href="/questions/tagged/arrays?sort=newest&days=1" 
+       title="87 questions tagged arrays in the last 24 hours">
+       87 asked today
+    </a>,     <a href="/questions/tagged/arrays?sort=newest&days=7" 
+       title="701 questions tagged arrays in the last 7 days">
+       701 this week
+    </a></div>
+                        <div class="cbt"></div>
+                    </div>
+                </td>
+                <td class="tag-cell">
+                    <a href="/questions/tagged/database" class="post-tag" title="show questions tagged 'database'" rel="tag">database</a><span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">61880</span></span>
+                        <div class='excerpt'>an organized collection of data typically used to model certain situations. Use this tag if you have questions about designing a database. If it is about a particular database management&hellip;</div>
+                    <div>
+                        <div class='stats-row fl'>    <a href="/questions/tagged/database?sort=newest&days=1" 
+       title="48 questions tagged database in the last 24 hours">
+       48 asked today
+    </a>,     <a href="/questions/tagged/database?sort=newest&days=7" 
+       title="455 questions tagged database in the last 7 days">
+       455 this week
+    </a></div>
+                        <div class="cbt"></div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="tag-cell">
+                    <a href="/questions/tagged/django" class="post-tag" title="show questions tagged 'django'" rel="tag">django</a><span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">59531</span></span>
+                        <div class='excerpt'>an open source Web 2.0 application framework, written in Python. Its primary goal is to ease the creation of complex database-driven websites.</div>
+                    <div>
+                        <div class='stats-row fl'>    <a href="/questions/tagged/django?sort=newest&days=1" 
+       title="45 questions tagged django in the last 24 hours">
+       45 asked today
+    </a>,     <a href="/questions/tagged/django?sort=newest&days=7" 
+       title="445 questions tagged django in the last 7 days">
+       445 this week
+    </a></div>
+                        <div class="cbt"></div>
+                    </div>
+                </td>
+                <td class="tag-cell">
+                    <a href="/questions/tagged/linux" class="post-tag" title="show questions tagged 'linux'" rel="tag">linux</a><span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">59100</span></span>
+                        <div class='excerpt'>specific to the GNU/Linux operating system. If your question has nothing to do with Linux APIs or Linux-specific behaviour then do not use this tag, even if you are running on L&hellip;</div>
+                    <div>
+                        <div class='stats-row fl'>    <a href="/questions/tagged/linux?sort=newest&days=1" 
+       title="61 questions tagged linux in the last 24 hours">
+       61 asked today
+    </a>,     <a href="/questions/tagged/linux?sort=newest&days=7" 
+       title="610 questions tagged linux in the last 7 days">
+       610 this week
+    </a></div>
+                        <div class="cbt"></div>
+                    </div>
+                </td>
+                <td class="tag-cell">
+                    <a href="/questions/tagged/xcode" class="post-tag" title="show questions tagged 'xcode'" rel="tag">xcode</a><span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">56611</span></span>
+                        <div class='excerpt'>Apple&#39;s integrated development environment (IDE). This tag should only be used for questions about Xcode itself, and not for general Mac or iOS programming topics. Use [cocoa] for Mac program&hellip;</div>
+                    <div>
+                        <div class='stats-row fl'>    <a href="/questions/tagged/xcode?sort=newest&days=1" 
+       title="34 questions tagged xcode in the last 24 hours">
+       34 asked today
+    </a>,     <a href="/questions/tagged/xcode?sort=newest&days=7" 
+       title="449 questions tagged xcode in the last 7 days">
+       449 this week
+    </a></div>
+                        <div class="cbt"></div>
+                    </div>
+                </td>
+                <td class="tag-cell">
+                    <a href="/questions/tagged/json" class="post-tag" title="show questions tagged 'json'" rel="tag">json</a><span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">56013</span></span>
+                        <div class='excerpt'>a lightweight data exchange format inspired by JavaScript object literals. It is often used with JavaScript, Ajax, and RESTful web services but is completely langu&hellip;</div>
+                    <div>
+                        <div class='stats-row fl'>    <a href="/questions/tagged/json?sort=newest&days=1" 
+       title="70 questions tagged json in the last 24 hours">
+       70 asked today
+    </a>,     <a href="/questions/tagged/json?sort=newest&days=7" 
+       title="643 questions tagged json in the last 7 days">
+       643 this week
+    </a></div>
+                        <div class="cbt"></div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="tag-cell">
+                    <a href="/questions/tagged/windows" class="post-tag" title="show questions tagged 'windows'" rel="tag">windows</a><span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">54125</span></span>
+                        <div class='excerpt'>a family of client, server, and mobile operating systems, developed by Microsoft. If your question has nothing to do with Windows APIs or Windows-specific behaviour then do not use this tag&hellip;</div>
+                    <div>
+                        <div class='stats-row fl'>    <a href="/questions/tagged/windows?sort=newest&days=1" 
+       title="36 questions tagged windows in the last 24 hours">
+       36 asked today
+    </a>,     <a href="/questions/tagged/windows?sort=newest&days=7" 
+       title="427 questions tagged windows in the last 7 days">
+       427 this week
+    </a></div>
+                        <div class="cbt"></div>
+                    </div>
+                </td>
+                <td class="tag-cell">
+                    <a href="/questions/tagged/vb.net" class="post-tag" title="show questions tagged 'vb.net'" rel="tag">vb.net</a><span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">53635</span></span>
+                        <div class='excerpt'>an object-oriented computer programming language that can be viewed as an evolution of Microsoft&#39;s Visual Basic 6 (VB6) but implemented on the Microsoft .NET Framework.</div>
+                    <div>
+                        <div class='stats-row fl'>    <a href="/questions/tagged/vb.net?sort=newest&days=1" 
+       title="48 questions tagged vb.net in the last 24 hours">
+       48 asked today
+    </a>,     <a href="/questions/tagged/vb.net?sort=newest&days=7" 
+       title="495 questions tagged vb.net in the last 7 days">
+       495 this week
+    </a></div>
+                        <div class="cbt"></div>
+                    </div>
+                </td>
+                <td class="tag-cell">
+                    <a href="/questions/tagged/eclipse" class="post-tag" title="show questions tagged 'eclipse'" rel="tag">eclipse</a><span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">50824</span></span>
+                        <div class='excerpt'>an open source IDE with plugins available to support a large variety of languages. This tag should only be used for questions about the Eclipse IDE and not for generalized programming topic&hellip;</div>
+                    <div>
+                        <div class='stats-row fl'>    <a href="/questions/tagged/eclipse?sort=newest&days=1" 
+       title="45 questions tagged eclipse in the last 24 hours">
+       45 asked today
+    </a>,     <a href="/questions/tagged/eclipse?sort=newest&days=7" 
+       title="487 questions tagged eclipse in the last 7 days">
+       487 this week
+    </a></div>
+                        <div class="cbt"></div>
+                    </div>
+                </td>
+                <td class="tag-cell">
+                    <a href="/questions/tagged/facebook" class="post-tag" title="show questions tagged 'facebook'" rel="tag"><img src="http://i.stack.imgur.com/L8rHf.png" height="16" width="18" alt="" class="sponsor-tag-img">facebook</a><span class="item-multiplier"><span class="item-multiplier-x">&times;</span>&nbsp;<span class="item-multiplier-count">47777</span></span>
+                        <div class='excerpt'>Facebook Platform lets developers integrate their apps directly into the Facebook social networking service.</div>
+                    <div>
+                        <div class='stats-row fl'>    <a href="/questions/tagged/facebook?sort=newest&days=1" 
+       title="37 questions tagged facebook in the last 24 hours">
+       37 asked today
+    </a>,     <a href="/questions/tagged/facebook?sort=newest&days=7" 
+       title="385 questions tagged facebook in the last 7 days">
+       385 this week
+    </a></div>
+                        <div class="cbt"></div>
+                    </div>
+                </td>
+            </tr>
+
+</table>
+        <div class="pager fr">
+        
+
+
+
+
+ <span class="page-numbers current">1</span>         <a href="/tags?page=2&amp;tab=popular" title="go to page 2"> <span class="page-numbers">2</span> </a> 
+        <a href="/tags?page=3&amp;tab=popular" title="go to page 3"> <span class="page-numbers">3</span> </a> 
+        <a href="/tags?page=4&amp;tab=popular" title="go to page 4"> <span class="page-numbers">4</span> </a> 
+        <a href="/tags?page=5&amp;tab=popular" title="go to page 5"> <span class="page-numbers">5</span> </a> 
+ <span class="page-numbers dots">…</span>         <a href="/tags?page=1007&amp;tab=popular" title="go to page 1007"> <span class="page-numbers">1007</span> </a> 
+        <a href="/tags?page=2&amp;tab=popular" rel="next" title="go to page 2"> <span class="page-numbers next"> next</span> </a> 
+
+    </div>
+
+
+
+    </div>
+
+    <div id="tags-legend">
+
+        <span>
+            <a class="tag-synonym-link" href="/tags/synonyms" title="show all tag synonyms">tag synonyms</a>
+        </span>
+    </div>
+
+    <script type="text/javascript">
+        StackExchange.ready(function() { 
+            $("#tagfilter").focus().typeWatch({ highlight:true, wait:500, captureLength: -1, callback: finished });
+        });
+        
+        function finished(txt) {
+            $.ajax({
+                type: "POST",
+                url: "/filter/tags-for-index",
+                data: { filter: txt, tab: 'Popular' },
+                dataType: "html",
+                success: function (result) {   
+                    var domelement = $(result);
+                    $("#tags_list").html(domelement);
+                    
+                    if (txt == "") {
+                        $(".pager").show();
+                    } else 
+                    {
+                        $(".pager").hide();
+                    }
+
+                }
+            });
+        }
+    </script>
+</div>
+        </div>
+    </div>
+    <div id="footer" class="categories">
+        <div class="footerwrap">
+            <div id="footer-menu">
+                <div class="top-footer-links">
+                        <a href="/about">about</a>
+                    <a href="/help">help</a>
+                    <a href="http://blog.stackexchange.com?blb=1">blog</a>
+                        <a href="http://chat.stackoverflow.com">chat</a>
+                    <a href="http://data.stackexchange.com">data</a>
+                    <a href="http://stackexchange.com/legal">legal</a>
+                    <a href="http://stackexchange.com/legal/privacy-policy">privacy policy</a>
+                    <a href="http://stackexchange.com/about/hiring">jobs</a>
+                    <a href="http://engine.adzerk.net/r?e=eyJhdiI6NDE0LCJhdCI6MjAsImNtIjo5NTQsImNoIjoxMTc4LCJjciI6Mjc3NiwiZG0iOjQsImZjIjoyODYyLCJmbCI6Mjc1MSwibnciOjIyLCJydiI6MCwicHIiOjExNSwic3QiOjAsInVyIjoiaHR0cDovL3N0YWNrb3ZlcmZsb3cuY29tL2Fib3V0L2NvbnRhY3QiLCJyZSI6MX0&amp;s=hRods5B22XvRBwWIwtIMekcyNF8">advertising info</a>
+
+                    <a onclick='StackExchange.switchMobile("on", "/tags")'>mobile</a>
+                    <b><a href="/contact">contact us</a></b>
+                        <b><a href="http://meta.stackoverflow.com">feedback</a></b>
+                    
+                </div>
+                <div id="footer-sites">
+                    <table>
+    <tr>
+            <th colspan=3>
+                Technology
+            </th>
+            <th >
+                Life / Arts
+            </th>
+            <th >
+                Culture / Recreation
+            </th>
+            <th >
+                Science
+            </th>
+            <th >
+                Other
+            </th>
+    </tr>
+    <tr>
+            <td>
+                <ol>
+                        <li><a href="http://stackoverflow.com" title="professional and enthusiast programmers">Stack Overflow</a></li>
+                        <li><a href="http://serverfault.com" title="professional system and network administrators">Server Fault</a></li>
+                        <li><a href="http://superuser.com" title="computer enthusiasts and power users">Super User</a></li>
+                        <li><a href="http://webapps.stackexchange.com" title="power users of web applications">Web Applications</a></li>
+                        <li><a href="http://askubuntu.com" title="Ubuntu users and developers">Ask Ubuntu</a></li>
+                        <li><a href="http://webmasters.stackexchange.com" title="pro webmasters">Webmasters</a></li>
+                        <li><a href="http://gamedev.stackexchange.com" title="professional and independent game developers">Game Development</a></li>
+                        <li><a href="http://tex.stackexchange.com" title="users of TeX, LaTeX, ConTeXt, and related typesetting systems">TeX - LaTeX</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="http://programmers.stackexchange.com" title="professional programmers interested in conceptual questions about software development">Programmers</a></li>
+                        <li><a href="http://unix.stackexchange.com" title="users of Linux, FreeBSD and other Un*x-like operating systems.">Unix &amp; Linux</a></li>
+                        <li><a href="http://apple.stackexchange.com" title="power users of Apple hardware and software">Ask Different (Apple)</a></li>
+                        <li><a href="http://wordpress.stackexchange.com" title="WordPress developers and administrators">WordPress Answers</a></li>
+                        <li><a href="http://gis.stackexchange.com" title="cartographers, geographers and GIS professionals">Geographic Information Systems</a></li>
+                        <li><a href="http://electronics.stackexchange.com" title="electronics and electrical engineering professionals, students, and enthusiasts">Electrical Engineering</a></li>
+                        <li><a href="http://android.stackexchange.com" title="enthusiasts and power users of the Android operating system">Android Enthusiasts</a></li>
+                        <li><a href="http://security.stackexchange.com" title="IT security professionals">IT Security</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="http://dba.stackexchange.com" title="database professionals who wish to improve their database skills and learn from others in the community">Database Administrators</a></li>
+                        <li><a href="http://drupal.stackexchange.com" title="Drupal developers and administrators">Drupal Answers</a></li>
+                        <li><a href="http://sharepoint.stackexchange.com" title="SharePoint enthusiasts">SharePoint</a></li>
+                        <li><a href="http://ux.stackexchange.com" title="user experience researchers and experts">User Experience</a></li>
+                        <li><a href="http://mathematica.stackexchange.com" title="users of Mathematica">Mathematica</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#technology" class="more">
+                                more (13)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://photo.stackexchange.com" title="professional, enthusiast and amateur photographers">Photography</a></li>
+                        <li><a href="http://scifi.stackexchange.com" title="science fiction and fantasy enthusiasts">Science Fiction &amp; Fantasy</a></li>
+                        <li><a href="http://cooking.stackexchange.com" title="professional and amateur chefs">Seasoned Advice (cooking)</a></li>
+                        <li><a href="http://diy.stackexchange.com" title="contractors and serious DIYers">Home Improvement</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#lifearts" class="more">
+                                more (13)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://english.stackexchange.com" title="linguists, etymologists, and serious English language enthusiasts">English Language &amp; Usage</a></li>
+                        <li><a href="http://skeptics.stackexchange.com" title="scientific skepticism">Skeptics</a></li>
+                        <li><a href="http://judaism.stackexchange.com" title="those who base their lives on Jewish law and tradition and anyone interested in learning more">Mi Yodeya (Judaism)</a></li>
+                        <li><a href="http://travel.stackexchange.com" title="road warriors and seasoned travelers">Travel</a></li>
+                        <li><a href="http://christianity.stackexchange.com" title="committed Christians, experts in Christianity and those interested in learning more">Christianity</a></li>
+                        <li><a href="http://gaming.stackexchange.com" title="passionate videogamers on all platforms">Arqade (gaming)</a></li>
+                        <li><a href="http://bicycles.stackexchange.com" title="people who build and repair bicycles, people who train cycling, or commute on bicycles">Bicycles</a></li>
+                        <li><a href="http://rpg.stackexchange.com" title="gamemasters and players of tabletop, paper-and-pencil role-playing games">Role-playing Games</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#culturerecreation" class="more">
+                                more (21)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://math.stackexchange.com" title="people studying math at any level and professionals in related fields">Mathematics</a></li>
+                        <li><a href="http://stats.stackexchange.com" title="statisticians, data analysts, data miners and data visualization experts">Cross Validated (stats)</a></li>
+                        <li><a href="http://cstheory.stackexchange.com" title="theoretical computer scientists and researchers in related fields">Theoretical Computer Science</a></li>
+                        <li><a href="http://physics.stackexchange.com" title="active researchers, academics and students of physics">Physics</a></li>
+                        <li><a href="http://mathoverflow.net" title="professional mathematicians">MathOverflow</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#science" class="more">
+                                more (7)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://stackapps.com" title="apps, scripts, and development with the Stack Exchange API">Stack Apps</a></li>
+                        <li><a href="http://meta.stackoverflow.com" title="meta-discussion of the Stack Exchange family of Q&amp;A websites">Meta Stack Overflow</a></li>
+                        <li><a href="http://area51.stackexchange.com" title="proposing new sites in the Stack Exchange network">Area 51</a></li>
+                        <li><a href="http://careers.stackoverflow.com">Stack Overflow Careers</a></li>
+                    
+                </ol>
+            </td>
+    </tr>
+</table>
+                </div>
+            </div>
+
+            <div id="copyright">
+                site design / logo &#169; 2013 stack exchange inc; user contributions licensed under <a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license">cc-wiki</a> 
+                with <a href="http://blog.stackoverflow.com/2009/06/attribution-required/" rel="license">attribution required</a>
+            </div>
+            <div id="footer-flair">
+                <a href="http://creativecommons.org/licenses/by-sa/3.0/" class="cc-wiki-link"></a>
+            </div>
+            <div id="svnrev">
+                rev 2013.9.27.1039
+            </div>
+            
+        </div>
+    </div>
+    <noscript>
+        <div id="noscript-warning">Stack Overflow works best with JavaScript enabled<img src="http://pixel.quantserve.com/pixel/p-c1rF4kxgLUzNc.gif" alt="" class="dno"></div>
+    </noscript>
+
+    <script type="text/javascript">var _gaq=_gaq||[];_gaq.push(['_setAccount','UA-5620270-1']);
+        _gaq.push(['_setCustomVar', 2, 'accountid', '316940',2]); 
+_gaq.push(['_trackPageview']);
+    var _qevents = _qevents || [];
+    (function () {
+        var ssl='https:'==document.location.protocol,
+            s=document.getElementsByTagName('script')[0],
+            ga=document.createElement('script');
+        ga.type='text/javascript';
+        ga.async=true;
+        ga.src=(ssl?'https://ssl':'http://www')+'.google-analytics.com/ga.js';
+        s.parentNode.insertBefore(ga,s);
+        var sc=document.createElement('script');
+        sc.type='text/javascript';
+        sc.async=true;
+        sc.src=(ssl?'https://secure':'http://edge')+'.quantserve.com/quant.js';
+        s.parentNode.insertBefore(sc,s);
+    })();
+    _qevents.push({ qacct: "p-c1rF4kxgLUzNc" });
+    </script>        
+    
+</body>
+</html>

@@ -12,6 +12,7 @@ $('#search-btn').click(function(e) {
     //console.log(data);
     var html = new EJS({ url: '/static/results.ejs' }).render(data);
     $resultBox.html(html);
+    history.pushState("", "", formatForUrl(text));
   });
 });
 
