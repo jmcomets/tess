@@ -1,0 +1,15 @@
+{
+  "_id": "zalando",
+  "name": "zalando",
+  "pattern": [
+     "/[\\w\\-]+/[\\w\\-]+.html"
+  ],
+  "rules": {
+    "name":        "//span[@itemprop='name'][1]/text()",
+    "description": "//span[@itemprop='description'][1]/text()",
+    "price": "(//span[contains(@class, 'price') and not(contains(@class, 'oldPrice'))])[1]",
+    "brand": "//span[@itemprop='brand'][1]/text()",
+    "model": "",
+    "thumbnail": "//span[@itemprop='image'][1]/text()"
+  }
+}
