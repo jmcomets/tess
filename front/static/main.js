@@ -1,4 +1,5 @@
-var QUERY_URL = "/search?query=";
+var QUERY_URL = "/search?query=",
+    $resultBox = $('.result-box');
 
 $('#search-btn').click(function(e) {
   e.stopPropagation();
@@ -9,6 +10,8 @@ $('#search-btn').click(function(e) {
 
   $.getJSON(QUERY_URL + formatForUrl(text), function(data) {
     console.log(data);
+    var html = new EJS({url: '/static/results.ejs'}).render(data);
+    $resultBox.html(html);
   });
 });
 

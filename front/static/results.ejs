@@ -1,0 +1,13 @@
+<% for (var i=0; i<results.length; i++) { %>
+<div class="result row">
+  <div class="col-sm-6 col-md-3">
+    <div class="thumbnail">
+      <h3><%= results[i].title %></h3>
+      <a href="<%= results[i].url %>">
+        <img src="<%= results[i].thumbnail %>">
+      </a>
+      <div class="caption"><%= results[i].description %></div>
+    </div>
+  <div>
+</div>
+<% } %>
