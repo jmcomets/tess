@@ -1,0 +1,22 @@
+{
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "range": {
+            "product.price.raw": {
+              "from": "200",
+              "to": "400"
+            }
+          }
+        }
+      ],
+      "must_not": [],
+      "should": []
+    }
+  },
+  "from": 0,
+  "size": 50,
+  "sort": [],
+  "facets": {}
+}
