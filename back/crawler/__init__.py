@@ -1,22 +1,22 @@
 from twisted.internet import reactor
 from scrapy.crawler import Crawler
-from scrapy.settings import Settings
 from scrapy import log
 from spiders.generic import generate_spider
 from scrapy.utils.project import get_project_settings
 
-def setup_crawler(domain, spider_cache={}):
+import sys
+
+def setup_crawler(domain, category, settings, spider_cache={}):
     # TODO : detect the category
-    category = 'ldlc'
 
     if category in spider_cache:
         SpiderClass = spider_cache[category]
     else:
-        SpiderClass = generate_spider(domain=domain, category=category)
+        SpiderClass = generate_spider(domain=domain, category=category, settings=settings)
     
     spider = SpiderClass()
 
-    crawler = Crawler(get_project_settings())
+    crawler = Crawler(settings)
     crawler.configure()
     crawler.crawl(spider)
 
@@ -25,9 +25,27 @@ def setup_crawler(domain, spider_cache={}):
 
 if __name__ == '__main__':
     
-    spider_cache = dict()
-    for domain in ['ldlc.com']:
-        setup_crawler(domain, spider_cache)
+    # Setting the 'push' parameter (pushing scrapped objects to server, or not)
+    settings = get_project_settings()
+    settings.overrides['push'] = '--prod' in sys.argv
 
-    log.start(loglevel=log.INFO, logstdout=True)
+    # Fetching crawled domains
+    domains = list()
+    for arg in sys.argv:
+        if ':' in arg:
+            domains.append(arg.split(':'))
+    # Fallback: default domains
+    if not domains:
+        domains = {('ldlc.com', 'ldlc')}
+
+    # Setting up a crawler per domain
+    spider_cache = dict()
+    for domain, category in domains:
+        setup_crawler(domain, category, settings, spider_cache)
+
+    # Setting up the logger
+    loglevel = log.DEBUG if '--debug' in sys.argv else log.INFO
+    log.start(loglevel=loglevel, logstdout=True)
+    
+    # Running the crawlers
     reactor.run()

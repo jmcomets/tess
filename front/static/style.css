@@ -1,5 +1,4 @@
 .search-form {
-  max-width: 500px;
   padding: 15px;
   margin: 0 auto;
 }
@@ -20,16 +19,29 @@
   display: inline-block;
 }
 
-.caption {
+.thumbnail {
     display: inline-block;
+}
+
+.product-info {
+    display: inline-block;
+}
+
+.caption {
     vertical-align: top;
     font-size: 16px;
+    margin: 18px 10px;
 }
 
 .product-title {
     font-size: 28px;
     font-weight: bold;
-    margin: 14px;
+    margin: 18px 10px;
     letter-spacing: -2px;
     color: rgb(40, 40, 40);
+}
+
+.prix {
+  font-size: 22px;
+  color: #FFC70F;
 }

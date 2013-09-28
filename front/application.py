@@ -1,7 +1,15 @@
 from flask import (Flask, jsonify, render_template, request)
 import elastic
+from werkzeug.routing import BaseConverter
 
 app = Flask(__name__)
+
+class RegexConverter(BaseConverter):
+    def __init__(self, url_map, *items):
+        super(RegexConverter, self).__init__(url_map)
+        self.regex = items[0]
+
+app.url_map.converters['regex'] = RegexConverter
 
 @app.route('/')
 def index():
@@ -17,7 +25,11 @@ def parse_query(query):
     """
     return query # TODO
 
-@app.route('/search', methods=['GET'])
+@app.route('/<regex("[\w\s\-_]+"):query>/')
+def query_on_index(query):
+    return render_template('index.html')
+
+@app.route('/api/search', methods=['GET'])
 def search():
     """
     Search view, querying the elastic search backend

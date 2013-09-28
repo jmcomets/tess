@@ -9,10 +9,11 @@ import requests
 import hashlib
 import json
 
-def generate_spider(domain, category):
+def generate_spider(domain, category, settings):
 
     # Getting the crawling parameters for the spider
-    params_r = requests.get("http://92.39.246.129:9200/crawl/wrapper/_search?q=name={}".format(category))
+    server_ip = settings['SERVER']
+    params_r = requests.get("http://{}/crawl/wrapper/_search?q=name={}".format(server_ip, category))
     params_r.raise_for_status()
     params = json.loads(params_r.text)['hits']['hits'][0]['_source']
 
@@ -26,9 +27,10 @@ def generate_spider(domain, category):
         name = params['name']
         main_domain = domain
         allowed_domains = [domain]
-        start_urls = ['http://{}'.format(domain), 'http://www.ldlc.com/informatique/piece/boitier/cint4290/']
+        start_urls = ['http://{}'.format(domain)]
         fields_xpath = params['rules']
-        rules = [Rule(SgmlLinkExtractor(allow=params['pattern']), 'parse_product', follow=True)]
+        rules = [Rule(SgmlLinkExtractor(allow=params['pattern']), 'parse_product', follow=True),
+                Rule(SgmlLinkExtractor(allow=('.*', )), follow=True)]
 
         def __init__(self, *args, **kwargs):
             super(Spider, self).__init__(*args, **kwargs)

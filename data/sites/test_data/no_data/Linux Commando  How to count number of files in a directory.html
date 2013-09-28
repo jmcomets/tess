@@ -1,0 +1,1782 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html dir='ltr' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<head>
+<meta content='pZeo4O6xg8qLG9hMZWgVCrPVfWv3wi1D0fvuvniTP0g=' name='verify-v1'/>
+<meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
+<script type="text/javascript">(function() { var b=window,e="jstiming",g="tick";(function(){function d(a){this.t={};this.tick=function(a,d,c){c=void 0!=c?c:(new Date).getTime();this.t[a]=[c,d]};this[g]("start",null,a)}var a=new d;b.jstiming={Timer:d,load:a};if(b.performance&&b.performance.timing){var a=b.performance.timing,c=b[e].load,f=a.navigationStart,a=a.responseStart;0<f&&a>=f&&(c[g]("_wtsrt",void 0,f),c[g]("wtsrt_","_wtsrt",a),c[g]("tbsd_","wtsrt_"))}try{a=null,b.chrome&&b.chrome.csi&&(a=Math.floor(b.chrome.csi().pageT),c&&0<f&&(c[g]("_tbnd",void 0,b.chrome.csi().startE),
+c[g]("tbnd_","_tbnd",f))),null==a&&b.gtbExternal&&(a=b.gtbExternal.pageT()),null==a&&b.external&&(a=b.external.pageT,c&&0<f&&(c[g]("_tbnd",void 0,b.external.startE),c[g]("tbnd_","_tbnd",f))),a&&(b[e].pt=a)}catch(l){}})();b.tickAboveFold=function(d){var a=0;if(d.offsetParent){do a+=d.offsetTop;while(d=d.offsetParent)}d=a;750>=d&&b[e].load[g]("aft")};var h=!1;function k(){h||(h=!0,b[e].load[g]("firstScrollTime"))}b.addEventListener?b.addEventListener("scroll",k,!1):b.attachEvent("onscroll",k);
+ })();</script>
+<meta content='blogger' name='generator'/>
+<link href='http://linuxcommando.blogspot.fr/favicon.ico' rel='icon' type='image/x-icon'/>
+<link href='http://linuxcommando.blogspot.com/2008/07/how-to-count-number-of-files-in.html' rel='canonical'/>
+<link rel="alternate" type="application/atom+xml" title="Linux Commando - Atom" href="http://linuxcommando.blogspot.com/feeds/posts/default" />
+<link rel="alternate" type="application/rss+xml" title="Linux Commando - RSS" href="http://linuxcommando.blogspot.com/feeds/posts/default?alt=rss" />
+<link rel="service.post" type="application/atom+xml" title="Linux Commando - Atom" href="http://www.blogger.com/feeds/8032022811235182759/posts/default" />
+
+<link rel="alternate" type="application/atom+xml" title="Linux Commando - Atom" href="http://linuxcommando.blogspot.com/feeds/1057372147015949286/comments/default" />
+<link rel="image_src" href="http://1.bp.blogspot.com/_D7BpcWFofE4/RxbS0t-6rgI/AAAAAAAAABk/OmuyxqtHOao/s72-c/small_su_logo.png" />
+<!--[if IE]> <script> (function() { var html5 = ("abbr,article,aside,audio,canvas,datalist,details," + "figure,footer,header,hgroup,mark,menu,meter,nav,output," + "progress,section,time,video").split(','); for (var i = 0; i < html5.length; i++) { document.createElement(html5[i]); } try { document.execCommand('BackgroundImageCache', false, true); } catch(e) {} })(); </script> <![endif]-->
+<title>Linux Commando: How to count number of files in a directory</title>
+<link type='text/css' rel='stylesheet' href='//www.blogger.com/static/v1/widgets/2775015444-widget_css_bundle.css' />
+<link type='text/css' rel='stylesheet' href='//www.blogger.com/dyn-css/authorization.css?targetBlogID=8032022811235182759&amp;zx=18b5676c-f314-4bbf-b6e0-46b83e5355f0&quot;/&gt;
+' />
+<style id='page-skin-1' type='text/css'><!--
+/*
+-----------------------------------------------
+Blogger Template Style
+Name:     Minima Black
+Designer: Douglas Bowman
+URL:      www.stopdesign.com
+Date:     26 Feb 2004
+Updated by: Blogger Team
+----------------------------------------------- */
+/* Variable definitions
+====================
+<Variable name="bgcolor" description="Page Background Color"
+type="color" default="#000">
+<Variable name="textcolor" description="Text Color"
+type="color" default="#ccc">
+<Variable name="linkcolor" description="Link Color"
+type="color" default="#9ad">
+<Variable name="pagetitlecolor" description="Blog Title Color"
+type="color" default="#ccc">
+<Variable name="descriptioncolor" description="Blog Description Color"
+type="color" default="#777">
+<Variable name="titlecolor" description="Post Title Color"
+type="color" default="#ad9">
+<Variable name="bordercolor" description="Border Color"
+type="color" default="#333">
+<Variable name="sidebarcolor" description="Sidebar Title Color"
+type="color" default="#777">
+<Variable name="sidebartextcolor" description="Sidebar Text Color"
+type="color" default="#999">
+<Variable name="visitedlinkcolor" description="Visited Link Color"
+type="color" default="#a7a">
+<Variable name="bodyfont" description="Text Font"
+type="font" default="normal normal 100% 'Trebuchet MS',Trebuchet,Verdana,Sans-serif">
+<Variable name="headerfont" description="Sidebar Title Font"
+type="font"
+default="normal bold 78% 'Trebuchet MS',Trebuchet,Arial,Verdana,Sans-serif">
+<Variable name="pagetitlefont" description="Blog Title Font"
+type="font"
+default="normal bold 200% 'Trebuchet MS',Trebuchet,Verdana,Sans-serif">
+<Variable name="descriptionfont" description="Blog Description Font"
+type="font"
+default="normal normal 78% 'Trebuchet MS', Trebuchet, Verdana, Sans-serif">
+<Variable name="postfooterfont" description="Post Footer Font"
+type="font"
+default="normal normal 78% 'Trebuchet MS', Trebuchet, Arial, Verdana, Sans-serif">
+<Variable name="startSide" description="Start side in blog language"
+type="automatic" default="left">
+<Variable name="endSide" description="End side in blog language"
+type="automatic" default="right">
+*/
+/* Use this with templates/template-twocol.html */
+body {
+background:#000000;
+margin:0;
+color:#cccccc;
+font: x-small "Trebuchet MS", Trebuchet, Verdana, Sans-serif;
+font-size/* */:/**/small;
+font-size: /**/small;
+text-align: center;
+}
+a:link {
+color:#99aadd;
+text-decoration:none;
+}
+a:visited {
+color:#aa77aa;
+text-decoration:none;
+}
+a:hover {
+color:#aadd99;
+text-decoration:underline;
+}
+a img {
+border-width:0;
+}
+/* Header
+-----------------------------------------------
+*/
+#header-wrapper {
+width:660px;
+margin:0 auto 10px;
+border:1px solid #333333;
+}
+#header-inner {
+background-position: center;
+margin-left: auto;
+margin-right: auto;
+}
+#header {
+margin: 5px;
+border: 1px solid #333333;
+text-align: center;
+color:#cccccc;
+}
+#header h1 {
+margin:5px 5px 0;
+padding:15px 20px .25em;
+line-height:1.2em;
+text-transform:uppercase;
+letter-spacing:.2em;
+font: normal bold 200% 'Trebuchet MS',Trebuchet,Verdana,Sans-serif;
+}
+#header a {
+color:#cccccc;
+text-decoration:none;
+}
+#header a:hover {
+color:#cccccc;
+}
+#header .description {
+margin:0 5px 5px;
+padding:0 20px 15px;
+max-width:700px;
+text-transform:uppercase;
+letter-spacing:.2em;
+line-height: 1.4em;
+font: normal normal 78% 'Trebuchet MS', Trebuchet, Verdana, Sans-serif;
+color: #777777;
+}
+#header img {
+margin-left: auto;
+margin-right: auto;
+}
+/* Outer-Wrapper
+----------------------------------------------- */
+#outer-wrapper {
+width: 660px;
+margin:0 auto;
+padding:10px;
+text-align:left;
+font: normal normal 100% 'Trebuchet MS',Trebuchet,Verdana,Sans-serif;
+}
+#main-wrapper {
+width: 410px;
+float: left;
+word-wrap: break-word; /* fix for long text breaking sidebar float in IE */
+overflow: hidden;     /* fix for long non-text content breaking IE sidebar float */
+}
+#sidebar-wrapper {
+width: 220px;
+float: right;
+word-wrap: break-word; /* fix for long text breaking sidebar float in IE */
+overflow: hidden;     /* fix for long non-text content breaking IE sidebar float */
+}
+/* Headings
+----------------------------------------------- */
+h2 {
+margin:1.5em 0 .75em;
+font:normal bold 78% 'Trebuchet MS',Trebuchet,Arial,Verdana,Sans-serif;
+line-height: 1.4em;
+text-transform:uppercase;
+letter-spacing:.2em;
+color:#777777;
+}
+/* Posts
+-----------------------------------------------
+*/
+h2.date-header {
+margin:1.5em 0 .5em;
+}
+.post {
+margin:.5em 0 1.5em;
+border-bottom:1px dotted #333333;
+padding-bottom:1.5em;
+}
+.post h3 {
+margin:.25em 0 0;
+padding:0 0 4px;
+font-size:140%;
+font-weight:normal;
+line-height:1.4em;
+color:#aadd99;
+}
+.post h3 a, .post h3 a:visited, .post h3 strong {
+display:block;
+text-decoration:none;
+color:#aadd99;
+font-weight:bold;
+}
+.post h3 strong, .post h3 a:hover {
+color:#cccccc;
+}
+.post-body {
+margin:0 0 .75em;
+line-height:1.6em;
+}
+.post-body blockquote {
+line-height:1.3em;
+}
+.post-footer {
+margin: .75em 0;
+color:#777777;
+text-transform:uppercase;
+letter-spacing:.1em;
+font: normal normal 78% 'Trebuchet MS', Trebuchet, Arial, Verdana, Sans-serif;
+line-height: 1.4em;
+}
+.comment-link {
+margin-left:.6em;
+}
+.post img {
+padding:4px;
+border:1px solid #333333;
+}
+.post blockquote {
+margin:1em 20px;
+}
+.post blockquote p {
+margin:.75em 0;
+}
+/* Comments
+----------------------------------------------- */
+#comments h4 {
+margin:1em 0;
+font-weight: bold;
+line-height: 1.4em;
+text-transform:uppercase;
+letter-spacing:.2em;
+color: #777777;
+}
+#comments-block {
+margin:1em 0 1.5em;
+line-height:1.6em;
+}
+#comments-block .comment-author {
+margin:.5em 0;
+}
+#comments-block .comment-body {
+margin:.25em 0 0;
+}
+#comments-block .comment-footer {
+margin:-.25em 0 2em;
+line-height: 1.4em;
+text-transform:uppercase;
+letter-spacing:.1em;
+}
+#comments-block .comment-body p {
+margin:0 0 .75em;
+}
+.deleted-comment {
+font-style:italic;
+color:gray;
+}
+.feed-links {
+clear: both;
+line-height: 2.5em;
+}
+#blog-pager-newer-link {
+float: left;
+}
+#blog-pager-older-link {
+float: right;
+}
+#blog-pager {
+text-align: center;
+}
+/* Sidebar Content
+----------------------------------------------- */
+.sidebar {
+color: #999999;
+line-height: 1.5em;
+}
+.sidebar ul {
+list-style:none;
+margin:0 0 0;
+padding:0 0 0;
+}
+.sidebar li {
+margin:0;
+padding-top:0;
+padding-right:0;
+padding-bottom:.25em;
+padding-left:15px;
+text-indent:-15px;
+line-height:1.5em;
+}
+.sidebar .widget, .main .widget {
+border-bottom:1px dotted #333333;
+margin:0 0 1.5em;
+padding:0 0 1.5em;
+}
+.main .Blog {
+border-bottom-width: 0;
+}
+/* Profile
+----------------------------------------------- */
+.profile-img {
+float: left;
+margin-top: 0;
+margin-right: 5px;
+margin-bottom: 5px;
+margin-left: 0;
+padding: 4px;
+border: 1px solid #333333;
+}
+.profile-data {
+margin:0;
+text-transform:uppercase;
+letter-spacing:.1em;
+font: normal normal 78% 'Trebuchet MS', Trebuchet, Arial, Verdana, Sans-serif;
+color: #777777;
+font-weight: bold;
+line-height: 1.6em;
+}
+.profile-datablock {
+margin:.5em 0 .5em;
+}
+.profile-textblock {
+margin: 0.5em 0;
+line-height: 1.6em;
+}
+.profile-link {
+font: normal normal 78% 'Trebuchet MS', Trebuchet, Arial, Verdana, Sans-serif;
+text-transform: uppercase;
+letter-spacing: .1em;
+}
+/* Footer
+----------------------------------------------- */
+#footer {
+width:660px;
+clear:both;
+margin:0 auto;
+padding-top:15px;
+line-height: 1.6em;
+text-transform:uppercase;
+letter-spacing:.1em;
+text-align: center;
+}
+
+--></style>
+<script type='text/javascript'>
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-4445014-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<script type="text/javascript">var a=navigator,b="userAgent",c="indexOf",f="&m=1",g="(^|&)m=",h="?",k="?m=1";function l(){var d=window.location.href,e=d.split(h);switch(e.length){case 1:return d+k;case 2:return 0<=e[1].search(g)?null:d+f;default:return null}}if(-1!=a[b][c]("Mobile")&&-1!=a[b][c]("WebKit")&&-1==a[b][c]("iPad")||-1!=a[b][c]("Opera Mini")||-1!=a[b][c]("IEMobile")){var m=l();m&&window.location.replace(m)};
+</script><script type="text/javascript">
+if (window.jstiming) window.jstiming.load.tick('headEnd');
+</script></head>
+<body>
+<div class='navbar section' id='navbar'><div class='widget Navbar' id='Navbar1'><script type="text/javascript">
+    function setAttributeOnload(object, attribute, val) {
+      if(window.addEventListener) {
+        window.addEventListener('load',
+          function(){ object[attribute] = val; }, false);
+      } else {
+        window.attachEvent('onload', function(){ object[attribute] = val; });
+      }
+    }
+  </script>
+<div id="navbar-iframe-container"></div>
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+<script type="text/javascript">
+        gapi.load("iframes-styles-bubble", function() {
+          if (window.iframes && iframes.open) {
+            iframes.open(
+                '//www.blogger.com/navbar.g?targetBlogID\758032022811235182759\46blogName\75Linux+Commando\46publishMode\75PUBLISH_MODE_BLOGSPOT\46navbarType\75BLUE\46layoutType\75LAYOUTS\46searchRoot\75http://linuxcommando.blogspot.com/search\46blogLocale\75en_US\46v\0752\46homepageUrl\75http://linuxcommando.blogspot.com/\46targetPostID\0751057372147015949286\46blogPostOrPageUrl\75http://linuxcommando.blogspot.com/2008/07/how-to-count-number-of-files-in.html\46vt\0755025939860494411893',
+                {
+                  container: "navbar-iframe-container",
+                  id: "navbar-iframe"
+                },
+                {
+                });
+          }
+        });
+      </script><script type="text/javascript">
+(function() {
+var script = document.createElement('script');
+script.type = 'text/javascript';
+script.src = '//pagead2.googlesyndication.com/pagead/js/google_top_exp.js';
+var head = document.getElementsByTagName('head')[0];
+if (head) {
+head.appendChild(script);
+}})();
+</script>
+</div></div>
+<div id='outer-wrapper'><div id='wrap2'>
+<!-- skip links for text browsers -->
+<span id='skiplinks' style='display:none;'>
+<a href='#main'>skip to main </a> |
+      <a href='#sidebar'>skip to sidebar</a>
+</span>
+<div id='header-wrapper'>
+<div class='header section' id='header'><div class='widget Header' id='Header1'>
+<div id='header-inner'>
+<div class='titlewrapper'>
+<h1 class='title'>
+<a href='http://linuxcommando.blogspot.fr/'>Linux Commando</a>
+</h1>
+</div>
+<div class='descriptionwrapper'>
+<p class='description'><span>This blog is about the Linux Command Line Interface (CLI), with an occasional foray into graphical user interface territory.
+
+Instead of just giving you information like some man page, I hope to illustrate each command in real-life scenarios.</span></p>
+</div>
+</div>
+</div></div>
+</div>
+<div id='content-wrapper'>
+<div id='crosscol-wrapper' style='text-align:center'>
+<div class='crosscol section' id='crosscol'><div class='widget HTML' id='HTML4'>
+<div class='widget-content'>
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-1640070864477148";
+google_ad_host = "pub-1556223355139109";
+/* RecommendedbyGoogle */
+google_ad_slot = "1244278556";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+<div class='clear'></div>
+<span class='widget-item-control'>
+<span class='item-control blog-admin'>
+<a class='quickedit' href='//www.blogger.com/rearrange?blogID=8032022811235182759&widgetType=HTML&widgetId=HTML4&action=editWidget&sectionId=crosscol' onclick='return _WidgetManager._PopupConfig(document.getElementById("HTML4"));' target='configHTML4' title='Edit'>
+<img alt='' height='18' src='http://img1.blogblog.com/img/icon18_wrench_allbkg.png' width='18'/>
+</a>
+</span>
+</span>
+<div class='clear'></div>
+</div></div>
+</div>
+<div id='main-wrapper'>
+<div class='main section' id='main'><div class='widget HTML' id='HTML3'>
+<div class='widget-content'>
+<form id="cse-search-box" action="http://www.google.com/cse">
+  <div>
+    <input value="011628794314729850356:6vjrbbpvhqm" name="cx" type="hidden"/>
+    <input value="UTF-8" name="ie" type="hidden"/>
+    <input name="q" size="31" type="text"/>
+    <input value="Search" name="sa" type="submit"/>
+  </div>
+</form>
+<script src="http://www.google.com/coop/cse/brand?form=cse-search-box&lang=en" type="text/javascript"></script>
+</div>
+<div class='clear'></div>
+<span class='widget-item-control'>
+<span class='item-control blog-admin'>
+<a class='quickedit' href='//www.blogger.com/rearrange?blogID=8032022811235182759&widgetType=HTML&widgetId=HTML3&action=editWidget&sectionId=main' onclick='return _WidgetManager._PopupConfig(document.getElementById("HTML3"));' target='configHTML3' title='Edit'>
+<img alt='' height='18' src='http://img1.blogblog.com/img/icon18_wrench_allbkg.png' width='18'/>
+</a>
+</span>
+</span>
+<div class='clear'></div>
+</div><div class='widget Blog' id='Blog1'>
+<div class='blog-posts hfeed'>
+<!-- google_ad_section_start(name=default) -->
+<h2 class='date-header'>Friday, July 18, 2008</h2>
+<div class='post hentry'>
+<a name='1057372147015949286'></a>
+<h3 class='post-title entry-title'>
+<a href='http://linuxcommando.blogspot.fr/2008/07/how-to-count-number-of-files-in.html'>How to count number of files in a directory</a>
+</h3>
+<div class='post-header-line-1'></div>
+<div class='post-body entry-content'>
+<p>Now that I am back from vacation, I had to take care of some chores, like uploading the pictures taken with my digital camera.<br /><br />I stepped out during the long upload process (400+ pictures).  When I returned, it was already done.  To just make sure all pictures are now on the server, I wanted to count the number of files in the <span style="font-style:italic;">targetdir</span> directory.<br /><br /><pre>$ ls -1 targetdir | wc -l<br />454</pre><br /><br />The above command reads <span style="font-style:italic;">ls dash one</span> piped to <span style="font-style:italic;">wc dash letter l</span>.<br /><br />Note that if you had used <span style="font-style:italic;">ls dash letter l</span> instead, the count is one greater than the actual number of files.  This is because <span style="font-style:italic;">ls dash letter l</span> outputs an extra total line:<br /><br /><pre>$ ls -1 targetdir <br />total 529436<br />-rw-r--r-- 1 peter peter  1510976 Jul 13  2008 DSCN1001.jpg<br />....</pre><br /><br />The above method will count symbolic links as well as subdirectories in <span style="font-style:italic;">targetdir</span> (but not recursively into subdirectories).<br /><br />If you want to exclude subdirectories, you need a heavier duty tool than <span style="font-style:italic;">ls</span>.<br /><pre>$ find targetdir -type f  -maxdepth 1 | wc -l</pre><br /><br /><span style="font-style:italic;">-type f</span> ensures that the <span style="font-style:italic;">find</span> command only returns regular files for counting (no subdirectories).   <br /><br />By default, the <span style="font-style:italic;">find</span> command traverses into subdirectories for searching.  <span style="font-style:italic;">-maxdepth 1</span> prevents <span style="font-style:italic;">find</span> from traversing into subdirectories.   If you do want to count files in the subdirectories, just remove <span style="font-style:italic;">-maxdepth 1</span> from the command line.<br /><br />Note that the <span style="font-style:italic;">find</span> command does NOT classify a symbolic link as a regular file.  Therefore, the above <span style="font-style:italic;">find -type f</span> command does not return symbolic links. As a result, the final count excludes all symbolic links.<br /><br />To include symbolic links, add the <span style="font-style:italic;">-follow</span> option to find.<br /><br /><pre>$ find targetdir -type f -follow  -maxdepth 1 | wc -l </pre><br /><br /><script type="text/javascript">digg_url = 'http://linuxcommando.blogspot.com/2008/07/how-to-count-number-of-files-in.html';<br /></script><script src="http://digg.com/tools/diggthis.js" type="text/javascript"></script><a href="http://www.stumbleupon.com/submit?url=http://linuxcommando.blogspot.com/2008/07/how-to-count-number-of-files-in.html&title=How%20to%20count%20number%20of%20files%20in%20a%20directory"><img border=0 src="http://1.bp.blogspot.com/_D7BpcWFofE4/RxbS0t-6rgI/AAAAAAAAABk/OmuyxqtHOao/s200/small_su_logo.png" alt="StumbleUpon Toolbar"></a></p>
+<div style='clear: both;'></div>
+</div>
+<div class='post-footer'>
+<script charset='utf-8' src='http://feeds.feedburner.com/~s/linuxcommando?i=http://linuxcommando.blogspot.fr/2008/07/how-to-count-number-of-files-in.html' type='text/javascript'></script>
+<p class='post-footer-line post-footer-line-1'><span class='post-author vcard'>
+Posted by
+<span class='fn'>Peter Leung</span>
+</span>
+<span class='post-timestamp'>
+at
+<a class='timestamp-link' href='http://linuxcommando.blogspot.fr/2008/07/how-to-count-number-of-files-in.html' rel='bookmark' title='permanent link'><abbr class='published' title='2008-07-18T13:32:00-07:00'>1:32 PM</abbr></a>
+</span>
+<span class='post-comment-link'>
+</span>
+<span class='post-icons'>
+<span class='item-action'>
+<a href='http://www.blogger.com/email-post.g?blogID=8032022811235182759&postID=1057372147015949286' title='Email Post'>
+<span class='email-post-icon'>&#160;</span>
+</a>
+</span>
+<span class='item-control blog-admin pid-1542174902'>
+<a href='http://www.blogger.com/post-edit.g?blogID=8032022811235182759&postID=1057372147015949286&from=pencil' title='Edit Post'>
+<img alt='' class='icon-action' height='18' src='http://img2.blogblog.com/img/icon18_edit_allbkg.gif' width='18'/>
+</a>
+</span>
+</span>
+</p>
+<p class='post-footer-line post-footer-line-2'><span class='post-labels'>
+</span>
+</p>
+<p class='post-footer-line post-footer-line-3'></p>
+</div>
+</div>
+<div class='comments' id='comments'>
+<a name='comments'></a>
+<h4>26 comments:</h4>
+<div id='Blog1_comments-block-wrapper'>
+<dl class='' id='comments-block'>
+<dt class='comment-author blogger-comment-icon' id='c125988912088674654'>
+<a name='c125988912088674654'></a>
+<a href='http://www.blogger.com/profile/00524902652375498992' rel='nofollow'>samob</a>
+said...
+</dt>
+<dd class='comment-body' id='Blog1_cmt-125988912088674654'>
+<p>
+Great howto. Helps alot to newcomers like me ;) Cheers!
+</p>
+</dd>
+<dd class='comment-footer'>
+<span class='comment-timestamp'>
+<a href='http://linuxcommando.blogspot.com/2008/07/how-to-count-number-of-files-in.html?showComment=1216993500000#c125988912088674654' title='comment permalink'>
+July 25, 2008 at 6:45 AM
+</a>
+<span class='item-control blog-admin pid-2060195332'>
+<a class='comment-delete' href='http://www.blogger.com/delete-comment.g?blogID=8032022811235182759&postID=125988912088674654' title='Delete Comment'>
+<img src='//www.blogger.com/img/icon_delete13.gif'/>
+</a>
+</span>
+</span>
+</dd>
+<dt class='comment-author anon-comment-icon' id='c778227714848013293'>
+<a name='c778227714848013293'></a>
+Anonymous
+said...
+</dt>
+<dd class='comment-body' id='Blog1_cmt-778227714848013293'>
+<p>
+Exactly. Thanks!
+</p>
+</dd>
+<dd class='comment-footer'>
+<span class='comment-timestamp'>
+<a href='http://linuxcommando.blogspot.com/2008/07/how-to-count-number-of-files-in.html?showComment=1221830220000#c778227714848013293' title='comment permalink'>
+September 19, 2008 at 6:17 AM
+</a>
+<span class='item-control blog-admin pid-1872891928'>
+<a class='comment-delete' href='http://www.blogger.com/delete-comment.g?blogID=8032022811235182759&postID=778227714848013293' title='Delete Comment'>
+<img src='//www.blogger.com/img/icon_delete13.gif'/>
+</a>
+</span>
+</span>
+</dd>
+<dt class='comment-author blogger-comment-icon' id='c6842220528821422013'>
+<a name='c6842220528821422013'></a>
+<a href='http://www.blogger.com/profile/15431434546741055801' rel='nofollow'>kiran</a>
+said...
+</dt>
+<dd class='comment-body' id='Blog1_cmt-6842220528821422013'>
+<p>
+Just so you know, your ads are against Google&#39;s TOS. The banner ad above comments section is cut and it isn&#39;t displaying Ads by Google tag on the ad.<br /><br />Thanks for the info btw, nice site.
+</p>
+</dd>
+<dd class='comment-footer'>
+<span class='comment-timestamp'>
+<a href='http://linuxcommando.blogspot.com/2008/07/how-to-count-number-of-files-in.html?showComment=1247239315156#c6842220528821422013' title='comment permalink'>
+July 10, 2009 at 8:21 AM
+</a>
+<span class='item-control blog-admin pid-1076208937'>
+<a class='comment-delete' href='http://www.blogger.com/delete-comment.g?blogID=8032022811235182759&postID=6842220528821422013' title='Delete Comment'>
+<img src='//www.blogger.com/img/icon_delete13.gif'/>
+</a>
+</span>
+</span>
+</dd>
+<dt class='comment-author blogger-comment-icon' id='c1177152357143830210'>
+<a name='c1177152357143830210'></a>
+<a href='http://www.blogger.com/profile/16736742608775638224' rel='nofollow'>abylin</a>
+said...
+</dt>
+<dd class='comment-body' id='Blog1_cmt-1177152357143830210'>
+<p>
+Excellent!  This was exactly what I had been looking for and more!
+</p>
+</dd>
+<dd class='comment-footer'>
+<span class='comment-timestamp'>
+<a href='http://linuxcommando.blogspot.com/2008/07/how-to-count-number-of-files-in.html?showComment=1256315654908#c1177152357143830210' title='comment permalink'>
+October 23, 2009 at 9:34 AM
+</a>
+<span class='item-control blog-admin pid-1599823153'>
+<a class='comment-delete' href='http://www.blogger.com/delete-comment.g?blogID=8032022811235182759&postID=1177152357143830210' title='Delete Comment'>
+<img src='//www.blogger.com/img/icon_delete13.gif'/>
+</a>
+</span>
+</span>
+</dd>
+<dt class='comment-author anon-comment-icon' id='c2139717197092221961'>
+<a name='c2139717197092221961'></a>
+Anonymous
+said...
+</dt>
+<dd class='comment-body' id='Blog1_cmt-2139717197092221961'>
+<p>
+If you want to find, let&#39;s say, all the php files within a directory_tree, you can try the following:<br />ls -R -l directory_name | grep .php | wc -l<br /><br />Hope this helps.
+</p>
+</dd>
+<dd class='comment-footer'>
+<span class='comment-timestamp'>
+<a href='http://linuxcommando.blogspot.com/2008/07/how-to-count-number-of-files-in.html?showComment=1266955244138#c2139717197092221961' title='comment permalink'>
+February 23, 2010 at 12:00 PM
+</a>
+<span class='item-control blog-admin pid-646835743'>
+<a class='comment-delete' href='http://www.blogger.com/delete-comment.g?blogID=8032022811235182759&postID=2139717197092221961' title='Delete Comment'>
+<img src='//www.blogger.com/img/icon_delete13.gif'/>
+</a>
+</span>
+</span>
+</dd>
+<dt class='comment-author blogger-comment-icon' id='c5246546940317513853'>
+<a name='c5246546940317513853'></a>
+<a href='http://www.blogger.com/profile/01678870097840459001' rel='nofollow'>Ben</a>
+said...
+</dt>
+<dd class='comment-body' id='Blog1_cmt-5246546940317513853'>
+<p>
+I wanted to know how many files each folder contained so I used this.<br /><br />for i in `ls -al |grep &#39;^d&#39;|awk &#39;{print $9}&#39;|grep -v &#39;\.$&#39;`; do c=`find $i|wc -l`; echo &quot;$c  $i&quot;; done;
+</p>
+</dd>
+<dd class='comment-footer'>
+<span class='comment-timestamp'>
+<a href='http://linuxcommando.blogspot.com/2008/07/how-to-count-number-of-files-in.html?showComment=1268956259747#c5246546940317513853' title='comment permalink'>
+March 18, 2010 at 4:50 PM
+</a>
+<span class='item-control blog-admin pid-962243428'>
+<a class='comment-delete' href='http://www.blogger.com/delete-comment.g?blogID=8032022811235182759&postID=5246546940317513853' title='Delete Comment'>
+<img src='//www.blogger.com/img/icon_delete13.gif'/>
+</a>
+</span>
+</span>
+</dd>
+<dt class='comment-author anon-comment-icon' id='c3917535602221593183'>
+<a name='c3917535602221593183'></a>
+bazz
+said...
+</dt>
+<dd class='comment-body' id='Blog1_cmt-3917535602221593183'>
+<p>
+You can also use:<br /><br />for FOLDER in `find ./ -type d -mindepth 1 -maxdepth 1`; do echo $FOLDER; find $FOLDER -type f | wc -l; done
+</p>
+</dd>
+<dd class='comment-footer'>
+<span class='comment-timestamp'>
+<a href='http://linuxcommando.blogspot.com/2008/07/how-to-count-number-of-files-in.html?showComment=1273501825049#c3917535602221593183' title='comment permalink'>
+May 10, 2010 at 7:30 AM
+</a>
+<span class='item-control blog-admin pid-1124173731'>
+<a class='comment-delete' href='http://www.blogger.com/delete-comment.g?blogID=8032022811235182759&postID=3917535602221593183' title='Delete Comment'>
+<img src='//www.blogger.com/img/icon_delete13.gif'/>
+</a>
+</span>
+</span>
+</dd>
+<dt class='comment-author anon-comment-icon' id='c5556500024295545258'>
+<a name='c5556500024295545258'></a>
+Anonymous
+said...
+</dt>
+<dd class='comment-body' id='Blog1_cmt-5556500024295545258'>
+<p>
+find: warning: you have specified the -maxdepth option after a non-option argument -type, but options are not positional (-maxdepth affects tests specified before it as well as those specified after it).  Please specify options before other arguments.
+</p>
+</dd>
+<dd class='comment-footer'>
+<span class='comment-timestamp'>
+<a href='http://linuxcommando.blogspot.com/2008/07/how-to-count-number-of-files-in.html?showComment=1277336189281#c5556500024295545258' title='comment permalink'>
+June 23, 2010 at 4:36 PM
+</a>
+<span class='item-control blog-admin pid-1730353427'>
+<a class='comment-delete' href='http://www.blogger.com/delete-comment.g?blogID=8032022811235182759&postID=5556500024295545258' title='Delete Comment'>
+<img src='//www.blogger.com/img/icon_delete13.gif'/>
+</a>
+</span>
+</span>
+</dd>
+<dt class='comment-author anon-comment-icon' id='c7649468385531318144'>
+<a name='c7649468385531318144'></a>
+<a href='http://buzzknow.com' rel='nofollow'>Buzzknow</a>
+said...
+</dt>
+<dd class='comment-body' id='Blog1_cmt-7649468385531318144'>
+<p>
+Nice, i&#39;m newbie with Linux, this command really help to count folder at target dir :D
+</p>
+</dd>
+<dd class='comment-footer'>
+<span class='comment-timestamp'>
+<a href='http://linuxcommando.blogspot.com/2008/07/how-to-count-number-of-files-in.html?showComment=1281516942448#c7649468385531318144' title='comment permalink'>
+August 11, 2010 at 1:55 AM
+</a>
+<span class='item-control blog-admin pid-670886135'>
+<a class='comment-delete' href='http://www.blogger.com/delete-comment.g?blogID=8032022811235182759&postID=7649468385531318144' title='Delete Comment'>
+<img src='//www.blogger.com/img/icon_delete13.gif'/>
+</a>
+</span>
+</span>
+</dd>
+<dt class='comment-author anon-comment-icon' id='c2154537444549581877'>
+<a name='c2154537444549581877'></a>
+Anonymous
+said...
+</dt>
+<dd class='comment-body' id='Blog1_cmt-2154537444549581877'>
+<p>
+Thanks for your help dear.
+</p>
+</dd>
+<dd class='comment-footer'>
+<span class='comment-timestamp'>
+<a href='http://linuxcommando.blogspot.com/2008/07/how-to-count-number-of-files-in.html?showComment=1292557434793#c2154537444549581877' title='comment permalink'>
+December 16, 2010 at 7:43 PM
+</a>
+<span class='item-control blog-admin pid-394447201'>
+<a class='comment-delete' href='http://www.blogger.com/delete-comment.g?blogID=8032022811235182759&postID=2154537444549581877' title='Delete Comment'>
+<img src='//www.blogger.com/img/icon_delete13.gif'/>
+</a>
+</span>
+</span>
+</dd>
+<dt class='comment-author anon-comment-icon' id='c4033454867555716175'>
+<a name='c4033454867555716175'></a>
+Anonymous
+said...
+</dt>
+<dd class='comment-body' id='Blog1_cmt-4033454867555716175'>
+<p>
+Thx for this post. I didn&#39;t remember which program counts. :D<br /><br /><br />Ehmmm... But one thing: It&#39;s probably more efficient if you use<br />(a 1 (one) instead of a lower case &quot;L&quot; as parameter since it produces less output which might help to improve performance in a directory with very very many files or on a pc which is really slow.)<br />$ ls -1  | wc -l
+</p>
+</dd>
+<dd class='comment-footer'>
+<span class='comment-timestamp'>
+<a href='http://linuxcommando.blogspot.com/2008/07/how-to-count-number-of-files-in.html?showComment=1297256520157#c4033454867555716175' title='comment permalink'>
+February 9, 2011 at 5:02 AM
+</a>
+<span class='item-control blog-admin pid-1348277269'>
+<a class='comment-delete' href='http://www.blogger.com/delete-comment.g?blogID=8032022811235182759&postID=4033454867555716175' title='Delete Comment'>
+<img src='//www.blogger.com/img/icon_delete13.gif'/>
+</a>
+</span>
+</span>
+</dd>
+<dt class='comment-author anon-comment-icon' id='c8616101703167489950'>
+<a name='c8616101703167489950'></a>
+Anonymous
+said...
+</dt>
+<dd class='comment-body' id='Blog1_cmt-8616101703167489950'>
+<p>
+Ohh... I did a mistake. -.- I should buy some glasses...... Didn&#39;t see the 1 the first time... I thought this is a lower case &quot;L&quot;.<br /><br />Sorry for this.
+</p>
+</dd>
+<dd class='comment-footer'>
+<span class='comment-timestamp'>
+<a href='http://linuxcommando.blogspot.com/2008/07/how-to-count-number-of-files-in.html?showComment=1297256719607#c8616101703167489950' title='comment permalink'>
+February 9, 2011 at 5:05 AM
+</a>
+<span class='item-control blog-admin pid-1348277269'>
+<a class='comment-delete' href='http://www.blogger.com/delete-comment.g?blogID=8032022811235182759&postID=8616101703167489950' title='Delete Comment'>
+<img src='//www.blogger.com/img/icon_delete13.gif'/>
+</a>
+</span>
+</span>
+</dd>
+<dt class='comment-author anon-comment-icon' id='c7270544596526598948'>
+<a name='c7270544596526598948'></a>
+Anonymous
+said...
+</dt>
+<dd class='comment-body' id='Blog1_cmt-7270544596526598948'>
+<p>
+Both of the for/do loop options fail on directories with spaces in them, how would one fix that (other than not using spaces in directories)?
+</p>
+</dd>
+<dd class='comment-footer'>
+<span class='comment-timestamp'>
+<a href='http://linuxcommando.blogspot.com/2008/07/how-to-count-number-of-files-in.html?showComment=1297385798596#c7270544596526598948' title='comment permalink'>
+February 10, 2011 at 4:56 PM
+</a>
+<span class='item-control blog-admin pid-1990070209'>
+<a class='comment-delete' href='http://www.blogger.com/delete-comment.g?blogID=8032022811235182759&postID=7270544596526598948' title='Delete Comment'>
+<img src='//www.blogger.com/img/icon_delete13.gif'/>
+</a>
+</span>
+</span>
+</dd>
+<dt class='comment-author anon-comment-icon' id='c8465742279412584598'>
+<a name='c8465742279412584598'></a>
+JP Deckers
+said...
+</dt>
+<dd class='comment-body' id='Blog1_cmt-8465742279412584598'>
+<p>
+Or (only count files, shorter):<br /><br />for i in `ls -1b`; do c=`find $i -type f |wc -l`; echo &quot;$c $i&quot;; done;
+</p>
+</dd>
+<dd class='comment-footer'>
+<span class='comment-timestamp'>
+<a href='http://linuxcommando.blogspot.com/2008/07/how-to-count-number-of-files-in.html?showComment=1297782318742#c8465742279412584598' title='comment permalink'>
+February 15, 2011 at 7:05 AM
+</a>
+<span class='item-control blog-admin pid-443510496'>
+<a class='comment-delete' href='http://www.blogger.com/delete-comment.g?blogID=8032022811235182759&postID=8465742279412584598' title='Delete Comment'>
+<img src='//www.blogger.com/img/icon_delete13.gif'/>
+</a>
+</span>
+</span>
+</dd>
+<dt class='comment-author anon-comment-icon' id='c3447508962523733113'>
+<a name='c3447508962523733113'></a>
+Anonymous
+said...
+</dt>
+<dd class='comment-body' id='Blog1_cmt-3447508962523733113'>
+<p>
+You do not need to use the long listing with ls to do a count. If you pipe the output of ls it will list the files one line at a time. It is the equivalent of doing ls -1 (thats a number 1)<br /><br />For example, try &#39;ls | cat&#39;<br /><br />Its probably safer to explicitly use -1, as there may be some obscure versions of ls out there that behave differently.
+</p>
+</dd>
+<dd class='comment-footer'>
+<span class='comment-timestamp'>
+<a href='http://linuxcommando.blogspot.com/2008/07/how-to-count-number-of-files-in.html?showComment=1300989636309#c3447508962523733113' title='comment permalink'>
+March 24, 2011 at 11:00 AM
+</a>
+<span class='item-control blog-admin pid-1030865288'>
+<a class='comment-delete' href='http://www.blogger.com/delete-comment.g?blogID=8032022811235182759&postID=3447508962523733113' title='Delete Comment'>
+<img src='//www.blogger.com/img/icon_delete13.gif'/>
+</a>
+</span>
+</span>
+</dd>
+<dt class='comment-author blogger-comment-icon' id='c3094859695478622808'>
+<a name='c3094859695478622808'></a>
+<a href='http://www.blogger.com/profile/02931833096568564592' rel='nofollow'>Forget me not!</a>
+said...
+</dt>
+<dd class='comment-body' id='Blog1_cmt-3094859695478622808'>
+<p>
+ls -l | grep ^- | wc -l<br />ls -l | grep ^d | wc -l<br />ls -l | grep ^l | wc -l
+</p>
+</dd>
+<dd class='comment-footer'>
+<span class='comment-timestamp'>
+<a href='http://linuxcommando.blogspot.com/2008/07/how-to-count-number-of-files-in.html?showComment=1306736743318#c3094859695478622808' title='comment permalink'>
+May 29, 2011 at 11:25 PM
+</a>
+<span class='item-control blog-admin pid-714306787'>
+<a class='comment-delete' href='http://www.blogger.com/delete-comment.g?blogID=8032022811235182759&postID=3094859695478622808' title='Delete Comment'>
+<img src='//www.blogger.com/img/icon_delete13.gif'/>
+</a>
+</span>
+</span>
+</dd>
+<dt class='comment-author anon-comment-icon' id='c2060030411661455955'>
+<a name='c2060030411661455955'></a>
+Anonymous
+said...
+</dt>
+<dd class='comment-body' id='Blog1_cmt-2060030411661455955'>
+<p>
+ls -1 | grep -c &quot;&quot;
+</p>
+</dd>
+<dd class='comment-footer'>
+<span class='comment-timestamp'>
+<a href='http://linuxcommando.blogspot.com/2008/07/how-to-count-number-of-files-in.html?showComment=1322729738458#c2060030411661455955' title='comment permalink'>
+December 1, 2011 at 12:55 AM
+</a>
+<span class='item-control blog-admin pid-2094598859'>
+<a class='comment-delete' href='http://www.blogger.com/delete-comment.g?blogID=8032022811235182759&postID=2060030411661455955' title='Delete Comment'>
+<img src='//www.blogger.com/img/icon_delete13.gif'/>
+</a>
+</span>
+</span>
+</dd>
+<dt class='comment-author blogger-comment-icon' id='c3397318408627726445'>
+<a name='c3397318408627726445'></a>
+<a href='http://www.blogger.com/profile/05267476427017660642' rel='nofollow'>Jamie</a>
+said...
+</dt>
+<dd class='comment-body' id='Blog1_cmt-3397318408627726445'>
+<p>
+You don&#39;t need the -1.
+</p>
+</dd>
+<dd class='comment-footer'>
+<span class='comment-timestamp'>
+<a href='http://linuxcommando.blogspot.com/2008/07/how-to-count-number-of-files-in.html?showComment=1324825787757#c3397318408627726445' title='comment permalink'>
+December 25, 2011 at 7:09 AM
+</a>
+<span class='item-control blog-admin pid-686298183'>
+<a class='comment-delete' href='http://www.blogger.com/delete-comment.g?blogID=8032022811235182759&postID=3397318408627726445' title='Delete Comment'>
+<img src='//www.blogger.com/img/icon_delete13.gif'/>
+</a>
+</span>
+</span>
+</dd>
+<dt class='comment-author anon-comment-icon' id='c2137446087642823746'>
+<a name='c2137446087642823746'></a>
+saumya
+said...
+</dt>
+<dd class='comment-body' id='Blog1_cmt-2137446087642823746'>
+<p>
+is there any way by which i can count the number of files in the current directory without using ls and wc commands ?
+</p>
+</dd>
+<dd class='comment-footer'>
+<span class='comment-timestamp'>
+<a href='http://linuxcommando.blogspot.com/2008/07/how-to-count-number-of-files-in.html?showComment=1334584779643#c2137446087642823746' title='comment permalink'>
+April 16, 2012 at 6:59 AM
+</a>
+<span class='item-control blog-admin pid-1756682040'>
+<a class='comment-delete' href='http://www.blogger.com/delete-comment.g?blogID=8032022811235182759&postID=2137446087642823746' title='Delete Comment'>
+<img src='//www.blogger.com/img/icon_delete13.gif'/>
+</a>
+</span>
+</span>
+</dd>
+<dt class='comment-author anon-comment-icon' id='c4177997426979248179'>
+<a name='c4177997426979248179'></a>
+Anonymous
+said...
+</dt>
+<dd class='comment-body' id='Blog1_cmt-4177997426979248179'>
+<p>
+Good post! Thanks
+</p>
+</dd>
+<dd class='comment-footer'>
+<span class='comment-timestamp'>
+<a href='http://linuxcommando.blogspot.com/2008/07/how-to-count-number-of-files-in.html?showComment=1337097290921#c4177997426979248179' title='comment permalink'>
+May 15, 2012 at 8:54 AM
+</a>
+<span class='item-control blog-admin pid-211141639'>
+<a class='comment-delete' href='http://www.blogger.com/delete-comment.g?blogID=8032022811235182759&postID=4177997426979248179' title='Delete Comment'>
+<img src='//www.blogger.com/img/icon_delete13.gif'/>
+</a>
+</span>
+</span>
+</dd>
+<dt class='comment-author anon-comment-icon' id='c7940968963304593784'>
+<a name='c7940968963304593784'></a>
+Anonymous
+said...
+</dt>
+<dd class='comment-body' id='Blog1_cmt-7940968963304593784'>
+<p>
+To view only regular files, no (dir,symlink,exec):<br /><br />ls -F | sed &#39;/[/@*]$/d&#39;<br /><br />iPenguin
+</p>
+</dd>
+<dd class='comment-footer'>
+<span class='comment-timestamp'>
+<a href='http://linuxcommando.blogspot.com/2008/07/how-to-count-number-of-files-in.html?showComment=1347665452772#c7940968963304593784' title='comment permalink'>
+September 14, 2012 at 4:30 PM
+</a>
+<span class='item-control blog-admin pid-1215902708'>
+<a class='comment-delete' href='http://www.blogger.com/delete-comment.g?blogID=8032022811235182759&postID=7940968963304593784' title='Delete Comment'>
+<img src='//www.blogger.com/img/icon_delete13.gif'/>
+</a>
+</span>
+</span>
+</dd>
+<dt class='comment-author anon-comment-icon' id='c4826796782560986026'>
+<a name='c4826796782560986026'></a>
+Anonymous
+said...
+</dt>
+<dd class='comment-body' id='Blog1_cmt-4826796782560986026'>
+<p>
+Thanks! 
+</p>
+</dd>
+<dd class='comment-footer'>
+<span class='comment-timestamp'>
+<a href='http://linuxcommando.blogspot.com/2008/07/how-to-count-number-of-files-in.html?showComment=1352936239093#c4826796782560986026' title='comment permalink'>
+November 14, 2012 at 3:37 PM
+</a>
+<span class='item-control blog-admin pid-1861873990'>
+<a class='comment-delete' href='http://www.blogger.com/delete-comment.g?blogID=8032022811235182759&postID=4826796782560986026' title='Delete Comment'>
+<img src='//www.blogger.com/img/icon_delete13.gif'/>
+</a>
+</span>
+</span>
+</dd>
+<dt class='comment-author anon-comment-icon' id='c5351271587285047867'>
+<a name='c5351271587285047867'></a>
+<a href='http://rorang.pro' rel='nofollow'>vladkras</a>
+said...
+</dt>
+<dd class='comment-body' id='Blog1_cmt-5351271587285047867'>
+<p>
+ls -1 doesn&#39;t count hidden files, but when using ls -1h instead counts two more: . and ..
+</p>
+</dd>
+<dd class='comment-footer'>
+<span class='comment-timestamp'>
+<a href='http://linuxcommando.blogspot.com/2008/07/how-to-count-number-of-files-in.html?showComment=1358138320685#c5351271587285047867' title='comment permalink'>
+January 13, 2013 at 8:38 PM
+</a>
+<span class='item-control blog-admin pid-1162680249'>
+<a class='comment-delete' href='http://www.blogger.com/delete-comment.g?blogID=8032022811235182759&postID=5351271587285047867' title='Delete Comment'>
+<img src='//www.blogger.com/img/icon_delete13.gif'/>
+</a>
+</span>
+</span>
+</dd>
+<dt class='comment-author anon-comment-icon' id='c2808456424549690566'>
+<a name='c2808456424549690566'></a>
+Anonymous
+said...
+</dt>
+<dd class='comment-body' id='Blog1_cmt-2808456424549690566'>
+<p>
+is there no way without enumerating the directory? using some filesystem metadata or somethin.
+</p>
+</dd>
+<dd class='comment-footer'>
+<span class='comment-timestamp'>
+<a href='http://linuxcommando.blogspot.com/2008/07/how-to-count-number-of-files-in.html?showComment=1359375227952#c2808456424549690566' title='comment permalink'>
+January 28, 2013 at 4:13 AM
+</a>
+<span class='item-control blog-admin pid-74850645'>
+<a class='comment-delete' href='http://www.blogger.com/delete-comment.g?blogID=8032022811235182759&postID=2808456424549690566' title='Delete Comment'>
+<img src='//www.blogger.com/img/icon_delete13.gif'/>
+</a>
+</span>
+</span>
+</dd>
+<dt class='comment-author blogger-comment-icon' id='c4095934868643603165'>
+<a name='c4095934868643603165'></a>
+<a href='http://www.blogger.com/profile/07602529970107446923' rel='nofollow'>Prasanna</a>
+said...
+</dt>
+<dd class='comment-body' id='Blog1_cmt-4095934868643603165'>
+<p>
+Thanks for the tip.
+</p>
+</dd>
+<dd class='comment-footer'>
+<span class='comment-timestamp'>
+<a href='http://linuxcommando.blogspot.com/2008/07/how-to-count-number-of-files-in.html?showComment=1360013076851#c4095934868643603165' title='comment permalink'>
+February 4, 2013 at 1:24 PM
+</a>
+<span class='item-control blog-admin pid-954065842'>
+<a class='comment-delete' href='http://www.blogger.com/delete-comment.g?blogID=8032022811235182759&postID=4095934868643603165' title='Delete Comment'>
+<img src='//www.blogger.com/img/icon_delete13.gif'/>
+</a>
+</span>
+</span>
+</dd>
+<dt class='comment-author anon-comment-icon' id='c8017563968692634081'>
+<a name='c8017563968692634081'></a>
+Anonymous
+said...
+</dt>
+<dd class='comment-body' id='Blog1_cmt-8017563968692634081'>
+<p>
+Awesome post...Thanks very much..
+</p>
+</dd>
+<dd class='comment-footer'>
+<span class='comment-timestamp'>
+<a href='http://linuxcommando.blogspot.com/2008/07/how-to-count-number-of-files-in.html?showComment=1374308799850#c8017563968692634081' title='comment permalink'>
+July 20, 2013 at 1:26 AM
+</a>
+<span class='item-control blog-admin pid-1939441969'>
+<a class='comment-delete' href='http://www.blogger.com/delete-comment.g?blogID=8032022811235182759&postID=8017563968692634081' title='Delete Comment'>
+<img src='//www.blogger.com/img/icon_delete13.gif'/>
+</a>
+</span>
+</span>
+</dd>
+</dl>
+</div>
+<p class='comment-footer'>
+<a href='http://www.blogger.com/comment.g?blogID=8032022811235182759&amp;postID=1057372147015949286&amp;isPopup=true' onclick='javascript:window.open(this.href, "bloggerPopup", "toolbar=0,location=0,statusbar=1,menubar=0,scrollbars=yes,width=640,height=500"); return false;'>Post a Comment</a>
+</p>
+<div id='backlinks-container'>
+<div id='Blog1_backlinks-container'>
+<a name='links'></a><h4>
+</h4>
+<p class='comment-footer'>
+<a class='comment-link' href='' id='Blog1_backlinks-create-link' target='_blank'>
+</a>
+</p>
+</div>
+</div>
+</div>
+<!-- google_ad_section_end(name=default) -->
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-1640070864477148";
+google_ad_host = "ca-host-pub-1556223355139109";
+google_ad_host_channel = "L0007";
+/* linuxcommando_main_Blog1_300x250_as */
+google_ad_slot = "4289465750";
+google_ad_width = 300;
+google_ad_height = 250;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<!-- google_ad_section_start -->
+<!-- google_ad_section_end -->
+</div>
+<div class='blog-pager' id='blog-pager'>
+<span id='blog-pager-newer-link'>
+<a class='blog-pager-newer-link' href='http://linuxcommando.blogspot.fr/2008/07/how-to-do-reverse-dns-lookup.html' id='Blog1_blog-pager-newer-link' title='Newer Post'>Newer Post</a>
+</span>
+<span id='blog-pager-older-link'>
+<a class='blog-pager-older-link' href='http://linuxcommando.blogspot.fr/2008/06/dual-pane-linux-file-managers-mc-and.html' id='Blog1_blog-pager-older-link' title='Older Post'>Older Post</a>
+</span>
+<a class='home-link' href='http://linuxcommando.blogspot.fr/'>Home</a>
+</div>
+<div class='clear'></div>
+<div class='post-feeds'>
+<div class='feed-links'>
+Subscribe to:
+<a class='feed-link' href='http://linuxcommando.blogspot.com/feeds/1057372147015949286/comments/default' target='_blank' type='application/atom+xml'>Post Comments (Atom)</a>
+</div>
+</div>
+</div></div>
+</div>
+<div id='sidebar-wrapper'>
+<div class='sidebar section' id='sidebar'><div class='widget Followers' id='Followers1'>
+<h2 class='title'>Followers</h2>
+<div class='widget-content'>
+<div id='Followers1-wrapper'>
+<div style='margin-right:2px;'>
+<script type="text/javascript">
+        if (!window.google || !google.friendconnect) {
+          document.write('<script type="text/javascript"' +
+              'src="http://www.google.com/friendconnect/script/friendconnect.js">' +
+              '</scr' + 'ipt>');
+        }
+      </script>
+<script type="text/javascript">
+      if (!window.registeredBloggerCallbacks) {
+        window.registeredBloggerCallbacks = true;
+
+        
+
+        
+        gadgets.rpc.register('requestReload', function() {
+          document.location.reload();
+        });
+
+        
+        gadgets.rpc.register('requestSignOut', function(siteId) {
+          
+          google.friendconnect.container.openSocialSiteId = siteId;
+          google.friendconnect.requestSignOut();
+        });
+      }
+    </script>
+<script type="text/javascript">
+    
+    function registerGetBlogUrls() {
+      gadgets.rpc.register('getBlogUrls', function() {
+        var holder = {};
+        
+          
+            
+            
+              holder.currentPost = "http://www.blogger.com/feeds/8032022811235182759/posts/default/1057372147015949286";
+            
+            
+            
+              holder.currentComments = "http://www.blogger.com/feeds/8032022811235182759/1057372147015949286/comments/default";
+            
+            holder.currentPostUrl = "";
+            holder.currentPostId = 1057372147015949286
+          
+          
+          
+            holder.postFeed = "http://www.blogger.com/feeds/8032022811235182759/posts/default";
+          
+          
+          
+            holder.commentFeed = "http://www.blogger.com/feeds/8032022811235182759/comments/default";
+          
+          holder.currentBlogUrl = "http://linuxcommando.blogspot.com/";
+          holder.currentBlogId = "8032022811235182759";
+        
+        return holder;
+      });
+    }
+  </script>
+<script type="text/javascript">
+  if (!window.registeredCommonBloggerCallbacks) {
+    window.registeredCommonBloggerCallbacks = true;
+
+    gadgets.rpc.register('resize_iframe', function(height) {
+      var el = document.getElementById(this['f']);
+      if (el) {
+        el.style.height = height + 'px';
+      }
+    });
+
+    
+    gadgets.rpc.register('set_pref', function() {});
+
+    registerGetBlogUrls();
+  }
+  </script>
+<div id="div-1i0ge3bje78m7" style="width: 100%; "></div>
+<script type="text/javascript">
+    var skin = {};
+    skin['FACE_SIZE'] = '32';
+    skin['HEIGHT'] = "260";
+    skin['TITLE'] = "Followers";
+    skin['BORDER_COLOR'] = "transparent";
+    skin['ENDCAP_BG_COLOR'] = "transparent";
+    skin['ENDCAP_TEXT_COLOR'] = "#999999";
+    skin['ENDCAP_LINK_COLOR'] = "#99aadd";
+    skin['ALTERNATE_BG_COLOR'] = "transparent";
+    
+    skin['CONTENT_BG_COLOR'] = "transparent";
+    skin['CONTENT_LINK_COLOR'] = "#99aadd";
+    skin['CONTENT_TEXT_COLOR'] = "#999999";
+    skin['CONTENT_SECONDARY_LINK_COLOR'] = "#99aadd";
+    skin['CONTENT_SECONDARY_TEXT_COLOR'] = "#777777";
+    skin['CONTENT_HEADLINE_COLOR'] = "#aadd99";
+    skin['FONT_FACE'] = "normal normal 100% \x27Trebuchet MS\x27,Trebuchet,Verdana,Sans-serif";
+    google.friendconnect.container.setParentUrl("/");
+    google.friendconnect.container["renderMembersGadget"](
+    {id: "div-1i0ge3bje78m7",
+     height: 260,
+     
+     
+     
+     site: "07375430868257045935",
+     
+     locale: 'en_US' },
+     skin);
+  </script>
+</div>
+</div>
+<div class='clear'></div>
+<span class='widget-item-control'>
+<span class='item-control blog-admin'>
+<a class='quickedit' href='//www.blogger.com/rearrange?blogID=8032022811235182759&widgetType=Followers&widgetId=Followers1&action=editWidget&sectionId=sidebar' onclick='return _WidgetManager._PopupConfig(document.getElementById("Followers1"));' target='configFollowers1' title='Edit'>
+<img alt='' height='18' src='http://img1.blogblog.com/img/icon18_wrench_allbkg.png' width='18'/>
+</a>
+</span>
+</span>
+<div class='clear'></div>
+</div>
+</div><div class='widget HTML' id='HTML8'>
+<div class='widget-content'>
+<a href="http://feeds.feedburner.com/linuxcommando" rel="alternate" title="Subscribe to my feed" type="application/rss+xml"><img alt="" style="border:0" src="http://www.feedburner.com/fb/images/pub/feed-icon32x32.png"/></a><a href="http://feeds.feedburner.com/linuxcommando" rel="alternate" title="Subscribe to my feed" type="application/rss+xml">Subscribe in a reader</a>
+<p><a href="http://feeds.feedburner.com/linuxcommando"><img width="88" style="border:0" alt="" src="http://feeds.feedburner.com/~fc/linuxcommando?bg=99CCFF&amp;fg=444444&amp;anim=0" height="26"/></a></p>
+<form action="http://www.feedburner.com/fb/a/emailverify" style="border:1px solid #ccc;padding:3px;text-align:center;" target="popupwindow" method="post" onsubmit="window.open('http://www.feedburner.com/fb/a/emailverifySubmit?feedId=1368071', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true"><p>Enter your email address:</p><p><input style="width:140px" name="email" type="text"/></p><input value="http://feeds.feedburner.com/~e?ffid=1368071" name="url" type="hidden"/><input value="Linux Commando" name="title" type="hidden"/><input value="en_US" name="loc" type="hidden"/><input value="Subscribe" type="submit"/><p>Delivered by <a href="http://www.feedburner.com" target="_blank">FeedBurner</a></p></form>
+</div>
+<div class='clear'></div>
+<span class='widget-item-control'>
+<span class='item-control blog-admin'>
+<a class='quickedit' href='//www.blogger.com/rearrange?blogID=8032022811235182759&widgetType=HTML&widgetId=HTML8&action=editWidget&sectionId=sidebar' onclick='return _WidgetManager._PopupConfig(document.getElementById("HTML8"));' target='configHTML8' title='Edit'>
+<img alt='' height='18' src='http://img1.blogblog.com/img/icon18_wrench_allbkg.png' width='18'/>
+</a>
+</span>
+</span>
+<div class='clear'></div>
+</div><div class='widget HTML' id='HTML13'>
+<div class='widget-content'>
+<script src="http://feedjit.com/popPages/?bc=FFFFFF&amp;tc=494949&amp;brd1=336699&amp;lnk=494949&amp;hc=336699&amp;ww=160" type="text/javascript"></script><noscript><a href="http://feedjit.com/">Feedjit Live Blog Stats</a></noscript>
+</div>
+<div class='clear'></div>
+<span class='widget-item-control'>
+<span class='item-control blog-admin'>
+<a class='quickedit' href='//www.blogger.com/rearrange?blogID=8032022811235182759&widgetType=HTML&widgetId=HTML13&action=editWidget&sectionId=sidebar' onclick='return _WidgetManager._PopupConfig(document.getElementById("HTML13"));' target='configHTML13' title='Edit'>
+<img alt='' height='18' src='http://img1.blogblog.com/img/icon18_wrench_allbkg.png' width='18'/>
+</a>
+</span>
+</span>
+<div class='clear'></div>
+</div><div class='widget BlogArchive' id='BlogArchive1'>
+<h2>Blog Archive</h2>
+<div class='widget-content'>
+<div id='ArchiveList'>
+<div id='BlogArchive1_ArchiveList'>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy'>
+
+          &#9658;&#160;
+        
+</span>
+</a>
+<a class='post-count-link' href='http://linuxcommando.blogspot.fr/search?updated-min=2013-01-01T00:00:00-08:00&amp;updated-max=2014-01-01T00:00:00-08:00&amp;max-results=9'>2013</a>
+<span class='post-count' dir='ltr'>(9)</span>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy'>
+
+          &#9658;&#160;
+        
+</span>
+</a>
+<a class='post-count-link' href='http://linuxcommando.blogspot.fr/2013_09_01_archive.html'>September</a>
+<span class='post-count' dir='ltr'>(1)</span>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy'>
+
+          &#9658;&#160;
+        
+</span>
+</a>
+<a class='post-count-link' href='http://linuxcommando.blogspot.fr/2013_05_01_archive.html'>May</a>
+<span class='post-count' dir='ltr'>(2)</span>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy'>
+
+          &#9658;&#160;
+        
+</span>
+</a>
+<a class='post-count-link' href='http://linuxcommando.blogspot.fr/2013_04_01_archive.html'>April</a>
+<span class='post-count' dir='ltr'>(2)</span>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy'>
+
+          &#9658;&#160;
+        
+</span>
+</a>
+<a class='post-count-link' href='http://linuxcommando.blogspot.fr/2013_03_01_archive.html'>March</a>
+<span class='post-count' dir='ltr'>(3)</span>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy'>
+
+          &#9658;&#160;
+        
+</span>
+</a>
+<a class='post-count-link' href='http://linuxcommando.blogspot.fr/2013_02_01_archive.html'>February</a>
+<span class='post-count' dir='ltr'>(1)</span>
+</li>
+</ul>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy'>
+
+          &#9658;&#160;
+        
+</span>
+</a>
+<a class='post-count-link' href='http://linuxcommando.blogspot.fr/search?updated-min=2012-01-01T00:00:00-08:00&amp;updated-max=2013-01-01T00:00:00-08:00&amp;max-results=1'>2012</a>
+<span class='post-count' dir='ltr'>(1)</span>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy'>
+
+          &#9658;&#160;
+        
+</span>
+</a>
+<a class='post-count-link' href='http://linuxcommando.blogspot.fr/2012_07_01_archive.html'>July</a>
+<span class='post-count' dir='ltr'>(1)</span>
+</li>
+</ul>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy'>
+
+          &#9658;&#160;
+        
+</span>
+</a>
+<a class='post-count-link' href='http://linuxcommando.blogspot.fr/search?updated-min=2010-01-01T00:00:00-08:00&amp;updated-max=2011-01-01T00:00:00-08:00&amp;max-results=1'>2010</a>
+<span class='post-count' dir='ltr'>(1)</span>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy'>
+
+          &#9658;&#160;
+        
+</span>
+</a>
+<a class='post-count-link' href='http://linuxcommando.blogspot.fr/2010_04_01_archive.html'>April</a>
+<span class='post-count' dir='ltr'>(1)</span>
+</li>
+</ul>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy'>
+
+          &#9658;&#160;
+        
+</span>
+</a>
+<a class='post-count-link' href='http://linuxcommando.blogspot.fr/search?updated-min=2009-01-01T00:00:00-08:00&amp;updated-max=2010-01-01T00:00:00-08:00&amp;max-results=9'>2009</a>
+<span class='post-count' dir='ltr'>(9)</span>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy'>
+
+          &#9658;&#160;
+        
+</span>
+</a>
+<a class='post-count-link' href='http://linuxcommando.blogspot.fr/2009_11_01_archive.html'>November</a>
+<span class='post-count' dir='ltr'>(1)</span>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy'>
+
+          &#9658;&#160;
+        
+</span>
+</a>
+<a class='post-count-link' href='http://linuxcommando.blogspot.fr/2009_07_01_archive.html'>July</a>
+<span class='post-count' dir='ltr'>(2)</span>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy'>
+
+          &#9658;&#160;
+        
+</span>
+</a>
+<a class='post-count-link' href='http://linuxcommando.blogspot.fr/2009_06_01_archive.html'>June</a>
+<span class='post-count' dir='ltr'>(1)</span>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy'>
+
+          &#9658;&#160;
+        
+</span>
+</a>
+<a class='post-count-link' href='http://linuxcommando.blogspot.fr/2009_05_01_archive.html'>May</a>
+<span class='post-count' dir='ltr'>(5)</span>
+</li>
+</ul>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate expanded'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy toggle-open'>&#9660;&#160;</span>
+</a>
+<a class='post-count-link' href='http://linuxcommando.blogspot.fr/search?updated-min=2008-01-01T00:00:00-08:00&amp;updated-max=2009-01-01T00:00:00-08:00&amp;max-results=50'>2008</a>
+<span class='post-count' dir='ltr'>(51)</span>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy'>
+
+          &#9658;&#160;
+        
+</span>
+</a>
+<a class='post-count-link' href='http://linuxcommando.blogspot.fr/2008_12_01_archive.html'>December</a>
+<span class='post-count' dir='ltr'>(1)</span>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy'>
+
+          &#9658;&#160;
+        
+</span>
+</a>
+<a class='post-count-link' href='http://linuxcommando.blogspot.fr/2008_11_01_archive.html'>November</a>
+<span class='post-count' dir='ltr'>(3)</span>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy'>
+
+          &#9658;&#160;
+        
+</span>
+</a>
+<a class='post-count-link' href='http://linuxcommando.blogspot.fr/2008_10_01_archive.html'>October</a>
+<span class='post-count' dir='ltr'>(1)</span>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy'>
+
+          &#9658;&#160;
+        
+</span>
+</a>
+<a class='post-count-link' href='http://linuxcommando.blogspot.fr/2008_09_01_archive.html'>September</a>
+<span class='post-count' dir='ltr'>(3)</span>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy'>
+
+          &#9658;&#160;
+        
+</span>
+</a>
+<a class='post-count-link' href='http://linuxcommando.blogspot.fr/2008_08_01_archive.html'>August</a>
+<span class='post-count' dir='ltr'>(3)</span>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate expanded'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy toggle-open'>&#9660;&#160;</span>
+</a>
+<a class='post-count-link' href='http://linuxcommando.blogspot.fr/2008_07_01_archive.html'>July</a>
+<span class='post-count' dir='ltr'>(3)</span>
+<ul class='posts'>
+<li><a href='http://linuxcommando.blogspot.fr/2008/07/pondus-personal-weight-management.html'>Pondus: A personal weight management software</a></li>
+<li><a href='http://linuxcommando.blogspot.fr/2008/07/how-to-do-reverse-dns-lookup.html'>How to do reverse DNS lookup</a></li>
+<li><a href='http://linuxcommando.blogspot.fr/2008/07/how-to-count-number-of-files-in.html'>How to count number of files in a directory</a></li>
+</ul>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy'>
+
+          &#9658;&#160;
+        
+</span>
+</a>
+<a class='post-count-link' href='http://linuxcommando.blogspot.fr/2008_06_01_archive.html'>June</a>
+<span class='post-count' dir='ltr'>(7)</span>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy'>
+
+          &#9658;&#160;
+        
+</span>
+</a>
+<a class='post-count-link' href='http://linuxcommando.blogspot.fr/2008_05_01_archive.html'>May</a>
+<span class='post-count' dir='ltr'>(12)</span>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy'>
+
+          &#9658;&#160;
+        
+</span>
+</a>
+<a class='post-count-link' href='http://linuxcommando.blogspot.fr/2008_04_01_archive.html'>April</a>
+<span class='post-count' dir='ltr'>(5)</span>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy'>
+
+          &#9658;&#160;
+        
+</span>
+</a>
+<a class='post-count-link' href='http://linuxcommando.blogspot.fr/2008_03_01_archive.html'>March</a>
+<span class='post-count' dir='ltr'>(7)</span>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy'>
+
+          &#9658;&#160;
+        
+</span>
+</a>
+<a class='post-count-link' href='http://linuxcommando.blogspot.fr/2008_02_01_archive.html'>February</a>
+<span class='post-count' dir='ltr'>(5)</span>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy'>
+
+          &#9658;&#160;
+        
+</span>
+</a>
+<a class='post-count-link' href='http://linuxcommando.blogspot.fr/2008_01_01_archive.html'>January</a>
+<span class='post-count' dir='ltr'>(1)</span>
+</li>
+</ul>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy'>
+
+          &#9658;&#160;
+        
+</span>
+</a>
+<a class='post-count-link' href='http://linuxcommando.blogspot.fr/search?updated-min=2007-01-01T00:00:00-08:00&amp;updated-max=2008-01-01T00:00:00-08:00&amp;max-results=21'>2007</a>
+<span class='post-count' dir='ltr'>(21)</span>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy'>
+
+          &#9658;&#160;
+        
+</span>
+</a>
+<a class='post-count-link' href='http://linuxcommando.blogspot.fr/2007_12_01_archive.html'>December</a>
+<span class='post-count' dir='ltr'>(3)</span>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy'>
+
+          &#9658;&#160;
+        
+</span>
+</a>
+<a class='post-count-link' href='http://linuxcommando.blogspot.fr/2007_11_01_archive.html'>November</a>
+<span class='post-count' dir='ltr'>(8)</span>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle' href='javascript:void(0)'>
+<span class='zippy'>
+
+          &#9658;&#160;
+        
+</span>
+</a>
+<a class='post-count-link' href='http://linuxcommando.blogspot.fr/2007_10_01_archive.html'>October</a>
+<span class='post-count' dir='ltr'>(10)</span>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class='clear'></div>
+<span class='widget-item-control'>
+<span class='item-control blog-admin'>
+<a class='quickedit' href='//www.blogger.com/rearrange?blogID=8032022811235182759&widgetType=BlogArchive&widgetId=BlogArchive1&action=editWidget&sectionId=sidebar' onclick='return _WidgetManager._PopupConfig(document.getElementById("BlogArchive1"));' target='configBlogArchive1' title='Edit'>
+<img alt='' height='18' src='http://img1.blogblog.com/img/icon18_wrench_allbkg.png' width='18'/>
+</a>
+</span>
+</span>
+<div class='clear'></div>
+</div>
+</div><div class='widget HTML' id='HTML2'>
+<div class='widget-content'>
+<br/>
+CONTACT ME:
+<a href="mailto:commandolinux@gmail.com?subject=LinuxCommandoBlog"> commandolinux@gmail.com</a>
+</div>
+<div class='clear'></div>
+<span class='widget-item-control'>
+<span class='item-control blog-admin'>
+<a class='quickedit' href='//www.blogger.com/rearrange?blogID=8032022811235182759&widgetType=HTML&widgetId=HTML2&action=editWidget&sectionId=sidebar' onclick='return _WidgetManager._PopupConfig(document.getElementById("HTML2"));' target='configHTML2' title='Edit'>
+<img alt='' height='18' src='http://img1.blogblog.com/img/icon18_wrench_allbkg.png' width='18'/>
+</a>
+</span>
+</span>
+<div class='clear'></div>
+</div></div>
+</div>
+<!-- spacer for skins that want sidebar and main to be the same height-->
+<div class='clear'>&#160;</div>
+</div>
+<!-- end content-wrapper -->
+<div id='footer-wrapper'>
+<div class='footer section' id='footer'></div>
+</div>
+</div></div>
+<!-- end outer-wrapper -->
+<script type="text/javascript">
+if (window.jstiming) window.jstiming.load.tick('widgetJsBefore');
+</script><script type="text/javascript" src="//www.blogger.com/static/v1/widgets/2178715077-widgets.js"></script>
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+<script type='text/javascript'>
+if (typeof(BLOG_attachCsiOnload) != 'undefined' && BLOG_attachCsiOnload != null) { window['blogger_templates_experiment_id'] = "templatesV1";window['blogger_blog_id'] = '8032022811235182759';BLOG_attachCsiOnload('item_'); }_WidgetManager._Init('//www.blogger.com/rearrange?blogID\x3d8032022811235182759','//linuxcommando.blogspot.fr/2008/07/how-to-count-number-of-files-in.html','8032022811235182759');
+_WidgetManager._SetDataContext([{'name': 'blog', 'data': {'blogId': '8032022811235182759', 'bloggerUrl': 'http://www.blogger.com', 'title': 'Linux Commando', 'pageType': 'item', 'url': 'http://linuxcommando.blogspot.fr/2008/07/how-to-count-number-of-files-in.html', 'canonicalUrl': 'http://linuxcommando.blogspot.com/2008/07/how-to-count-number-of-files-in.html', 'canonicalHomepageUrl': 'http://linuxcommando.blogspot.com/', 'homepageUrl': 'http://linuxcommando.blogspot.fr/', 'blogspotFaviconUrl': 'http://linuxcommando.blogspot.fr/favicon.ico', 'enabledCommentProfileImages': false, 'adultContent': false, 'disableAdSenseWidget': false, 'analyticsAccountNumber': '', 'searchLabel': '', 'searchQuery': '', 'pageName': 'How to count number of files in a directory', 'pageTitle': 'Linux Commando: How to count number of files in a directory', 'encoding': 'UTF-8', 'locale': 'en', 'localeUnderscoreDelimited': 'en', 'isPrivate': false, 'isMobile': false, 'isMobileRequest': false, 'mobileClass': '', 'isPrivateBlog': false, 'languageDirection': 'ltr', 'feedLinks': '\74link rel\75\42alternate\42 type\75\42application/atom+xml\42 title\75\42Linux Commando - Atom\42 href\75\42http://linuxcommando.blogspot.com/feeds/posts/default\42 /\76\n\74link rel\75\42alternate\42 type\75\42application/rss+xml\42 title\75\42Linux Commando - RSS\42 href\75\42http://linuxcommando.blogspot.com/feeds/posts/default?alt\75rss\42 /\76\n\74link rel\75\42service.post\42 type\75\42application/atom+xml\42 title\75\42Linux Commando - Atom\42 href\75\42http://www.blogger.com/feeds/8032022811235182759/posts/default\42 /\76\n\n\74link rel\75\42alternate\42 type\75\42application/atom+xml\42 title\75\42Linux Commando - Atom\42 href\75\42http://linuxcommando.blogspot.com/feeds/1057372147015949286/comments/default\42 /\76\n', 'meTag': '', 'openIdOpTag': '', 'postImageThumbnailUrl': 'http://1.bp.blogspot.com/_D7BpcWFofE4/RxbS0t-6rgI/AAAAAAAAABk/OmuyxqtHOao/s72-c/small_su_logo.png', 'imageSrcTag': '\74link rel\75\42image_src\42 href\75\42http://1.bp.blogspot.com/_D7BpcWFofE4/RxbS0t-6rgI/AAAAAAAAABk/OmuyxqtHOao/s72-c/small_su_logo.png\42 /\76\n', 'latencyHeadScript': '\74script type\75\42text/javascript\42\76(function() { var b\75window,e\75\42jstiming\42,g\75\42tick\42;(function(){function d(a){this.t\75{};this.tick\75function(a,d,c){c\75void 0!\75c?c:(new Date).getTime();this.t[a]\75[c,d]};this[g](\42start\42,null,a)}var a\75new d;b.jstiming\75{Timer:d,load:a};if(b.performance\46\46b.performance.timing){var a\75b.performance.timing,c\75b[e].load,f\75a.navigationStart,a\75a.responseStart;0\74f\46\46a\76\75f\46\46(c[g](\42_wtsrt\42,void 0,f),c[g](\42wtsrt_\42,\42_wtsrt\42,a),c[g](\42tbsd_\42,\42wtsrt_\42))}try{a\75null,b.chrome\46\46b.chrome.csi\46\46(a\75Math.floor(b.chrome.csi().pageT),c\46\0460\74f\46\46(c[g](\42_tbnd\42,void 0,b.chrome.csi().startE),\nc[g](\42tbnd_\42,\42_tbnd\42,f))),null\75\75a\46\46b.gtbExternal\46\46(a\75b.gtbExternal.pageT()),null\75\75a\46\46b.external\46\46(a\75b.external.pageT,c\46\0460\74f\46\46(c[g](\42_tbnd\42,void 0,b.external.startE),c[g](\42tbnd_\42,\42_tbnd\42,f))),a\46\46(b[e].pt\75a)}catch(l){}})();b.tickAboveFold\75function(d){var a\0750;if(d.offsetParent){do a+\75d.offsetTop;while(d\75d.offsetParent)}d\75a;750\76\75d\46\46b[e].load[g](\42aft\42)};var h\75!1;function k(){h||(h\75!0,b[e].load[g](\42firstScrollTime\42))}b.addEventListener?b.addEventListener(\42scroll\42,k,!1):b.attachEvent(\42onscroll\42,k);\n })();\74/script\076', 'mobileHeadScript': '', 'adsenseClientId': 'ca-pub-1640070864477148', 'view': '', 'dynamicViewsCommentsSrc': '//www.blogblog.com/dynamicviews/4224c15c4e7c9321/js/comments.js', 'dynamicViewsScriptSrc': '//www.blogblog.com/dynamicviews/15de8d1bfc9ff1d1', 'plusOneApiSrc': 'https://apis.google.com/js/plusone.js', 'testHtml5CssSrc': '//www.blogger.com/static/v1/widgets/721438413-css_bundle_html5.css', 'sf': 'n', 'tf': ''}}, {'name': 'skin', 'data': {'vars': {'sidebartextcolor': '#999999', 'linkcolor': '#99aadd', 'visitedlinkcolor': '#aa77aa', 'textcolor': '#cccccc', 'headerfont': 'normal bold 78% \47Trebuchet MS\47,Trebuchet,Arial,Verdana,Sans-serif', 'pagetitlefont': 'normal bold 200% \47Trebuchet MS\47,Trebuchet,Verdana,Sans-serif', 'bgcolor': '#000000', 'descriptioncolor': '#777777', 'titlecolor': '#aadd99', 'bordercolor': '#333333', 'postfooterfont': 'normal normal 78% \47Trebuchet MS\47, Trebuchet, Arial, Verdana, Sans-serif', 'pagetitlecolor': '#cccccc', 'bodyfont': 'normal normal 100% \47Trebuchet MS\47,Trebuchet,Verdana,Sans-serif', 'endSide': 'right', 'startSide': 'left', 'descriptionfont': 'normal normal 78% \47Trebuchet MS\47, Trebuchet, Verdana, Sans-serif', 'sidebarcolor': '#777777'}, 'override': ''}}, {'name': 'view', 'data': {'classic': {'name': 'classic', 'url': '/?view\75classic'}, 'flipcard': {'name': 'flipcard', 'url': '/?view\75flipcard'}, 'magazine': {'name': 'magazine', 'url': '/?view\75magazine'}, 'mosaic': {'name': 'mosaic', 'url': '/?view\75mosaic'}, 'sidebar': {'name': 'sidebar', 'url': '/?view\75sidebar'}, 'snapshot': {'name': 'snapshot', 'url': '/?view\75snapshot'}, 'timeslide': {'name': 'timeslide', 'url': '/?view\75timeslide'}}}]);
+_WidgetManager._RegisterWidget('_HTMLView', new _WidgetInfo('HTML4', 'crosscol', null, document.getElementById('HTML4'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_FollowersView', new _WidgetInfo('Followers1', 'sidebar', null, document.getElementById('Followers1'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_HTMLView', new _WidgetInfo('HTML8', 'sidebar', null, document.getElementById('HTML8'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_HTMLView', new _WidgetInfo('HTML13', 'sidebar', null, document.getElementById('HTML13'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_BlogArchiveView', new _WidgetInfo('BlogArchive1', 'sidebar', null, document.getElementById('BlogArchive1'), {'languageDirection': 'ltr'}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_HTMLView', new _WidgetInfo('HTML2', 'sidebar', null, document.getElementById('HTML2'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_HeaderView', new _WidgetInfo('Header1', 'header', null, document.getElementById('Header1'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_NavbarView', new _WidgetInfo('Navbar1', 'navbar', null, document.getElementById('Navbar1'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_HTMLView', new _WidgetInfo('HTML3', 'main', null, document.getElementById('HTML3'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_BlogView', new _WidgetInfo('Blog1', 'main', null, document.getElementById('Blog1'), {'cmtInteractionsEnabled': false, 'showBacklinks': true, 'postId': '1057372147015949286', 'lightboxEnabled': true, 'lightboxModuleUrl': '//www.blogger.com/static/v1/jsbin/1766472746-lbx.js', 'lightboxCssUrl': '//www.blogger.com/static/v1/v-css/4138445517-lightbox_bundle.css'}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_PageListView', new _WidgetInfo('PageList1', 'null', null, document.getElementById('PageList1'), {'title': 'Pages', 'links': [{'href': 'http://linuxcommando.blogspot.fr/', 'title': 'Home', 'isCurrentPage': false}], 'mobile': false}, 'displayModeFull'));
+</script>
+</body>
+</html>
