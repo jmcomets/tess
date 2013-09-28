@@ -14,7 +14,8 @@ def format_results(results):
     """
     if isinstance(results, str):
         results = json.loads(results)
-    print results
+    if 'hits' not in results:
+        return []
     return [hit['_source'] for hit in results['hits']['hits']]
 
 def format_matchall(query):
@@ -23,7 +24,7 @@ def format_matchall(query):
     """
     return '{"query":{"bool":{"must":[{"query_string":{"default_field":"_all","query":"%s"}}],"must_not":[],"should":[]}},"from":0,"size":50,"sort":[],"facets":{}}' % query
 
-def matchall(query):
+def search(query):
     r = requests.post(SEARCH_URL, data=format_matchall(query))
     results = r.json()
     return format_results(results)

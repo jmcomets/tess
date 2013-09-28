@@ -1,6 +1,5 @@
-import os
 from flask import (Flask, jsonify, render_template, request)
-from elastic import search as es
+import elastic
 
 app = Flask(__name__)
 
@@ -11,14 +10,21 @@ def index():
     """
     return render_template('index.html')
 
+def parse_query(query):
+    """
+    Return the cleaned version of the query, based on the
+    passed space-separated query.
+    """
+    return query # TODO
+
 @app.route('/search', methods=['GET'])
 def search():
     """
     Search view, querying the elastic search backend
     based on the 'query' GET parameter.
     """
-    query = request.args.get('query') # TODO parse request
-    response = jsonify(results=es.matchall(query))
+    query = request.args.get('query')
+    response = jsonify(results=elastic.search(query))
     return response
 
 if __name__ == '__main__':
