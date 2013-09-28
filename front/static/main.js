@@ -1,4 +1,4 @@
-var QUERY_URL = "/search?query=",
+var QUERY_URL = "/api/search?query=",
     $resultBox = $('.result-box');
 
 $('#search-btn').click(function(e) {
@@ -28,4 +28,10 @@ function formatForUrl(str) {
     .toLowerCase());
 };
 
+//if push state
+$.getJSON(QUERY_URL + formatForUrl(text), function(data) {
+    //console.log(data);
+    var html = new EJS({ url: '/static/results.ejs' }).render(data);
+    $resultBox.html(html);
+  });
 // vim: ft=javascript et sw=2 sts=2

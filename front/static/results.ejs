@@ -1,18 +1,21 @@
 <% if (results.length > 0) { %>
   <% for (var i=0; i < results.length; i++) { %>
   <div class="result row">
-    <div>
-      <div class="thumbnail">
-        <h3 class="product-title"><%= results[i].name %></h3>
-        <a href="<%= results[i].url %>">
-          <img src="<%= results[i].thumbnail %>">
-        </a>
-        <div class="caption">
-          <p><%= results[i].description %></p>
-          <p class="prix"><%= results[i].price %></p>
-        </div>
+    <div class="thumbnail">
+      <a href="<%= results[i].url %>">
+        <img src="<%= results[i].thumbnail %>">
+      </a>
+    </div>
+
+    <div class="product-info">  <!-- class="col-sm-6 col-md-3"> -->
+      <h3 class="product-title">
+        <%= results[i].name %>
+      </h3>
+      <div class="caption">
+        <p><%= results[i].description %></p>
+        <p class="prix"><%= results[i].price %></p>
       </div>
-    <div>
+    </div>
   </div>
   <% } %>
 <% } else { %>

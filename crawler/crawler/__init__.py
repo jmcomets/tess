@@ -1,24 +1,22 @@
 from twisted.internet import reactor
 from scrapy.crawler import Crawler
-from scrapy.settings import Settings
 from scrapy import log
 from spiders.generic import generate_spider
 from scrapy.utils.project import get_project_settings
-from pipelines import PushPipeline
 
 import sys
 
-def setup_crawler(domain, category, spider_cache={}):
+def setup_crawler(domain, category, settings, spider_cache={}):
     # TODO : detect the category
 
     if category in spider_cache:
         SpiderClass = spider_cache[category]
     else:
-        SpiderClass = generate_spider(domain=domain, category=category)
+        SpiderClass = generate_spider(domain=domain, category=category, settings=settings)
     
     spider = SpiderClass()
 
-    crawler = Crawler(get_project_settings())
+    crawler = Crawler(settings)
     crawler.configure()
     crawler.crawl(spider)
 
@@ -27,20 +25,27 @@ def setup_crawler(domain, category, spider_cache={}):
 
 if __name__ == '__main__':
     
+    # Setting the 'push' parameter (pushing scrapped objects to server, or not)
     settings = get_project_settings()
-    if '--prod' in sys.argv:
-        PushPipeline.push_to_server()
+    settings.overrides['push'] = '--prod' in sys.argv
+
+    # Fetching crawled domains
     domains = list()
     for arg in sys.argv:
         if ':' in arg:
             domains.append(arg.split(':'))
-    
+    # Fallback: default domains
     if not domains:
         domains = {('ldlc.com', 'ldlc')}
 
+    # Setting up a crawler per domain
     spider_cache = dict()
     for domain, category in domains:
-        setup_crawler(domain, category, spider_cache)
+        setup_crawler(domain, category, settings, spider_cache)
 
-    log.start(loglevel=log.DEBUG, logstdout=True)
+    # Setting up the logger
+    loglevel = log.DEBUG if '--debug' in sys.argv else log.INFO
+    log.start(loglevel=loglevel, logstdout=True)
+    
+    # Running the crawlers
     reactor.run()
