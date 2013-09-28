@@ -12,7 +12,7 @@ $('#search-btn').click(function(e) {
     //console.log(data);
     var html = new EJS({ url: '/static/results.ejs' }).render(data);
     $resultBox.html(html);
-    history.pushState("", "", formatForUrl(text));
+    history.pushState("", "", "/" + formatForUrl(text));
   });
 });
 
@@ -29,9 +29,19 @@ function formatForUrl(str) {
 };
 
 //if push state
-$.getJSON(QUERY_URL + formatForUrl(text), function(data) {
-    //console.log(data);
-    var html = new EJS({ url: '/static/results.ejs' }).render(data);
-    $resultBox.html(html);
-  });
+var pathName = document.location.pathname;
+if (pathName !== "/") {
+  if (pathName.substring(0,1) === "/") {
+    pathName = pathName.substring(1, pathName.length);
+  }
+  if (pathName.substring(pathName.length - 1, pathName.length) === "/") {
+    pathName = pathName.substring(0, pathName.length - 1);
+  }
+
+  $.getJSON(QUERY_URL + formatForUrl(pathName), function(data) {
+      //console.log(data);
+      var html = new EJS({ url: '/static/results.ejs' }).render(data);
+      $resultBox.html(html);
+    });
+}
 // vim: ft=javascript et sw=2 sts=2
