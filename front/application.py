@@ -17,12 +17,8 @@ def search():
     Search view, querying the elastic search backend
     based on the 'query' GET parameter.
     """
-    query = request.args.get('query') # TODO parse request and query elastic search
-    this_directory = os.path.dirname(os.path.abspath(__file__))
-    data_directory = os.path.join(os.path.dirname(this_directory), 'data')
-    json_file = os.path.join(data_directory, 'results', 'basic.json')
-    with open(json_file, 'r') as results:
-        response = jsonify(results=es.format_results(results.read()))
+    query = request.args.get('query') # TODO parse request
+    response = jsonify(results=es.matchall(query))
     return response
 
 if __name__ == '__main__':
