@@ -14,7 +14,6 @@ def format_results(results):
     """
     if isinstance(results, str):
         results = json.loads(results)
-    print results
     return [hit['_source'] for hit in results['hits']['hits']]
 
 def format_matchall(query):
