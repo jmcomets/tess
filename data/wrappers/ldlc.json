@@ -1,0 +1,12 @@
+{
+  "_id": "ldlc",
+  "name": "LDLC",
+  "pattern": [
+     "/fiche/PB\\d+ \\.html"
+  ],
+  "rules": {
+   	"name":        "//span[@class='fn designation_courte'][0]/text()",
+    "description": "//span[@id='ctl00_cphMainContent_lbChapeau'][0]/text()",
+    "price": "//span[@class='price sale'][0]/text()"
+  }
+}
