@@ -1,0 +1,15 @@
+{
+  "_id": "materiel",
+  "name": "Materiel",
+  "pattern": [
+     "/[\\w\\-]+/[\\w\\-]+.html"
+  ],
+  "rules": {
+   	"name":        "//h1[@id='ProdTitle']/span[1]/text()",
+    "description": "//span[@class='caract']/text()",
+    "price": "//div[@class='Price']/span[1]/text()",
+    "brand": "//a[@class='Brand']/span[2]/text()",
+    "model": "",
+    "thumbnail": "concat('http:', //div[@id='PresImg']/img/@src)"
+  }
+}
