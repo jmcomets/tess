@@ -29,5 +29,5 @@ if __name__ == '__main__':
     for domain in ['ldlc.com']:
         setup_crawler(domain, spider_cache)
 
-    log.start(loglevel=log.DEBUG, logstdout=True)
+    log.start(loglevel=log.INFO, logstdout=True)
     reactor.run()
