@@ -4,10 +4,12 @@ from scrapy.settings import Settings
 from scrapy import log
 from spiders.generic import generate_spider
 from scrapy.utils.project import get_project_settings
+from pipelines import PushPipeline
 
-def setup_crawler(domain, spider_cache={}):
+import sys
+
+def setup_crawler(domain, category, spider_cache={}):
     # TODO : detect the category
-    category = 'ldlc'
 
     if category in spider_cache:
         SpiderClass = spider_cache[category]
@@ -25,9 +27,20 @@ def setup_crawler(domain, spider_cache={}):
 
 if __name__ == '__main__':
     
-    spider_cache = dict()
-    for domain in ['ldlc.com']:
-        setup_crawler(domain, spider_cache)
+    settings = get_project_settings()
+    if '--prod' in sys.argv:
+        PushPipeline.push_to_server()
+    domains = list()
+    for arg in sys.argv:
+        if ':' in arg:
+            domains.append(arg.split(':'))
+    
+    if not domains:
+        domains = {('ldlc.com', 'ldlc')}
 
-    log.start(loglevel=log.INFO, logstdout=True)
+    spider_cache = dict()
+    for domain, category in domains:
+        setup_crawler(domain, category, spider_cache)
+
+    log.start(loglevel=log.DEBUG, logstdout=True)
     reactor.run()
