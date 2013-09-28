@@ -26,9 +26,10 @@ def generate_spider(domain, category):
         name = params['name']
         main_domain = domain
         allowed_domains = [domain]
-        start_urls = ['http://{}'.format(domain), 'http://www.ldlc.com/informatique/piece/boitier/cint4290/']
+        start_urls = ['http://{}'.format(domain)]
         fields_xpath = params['rules']
-        rules = [Rule(SgmlLinkExtractor(allow=params['pattern']), 'parse_product', follow=True)]
+        rules = [Rule(SgmlLinkExtractor(allow=params['pattern']), 'parse_product', follow=True),
+                Rule(SgmlLinkExtractor(allow=('.*', )), follow=True)]
 
         def __init__(self, *args, **kwargs):
             super(Spider, self).__init__(*args, **kwargs)

@@ -13,6 +13,6 @@ NEWSPIDER_MODULE = 'crawler.spiders'
 ITEM_PIPELINES = {
     'crawler.pipelines.PushPipeline': 800,
 }
-
+PUSH = False
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'crawler (+http://www.yourdomain.com)'
