@@ -7,7 +7,7 @@ def index():
     return render_template('index.html')
 
 @app.route('/search')
-def add_numbers():
+def search():
     query = request.args.get('q')
     return jsonify()
 
