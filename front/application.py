@@ -1,6 +1,6 @@
 import os
 from flask import (Flask, jsonify, render_template, request)
-from elastic import search as es
+import elastic
 
 app = Flask(__name__)
 
@@ -18,7 +18,7 @@ def search():
     based on the 'query' GET parameter.
     """
     query = request.args.get('query') # TODO parse request
-    response = jsonify(results=es.matchall(query))
+    response = jsonify(results=elastic.search(query))
     return response
 
 if __name__ == '__main__':
