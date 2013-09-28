@@ -6,11 +6,18 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
+    """
+    Root view (no data, simple template)
+    """
     return render_template('index.html')
 
-@app.route('/search')
+@app.route('/search', methods=['GET'])
 def search():
-    #query = request.form['query'] # TODO parse request
+    """
+    Search view, querying the elastic search backend
+    based on the 'query' GET parameter.
+    """
+    query = request.args.get('query') # TODO parse request
     this_directory = os.path.dirname(os.path.abspath(__file__))
     data_directory = os.path.join(os.path.dirname(this_directory), 'data')
     json_file = os.path.join(data_directory, 'results', 'basic.json')
