@@ -11,7 +11,7 @@ def index():
     """
     return render_template('index.html')
 
-@app.route('/search' methods=['GET'])
+@app.route('/search', methods=['GET'])
 def search():
     """
     Search view, querying the elastic search backend
