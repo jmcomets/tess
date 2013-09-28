@@ -3,8 +3,23 @@
     <head>
         <meta charset="utf-8">
         <title>TESS</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
     </head>
     <body>
-        <h1> Hello World !</h1>
+        <div class="container">
+          <h1>TESS</h1>
+
+          <form class="search-form">
+            <input type="text" class="form-control" placeholder="Jobs in Lyon" autofocus>
+            <button class="btn btn-lg btn-primary btn-block" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+          </form>
+        </div>
+
+        <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='main.js') }}"></script>
     </body>
 </html>
