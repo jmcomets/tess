@@ -1,3 +1,14 @@
+require 'set'
+require 'csv'
+
+IS_PRODUCT = 0
+DATA_FILE = "data.csv"
+HEADERS_FILE = "headers.txt"
+CLASS_SET = Set.new
+
+`touch #{DATA_FILE}`
+`touch #{HEADERS_FILE}`
+
 class String
   def underscore
     self.gsub(/::/, '/').
@@ -8,28 +19,41 @@ class String
   end
 end
 
-def generate_ml_input(folder_name)
+def get_subwords(word)
+  word.underscore.
+  gsub("_", " ").
+  gsub("-", " ").
+  split(" ")
+end
+
+def generate_ml_inputs(folder_name, is_root)
   Dir.glob("#{folder_name}/*") do |file|
     next if file == '.' or file == '..'
     if File.directory?(file)
-      generate_ml_input(file)
+      generate_ml_inputs(file, false)
     else
-      count_classes_in_file(file)
+      append_classes_from_file(file)
     end
+  end
+
+  if is_root
+    File.open(HEADERS_FILE, "a") { |file| file.write("#{CLASS_SET.to_a.join(",")}\n") }
   end
 end
 
-def count_classes_in_file(file)
-    class_map = {}
-    text = IO.read(file).force_encoding("ISO-8859-1").encode("utf-8", replace: nil)
-    classes = text.scan(/class="([\w\-\s]+)"/).map { |a| a[0].underscore.gsub("_", " ").gsub("-", " ").split(" ") }.flatten(1)
+def append_classes_from_file(file)
+  class_map = {}
+  text = IO.read(file).force_encoding("ISO-8859-1").encode("utf-8", replace: nil)
+  classes = text.scan(/[class|id]="([\w\-\s]+)"/).map { |a| get_subwords(a[0]) }.flatten(1)
 
-    classes.each do |c|
-      class_map[c] = class_map[c].nil? ? 1 : class_map[c] + 1
-    end
+  classes.each do |c|
+    class_map[c] = class_map[c].nil? ? 1 : class_map[c] + 1
+    CLASS_SET.add(c)
+  end
 
-    puts "file name: #{file}"
-    puts "classes: #{class_map.sort_by {|k,v| v }}"
+  CSV.open(DATA_FILE, "ab") do |csv|
+    csv << [file.gsub(",", ""), IS_PRODUCT, class_map.map { |k,v| "#{k}:#{v}" }].flatten(1)
+  end
 end
 
 if !(ARGV.first)
@@ -37,4 +61,4 @@ if !(ARGV.first)
   exit
 end
 
-generate_ml_input(ARGV.first)
+generate_ml_inputs(ARGV.first, true)
