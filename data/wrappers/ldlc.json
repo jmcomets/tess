@@ -2,12 +2,12 @@
   "_id": "ldlc",
   "name": "LDLC",
   "pattern": [
-     "/fiche/PB\\d+ \\.html"
+     "/fiche/PB\\d+\\.html"
   ],
   "rules": {
-   	"name":        "//span[@class='fn designation_courte'][0]/text()",
-    "description": "//span[@id='ctl00_cphMainContent_lbChapeau'][0]/text()",
-    "price": "//span[@class='price sale'][0]/text()",
+   	"name":        "//span[@class='fn designation_courte'][1]/text()",
+    "description": "//span[@id='ctl00_cphMainContent_lbChapeau'][1]/text()",
+    "price": "//span[@class='price sale'][1]/text()",
     "brand": "//tr[@class='allparams even'][1]/td[@class='productParameterValues rowEven']/div/a/text()",
     "model": "//tr[@class='allparams odd'][2]/td[@class='productParameterValues rowOdd']/div/span/text()",
     "thumbnail": "//img[@id='ctl00_cphMainContent_ImgProduct']/@src"

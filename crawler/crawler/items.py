@@ -4,8 +4,11 @@
 from scrapy.item import Item, Field
 
 class ProductItem(Item):
+    _id = Field()
     url = Field()
-    
-    title = Field()
+    name = Field()
     description = Field()
+    brand = Field()
+    model = Field()
     price = Field()
+    thumbnail = Field()
