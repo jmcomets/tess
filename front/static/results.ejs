@@ -1,14 +1,21 @@
 <% for (var i=0; i < results.length; i++) { %>
-<div class="result row">
-  <div>  <!-- class="col-sm-6 col-md-3"> -->
+<div class="result row"> 
+      
     <div class="thumbnail">
-      <h3 class="product-title"><%= results[i].name %></h3>
       <a href="<%= results[i].url %>">
         <img src="<%= results[i].thumbnail %>">
       </a>
-      <div class="caption"><%= results[i].description %></div>
-      <!-- <div class="prix"><%= results[i].price %></div> -->
     </div>
-  <div>
+
+    <div class="product-info">  <!-- class="col-sm-6 col-md-3"> -->
+      <h3 class="product-title">
+        <%= results[i].name %>
+      </h3>
+      <div class="caption">
+        <%= results[i].description %>
+      </div>
+      <!-- <div class="prix"><%= results[i].price %></div> --> 
+   </div>
+
 </div>
 <% } %>

@@ -9,10 +9,11 @@ import requests
 import hashlib
 import json
 
-def generate_spider(domain, category):
+def generate_spider(domain, category, settings):
 
     # Getting the crawling parameters for the spider
-    params_r = requests.get("http://92.39.246.129:9200/crawl/wrapper/_search?q=name={}".format(category))
+    server_ip = settings['SERVER']
+    params_r = requests.get("http://{}/crawl/wrapper/_search?q=name={}".format(server_ip, category))
     params_r.raise_for_status()
     params = json.loads(params_r.text)['hits']['hits'][0]['_source']
 
