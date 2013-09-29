@@ -6,15 +6,75 @@
       body {
         min-width: 357px;
         overflow-x: hidden;
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        background: #fff;
+        border-radius: 4px;
+        padding: 8px 20px;
+        font-weight: bold;
+      }
+
+      #save-labels {
+        margin-top: 20px;
+      }
+
+      #save {
+        background-color: #428BCA;
+        color: #fff;
+        border-color: transparent;
+      }
+
+      #save:hover {
+        background-color: #3276B1;
+      }
+
+      button {
+        color: #333333;
+        background-color: #F1EFF1;
+        border-color: rgb(204, 204, 204) !important;
+        display: inline-block;
+        padding: 6px 12px;
+        margin-bottom: 0;
+        font-size: 14px;
+        font-weight: normal;
+        line-height: 1.428571429;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        cursor: pointer;
+        border-radius: 4px;
+        border: none;
+        outline: none;
+        border: 1px solid;
+        box-sizing: border-box;
+      }
+
+      button:hover {
+        background-color: #ebebeb;
+      }
+
+      .identify {
+        padding-bottom: 10px;
       }
     </style>
     <script type="text/javascript" src="popup.js"></script>
   </head>
   <body>
     <div id="label">
+      <div class="identify">
         <p>Is this a product page?</p>
         <button id="yes" type="button">Yes</button>
         <button id="no" type="button">No</button>
+      </div>
+
+      <hr>
+
+      <p>Label the following:</p>
+      <button id="price" type="button">Price</button>
+      <button id="name" type="button">Name</button>
+      <button id="description" type="button">Description</button>
+      <div id="save-labels">
+        <button id="save" type="button">Save labels</button>
+      </div>
     </div>
     <div id="redirect" style="display:none;"></div>
   </body>

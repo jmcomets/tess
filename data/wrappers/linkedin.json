@@ -9,5 +9,8 @@
     "description": "//div[@class='profile-header']//p[@class='headline-title title']/text()",
     "thumbnail":   "//div[@id='profile-picture']/img[@class='photo']/@src"
   },
-  "category": "person"
+  "category": "person",
+  "start_urls": [
+    "http://www.linkedin.com/in/adrienjoly"
+  ]
 }
