@@ -5,11 +5,12 @@ from scrapy import log
 
 from items import ProductItem
 
-from collections import defaultdict
+from collections import defaultdict, Counter
 
 import requests
 import hashlib
 import json
+import lxml.html
 
 def generate_spider(domain, category, settings):
 
@@ -32,13 +33,18 @@ def generate_spider(domain, category, settings):
         start_urls = ['http://{}'.format(domain)]
         fields_xpath = params['rules']
         rules = [Rule(SgmlLinkExtractor(allow=params['pattern']), 'parse_product', follow=True),
-                Rule(SgmlLinkExtractor(allow=('.*', )), follow=True)]
+                Rule(SgmlLinkExtractor(allow=('.*', )), 'detect_product',follow=True)]
 
-        def __init__(self, *args, **kwargs):
-            super(Spider, self).__init__(*args, **kwargs)
-            # TODO : See if we can avoid creating a class per spider type  
+        def detect_product(self, response):
+            """ Detects if the crawled page is a product page """
+
+            classes_freq = Counter(lxml.html.fromstring(response.body).xpath('//@class'))
+
+
 
         def parse_product(self, response):
+            """ Parses a product page """
+
             x = HtmlXPathSelector(response)
 
             product = ProductItem()
