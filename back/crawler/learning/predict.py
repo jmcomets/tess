@@ -29,6 +29,7 @@ def make_prediction(attr_scores):
                 break
         if not found:
             formatted_attrs.append(0)
+    assert len(formatted_attrs) == len(_global_attributes)
     return _global_predictor.predict(formatted_attrs)
 
 class Classifier(object):
@@ -59,7 +60,9 @@ class Predictor(object):
 
     def predict(self, attr_scores):
         prediction = self.cls.clf.predict(attr_scores)
-        if not isinstance(prediction, (list, tuple)):
+        try:
+            iter(prediction)
+        except TypeError:
             prediction = [prediction]
         return [self.YES_NO_BOUNDARY < x for x in prediction]
 
