@@ -2,7 +2,7 @@
 use JSON qw/decode_json/;
 use XML::LibXML;
 
-my $candXpath = "//*[self::div or self::p or self::span]";
+my $candXpath = "/*/*/*/*//*[self::div or self::p or self::span]";
 
 my %features = (
   "parProd"   => 'number(contains(parent::*/@class,"prod"))',
@@ -10,18 +10,21 @@ my %features = (
   "ancDesc"   => 'count(ancestor::*[contains(@class,"desc")])',
   "selfProd"  => 'number(contains(@class,"prod"))',
   "selfDesc"  => 'number(contains(@class,"desc"))',
-  "selfCurr"  => 'number(contains(text(),"£") or contains(text(),"€"))',
+  "selfCurr"  => 'number(contains(text(),"£") or contains(text(),"€") or contains(text(), "EUR"))',
   "selfDesc"  => 'number(contains(text(),"Desc") or contains(text(),"desc"))',
-  "selfEl"    => 'local-name()',
+  "selfEl"    => 'local-name(.)',
+  "parEl"     => 'local-name(..)',
   "selfIP"    => '@itemprop',
   "selfClass" => '@class',
   "parClass"  => '../@class',
+  "selfDepth" => 'count(ancestor::*)',
+  "selfDesc"  => 'count(descendant::*)',
   "gpClass"   => sub {
      my ($cand) = @_;
      my @n = $cand->findnodes('../../@class');
      my $i = 0;
      foreach my $n (@n) {
-        foreach my $c (split(/\s+/,$n)) {
+        foreach my $c (split(/\s+/,$n->value())) {
            if($c ne "") {
              $i++;
              print "\t" . "gpClass[" .$i . "]=",$c;
@@ -32,7 +35,10 @@ my %features = (
 );
 
 my @links = (
-  ["selfProd","parProd","ancProd"],
+  ["selfProd","parProd"],
+  ["parProd","ancProd"],
+  ["selfClass","parClass"],
+  ["selfEl","parEl"]
 );
 
 my $parser = XML::LibXML->new( recover => 1, verbose=> 0);
@@ -59,13 +65,15 @@ foreach my $page (@ARGV) {
           if($fval eq "") {
             $fval = 'null';
           }
+          $fval =~ s/\n\r//g;
+          $fval =~ s/\s+/_/g;
           print "\t$f=" . $fval;
           $fmap{$f} = $fval;
         }
      }  
      
      foreach $a (@links) {
-       print join('|',@{$a}),"=", join("|",map {$fmap{$_}} @{$a}); 
+       print "\t", join('|',@{$a}),"=", join("|",map {$fmap{$_}} @{$a}); 
      }
      print "\n";
      $nn++;
