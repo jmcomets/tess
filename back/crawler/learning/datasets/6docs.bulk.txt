@@ -1,0 +1,20 @@
+{ "index" : { "_index" : "object", "_type" : "test" } }
+{  "name": "AE Burnout Vented T-Shirt"}
+{ "index" : { "_index" : "object", "_type" : "test" } }
+{  "name": "AE Elbow Patch Cardigan", "price": "€3694 EUR"}
+{ "index" : { "_index" : "object", "_type" : "test" } }
+{  "name": "AE Heritage T-Shirt"}
+{ "index" : { "_index" : "object", "_type" : "test" } }
+{  "name": "AE Long Sleeve Burnout T-Shirt", "price": "€1845 EUR"}
+{ "index" : { "_index" : "object", "_type" : "test" } }
+{  "name": "AE Original Straight Khaki", "price": "€3324 EUR"}
+{ "index" : { "_index" : "object", "_type" : "test" } }
+{  "name": "AE Skinny Khaki Pant", "price": "€3324 EUR"}
+{ "index" : { "_index" : "object", "_type" : "test" } }
+{  "name": ""}
+{ "index" : { "_index" : "object", "_type" : "test" } }
+{  "price": "$23.95"}
+{ "index" : { "_index" : "object", "_type" : "test" } }
+{  "name": "Armoire de toilette, NAGOYA ", "description": ""}
+{ "index" : { "_index" : "object", "_type" : "test" } }
+{  "name": "Bandolera Circles", "price": "59,00 €"}
