@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]> <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]> <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+<link rel="dns-prefetch" href="//static.digg.com">
+
+<script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
+
+
+<meta name="apple-itunes-app" content="app-id=362872995, affiliate-data=bevbOqLt02I, app-argument=digg://">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+
+<meta name="viewport" content="width=1280">
+
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="canonical" href="http://digg.com/login" />
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@digg">
+<meta property="og:url" content="http://digg.com/login" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Welcome to Digg" />
+<meta property="og:image" content="http://static.digg.com/a/static/images/logo-digg@2x.png" />
+<meta name="application-name" content="Digg"/>
+<meta name="msapplication-TileImage" content="/static/images/windows-tile-144x144.png"/>
+<meta name="msapplication-TileColor" content="#ffffff"/>
+
+
+<link rel="icon" href="/static/images/digg_favicon.png" type="image/x-icon">
+<link rel="shortcut icon" href="/static/images/digg_favicon.png" type="image/x-icon">
+<title>Welcome to Digg</title>
+<link rel="alternate" type="application/rss+xml" title="Digg Top Stories RSS" href="/rss/top.rss" />
+
+<link rel="stylesheet" href="//static.digg.com/a/static/css/1.3.0/welcome.css?v=59411" type="text/css" media="screen" />
+
+
+<link rel="apple-touch-icon" href="/static/images/apple/apple-touch-icon-57.png"/>
+<link rel="apple-touch-icon" sizes="72x72" href="/static/images/apple/apple-touch-icon-72.png" />
+<link rel="apple-touch-icon" sizes="114x114" href="/static/images/apple/apple-touch-icon-114.png" />
+<link rel="apple-touch-icon" sizes="144x144" href="/static/images/apple/apple-touch-icon-144.png" />
+
+<!--[if lt IE 9]>
+<script src="//static.digg.com/a/static/js/external/html5shiv/3.6.2/html5shiv.min.js?v=62ac5"></script>
+<![endif]-->
+
+<script type="text/javascript">var _gaq = _gaq || []; _gaq.push(['_setAccount', 'UA-33556916-1']); _gaq.push(['_setDomainName', '.digg.com']); _gaq.push(['_trackPageview']); (function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true; ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s); })(); </script><noscript><img src="http://www.google-analytics.com/__utm.gif?utmwv=5.3.9&utmn=4931304543&utme=&utmcs=-&utmsr=-&utmsc=-&utmul=-&utmje=0&utmfl=-&utmdt=-&utmhn=digg.com&utmhid=4931304543&utmr=-&utmp=/nojs/login&utmac=UA-33556916-1&utmcc=__utma%3D49437277.2115056933.1380451306.1380451306.1380451306.2%3B%2B__utmz%3D49437277.1380451306.2.2.utmcsr%3D_SOURCE_%7Cutmccn%3D_CAMPAIGN_%7Cutmcmd%3D_MEDIUM_%7Cutmctr%3D_KEYWORD_%7Cutmcct%3D_CONTENT_%3B%2B__utmv%3D49437277.-%3B;" border="0" /></noscript>
+
+</head>
+<body class="welcome">
+
+
+<div class="site-header-container page-container" id="site-header-container">
+<div class="header-wrapper">
+<header class="site-header" role="banner">
+<h1 class="site-header-logo-container"><a href="/" id="site-header-logo" class="image-replace">Digg</a></h1>
+</header>
+</div>
+</div>
+
+
+
+
+
+
+<div id="content-main" class="content-main">
+<div class="content-primary" role="main">
+
+<div id="onboarding-billboard" class="onboarding-billboard">
+<div id="onboarding-step-welcome" class="onboarding-step onboarding-step-welcome">
+<h1 id="digg-reader-logo" class="onboarding-hed digg-reader-logo logo-large">Digg Reader</h1>
+<div class="onboarding-stage">
+<div class="sign-up-container">
+<button id="btn-sign-up" class="btn-action btn-sign-up" href="#google">Sign Up</button>
+</div>
+<div id="sign-up-label" class="sign-up-label">
+<p class="step-progress">1 of 2</p>
+<p>Create an account by signing in below.</p>
+</div>
+<p id="already-user" class="sign-in-link"><a href="#sign-in" id="step-to-sign-in">Already a Digg user? Sign In &raquo;</a></p>
+<form target="session_iframe" action="/session" method="post" id="session_twitter" class="form-twitter-auth">
+<input type="hidden" name="_xsrf" value="ee3ef156606f4416afb6a59d436df478"/>
+
+<input type="hidden" name="login_type" value="twitter" />
+<input type="hidden" name="key" id="twitter_key" />
+<input type="hidden" name="secret" id="twitter_secret" />
+<input type="hidden" name="screen_name" id="twitter_screen_name" />
+<input type="hidden" name="twitter_user_id" id="twitter_user_id" />
+<input type="hidden" name="cb" id="twitter_callback" />
+
+<input type="hidden" name="next" id="twitter_redirect_url" value="/reader" />
+
+<button id="btn-twitter-auth" class="btn-action btn-twitter-auth" href="#twitter">Sign in with Twitter</button>
+</form>
+<form target="session_iframe" action="/session" method="post" id="session_facebook" class="form-facebook-auth">
+<input type="hidden" name="_xsrf" value="ee3ef156606f4416afb6a59d436df478"/>
+
+<input type="hidden" name="login_type" value="facebook" />
+<input type="hidden" id="fb_access_token" name="access_token" />
+<input type="hidden" id="fb_expires" name="expires" />
+<input type="hidden" name="cb" id="facebook_callback" />
+
+<input type="hidden" name="next" id="facebook_redirect_url" value="/reader" />
+
+<button id="btn-facebook-auth" class="btn-action btn-facebook-auth" href="#facebook">Sign in with Facebook</button>
+</form>
+<form target="session_iframe" action="/session" method="post" id="session_google" class="form-google-auth">
+<input type="hidden" name="_xsrf" value="ee3ef156606f4416afb6a59d436df478"/>
+
+<input type="hidden" name="login_type" value="google" />
+<input type="hidden" name="oauth_access_token" id="oauth_access_token" />
+<input type="hidden" name="oauth_refresh_token" id="oauth_refresh_token" />
+<input type="hidden" name="google_uid" id="google_uid" />
+<input type="hidden" name="google_name" id="google_name" />
+<input type="hidden" name="google_email" id="google_email" />
+<input type="hidden" name="expiration_date" id="google_expiration_date" />
+<input type="hidden" name="cb" id="google_callback" />
+<input type="hidden" name="reader_enabled" value="true" />
+
+<input type="hidden" name="next" id="google_redirect_url" value="/reader?i=1" />
+
+<button id="btn-google-auth" class="btn-action btn-google-auth" href="#google">Sign in with Google</button>
+</form>
+<iframe class="session-iframe" id="session-iframe" name="session_iframe"></iframe>
+<div id="form-import-upload">
+<div class="sign-up-label">
+
+<p class="step-progress">2 of 2</p>
+
+<p>Import your Google Takeout or an OPML file.</p>
+<p><a href="https://www.google.com/takeout/#custom:reader" target="_blank" class="link-external">Download your Google Reader data here &raquo;</a><br/>
+<a href="https://digg.zendesk.com/entries/21947015-How-do-I-import-my-Google-Reader-feeds-" target="_blank" class="link-external">View step-by-step instructions &raquo;</a></p>
+</div>
+<form target="session_iframe" action="http://import.digg.com/upload" method="post" enctype="multipart/form-data" id="form-upload">
+<input type="hidden" name="_xsrf" value="ee3ef156606f4416afb6a59d436df478"/>
+
+<input type="hidden" name="id" id="upload-id" />
+<input type="hidden" name="user_id" id="upload-user-id" />
+<div><input type="file" name="reader_import" id="input-file" class="input-file" /></div>
+<button id="btn-upload" class="btn-action btn-upload" href="#google">Upload your data</button>
+</form>
+<p class="sign-in-link"><a href="/reader?i=1">Skip this step &raquo;</a></p>
+</div>
+<div id="upload-progress">
+<div id="gatekeeper-billboard" class="billboard importing-billboard">
+<div class="importing-animation"></div>
+<div class="status-bar-inner">
+<div class="status-bar-label">
+<strong>Uploading...</strong>
+</div>
+</div>
+</div>
+</div>
+<div id="upload-progress-error">
+<div class="billboard error-billboard">
+<div class="billboard-content">
+<p><strong class="billboard-hed">Something went wrong.</strong><br/>
+<span id="status-msg">We were unable to import your data.</span></p>
+<a class="btn-action" href="/reader/import?error=1">Try Again</a>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+
+
+
+
+<script src="//static.digg.com/a/static/js/external/modernizr/2.6.2/modernizr.custom.min.js?v=e724b"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="//static.digg.com/a/static/js/external/jquery/1.8.2/jquery.min.js?v=0b6ec"><\/script>')</script>
+
+
+<script src="//static.digg.com/a/static/js/external/jquery-mousewheel/jquery.mousewheel.min.js?v=25db0"></script>
+<script src="//static.digg.com/a/static/js/external/bootstrap/bootstrap-modal.js?v=5fe4c"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/0.4.1/lodash.min.js"></script>
+<script src="//static.digg.com/a/static/js/external/almond/almond.min.js?v=6d809"></script>
+
+<script>
+
+window.onerror = function (errorMsg, url, line) {
+var errorDataProvider = $.ajax({
+url : '/api/miccheck.json',
+type: 'POST',
+data : {
+m : errorMsg,
+u : url,
+l : line
+}
+});
+};
+
+window.BS = {
+config : { FB_APP_ID : '123277257693179', v : '1.5.2' },
+features : {"search": true, "polling_scores": false, "saved_stories": true, "homepage_new_stories": true, "signin": true, "homepage_popular_stories": true, "readlater": true, "submit_link": true, "homepage_new_stories_polling": false, "digg": true}
+};
+
+</script>
+
+
+
+<script src="//static.digg.com/a/static/js/1.2/bs/welcome.js?v=61134"></script>
+
+
+<script>
+// Load Twitter SDK Asynchronously
+window.twttr = (function (d,s,id) {
+var t, js, fjs = d.getElementsByTagName(s)[0];
+if (d.getElementById(id)) return; js=d.createElement(s); js.id=id;
+js.src="//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs);
+return window.twttr || (t = { _e: [], ready: function(f){ t._e.push(f) } });
+}(document, "script", "twitter-wjs"));
+// Load the FB SDK Asynchronously
+(function(d){
+var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
+js = d.createElement('script'); js.id = id; js.async = true;
+js.src = "//connect.facebook.net/en_US/all.js";
+d.getElementsByTagName('head')[0].appendChild(js);
+}(document));
+</script>
+
+<script type="text/javascript">
+var _sf_async_config={uid:30608,domain:"digg.com"};
+(function(){
+function loadChartbeat() {
+window._sf_endpt=(new Date()).getTime();
+
+var e = document.createElement('script');
+e.setAttribute('language', 'javascript');
+e.setAttribute('type', 'text/javascript');
+e.setAttribute('src',
+(("https:" == document.location.protocol) ? "https://a248.e.akamai.net/chartbeat.download.akamai.com/102508/" : "http://static.chartbeat.com/") +
+"js/chartbeat.js");
+document.body.appendChild(e);
+}
+var oldonload = window.onload;
+window.onload = (typeof window.onload != 'function') ?
+loadChartbeat : function() { oldonload(); loadChartbeat(); };
+})();
+</script>
+
+
+<!-- built with love by amateurs! -->
+</body>
+</html>
