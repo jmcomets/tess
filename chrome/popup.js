@@ -9,11 +9,14 @@ var TessLabeler = {
     });
   },
   label: function(type) {
+    console.log(type);
     var requestContext = {
-      method: "getContext",
-      event: event
-    }
-    chrome.tabs.sendMessage(tabId, requestContext, function(){}); 
+      type: type
+    };
+
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+      chrome.tabs.sendMessage(tabs[0].id, requestContext, function(){});
+    });
   }
 };
 
