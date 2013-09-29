@@ -1,6 +1,6 @@
 {
   "_id": "spartoo",
-  "name": "Spartoo",
+  "name": "spartoo",
   "pattern": [
      "/[A-Z][\\w\\-]+[0-9-]+.php"
   ],

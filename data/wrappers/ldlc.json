@@ -1,6 +1,6 @@
 {
   "_id": "ldlc",
-  "name": "LDLC",
+  "name": "ldlc",
   "pattern": [
      "/fiche/PB\\d+\\.html"
   ],

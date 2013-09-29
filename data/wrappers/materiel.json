@@ -1,15 +1,15 @@
 {
   "_id": "materiel",
-  "name": "Materiel",
+  "name": "materiel",
   "pattern": [
-     "/[\\w\\-]+/[\\w\\-]+.html"
+     "/[\\w\\-]+/[\\w\\-]+\\.html"
   ],
   "rules": {
-   	"name":        "//h1[@id='ProdTitle']/span[1]/text()",
-    "description": "//span[@class='caract']/text()",
-    "price": "//div[@class='Price']/span[1]/text()",
-    "brand": "//a[@class='Brand']/span[2]/text()",
-    "model": "",
-    "thumbnail": "concat('http:', //div[@id='PresImg']/img/@src)"
+   	"name":        "//span[@property='v:name'][1]/text()",
+    "description": "//span[@class='caract'][1]/text()",
+    "price": "//span[@property='v:price'][1]/text()",
+    "brand": "//span[@property='v:brand'][1]/text()",
+    "model": "//span[@property='v:name'][1]/text()",
+    "thumbnail": "(//img[@rel='v:photo'])[1]/@src"
   }
 }
