@@ -17,11 +17,11 @@ class PushPipeline(object):
         settings = get_project_settings()
         item.clean()
 
-        if not item['name'] or not item['thumbnail'] or not item['price']:
+        if not item['name'] or ('thumbnail' in item.fields and not item['thumbnail']) or ('price' in item.fields and not item['price']):
             raise DropItem
 
         if spider.settings.overrides['push']:
             data = dict(item.items())
-            r = requests.post('http://{}/object/product/{}'.format(spider.settings['SERVER'], item['_id']), data=json.dumps(data))
+            r = requests.post('http://{}/object/{}/{}'.format(spider.settings['SERVER'], spider.category,item['_id']), data=json.dumps(data))
 
         return item

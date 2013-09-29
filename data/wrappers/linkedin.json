@@ -5,9 +5,10 @@
      "/in/[^/]*"
   ],
   "rules": {
-    "name":        "//h1//span[@class='full-name']",
+    "name":        "concat(concat(//span[@class='given-name'][1]/text(), string(' ')),  //span[@class='family-name'][1]/text())",
     "description": "//div[@class='profile-header']//p[@class='headline-title title']/text()",
-    "thumbnail":   "//div[@id='profile-picture']/img[@class='photo']/@src"
+    "thumbnail":   "//div[@id='profile-picture']/img[@class='photo']/@src",
+    "industry": "//dd[@class='industry'][1]/text()"
   },
   "category": "person",
   "start_urls": [

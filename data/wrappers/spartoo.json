@@ -5,12 +5,13 @@
      "/[A-Z][\\w\\-]+[0-9-]+.php"
   ],
   "rules": {
-   	"name":        "//div[@id='contenu']//div[@id='prodcard2']/h1/span[@class='fn']/text()",
+   	"name":        "//h1/span[@class='fn'][1]/text()",
     "description": "//div[@id='infoDescription']//div[1]/text()",
     "price": 	   "//div[@class='dis_market_price']//b/text()",
     "brand": 	   "",
     "model":       "",
     "thumbnail":   "//img[@id='productImage']/@src"
-  }
+  },
+  "target" : "product"
 }
 

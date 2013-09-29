@@ -11,5 +11,6 @@
     "brand": "//tr[@class='allparams even'][1]/td[@class='productParameterValues rowEven']/div/a/text()",
     "model": "//tr[@class='allparams odd'][2]/td[@class='productParameterValues rowOdd']/div/span/text()",
     "thumbnail": "//img[@id='ctl00_cphMainContent_ImgProduct']/@src"
-  }
+  },
+  "target" : "product"
 }

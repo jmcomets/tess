@@ -62,3 +62,13 @@ class ProductItem(Item):
             price_cur = 'EUR'
 
         self['price']['currency'] = price_cur
+
+class PersonItem(Item):
+    _id = Field()
+    url = Field()
+    name = Field()
+    description = Field()
+    industry = Field()
+    
+    def clean(self):
+        pass

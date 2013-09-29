@@ -11,5 +11,6 @@
     "brand": "//span[@itemprop='brand'][1]/text()",
     "model": "string('')",
     "thumbnail": "//img[@itemprop='image'][1]/@src"
-  }
+  },
+  "target" : "product"
 }

@@ -3,6 +3,11 @@
   text-decoration: none;
 }
 
+.main-title {
+  font-weight: bold;
+  letter-spacing: -3px;
+}
+
 .search-form {
   padding: 15px;
   margin: 0 auto;
