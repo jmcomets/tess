@@ -1,5 +1,5 @@
 var TessClient = {
-  baseURL: 'http://localhost:5000',
+  baseURL: 'http://92.39.246.129:5000',
   label: function(url, yes_no) {
     var xhr = new XMLHttpRequest();
     xhr.open('POST', this.baseURL + '/api/label', true);
@@ -11,6 +11,12 @@ var TessClient = {
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
   if (request.type == 'label') {
     TessClient.label(window.location.href, request.yes_no);
+  } else if (request.type == 'get_link') {
+    var aTags = document.getElementsByTagName('a'),
+      url = aTags[Math.floor(Math.random()*aTags.length)].href;
+    sendResponse({ url: url });
+  } else if (request.type == 'redirect') {
+    window.location.href = request.url;
   }
 });
 

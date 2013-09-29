@@ -1,25 +1,45 @@
 var TessLabeler = {
-  addEventListeners: function() {
+  yesElement: null,
+  noElement: null,
+  redirectElement: null,
+  labelElement: null,
+  init: function() {
     var self = this;
-    document.getElementById('yes').addEventListener('click', function(e) { self.label(true); });
-    document.getElementById('no').addEventListener('click', function(e) { self.label(false); });
+    self.yesElement = document.getElementById('yes');
+    self.noElement = document.getElementById('no');
+    self.labelElement = document.getElementById('label');
+    self.redirectElement = document.getElementById('redirect');
+    self.yesElement.addEventListener('click', function() { self.label(true); });
+    self.noElement.addEventListener('click', function() { self.label(false); });
+    self.labelElement.style.display = 'block';
+    self.redirectElement.style.display = 'none';
   }, label: function(yes_no) {
-    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+    var self = this;
+    chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
       chrome.tabs.sendMessage(tabs[0].id, {
         type: 'label', yes_no: yes_no
-      }, function() {});
-      document.getElementById('label').style.display = 'none';
-      document.getElementById('redirect').style.display = 'block';
-      var aTags = document.getElementsByTagName('a'),
-        url = aTags[Math.floor(Math.random()*aTags.length)];
+      });
+      self.redirectElement.innerHTML = '';
+      self.labelElement.style.display = 'none';
+      self.redirectElement.style.display = 'block';
+      chrome.tabs.sendMessage(tabs[0].id, {
+        type: 'get_link'
+      }, function(response) {
+        var centerElement = document.createElement('center'),
+          urlElement = document.createElement('a');
+        urlElement.href = response.url;
+        urlElement.innerText = 'Next page ?';
+        urlElement.addEventListener('click', function() {
+          chrome.tabs.sendMessage(tabs[0].id, { type: 'redirect', url: response.url });
+          window.close();
+        });
+        centerElement.appendChild(urlElement);
+        self.redirectElement.appendChild(centerElement);
+      });
     });
   }
 };
 
-document.addEventListener('DOMContentLoaded', function () {
-  TessLabeler.addEventListeners();
-  document.getElementById('label').style.display = 'block';
-  document.getElementById('redirect').style.display = 'none';
-});
+document.addEventListener('DOMContentLoaded', function () { TessLabeler.init(); });
 
 // vim: ft=javascript et sw=2 sts=2
