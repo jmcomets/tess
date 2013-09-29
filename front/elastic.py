@@ -20,8 +20,8 @@ def format_matchall(query):
     bool_query['must'] = []
     bool_query['must_not'] = []
     bool_query['should'] = [dict(query_string=dict(default_field="_all", query=query)),
-                            dict(query_string=dict(default_field="name", query=query, boost=6)),
-                            dict(query_string=dict(default_field="url", query=query, boost=4)),
+                            dict(query_string=dict(default_field="name", query=query, boost=5)),
+                            dict(query_string=dict(default_field="url", query=query, boost=3)),
                             dict(query_string=dict(default_field="industry", query=query, boost=20)),
                             dict(query_string=dict(default_field="location", query=query, boost=10)),
                             dict(query_string=dict(default_field="description", query=query, boost=3))]
@@ -45,6 +45,27 @@ def format_matchall(query):
     #                  "size":50,\
     #                  "sort":[],\
     #                  "facets":{}}' % query
+
+def auto_suggest(query):
+    bool_query = dict()
+    bool_query['must'] = []
+    bool_query['must_not'] = []
+    bool_query['should'] = [dict(query_string=dict(default_field="_all", query=query))]
+    
+    # for token in query.split(' '):
+    #     bool_query['should'].append(dict(prefix=dict(_all=dict(prefix=token,  boost=0.6))))
+    #     bool_query['should'].append(dict(prefix=dict(industry=dict(prefix=token,  boost=5))))
+    #     bool_query['should'].append(dict(prefix=dict(location=dict(prefix=token,  boost=3))))
+
+    elas_query = dict(query=dict(bool=bool_query), size=10, sort=[], facets={})
+    elas_query['from'] = 0
+
+    r = requests.post(SEARCH_URL, data=json.dumps(elas_query)).json()
+
+    suggestions = [suggestion['_source']['name'] for suggestion in r['hits']['hits']]
+
+    return suggestions
+
 
 def search(query):
     r = requests.post(SEARCH_URL, data=format_matchall(query))

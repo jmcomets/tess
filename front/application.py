@@ -54,6 +54,14 @@ def label():
     download(url, (yes_folder if label == 'true' else no_folder))
     return ""
 
+@app.route('/api/auto_suggest', methods=['GET'])
+def auto_suggest():
+    query = request.args.get('query')
+    result = elastic.auto_suggest(query)
+    return str(result)
+    return ''
+
+
 def ensure_dir(f):
     d = os.path.dirname(f)
     if not os.path.exists(d):

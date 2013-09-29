@@ -21,10 +21,10 @@ with open('headers.txt') as header_file:
     headers = {header : i for i, header in enumerate(header_file.read().split(','))}
 
 
-
+c = Counter()
 with open('data.csv') as data_file:
     for line in data_file:
-        c = Counter()
+
         elements = line.split(',')
         url = elements[0]
         positive = elements[1] == '1'
@@ -35,22 +35,19 @@ with open('data.csv') as data_file:
             header_id = headers[header]
             c[header_id] += int(value)
 
-        values = [ i[1] for i in sorted(c.items())]
+values = [ i[1] for i in sorted(c.items())]
 
 
-        # the histogram of the data
-        n, bins, patches = plt.hist(values, len(headers), normed=1, facecolor='green', alpha=0.5)
-        # add a 'best fit' line
-        plt.plot(values)
-        plt.xlabel('Labels')
-        plt.ylabel('Occurences')
-        plt.title(r'Histogram')
+# the histogram of the data
+n, bins, patches = plt.hist(values, len(headers), normed=1, facecolor='green', alpha=0.5)
+# add a 'best fit' line
+plt.plot(values)
+plt.xlabel('Labels')
+plt.ylabel('Occurences')
+plt.title(r'Histogram')
 
-        # Tweak spacing to prevent clipping of ylabel
-        plt.subplots_adjust(left=0.15)
+# Tweak spacing to prevent clipping of ylabel
+plt.subplots_adjust(left=0.15)
 
-	print 'Saving "{}" graph to PDF...'.format(url)
-        plt.savefig(pp, format='pdf')
-
-pp.savefig()
-pp.close()
+print 'Saving "{}" graph to PDF...'.format(url)
+plt.show()
