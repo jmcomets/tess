@@ -13,8 +13,10 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     TessClient.label(window.location.href, request.yes_no);
   } else if (request.type == 'get_link') {
     var aTags = document.getElementsByTagName('a'),
-      url = aTags[Math.floor(Math.random()*aTags.length)].href;
-    sendResponse({ url: url });
+      a = aTags[Math.floor(Math.random()*aTags.length)],
+      data = {}
+    if (a !== undefined) { data['url'] =  a.href }
+    sendResponse(data);
   } else if (request.type == 'redirect') {
     window.location.href = request.url;
   }

@@ -25,15 +25,20 @@ var TessLabeler = {
       chrome.tabs.sendMessage(tabs[0].id, {
         type: 'get_link'
       }, function(response) {
-        var centerElement = document.createElement('center'),
-          urlElement = document.createElement('a');
-        urlElement.href = response.url;
-        urlElement.innerText = 'Next page ?';
-        urlElement.addEventListener('click', function() {
-          chrome.tabs.sendMessage(tabs[0].id, { type: 'redirect', url: response.url });
-          window.close();
-        });
-        centerElement.appendChild(urlElement);
+        var centerElement = document.createElement('center');
+        if (response.url === undefined) {
+          setTimeout(function() { window.close(); }, 3000);
+          centerElement.innerText = 'No links available...';
+        } else {
+          var urlElement = document.createElement('a');
+          urlElement.href = response.url;
+          urlElement.innerText = 'Next page ?';
+          urlElement.addEventListener('click', function() {
+            chrome.tabs.sendMessage(tabs[0].id, { type: 'redirect', url: response.url });
+            window.close();
+          });
+          centerElement.appendChild(urlElement);
+        }
         self.redirectElement.appendChild(centerElement);
       });
     });
