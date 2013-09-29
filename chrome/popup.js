@@ -9,10 +9,11 @@ var TessLabeler = {
     });
   },
   label: function(type) {
-
   }
 };
 
 document.addEventListener('DOMContentLoaded', function () {
   TessLabeler.addEventListeners();
 });
+
+// vim: ft=javascript et sw=2 sts=2
