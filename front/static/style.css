@@ -89,13 +89,9 @@
     _overflow-x: hidden;
 }
 
-.autocomplete-suggestion:hover {
+.autocomplete-selected {
     background-color: #428bca;
     color: #fff;
-}
-
-.autocomplete .selected {
-    background: #F0F0F0;
 }
 
 .autocomplete div {
