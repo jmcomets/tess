@@ -1,0 +1,3 @@
+{ 
+  "attributesToIndex": ["name", "model", "description"]
+}
