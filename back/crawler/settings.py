@@ -14,6 +14,6 @@ ITEM_PIPELINES = {
     'crawler.pipelines.PushPipeline': 800,
 }
 SERVER = '92.39.246.129:9200'
-PREDICTOR_PATH = '../learning/predictor.txt'
+PREDICTOR_PATH = 'learning/predictor.txt'
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'crawler (+http://www.yourdomain.com)'
