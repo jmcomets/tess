@@ -6,6 +6,7 @@
 # http://doc.scrapy.org/en/latest/topics/items.html
 
 from scrapy.item import Item, Field
+from scrapy import log
 import urlparse
 
 PRICE_MAP = {('€', 'EUR', 'EURO') : 'EUR',
@@ -30,24 +31,30 @@ class ProductItem(Item):
             if thumbnail.startswith('/') and not thumbnail.startswith('//'):
                 self['thumbnail'][i] = 'http://' + domain + self['thumbnail'][i]
 
-        # # TODO: Parsing prices
-        # raw_price = self['price'][0].strip().decode('utf-8')
-        # self['price'] = None
+        # TODO: Parsing prices
+        if not self['price']:
+            return
+        
+        raw_price = self['price'][0].encode('utf-8').replace(' ', '').strip()
+        self['price'] = dict()
+        self['price']['raw'] = raw_price
+        price = raw_price
 
-        # for signatures, currency in PRICE_MAP.iteritems():
-        #     for signature in signatures:
-        #         if signature in raw_price.startswith(signature) or raw_price.endswith('raw_price'):
-        #             clean_price = raw_price.replace(signature, '')
-        #             if len(clean_price.split(',')) == 2 and not '.' in clean_price:
-        #                 clean_price = clean_price.replace(',', '.')
-        #              
-        #             self['price'] = {'raw': raw_price,
-        #                              'value': float(clean_price),
-        #                              'currency': currency}
-        #             break
-            
-        #     if self['price']:
-        #         break
+        # Detecting currency and removing it
+        price_cur = None
+        for signatures, currency in PRICE_MAP.iteritems():
+            if any(signature in price for signature in signatures):
+                price_cur = currency
+                for signature in signatures:
+                    price.replace(signature, '')
+                break
 
-        # if self['price'] is None:
-        #     self['price'] = {'raw': raw_price, 'value' : None, 'currency': None}
+        if 1 <= len(price.split(',')) <= 2:
+            price = price.replace(',', '.')
+            self['price']['value'] = float(price)
+
+        # DEBUG ONLY:
+        if price_cur is None:
+            price_cur = 'EUR'
+
+        self['price']['currency'] = price_cur
