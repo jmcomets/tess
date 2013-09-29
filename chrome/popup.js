@@ -1,8 +1,15 @@
 var TessLabeler = {
   addEventListeners: function() {
+    var self = this;
     document.getElementById('yes').addEventListener('click', function(e) {
-      alert("here");
+      self.label("yes");
     });
+    document.getElementById('no').addEventListener('click', function(e) {
+      self.label("no");
+    });
+  },
+  label: function(type) {
+
   }
 };
 
