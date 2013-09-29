@@ -1,15 +1,16 @@
-import os
-import urllib2
 from flask import (Flask, jsonify, render_template, request)
 from werkzeug.routing import BaseConverter
+from os.path import basename
+from urlparse import urlsplit
 import elastic
+import os
+import urllib2
 
 app = Flask(__name__)
 
-this_dir = os.path.dirname(os.path.abspath(__file__))
-base_folder = os.path.join(this_dir, 'data', 'sites')
-yes_folder = os.path.join(base_folder, 'YesData')
-no_folder = os.path.join(base_folder, 'NoData')
+base_folder = 'data/sites/'
+yes_folder = os.path.join(base_folder, 'YesData/')
+no_folder = os.path.join(base_folder, 'NoData/')
 
 class RegexConverter(BaseConverter):
     def __init__(self, url_map, *items):
@@ -80,8 +81,6 @@ def download(url, path, localFileName = None):
         f.write(r.read())
 
 if __name__ == '__main__':
-    import sys
-    debug = '--debug' in sys.argv
-    app.run('0.0.0.0', debug=debug)
+    app.run('0.0.0.0', debug=True)
 
 # vim: ft=python et sw=4 sts=4
