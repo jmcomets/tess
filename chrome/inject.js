@@ -1,5 +1,5 @@
 var TessClient = {
-  baseURL: 'http://localhost:5000',
+  baseURL: 'http://92.39.246.129:5000',
   label: function(url, yes_no) {
     var xhr = new XMLHttpRequest();
     xhr.open('POST', this.baseURL + '/api/label', true);
