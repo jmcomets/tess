@@ -25,7 +25,7 @@ def format_matchall(query):
                             dict(query_string=dict(default_field="industry", query=query, boost=20)),
                             dict(query_string=dict(default_field="location", query=query, boost=10)),
                             dict(query_string=dict(default_field="description", query=query, boost=3))]
-    
+
     for token in query.split(' '):
         bool_query['should'].append(dict(prefix=dict(_all=dict(prefix=token,  boost=0.6))))
         bool_query['should'].append(dict(prefix=dict(industry=dict(prefix=token,  boost=5))))
@@ -51,7 +51,7 @@ def auto_suggest(query):
     bool_query['must'] = []
     bool_query['must_not'] = []
     bool_query['should'] = [dict(query_string=dict(default_field="_all", query=query))]
-    
+
     # for token in query.split(' '):
     #     bool_query['should'].append(dict(prefix=dict(_all=dict(prefix=token,  boost=0.6))))
     #     bool_query['should'].append(dict(prefix=dict(industry=dict(prefix=token,  boost=5))))
