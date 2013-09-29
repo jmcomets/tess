@@ -1,6 +1,11 @@
-var QUERY_URL = "/api/search?query=",
+$(function() {
+  var QUERY_URL = "/api/search?query=",
+    AC_URL = "/api/auto-suggest",
     $resultBox = $('.result-box'),
-    $searchBar = $('#search-bar');
+    $searchBar = $('#search-bar'),
+    options = { serviceUrl : AC_URL };
+
+$searchBar.autocomplete(options);
 
 $searchBar.keyup(function(e) {
   e.stopPropagation();
@@ -45,5 +50,6 @@ if (pathName !== '/') {
     $resultBox.html(html);
   });
 }
+});
 
 // vim: ft=javascript et sw=2 sts=2
