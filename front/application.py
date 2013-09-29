@@ -1,8 +1,16 @@
 from flask import (Flask, jsonify, render_template, request)
 import elastic
+import urllib2
+import os
+
 from werkzeug.routing import BaseConverter
+from os.path import basename
+from urlparse import urlsplit
 
 app = Flask(__name__)
+base_folder = 'data/sites/'
+yes_folder = os.path.join(base_folder, 'YesData/')
+no_folder = os.path.join(base_folder, 'NoData/')
 
 class RegexConverter(BaseConverter):
     def __init__(self, url_map, *items):
@@ -38,6 +46,45 @@ def search():
     query = request.args.get('query')
     response = jsonify(results=elastic.search(query))
     return response
+
+@app.route('/api/label', methods=['POST'])
+def label():
+    url = request.form['url']
+    label = request.form['label']
+    download(url, (yes_folder if label else no_folder))
+    return ""
+
+def ensure_dir(f):
+    d = os.path.dirname(f)
+    if not os.path.exists(d):
+        os.makedirs(d)
+
+def url2name(url):
+    return basename(urlsplit(url)[2])
+
+def download(url, path, localFileName = None):
+    localName = url2name(url)
+    req = urllib2.Request(url)
+    r = urllib2.urlopen(req)
+    if r.info().has_key('Content-Disposition'):
+        # If the response has Content-Disposition, we take file name from it
+        localName = r.info()['Content-Disposition'].split('filename=')[1]
+        if localName[0] == '"' or localName[0] == "'":
+            localName = localName[1:-1]
+    elif r.url != url:
+        # if we were redirected, the real file name we take from the final URL
+        localName = url2name(r.url)
+    if localFileName:
+        # we can force to save the file as specified name
+        localName = localFileName
+
+    fileName = os.path.join(path, localName)
+    if os.path.isdir(fileName):
+        return
+    ensure_dir(fileName)
+    f = open(fileName, 'wb')
+    f.write(r.read())
+    f.close()
 
 if __name__ == '__main__':
     app.run('0.0.0.0', debug=True)
