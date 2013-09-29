@@ -17,7 +17,7 @@ class PushPipeline(object):
         settings = get_project_settings()
         item.clean()
 
-        if not item['name']: # or not item['price']:
+        if not item['name'] or not item['thumbnail'] or not item['price']:
             raise DropItem
 
         if spider.settings.overrides['push']:
