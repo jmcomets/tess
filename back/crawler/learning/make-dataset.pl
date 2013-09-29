@@ -5,6 +5,16 @@ use XML::LibXML;
 my $candXpath = "/*/*/*/*//*[self::div or self::p or self::span or self::h1 or self::h2 or self::h3]";
 
 my %features = (
+  "content"   => sub {
+    my ($cand) = @_;
+    my $v = $cand->textContent;
+    my $ln = length($v);
+    if($ln < 50 || $ln <= 0) {    
+      $v =~ s/[^A-Za-z-_]//g;
+      print "\tcontent=$v";
+    }
+    print "\tcntSize=".$ln;
+  },
   "parProd"   => 'number(contains(parent::*/@class,"prod"))',
   "ancProd"   => 'count(ancestor::*[contains(@class,"prod")])',
   "ancDesc"   => 'count(ancestor::*[contains(@class,"desc")])',
