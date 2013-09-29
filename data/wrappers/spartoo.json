@@ -1,7 +1,7 @@
 {
   "_id": "spartoo",
   "name": "spartoo",
-  "pattern": [
+  "pattern": [	
      "/[A-Z][\\w\\-]+[0-9-]+.php"
   ],
   "rules": {
