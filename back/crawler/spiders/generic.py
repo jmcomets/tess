@@ -24,8 +24,8 @@ def generate_spider(domain, category, settings):
     # TODO : debug
     # with open('../../data/wrappers/ldlc.json') as p_f:
     #     params = json.loads(p_f.read())
-    
-    # Generating a spider class to scrap items from that kind of website    
+
+    # Generating a spider class to scrap items from that kind of website
     class Spider(CrawlSpider):
 
         name = params['name']
@@ -41,8 +41,13 @@ def generate_spider(domain, category, settings):
 
             classes_freq = Counter(lxml.html.fromstring(response.body).xpath('//@class'))
             prediction = predict.make_prediction(classes_freq.items())
+<<<<<<< HEAD
             
             #log.msg('###########\n\n {} -> {} \n\n###############'.format(response.url, prediction))
+=======
+
+            log.msg('###########\n\n {} -> {} \n\n###############'.format(response.url, prediction))
+>>>>>>> fcc258c725dec92436769b34cbcef67c86b36052
 
         def parse_product(self, response):
             """ Parses a product page """
