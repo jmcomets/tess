@@ -1,0 +1,407 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    
+
+  <!-- ===================================================================== -->
+  <!-- PAGE TITLE -->
+  <!-- ===================================================================== -->
+  <title>Piazza &#8226; LMS Integration</title>
+
+
+  <!-- ===================================================================== -->
+  <!-- META TAGS -->
+  <!-- ===================================================================== -->
+
+  <!-- Forces page to render at the client device's width. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Specify character set -->
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=EDGE"/>
+
+  <!-- Description for search results -->
+  <meta name="description" content="Piazza is a free online gathering place where students can ask, answer, and explore 24/7, under the guidance of their instructors. Students as well as instructors can answer questions, fueling a healthy, collaborative discussion." />
+  <meta name="keywords" content="classroom,homework,help,q&amp;a,question and answer,school,university" />
+
+  <!-- Description for Facebook -->
+  <meta property="og:title" content="Piazza &#8226; LMS Integration"/>
+  <meta property="og:image" content="http://piazza.com/images/splash/PageTop/Piazza-Icon.png"/>
+  <meta property="og:url"
+    
+      content="http://www.piazza.com"
+    
+  />
+  <meta property="og:description" content="With Piazza, easily answer questions, manage course materials, and track student participation. It'll save you time, and your students will love using it. It's free, and easy to get started."/>
+  
+
+  <!-- ===================================================================== -->
+  <!-- CSS -->
+  <!-- ===================================================================== -->
+
+  <!-- Third-Party -->
+  <link rel="stylesheet" type="text/css" href="/css/shared/lib/bootstrap/bootstrap.min.css?v=296" />
+<!-- https://dvngeac8rg9mb.cloudfront.net -->
+
+  <link rel="stylesheet" type="text/css" href="/css/shared/lib/bootstrap/bootstrap-responsive.min.css?v=296" />
+<!-- https://dvngeac8rg9mb.cloudfront.net -->
+
+  <link rel="stylesheet" type="text/css" href="/css/plugins/fancybox-1.3.4.css?v=296" />
+<!-- https://dvngeac8rg9mb.cloudfront.net -->
+
+
+  <!-- ===================================================================== -->
+  <!-- JQUERY -->
+  <!-- ===================================================================== -->
+
+  <!-- jQuery is the one JS file we do include at the top of the page, since so much HTML-nested code requires it. -->
+  <script type="text/javascript" src="/javascripts/jquery-1.7.1.min.js?v=296"></script>
+<!--https://dvngeac8rg9mb.cloudfront.net-->
+  
+  <link rel="stylesheet" type="text/css" href="/css/splash/pages/product/product_lti.css?v=296" />
+<!-- https://dvngeac8rg9mb.cloudfront.net -->
+</head>
+<body>
+
+  <div class="topbar">
+  <div class="container">
+    <a class="logo" href="/signup"></a>
+
+    <!-- Back Button (for splash pages only) -->
+    
+
+    <!-- Signup Buttons -->
+    <div class="btn-group pull-right">
+      <a class="btn btn-topbar dropdown-toggle log_click" id="signup_dropdown" data-toggle="dropdown" href="#">
+        Sign Up
+        <span class="caret"></span>
+      </a>
+      <ul class="dropdown-menu">
+        <li><button class="btn btn-warning btn-large btn-block" onClick="location.href='/instructors/school-search'">Instructors Get Started</button></li>
+        <li><button class="btn btn-success btn-large btn-block" onClick="location.href='/school-search'">Students Get Started</button></li>
+      </ul>
+    </div>
+
+    <!-- Login Buttons -->
+    <button id="topbar_login" class="btn btn-topbar pull-right log_click" href="#myModal" onclick="showLogin();">Log in</button>
+
+    
+
+  </div>
+</div><script>
+  function submitenter(myfield,e) {
+    var keycode;
+    if (window.event) keycode = window.event.keyCode;
+    else if (e) keycode = e.which;
+    else return true;
+
+    if (keycode == 13) {
+      myfield.form.submit();
+      return false;
+    } else return true;
+  }
+</script>
+<div class="modal modal-small hide" id="login">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h3>Log in</h3>
+  </div>
+  
+  <div class="modal-body">
+    <form class="form-horizontal" id="login-form" method="post" action="https://piazza.com/class">
+      <input type="hidden" name="from" value="/signup"/>
+      <div>
+        <div class="control-group">
+          <label class="control-label" for="inputEmail">Email:</label>
+          <div class="controls">
+            <input type="text" class="input-block-level" id="email_field" name="email" value="tutorial2"/>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="inputPassword">Password:</label>
+          <div class="controls">
+            <input type="password" class="input-block-level" id="password_field" name="password" onKeyPress="return submitenter(this,event)"/>
+          </div>
+        </div>
+        <div class="control-group">
+          <div class="controls">
+            <label class="checkbox">
+              <input type="checkbox" id="remember" name="remember" checked="checked"/> Remember me
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="btn-toolbar">
+        <button class="btn btn-link" onclick="window.location.href='/account/password/forgot'; return false;">Forgot your password?</button>
+        <button class="btn pull-right">Log in</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+
+<script type="text/javascript">
+
+function showLogin() {
+  $('#login').modal('show');
+  
+  $('#password_field').focus();
+  
+}
+
+</script>
+
+  <div class="page">
+    <div class="container">
+      <div class="row">
+        
+        
+
+  <div class="span3 sidebar">
+
+    <h6>About</h6>
+    <ul class="nav nav-tabs nav-stacked">
+      <li><a href="/about/story">Our Story</a></li>
+      <li><a href="/about/team">Team</a></li>
+      <li><a href="/about/investors">Investors</a></li>
+      <li><a href="/about/news">News</a></li>
+      <li><a href="/about/jobs">Jobs</a></li>
+    </ul>
+
+    <h6>Product</h6>
+    <ul class="nav nav-tabs nav-stacked">
+      <li><a href="/product/overview">Why Piazza Works</a></li>
+      <li><a href="/product/features">Features</a></li>
+      <li><a href="/product/mobile">Mobile Apps</a></li>
+      <li><a href="/product/lti">LMS Integration</a></li>
+      <li><a href="/product/accessibility">Accessibility</a></li>
+    </ul>
+
+    <h6>Support</h6>
+    <ul class="nav nav-tabs nav-stacked">
+      <li><a href="/support/help">Help</a></li>
+      
+        <li><a href="#" rel="fancybox-dashboard">Product FAQ</a></li>
+        <li><a href="#" rel="fancybox-dashboard-faq">Instructor FAQ</a></li>
+      
+      <li><a href="/product/overview#instructor-resources">Instructor Resources</a></li>
+      <li><a href="/support/contact">Contact Us</a></li>
+    </ul>
+
+    <h6>Legal</h6>
+    <ul class="nav nav-tabs nav-stacked">
+      <li><a href="/legal/privacy">Privacy Policy</a></li>
+      <li><a href="/legal/copyright">Copyright Policy</a></li>
+      <li><a href="/legal/terms">Terms of Service</a></li>
+      <li><a href="/legal/ferpa">FERPA Compliance</a></li>
+    </ul>
+  </div>
+
+  <script type="text/javascript">
+  $(document).ready(function() {
+    $('.sidebar h6').on('click', function() {
+      if ( document.body.clientWidth < 768 ) {
+        if ( $(this).next('ul').hasClass('active') ) {
+          $(this).next('ul').removeClass('active');
+        } else {
+          $(this).next('ul').addClass('active').siblings('ul').removeClass('active');
+        }
+      }
+    });
+  });
+  </script>
+
+
+
+
+        <div class="span9 offset3">
+          
+          <h1>LMS Integration</h1>
+
+          <h2 class="align-left">Join the growing number of schools that use Piazza within their LMS, including:</h2>
+
+          <ul class="school-logos">
+            <li class="school-logo michigan"></li>
+            <li class="school-logo georgia-tech"></li>
+            <li class="school-logo cornell"></li>
+            <li class="school-logo stanford"></li>
+            <li class="school-logo sjsu"></li>
+            <li class="school-logo florida"></li>
+            <li class="school-logo berkeley"></li>
+          </ul>
+
+          <h3>Unlock Piazza in Your LMS</h3>
+          <p>Using Piazza with your <em>Learning Management System (LMS)</em> is very convenient:</p>
+          <ul>
+            <li>Instructors can create a Piazza for their class <strong>with a single click</strong>.</li>
+            <li>Students and instructors are <strong>automatically enrolled</strong> with appropriate roles, based on the course roster.</li>
+            <li>When clicking on Piazza in the LMS, users are <strong>automatically signed in to Piazza</strong>, so there's no need to remember a separate user name and password.</li>
+          </ul>
+
+          <h3>Want to Unlock Piazza in Your LMS?</h3>
+          <p>Most LMSs already support Piazza: Blackboard, Moodle, Sakai, Desire2Learn, Canvas, Jenzabar, Angel, and more. Unlock Piazza as an alternative to the clunky, dated discussion boards that came with your LMS.</p>
+          <strong>Download simple instructions to set up your LMS here:</strong>
+          <ul>
+            <li><a href="https://s3.amazonaws.com/piazza-materials/LTI-Setup/AddingPiazzainBlackboard.pdf" target="_blank">Blackboard</a></li>
+            <li><a href="https://s3.amazonaws.com/piazza-materials/LTI-Setup/AddingPiazzainMoodle.pdf" target="_blank">Moodle</a></li>
+            <li><a href="https://s3.amazonaws.com/piazza-materials/LTI-Setup/AddingPiazzainSakai.pdf" target="_blank">Sakai</a></li>
+            <li><a href="https://s3.amazonaws.com/piazza-materials/LTI-Setup/AddingPiazzainD2L.pdf" target="_blank">Desire2Learn</a></li>
+            <li><a href="https://s3.amazonaws.com/piazza-materials/LTI-Setup/AddingPiazzainCanvas.pdf" target="_blank">Canvas</a></li>
+            <li><a href="https://s3.amazonaws.com/piazza-materials/LTI-Setup/GetAProgrammerStartedWithLTI.pdf" target="_blank">Have a custom LMS?</a></li>
+          </ul>
+
+          <p><a class="btn btn-warning btn-large" href="/support/contact/lti">Contact us</a> or put us in touch with the LMS admin at your school.</p>
+          <p class="muted">Piazza is <a href="/legal/ferpa">FERPA-compliant</a>, <a href="/product/accessibility">accessibile</a>, and works with a wide range of LMS platforms.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+  <div class="container">
+    <div class="row"> 
+      
+      <!-- Internal Links -->
+      <div class="span10">
+        <div class="row">
+          <div class="span2">
+            <h6 class="title">About</h6>
+            <ul>
+              <li><a href="/about/story">Our Story</a></li>
+              <li><a href="/about/team">Team</a></li>
+              <li><a href="/about/investors">Investors</a></li>
+              <li><a href="/about/news">News</a></li>
+              <li><a href="/about/jobs">Jobs</a></li>
+            </ul>
+          </div>
+          <div class="span2">
+            <h6 class="title">Product</h6>
+            <ul>
+              <li><a href="/product/overview">Why Piazza Works</a></li>
+              <li><a href="/product/features">Features</a></li>
+              <li><a href="/product/mobile">Mobile Apps</a></li>
+              <li><a href="/product/lti">LMS Integration</a></li>
+              <li><a href="/product/accessibility">Accessibility</a></li>
+            </ul>
+          </div>
+          <div class="span2">
+            <h6 class="title">Support</h6>
+            <ul>
+              <li><a href="/support/help">Help</a></li>
+              
+                <li><a href="#" rel="fancybox-dashboard">Product FAQ</a></li>
+                <li><a href="#" rel="fancybox-dashboard-faq">Instructor FAQ</a></li>
+              
+              <li><a href="/product/overview#instructor-resources">Instructor Resources</a></li>
+              <li><a href="/support/contact">Contact Us</a></li>
+            </ul>
+          </div>
+          <div class="span2">
+            <h6 class="title">Legal</h6>
+            <ul>
+              <li><a href="/legal/privacy">Privacy Policy</a></li>
+              <li><a href="/legal/copyright">Copyright Policy</a></li>
+              <li><a href="/legal/terms">Terms of Service</a></li>
+              <li><a href="/legal/ferpa">FERPA Compliance</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Social & Legal -->
+      <div class="span2">
+        <ul class="social">
+          <li>
+            <a class="twitter-link" href="http://twitter.com/#!/piazza" target="_blank" onClick="PA.trackEvent(true, 'twitter_button', '/product/lti');"></a>
+          </li>
+          <li>
+            <a class="facebook-link" href="http://www.facebook.com/piazzza" target="_blank" onClick="PA.trackEvent(true, 'facebook_button', '/product/lti');"></a>
+          </li>
+        </ul>
+        <div class="legal">
+          <div id="CopyrightInfo">
+            Copyright &#169; 2013<br/>Piazza Technologies<br/>All Rights Reserved
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <hr/>
+    
+    <div class="align-center">
+      Our terms changed on July 14, 2013. Please review the new <a href="/legal/terms">Piazza Terms of Service</a>.
+    </div>
+
+  </div>
+</div>
+
+
+  <!-- Javascripts -->
+  
+
+  <!-- ===================================================================== -->
+  <!-- JAVASCRIPTS -->
+  <!-- ===================================================================== -->
+
+  <!-- Third-Party -->
+  <script type="text/javascript" src="/javascripts/bootstrap.min.js?v=296"></script>
+<!--https://dvngeac8rg9mb.cloudfront.net-->
+  <script type="text/javascript" src="/javascripts/jquery.blockUI.js?v=296"></script>
+<!--https://dvngeac8rg9mb.cloudfront.net-->
+
+  <script type="text/javascript" src="/javascripts/jquery.fancybox-1.3.4.pack.js?v=296"></script>
+<!--https://dvngeac8rg9mb.cloudfront.net-->
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-21514163-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+  <!-- Piazza -->
+  <script type="text/javascript" src="/modules/event_manager.js?v=296"></script>
+<!--https://dvngeac8rg9mb.cloudfront.net-->
+  <script type="text/javascript" src="/modules/helpers.js?v=296"></script>
+<!--https://dvngeac8rg9mb.cloudfront.net-->
+  <script type="text/javascript" src="/modules/ajax.js?v=296"></script>
+<!--https://dvngeac8rg9mb.cloudfront.net-->
+  <script type="text/javascript" src="/js/splash/splash.js?v=296"></script>
+<!--https://dvngeac8rg9mb.cloudfront.net-->
+  
+  <script type="text/javascript">
+  $(document).ready(function() {
+    
+    var $featureDisplay = $('#feature-display');
+    var $items = $('.topic-list li');
+
+    $items.find('.topic-title').on('click', function() {
+      
+      var $item = $(this).closest('li');
+
+      $items.removeClass('active');
+      $item.addClass('active');
+
+      var title    = $item.find('.topic-title').text();
+      var content  = $item.find('.topic-content').html();
+      var imageURL = $item.find('.topic-image-url').html();
+
+      $featureDisplay.find('.feature-display-title').html( title );
+      $featureDisplay.find('.feature-display-content').html( content );
+      $featureDisplay.find('.feature-display-image-url').attr( 'src', imageURL );
+    
+    });
+
+    $('.topic-list li .topic-title').first().click();
+  });
+  </script>
+</body>
+</html>

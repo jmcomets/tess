@@ -1,0 +1,806 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-gb" xml:lang="en-gb">
+<head>
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta http-equiv="content-style-type" content="text/css" />
+<meta http-equiv="content-language" content="en-gb" />
+<meta http-equiv="imagetoolbar" content="no" />
+<meta name="resource-type" content="document" />
+<meta name="distribution" content="global" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Ripple Discussion &bull; View topic - Ripple is officially open-source!</title>
+
+<link rel="alternate" type="application/atom+xml" title="Feed - Ripple Discussion" href="http://ripple.com/forum/feed.php" /><link rel="alternate" type="application/atom+xml" title="Feed - New Topics" href="http://ripple.com/forum/feed.php?mode=topics" /><link rel="alternate" type="application/atom+xml" title="Feed - Forum - Developers" href="http://ripple.com/forum/feed.php?f=2" /><link rel="alternate" type="application/atom+xml" title="Feed - Topic - Ripple is officially open-source!" href="http://ripple.com/forum/feed.php?f=2&amp;t=3718" />
+
+<!--
+	phpBB style name: Ripple Forum
+	Based on style:   Metro Blue v.1.0.1
+	Based on style:   prosilver (this is the default phpBB3 style)
+	Original author:  Tom Beddard ( http://www.subBlue.com/ )
+	Modified by:      PixelGoose Studio
+	Modified by:      OpenCoin, Inc.
+-->
+
+<script type="text/javascript">
+// <![CDATA[
+	var jump_page = 'Enter the page number you wish to go to:';
+	var on_page = '1';
+	var per_page = '10';
+	var base_url = './viewtopic.php?f=2&amp;t=3718&amp;sid=be47fb3439ebf2b4c9c45cb9364688d0';
+	var style_cookie = 'phpBBstyle';
+	var style_cookie_settings = '; path=/; domain=ripple.com; secure';
+	var onload_functions = new Array();
+	var onunload_functions = new Array();
+
+	
+
+	/**
+	* Find a member
+	*/
+	function find_username(url)
+	{
+		popup(url, 760, 570, '_usersearch');
+		return false;
+	}
+
+	/**
+	* New function for handling multiple calls to window.onload and window.unload by pentapenguin
+	*/
+	window.onload = function()
+	{
+		for (var i = 0; i < onload_functions.length; i++)
+		{
+			eval(onload_functions[i]);
+		}
+	};
+
+	window.onunload = function()
+	{
+		for (var i = 0; i < onunload_functions.length; i++)
+		{
+			eval(onunload_functions[i]);
+		}
+	};
+
+// ]]>
+</script>
+<script type="text/javascript" src="./styles/ripple/template/styleswitcher.js"></script>
+<script type="text/javascript" src="./styles/ripple/template/forum_fn.js"></script>
+
+<link href="./styles/ripple/theme/print.css" rel="stylesheet" type="text/css" media="print" title="printonly" />
+<link href="./style.php?id=3&amp;lang=en&amp;sid=be47fb3439ebf2b4c9c45cb9364688d0" rel="stylesheet" type="text/css" media="screen, projection" />
+
+<link href="./styles/ripple/theme/normal.css" rel="stylesheet" type="text/css" title="A" />
+<link href="./styles/ripple/theme/medium.css" rel="alternate stylesheet" type="text/css" title="A+" />
+<link href="./styles/ripple/theme/large.css" rel="alternate stylesheet" type="text/css" title="A++" />
+
+
+
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+	$('a.login-window').click(function() {
+		
+		// Getting the variable's value from a link 
+		var loginBox = this.hash;
+
+		//Fade in the Popup and add close button
+		$(loginBox).fadeIn(300);
+		
+		//Set the center alignment padding + border
+		var popMargTop = ($(loginBox).height() + 24) / 2; 
+		var popMargLeft = ($(loginBox).width() + 24) / 2; 
+		
+		$(loginBox).css({ 
+			'margin-top' : -popMargTop,
+			'margin-left' : -popMargLeft
+		});
+		
+		// Add the mask to body
+		$('body').append('<div id="mask"></div>');
+		$('#mask').fadeIn(300);
+		
+		return false;
+	});
+	
+	// When clicking on the button close or the mask layer the popup closed
+	$('a.close, #mask').live('click', function() { 
+	  $('#mask , .login-popup').fadeOut(300 , function() {
+		$('#mask').remove();  
+	}); 
+	return false;
+	});
+	
+	$('#navbar_username').focus(function() {
+		$('#navbar_username').parent().addClass('active');
+	}); 
+	$('#navbar_username').blur(function() {
+		$('#navbar_username').parent().removeClass('active');
+	}); 
+	$('#navbar_password').focus(function() {
+		$('#navbar_password').parent().addClass('active');
+	}); 
+	$('#navbar_password').blur(function() {
+		$('#navbar_password').parent().removeClass('active');
+	}); 
+
+});
+</script>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$(".toggleMenuButton").click(function () {
+			$(".tabs").slideToggle("fast");
+			$(".toggleMenuButton").toggleClass("active");
+		})
+
+		$(window).resize(function() {
+		    //small-screen
+		    if (window.innerWidth < 767) {
+		        $(".tabs").css('display', '');
+			    $('.toggleMenuButton').removeClass('active');
+		    }
+		        //end small-screen
+		}) .resize(); // trigger resize event
+
+	});
+</script>
+<!-- Google Web Fonts -->
+<link href='//fonts.googleapis.com/css?family=Open+Sans:300,400,600&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body id="phpbb" class="section-viewtopic ltr">
+
+<div id="wrap">
+	<a id="top" name="top" accesskey="t"></a>
+	<div id="page-header">
+    	<div id="above-headerbar">
+			
+			<ul class="user-links">
+                <li><a href="./ucp.php?mode=register&amp;sid=be47fb3439ebf2b4c9c45cb9364688d0">Register</a>&nbsp;&nbsp;|</li>
+                <li><a href="#login-box" class="login-window" title="Login" accesskey="x">Login</a><a href="./ucp.php?mode=login&amp;sid=be47fb3439ebf2b4c9c45cb9364688d0" class="login-link" title="Login" accesskey="x">Login</a></li>
+			</ul>
+
+			<div id="login-box" class="login-popup">
+			    <a href="#" class="close"><img src="./styles/ripple/theme/images/close_popup.png" class="close-button" title="Close" alt="Close" /></a>
+			    <div id="login-text">Login</div>
+
+				<form method="post" action="./ucp.php?mode=login&amp;sid=be47fb3439ebf2b4c9c45cb9364688d0" class="quick-login">
+					<fieldset>
+						<div class="navbar_username_outer">
+							<label for="username">Username:</label>&nbsp;<br /><input type="text" name="username" id="navbar_username" size="10" class="inputbox" title="Username" />
+						</div>
+
+						<div class="navbar_password_outer">
+							<label for="password">Password:</label>&nbsp;<br /><input type="password" name="password" id="navbar_password" size="10" class="inputbox" title="Password" />
+						</div>
+
+						<div class="login-buttons">
+							<input type="submit" name="login" value="Login" class="button2" />
+							<input type="hidden" name="redirect" value="./viewtopic.php?f=2&amp;t=3718&amp;p=18013&amp;sid=be47fb3439ebf2b4c9c45cb9364688d0" />
+
+							
+								<label id="autologin_label" for="autologin">Log me on automatically each visit <input type="checkbox" name="autologin" id="autologin" /></label>
+							
+						</div>
+					</fieldset>
+				</form>			        
+					<a class="register-link" href="./ucp.php?mode=register&amp;sid=be47fb3439ebf2b4c9c45cb9364688d0">Register</a>
+			        
+			</div>
+
+            
+        </div>
+        
+        <div id="header">
+        	<a href="./index.php?sid=be47fb3439ebf2b4c9c45cb9364688d0" id="logo" title="Board index"><img src="./styles/ripple/imageset/site_logo.png" width="300" height="60" alt="" title="" /></a>
+
+          <div class="activities">
+            
+			      <div class="search-box">
+				      <form action="./search.php?sid=be47fb3439ebf2b4c9c45cb9364688d0" method="get" id="search">
+				        <fieldset>
+                	<div class="search-box-inner">
+                    <input class="button2" value="Search" type="submit" />
+                    <input name="keywords" id="keywords" type="text" maxlength="128" title="Search for keywords" class="inputbox search" value="Search…" onclick="if(this.value=='Search…')this.value='';" onblur="if(this.value=='')this.value='Search…';" />
+                  </div>
+                  &nbsp;<a href="./search.php?sid=be47fb3439ebf2b4c9c45cb9364688d0" class="search-adv-link" title="View the advanced search options">Advanced search</a> <input type="hidden" name="sid" value="be47fb3439ebf2b4c9c45cb9364688d0" />
+
+				        </fieldset>
+				      </form>
+			      </div>
+            <div class="tabs-outer">
+            	<a href="javascript:void(0);" title="Menu" class="toggleMenuButton"></a>
+            	<ul class="tabs">
+            		<li id="faq-link"><a href="./faq.php?sid=be47fb3439ebf2b4c9c45cb9364688d0" title="Frequently Asked Questions"><span>FAQ</span></a></li>
+            		<!-- Add tabs below -->
+                  
+            	</ul>
+            </div>
+          </div>
+
+        </div>
+        <div id="subheader-menu">
+            
+            <ul class="links right">
+                
+            </ul>
+            <ul class="links">
+                
+                    <li id="submenu-unanswered"><a href="./search.php?search_id=unanswered&amp;sid=be47fb3439ebf2b4c9c45cb9364688d0">View unanswered posts</a></li><li id="submenu-active-topics"><a href="./search.php?search_id=active_topics&amp;sid=be47fb3439ebf2b4c9c45cb9364688d0">View active topics</a></li>
+                
+            </ul>
+            
+        </div>
+        
+        <div id="breadcrumbs">
+        	<a class="icon-home" href="./index.php?sid=be47fb3439ebf2b4c9c45cb9364688d0" accesskey="h">Board index</a> &nbsp;<img class="navbit-arrow" src="./styles/ripple/theme/images/navbit-arrow-right.png" alt="" />&nbsp;<a href="./viewforum.php?f=2&amp;sid=be47fb3439ebf2b4c9c45cb9364688d0">Developers</a>
+        </div>
+
+		<ul class="thread-icons">
+          <li class="rightside"><a href="./viewtopic.php?f=2&amp;t=3718&amp;sid=be47fb3439ebf2b4c9c45cb9364688d0&amp;view=print" title="Print view" accesskey="p" class="print">Print view</a></li>
+		</ul>
+
+	</div>
+
+	<a name="start_here"></a>
+
+
+
+	<div id="page-body">
+		
+
+<h2>Ripple is officially open-source!</h2>
+<!-- NOTE: remove the style="display: none" when you want to have the forum description on the topic body --><div style="display: none !important;">Technical questions about the Ripple API, the protocol, etc.<br /></div>
+<p>
+	<strong>Moderator:</strong> <a href="./memberlist.php?mode=viewprofile&amp;u=176&amp;sid=be47fb3439ebf2b4c9c45cb9364688d0">AndrewSF</a>
+</p>
+
+
+<div class="topic-actions">
+
+	<div class="buttons">
+	
+		<div class="reply-icon"><a href="./posting.php?mode=reply&amp;f=2&amp;t=3718&amp;sid=be47fb3439ebf2b4c9c45cb9364688d0" title="Post a reply"><span></span>Post a reply</a></div>
+	
+	</div>
+
+	
+        <div class="search-box">
+			<form method="get" id="forum-search" action="./search.php?sid=be47fb3439ebf2b4c9c45cb9364688d0">
+            <fieldset>
+                <div class="search-box-inner">
+                    <input class="button2" type="submit" value="Search" />
+                    <input class="inputbox search tiny" type="text" name="keywords" id="keywords" size="20" value="Search this topic…" onclick="if (this.value == 'Search this topic…') this.value = '';" onblur="if (this.value == '') this.value = 'Search this topic…';" />
+                    <input type="hidden" name="t" value="3718" />
+<input type="hidden" name="sf" value="msgonly" />
+<input type="hidden" name="sid" value="be47fb3439ebf2b4c9c45cb9364688d0" />
+
+                </div>
+            </fieldset>
+            </form>
+        </div>
+	
+		<div class="pagination">
+			21 posts
+			 &bull; <a href="#" onclick="jumpto(); return false;" title="Click to jump to page…">Page <strong>1</strong> of <strong>3</strong></a> &bull; <span><strong>1</strong><span class="page-sep">, </span><a href="./viewtopic.php?f=2&amp;t=3718&amp;sid=be47fb3439ebf2b4c9c45cb9364688d0&amp;start=10">2</a><span class="page-sep">, </span><a href="./viewtopic.php?f=2&amp;t=3718&amp;sid=be47fb3439ebf2b4c9c45cb9364688d0&amp;start=20">3</a></span>
+		</div>
+	
+
+</div>
+<div class="clear"></div>
+
+
+	<div id="p18013" class="post bg2">
+
+		<div class="postbody">
+			
+
+			<h3 class="first"><a href="#p18013">Ripple is officially open-source!</a></h3>
+			<p class="author"><a href="./viewtopic.php?p=18013&amp;sid=be47fb3439ebf2b4c9c45cb9364688d0#p18013"><img src="./styles/ripple/imageset/icon_post_target.png" width="11" height="9" alt="Post" title="Post" /></a>by <strong><a href="./memberlist.php?mode=viewprofile&amp;u=72&amp;sid=be47fb3439ebf2b4c9c45cb9364688d0" style="color: #E18900;" class="username-coloured">justmoon</a></strong> &raquo; Thu Sep 26, 2013 1:05 am </p>
+
+			
+
+			<div class="content">Hey all!<br /><br />It's my great pleasure to announce the release of the rippled p2p node source-code, the code that implements the Ripple protocol and powers the Ripple payment network. In conjunction with the open-sourcing we're also announcing that OpenCoin Inc. will change its name to Ripple Labs Inc. That latter part is mostly because the old name was confusing and required explanation. We hope the new name is a bit more self-explanatory - we're the place that Ripple came out of and we'll continue to experiment with and develop Ripple technology.<br /><br />For those of you who are less technical, the significance of our announcement is that Ripple is <span style="font-weight: bold">not</span> another altcoin. All the protocols and data formats have evolved independently of Bitcoin. Our <a href="https://ripple.com/wiki/Consensus" class="postlink">consensus</a> process uses peering (kinda like the Internet itself) instead of mining. The ledger is a data structure that describes the current state of the network as a merkle tree (this has the same effect as the <a href="https://bitcointalk.org/index.php?topic=21995.0" class="postlink">merkle tree of unspent outputs</a> proposals that have come up within the Bitcoin community.) The time between ledgers is <a href="https://ripple.com/wiki/Continuous_Ledger_Close" class="postlink">adaptive</a> rather than fixed. The current implementation supports holding deposit contracts - balances representating currencies other than the native currency. And we support the trading of these currencies in the network - as one atomic transaction, even across multiple conversions. The Ripple ledger is a general purpose data store and we plan to enable you to program the network freely via <a href="https://ripple.com/wiki/User:Justmoon/Contracts:_Overview" class="postlink">contracts</a>.<br /><br />It feels weird that it falls upon me to announce the open-sourcing of this code, since aside from a tiny fix here or there I wrote none of it. But I have worked closely with the people who did and they have completely changed my perspective on what's possible. I remember promoting Bitcoin to blank stares three years ago and now talking to bitcoiners about Ripple I often feel the same way. I hope that over the next year, starting from today, we can change that - and you'll be able to see Ripple as we do.<br /><br />I want to address a few questions that I know will come up:<br /><br /><span style="font-weight: bold">1. Forks</span><br /><br />People will fork the network pretty much instantly (as soon as they can figure out our config files <img src="./images/smilies/Grin.png" alt=":D" title="Very Happy" />), so does that worry me re: job security? Of course. But that's the whole point of open-sourcing: It's one thing we can do to help keep us honest. I believe as long as we continue to live up to our promises, work hard and provide value to users, they will continue to use our network. And in doing so they're supporting our effort to build out the software and extend the network through any and all means available until all XRP are sold or given away.<br /><br />I don't believe in closed-source, I don't believe in copyright, but I do believe in supporting the artists, the developers and entrepreneurs who make things happen. We have a growing team of people with big ideas and ambitious plans. So please consider using the original network so we can continue to develop amazing features and integrate every payment system on the face of the planet.<br /><br />One final request for those planning to fork: If you do fork, please come up with a unique name for your network and a different currency code than XRP. A little search and replace won't kill you and you'll make life a lot easier and less confusing for both our users and your own.<br /><br /><br /><span style="font-weight: bold">2. Decentralization</span><br /><br />Whether the code is open-source or not has nothing to do with whether Ripple is decentralized or not. As far as the original network is concerned we will continue to recommend our own validators for the time being. Running the core group of validators lets us close security holes much more quickly, which is very important at least until major feature development is completed. The last of these <span style="font-style: italic">major</span> features left is contracts.<br /><br />So to recap, the general plan is to focus on contracts next and once their API is reasonably stable focus on building out the tools and testing needed to move to a fully distributed network topology.<br /><br />That said, we do encourage interested parties to start running validators immediately - this is your chance to build a history and reputation as a reliable validator so people will later be more likely to add you to their <a href="https://ripple.com/wiki/UNL" class="postlink">UNLs</a>.<br /><br /><br /><span style="font-weight: bold">3. Bugs</span><br /><br />There will be bugs. If they are security-critical, please consider responsible disclosure through <!-- e --><a href="mailto:bugs@ripple.com">bugs@ripple.com</a><!-- e -->. We also have a <a href="https://ripple.com/bug-bounty/" class="postlink">bounty program</a> for critical bugs.<br /><br />------------------------------------------------------------<br /><br />Alright, that leaves only one thing.<br /><br /><!-- m --><a class="postlink" href="https://github.com/ripple/rippled/">https://github.com/ripple/rippled/</a><!-- m --><br /><br />Go nuts.<br /><br />------------------------------------------------------------<br /><br />Cheers,<br /><br />Stefan Thomas<br />CTO, Ripple Labs Inc.<br /><br /><!-- m --><a class="postlink" href="http://www.ripple.com">http://www.ripple.com</a><!-- m --><br /><br />PS: Cross-posting this on the <a href="https://bitcointalk.org/index.php?topic=301635.0" class="postlink">Bitcoin forum</a> as well.</div>
+
+			
+
+		</div>
+
+		
+			<dl class="postprofile" id="profile18013">
+			<dt>
+				
+          <div class="avatar">
+					  <a href="./memberlist.php?mode=viewprofile&amp;u=72&amp;sid=be47fb3439ebf2b4c9c45cb9364688d0"><img src="./download/file.php?avatar=72_1371677919.png" width="60" height="60" alt="User avatar" /></a><br />
+          </div>
+				<a href="./memberlist.php?mode=viewprofile&amp;u=72&amp;sid=be47fb3439ebf2b4c9c45cb9364688d0" style="color: #E18900;" class="username-coloured">justmoon</a>
+			</dt>
+
+			<dd>OpenCoin<br /><img src="./images/ranks/oc_employee.png" alt="OpenCoin" title="OpenCoin" /></dd>
+
+		<dd>&nbsp;</dd>
+
+		<dd><strong>Posts:</strong> 30</dd><dd><strong>Joined:</strong> Wed Jan 02, 2013 9:13 am</dd>
+
+		</dl>
+	
+
+		<div class="back2top"><a href="#wrap" class="top" title="Top">Top</a></div>
+
+	</div>
+
+	<hr class="divider" />
+
+	<div id="p18019" class="post bg1">
+
+		<div class="postbody">
+			
+
+			<h3 ><a href="#p18019">Re: Ripple is officially open-source!</a></h3>
+			<p class="author"><a href="./viewtopic.php?p=18019&amp;sid=be47fb3439ebf2b4c9c45cb9364688d0#p18019"><img src="./styles/ripple/imageset/icon_post_target.png" width="11" height="9" alt="Post" title="Post" /></a>by <strong><a href="./memberlist.php?mode=viewprofile&amp;u=11258&amp;sid=be47fb3439ebf2b4c9c45cb9364688d0">Martin Brown</a></strong> &raquo; Thu Sep 26, 2013 1:19 am </p>
+
+			
+
+			<div class="content">congrats!!</div>
+
+			
+
+		</div>
+
+		
+			<dl class="postprofile" id="profile18019">
+			<dt>
+				<a href="./memberlist.php?mode=viewprofile&amp;u=11258&amp;sid=be47fb3439ebf2b4c9c45cb9364688d0">Martin Brown</a>
+			</dt>
+
+			
+
+		<dd>&nbsp;</dd>
+
+		<dd><strong>Posts:</strong> 10</dd><dd><strong>Joined:</strong> Thu Aug 01, 2013 10:08 pm</dd>
+
+		</dl>
+	
+
+		<div class="back2top"><a href="#wrap" class="top" title="Top">Top</a></div>
+
+	</div>
+
+	<hr class="divider" />
+
+	<div id="p18028" class="post bg2">
+
+		<div class="postbody">
+			
+
+			<h3 ><a href="#p18028">Re: Ripple is officially open-source!</a></h3>
+			<p class="author"><a href="./viewtopic.php?p=18028&amp;sid=be47fb3439ebf2b4c9c45cb9364688d0#p18028"><img src="./styles/ripple/imageset/icon_post_target.png" width="11" height="9" alt="Post" title="Post" /></a>by <strong><a href="./memberlist.php?mode=viewprofile&amp;u=11299&amp;sid=be47fb3439ebf2b4c9c45cb9364688d0">InsightfulTrader</a></strong> &raquo; Thu Sep 26, 2013 1:55 am </p>
+
+			
+
+			<div class="content"><img src="./images/smilies/Thumbs-Up.png" alt=":+1:" title="Thumbs Up" /></div>
+
+			
+
+		</div>
+
+		
+			<dl class="postprofile" id="profile18028">
+			<dt>
+				<a href="./memberlist.php?mode=viewprofile&amp;u=11299&amp;sid=be47fb3439ebf2b4c9c45cb9364688d0">InsightfulTrader</a>
+			</dt>
+
+			
+
+		<dd>&nbsp;</dd>
+
+		<dd><strong>Posts:</strong> 104</dd><dd><strong>Joined:</strong> Thu Aug 22, 2013 10:44 pm</dd>
+
+		</dl>
+	
+
+		<div class="back2top"><a href="#wrap" class="top" title="Top">Top</a></div>
+
+	</div>
+
+	<hr class="divider" />
+
+	<div id="p18029" class="post bg1">
+
+		<div class="postbody">
+			
+
+			<h3 ><a href="#p18029">Re: Ripple is officially open-source!</a></h3>
+			<p class="author"><a href="./viewtopic.php?p=18029&amp;sid=be47fb3439ebf2b4c9c45cb9364688d0#p18029"><img src="./styles/ripple/imageset/icon_post_target.png" width="11" height="9" alt="Post" title="Post" /></a>by <strong><a href="./memberlist.php?mode=viewprofile&amp;u=10802&amp;sid=be47fb3439ebf2b4c9c45cb9364688d0">Raph</a></strong> &raquo; Thu Sep 26, 2013 1:57 am </p>
+
+			
+
+			<div class="content">Wow! Awesome!<br /><br />Congratulations to all the team at Ripple labs</div>
+
+			
+
+		</div>
+
+		
+			<dl class="postprofile" id="profile18029">
+			<dt>
+				<a href="./memberlist.php?mode=viewprofile&amp;u=10802&amp;sid=be47fb3439ebf2b4c9c45cb9364688d0">Raph</a>
+			</dt>
+
+			
+
+		<dd>&nbsp;</dd>
+
+		<dd><strong>Posts:</strong> 20</dd><dd><strong>Joined:</strong> Mon Jul 01, 2013 3:14 am</dd>
+
+		</dl>
+	
+
+		<div class="back2top"><a href="#wrap" class="top" title="Top">Top</a></div>
+
+	</div>
+
+	<hr class="divider" />
+
+	<div id="p18051" class="post bg2">
+
+		<div class="postbody">
+			
+
+			<h3 ><a href="#p18051">Re: Ripple is officially open-source!</a></h3>
+			<p class="author"><a href="./viewtopic.php?p=18051&amp;sid=be47fb3439ebf2b4c9c45cb9364688d0#p18051"><img src="./styles/ripple/imageset/icon_post_target.png" width="11" height="9" alt="Post" title="Post" /></a>by <strong><a href="./memberlist.php?mode=viewprofile&amp;u=7752&amp;sid=be47fb3439ebf2b4c9c45cb9364688d0">Sal</a></strong> &raquo; Thu Sep 26, 2013 2:58 am </p>
+
+			
+
+			<div class="content">I love the new name <img src="./images/smilies/Smile.png" alt=":)" title="Smile" /> It shows a strong commitment to Ripple, and like Stefan said, it's clearer.</div>
+
+			<div id="sig18051" class="signature">Join the <span style="font-size: 110%; line-height: 116%;"> <a href="http://ripplefederation.org/" class="postlink">Ripple Federation</a></span> in an effort to inform and empower users of Ripple!<br />IRC freenode #RFO - Ripple Skype group (add me: salwilliam) - Twitter: <a href="http://twitter.com/ripplestream" class="postlink">@RippleStream</a></div>
+
+		</div>
+
+		
+			<dl class="postprofile" id="profile18051">
+			<dt>
+				
+          <div class="avatar">
+					  <a href="./memberlist.php?mode=viewprofile&amp;u=7752&amp;sid=be47fb3439ebf2b4c9c45cb9364688d0"><img src="./download/file.php?avatar=7752_1378780925.jpg" width="88" height="90" alt="User avatar" /></a><br />
+          </div>
+				<a href="./memberlist.php?mode=viewprofile&amp;u=7752&amp;sid=be47fb3439ebf2b4c9c45cb9364688d0">Sal</a>
+			</dt>
+
+			
+
+		<dd>&nbsp;</dd>
+
+		<dd><strong>Posts:</strong> 254</dd><dd><strong>Joined:</strong> Tue Jun 04, 2013 11:17 pm</dd><dd><strong>Location:</strong> Toronto Area, Ontario, Canada</dd>
+			<dd>
+				<ul class="profile-icons">
+					<li class="web-icon"><a href="http://nosoundmind.com" title="WWW: http://nosoundmind.com"><span>Website</span></a></li>
+				</ul>
+			</dd>
+		
+
+		</dl>
+	
+
+		<div class="back2top"><a href="#wrap" class="top" title="Top">Top</a></div>
+
+	</div>
+
+	<hr class="divider" />
+
+	<div id="p18060" class="post bg1">
+
+		<div class="postbody">
+			
+
+			<h3 ><a href="#p18060">Re: Ripple is officially open-source!</a></h3>
+			<p class="author"><a href="./viewtopic.php?p=18060&amp;sid=be47fb3439ebf2b4c9c45cb9364688d0#p18060"><img src="./styles/ripple/imageset/icon_post_target.png" width="11" height="9" alt="Post" title="Post" /></a>by <strong><a href="./memberlist.php?mode=viewprofile&amp;u=4974&amp;sid=be47fb3439ebf2b4c9c45cb9364688d0">moeadham1</a></strong> &raquo; Thu Sep 26, 2013 3:59 am </p>
+
+			
+
+			<div class="content">Great News, Ill set up a server tomorrow!</div>
+
+			
+
+		</div>
+
+		
+			<dl class="postprofile" id="profile18060">
+			<dt>
+				<a href="./memberlist.php?mode=viewprofile&amp;u=4974&amp;sid=be47fb3439ebf2b4c9c45cb9364688d0">moeadham1</a>
+			</dt>
+
+			
+
+		<dd>&nbsp;</dd>
+
+		<dd><strong>Posts:</strong> 15</dd><dd><strong>Joined:</strong> Fri May 17, 2013 8:39 pm</dd>
+
+		</dl>
+	
+
+		<div class="back2top"><a href="#wrap" class="top" title="Top">Top</a></div>
+
+	</div>
+
+	<hr class="divider" />
+
+	<div id="p18064" class="post bg2">
+
+		<div class="postbody">
+			
+
+			<h3 ><a href="#p18064">Re: Ripple is officially open-source!</a></h3>
+			<p class="author"><a href="./viewtopic.php?p=18064&amp;sid=be47fb3439ebf2b4c9c45cb9364688d0#p18064"><img src="./styles/ripple/imageset/icon_post_target.png" width="11" height="9" alt="Post" title="Post" /></a>by <strong><a href="./memberlist.php?mode=viewprofile&amp;u=7752&amp;sid=be47fb3439ebf2b4c9c45cb9364688d0">Sal</a></strong> &raquo; Thu Sep 26, 2013 4:37 am </p>
+
+			
+
+			<div class="content">[Post] Ripple's Big Day: Code Is Open Sourced, OpenCoin Change Their Name - <a href="http://ripplefederation.org/news/ripple-s-big-day-code-is-open-sourced-opencoin-change-their-name" class="postlink">http://ripplefederation.org/news/ripple-s-big-day-code-is-open-sourced-opencoin-change-their-name</a></div>
+
+			<div id="sig18064" class="signature">Join the <span style="font-size: 110%; line-height: 116%;"> <a href="http://ripplefederation.org/" class="postlink">Ripple Federation</a></span> in an effort to inform and empower users of Ripple!<br />IRC freenode #RFO - Ripple Skype group (add me: salwilliam) - Twitter: <a href="http://twitter.com/ripplestream" class="postlink">@RippleStream</a></div>
+
+		</div>
+
+		
+			<dl class="postprofile" id="profile18064">
+			<dt>
+				
+          <div class="avatar">
+					  <a href="./memberlist.php?mode=viewprofile&amp;u=7752&amp;sid=be47fb3439ebf2b4c9c45cb9364688d0"><img src="./download/file.php?avatar=7752_1378780925.jpg" width="88" height="90" alt="User avatar" /></a><br />
+          </div>
+				<a href="./memberlist.php?mode=viewprofile&amp;u=7752&amp;sid=be47fb3439ebf2b4c9c45cb9364688d0">Sal</a>
+			</dt>
+
+			
+
+		<dd>&nbsp;</dd>
+
+		<dd><strong>Posts:</strong> 254</dd><dd><strong>Joined:</strong> Tue Jun 04, 2013 11:17 pm</dd><dd><strong>Location:</strong> Toronto Area, Ontario, Canada</dd>
+			<dd>
+				<ul class="profile-icons">
+					<li class="web-icon"><a href="http://nosoundmind.com" title="WWW: http://nosoundmind.com"><span>Website</span></a></li>
+				</ul>
+			</dd>
+		
+
+		</dl>
+	
+
+		<div class="back2top"><a href="#wrap" class="top" title="Top">Top</a></div>
+
+	</div>
+
+	<hr class="divider" />
+
+	<div id="p18066" class="post bg1">
+
+		<div class="postbody">
+			
+
+			<h3 ><a href="#p18066">Re: Ripple is officially open-source!</a></h3>
+			<p class="author"><a href="./viewtopic.php?p=18066&amp;sid=be47fb3439ebf2b4c9c45cb9364688d0#p18066"><img src="./styles/ripple/imageset/icon_post_target.png" width="11" height="9" alt="Post" title="Post" /></a>by <strong><a href="./memberlist.php?mode=viewprofile&amp;u=4458&amp;sid=be47fb3439ebf2b4c9c45cb9364688d0">klmnn</a></strong> &raquo; Thu Sep 26, 2013 5:48 am </p>
+
+			
+
+			<div class="content">Congratulations! I never had a doubt you would deliver.</div>
+
+			
+
+		</div>
+
+		
+			<dl class="postprofile" id="profile18066">
+			<dt>
+				<a href="./memberlist.php?mode=viewprofile&amp;u=4458&amp;sid=be47fb3439ebf2b4c9c45cb9364688d0">klmnn</a>
+			</dt>
+
+			
+
+		<dd>&nbsp;</dd>
+
+		<dd><strong>Posts:</strong> 5</dd><dd><strong>Joined:</strong> Sat May 11, 2013 5:41 am</dd>
+
+		</dl>
+	
+
+		<div class="back2top"><a href="#wrap" class="top" title="Top">Top</a></div>
+
+	</div>
+
+	<hr class="divider" />
+
+	<div id="p18068" class="post bg2">
+
+		<div class="postbody">
+			
+
+			<h3 ><a href="#p18068">Re: Ripple is officially open-source!</a></h3>
+			<p class="author"><a href="./viewtopic.php?p=18068&amp;sid=be47fb3439ebf2b4c9c45cb9364688d0#p18068"><img src="./styles/ripple/imageset/icon_post_target.png" width="11" height="9" alt="Post" title="Post" /></a>by <strong><a href="./memberlist.php?mode=viewprofile&amp;u=10338&amp;sid=be47fb3439ebf2b4c9c45cb9364688d0">Rippleflip</a></strong> &raquo; Thu Sep 26, 2013 6:06 am </p>
+
+			
+
+			<div class="content">Congrats!<br /><br />Hope there won't be any big security bugs..</div>
+
+			<div id="sig18068" class="signature"><a href="http://www.rippleflip.com" class="postlink">Rippleflip.com - Provably fair XRP betting game</a></div>
+
+		</div>
+
+		
+			<dl class="postprofile" id="profile18068">
+			<dt>
+				
+          <div class="avatar">
+					  <a href="./memberlist.php?mode=viewprofile&amp;u=10338&amp;sid=be47fb3439ebf2b4c9c45cb9364688d0"><img src="./download/file.php?avatar=10338_1372800502.jpg" width="90" height="90" alt="User avatar" /></a><br />
+          </div>
+				<a href="./memberlist.php?mode=viewprofile&amp;u=10338&amp;sid=be47fb3439ebf2b4c9c45cb9364688d0">Rippleflip</a>
+			</dt>
+
+			
+
+		<dd>&nbsp;</dd>
+
+		<dd><strong>Posts:</strong> 20</dd><dd><strong>Joined:</strong> Tue Jun 25, 2013 6:43 am</dd>
+			<dd>
+				<ul class="profile-icons">
+					<li class="web-icon"><a href="http://www.rippleflip.com" title="WWW: http://www.rippleflip.com"><span>Website</span></a></li>
+				</ul>
+			</dd>
+		
+
+		</dl>
+	
+
+		<div class="back2top"><a href="#wrap" class="top" title="Top">Top</a></div>
+
+	</div>
+
+	<hr class="divider" />
+
+	<div id="p18072" class="post bg1">
+
+		<div class="postbody">
+			
+
+			<h3 ><a href="#p18072">Re: Ripple is officially open-source!</a></h3>
+			<p class="author"><a href="./viewtopic.php?p=18072&amp;sid=be47fb3439ebf2b4c9c45cb9364688d0#p18072"><img src="./styles/ripple/imageset/icon_post_target.png" width="11" height="9" alt="Post" title="Post" /></a>by <strong><a href="./memberlist.php?mode=viewprofile&amp;u=5543&amp;sid=be47fb3439ebf2b4c9c45cb9364688d0">Sukrim</a></strong> &raquo; Thu Sep 26, 2013 6:54 am </p>
+
+			
+
+			<div class="content">To be honest, I really doubted that move - thanks a lot for proving me wrong and have fun getting nearly DDoSed by all the new rippleds in the network that are requesting full history! <img src="./images/smilies/Grin.png" alt=":D" title="Very Happy" /></div>
+
+			
+
+		</div>
+
+		
+			<dl class="postprofile" id="profile18072">
+			<dt>
+				<a href="./memberlist.php?mode=viewprofile&amp;u=5543&amp;sid=be47fb3439ebf2b4c9c45cb9364688d0">Sukrim</a>
+			</dt>
+
+			
+
+		<dd>&nbsp;</dd>
+
+		<dd><strong>Posts:</strong> 91</dd><dd><strong>Joined:</strong> Mon May 20, 2013 10:44 am</dd>
+
+		</dl>
+	
+
+		<div class="back2top"><a href="#wrap" class="top" title="Top">Top</a></div>
+
+	</div>
+
+	<hr class="divider" />
+
+	<form id="viewtopic" method="post" action="./viewtopic.php?f=2&amp;t=3718&amp;sid=be47fb3439ebf2b4c9c45cb9364688d0">
+
+	<fieldset class="display-options" style="margin-top: 0; ">
+		<a href="./viewtopic.php?f=2&amp;t=3718&amp;sid=be47fb3439ebf2b4c9c45cb9364688d0&amp;start=10" class="right-box right">Next</a>
+		<label>Display posts from previous: <select name="st" id="st"><option value="0" selected="selected">All posts</option><option value="1">1 day</option><option value="7">7 days</option><option value="14">2 weeks</option><option value="30">1 month</option><option value="90">3 months</option><option value="180">6 months</option><option value="365">1 year</option></select></label>
+		<label>Sort by <select name="sk" id="sk"><option value="a">Author</option><option value="t" selected="selected">Post time</option><option value="s">Subject</option></select></label> <label><select name="sd" id="sd"><option value="a" selected="selected">Ascending</option><option value="d">Descending</option></select> <input type="submit" name="sort" value="Go" class="button2" /></label>
+		
+	</fieldset>
+
+	</form>
+	<hr />
+
+
+<div class="topic-actions">
+	<div class="buttons">
+	
+		<div class="reply-icon"><a href="./posting.php?mode=reply&amp;f=2&amp;t=3718&amp;sid=be47fb3439ebf2b4c9c45cb9364688d0" title="Post a reply"><span></span>Post a reply</a></div>
+	
+	</div>
+
+	
+		<div class="pagination">
+			21 posts
+			 &bull; <a href="#" onclick="jumpto(); return false;" title="Click to jump to page…">Page <strong>1</strong> of <strong>3</strong></a> &bull; <span><strong>1</strong><span class="page-sep">, </span><a href="./viewtopic.php?f=2&amp;t=3718&amp;sid=be47fb3439ebf2b4c9c45cb9364688d0&amp;start=10">2</a><span class="page-sep">, </span><a href="./viewtopic.php?f=2&amp;t=3718&amp;sid=be47fb3439ebf2b4c9c45cb9364688d0&amp;start=20">3</a></span>
+		</div>
+	
+</div>
+
+
+	<a href="./viewforum.php?f=2&amp;sid=be47fb3439ebf2b4c9c45cb9364688d0" class="left-box left block-link" accesskey="r">Return to Developers</a>
+
+	<form method="post" id="jumpbox" action="./viewforum.php?sid=be47fb3439ebf2b4c9c45cb9364688d0" onsubmit="if(this.f.value == -1){return false;}">
+
+	
+		<fieldset class="jumpbox">
+	
+			<label for="f" accesskey="j">Jump to:</label>
+			<select name="f" id="f" onchange="if(this.options[this.selectedIndex].value != -1){ document.forms['jumpbox'].submit() }">
+			
+				<option value="-1">Select a forum</option>
+			<option value="-1">------------------</option>
+				<option value="5">New Users / How-To</option>
+			
+				<option value="1">General Discussion</option>
+			
+				<option value="3">Market / Exchange</option>
+			
+				<option value="2" selected="selected">Developers</option>
+			
+				<option value="14">Gateways</option>
+			
+				<option value="4">Meta-Discussion</option>
+			
+				<option value="6">Regional / Non-English</option>
+			
+				<option value="7">&nbsp; &nbsp;中文 - Chinese</option>
+			
+				<option value="9">&nbsp; &nbsp;Italiano - Italian</option>
+			
+				<option value="10">&nbsp; &nbsp;Русский - Russian</option>
+			
+				<option value="8">&nbsp; &nbsp;Español - Spanish</option>
+			
+			</select>
+			<input type="submit" value="Go" class="button2" />
+		</fieldset>
+	</form>
+
+
+	<h3 class="dark-header">Who is online</h3>
+	<div class="dark-header-content">Users browsing this forum: <span style="color: #9E8DA7;" class="username-coloured">Google [Bot]</span> and 4 guests</div>
+</div>
+	
+<!-- Prefooter blocks go below -->
+
+<div id="page-footer">
+
+	<div class="navbar">
+
+		<ul class="linklist">
+				
+			<li class="rightside"><a href="./memberlist.php?mode=leaders&amp;sid=be47fb3439ebf2b4c9c45cb9364688d0">The team</a> &bull; <a href="./ucp.php?mode=delete_cookies&amp;sid=be47fb3439ebf2b4c9c45cb9364688d0">Delete all board cookies</a> &bull; All times are UTC </li>
+		</ul>
+
+	</div>
+
+	<div class="copyright">
+		
+        Powered by <a href="http://www.phpbb.com/">phpBB</a>&reg; Forum Software &copy; phpBB Group
+		
+        <div id="pixelgoose-copyright">phpBB Metro Theme by <a title="Premium phpBB Themes" href="http://pixelgoose.com/">PixelGoose Studio</a></div>    
+	</div>
+</div>
+
+</div>
+
+<div>
+	<a id="bottom" name="bottom" accesskey="z"></a>
+	
+</div>
+
+</body>
+</html>

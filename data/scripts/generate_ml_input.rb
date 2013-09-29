@@ -1,7 +1,7 @@
 require 'set'
 require 'csv'
 
-IS_PRODUCT = 0
+IS_PRODUCT = ARGV[1] || 1
 DATA_FILE = "data.csv"
 HEADERS_FILE = "headers.txt"
 CLASS_SET = Set.new
