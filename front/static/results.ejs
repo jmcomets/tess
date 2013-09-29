@@ -9,12 +9,14 @@
     </div>
 
     <div class="product-info">  <!-- class="col-sm-6 col-md-3"> -->
-      <h3 class="product-title">
-        <%= results[i].name %>
-      </h3>
+      <a href="<%= results[i].url %>">
+        <h3 class="product-title">
+          <%= results[i].name %>
+        </h3>
+      </a>
       <div class="caption">
         <p><%= results[i].description %></p>
-        <p class="prix"><%= results[i].price.value %><%= results[i].price.currency %></p>
+        <p class="prix"><%= results[i].price.value %><span class="currency"><%= results[i].price.currency %></span></p>
       </div>
     </div>
   </div>

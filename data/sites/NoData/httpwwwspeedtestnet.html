@@ -1,0 +1,525 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+	<meta name="description" content="Test your Internet connection bandwidth to locations around the world with this interactive broadband speed test from Ookla" >
+	<meta name="keywords" lang="en" content="ookla, speed, test, speedtest, speed test, bandwidth speed test, internet speed test, broadband speed test, speakeasy, flash, cnet, internet, network, connection, broadband, bandwidth, latency, ping, throughput, download, upload, connection, dsl, adsl, cable, t1, voip, isp, asp, internet, ip, ip address, tcp, ds3" >
+	<meta name="ROBOTS" content="NOYDIR">
+	<meta http-equiv="X-UA-Compatible" content="IE=8" />
+	<title>Speedtest.net by Ookla - The Global Broadband Speed Test</title>
+	<link rel="stylesheet" type="text/css" href="http://c.speedtest.net/css/reset.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="http://c.speedtest.net/css/tipTip.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="http://c.speedtest.net/css/layout-home.css?v=20130903" media="screen" />
+	<link rel="stylesheet" type="text/css" href="http://c.speedtest.net/css/global.css?v=20130919" media="screen" />
+	<link rel="canonical" href="http://www.speedtest.net/" />
+	<script type="text/javascript" src="http://c.speedtest.net/javascript/jquery-1.8.1.min.js"></script>
+	<script type="text/javascript" src="http://c.speedtest.net/javascript/jquery.tipTip.js"></script>
+	<script type="text/javascript" src="http://c.speedtest.net/javascript/jquery.placeholder.min.js"></script>
+	<script type="text/javascript" src="http://c.speedtest.net/javascript/functions.js?v=20130911"></script>
+	<!--[if lte IE 6]>
+        <link rel="stylesheet" type="text/css" href="css/ie6.css?v=2012-11-23" media="screen" />
+	<![endif]-->
+	<script src="//www.google-analytics.com/cx/api.js?experiment=b09xWVJGRwOwDMiKqETg2Q"></script>
+	<script>
+		// Ask Google Analytics which variation to show the visitor.
+		var chosenVariation = cxApi.chooseVariation();
+		// Define JavaScript for each page variation of this experiment.
+		var pageVariations = [
+			function() {  // Original: No social buttons 1
+				$('.social-follow').hide();
+			},
+			function() { // Variation 2: Social Buttons 1
+				$('.social-follow').show();
+			},
+			function() {  // Variation 3: No social buttons 2
+				$('.social-follow').hide();
+			},
+			function() { // Variation 4: Social Buttons 2
+				$('.social-follow').show();
+			}
+		];
+		// Wait for the DOM to load, then execute the view for the chosen variation.
+		$(document).ready( function() {
+			// Execute the chosen view
+			pageVariations[chosenVariation]();
+		});
+	</script>
+	
+	
+
+	<script type="text/javascript">
+
+	  function load_image(src) {
+	  	var ts = new Date().getTime();
+		var img = document.createElement("img");
+		img.src = src + "&ts=" + ts;
+		img.width = 1;
+		img.height = 1;
+		document.body.appendChild(img);
+	  }
+
+	  var pageLoaded = new Date().getTime();
+	  var testStart = 0;
+	  function gaTracker(params) {
+		if(params.length >= 3 && params[2] == "test_loaded") {
+			var testLoaded = new Date().getTime();
+			_gaq.push(['_trackTiming', 'speedtest', 'testloaded', testLoaded - pageLoaded]);
+		}
+
+		if(params.length >= 3 && params[2] == "test_started") {
+			testStart = new Date().getTime();
+		}
+
+		if(params.length >= 4 && params[2] == "test_complete") {
+			if(testStart > 0) {
+				var testComplete = new Date().getTime();
+				_gaq.push(['_trackTiming', 'speedtest', 'testlength', testComplete - testStart]);
+				testStart = 0;
+			}
+
+			_gaq.push(['_setCustomVar',2,'test_taken',params[3], 2]); // slot=2, test_taken=count, visit
+		}
+
+		// click tracking
+		if(params.length >= 3 && params[1] == "advertising") {
+
+			// parse param 3
+			var lp_params = params[2].split(";");
+
+			if (lp_params.length == 3) {
+				// banner position
+				var bp = lp_params[0];	// banner position L = leaderboard, S = skyscraper, F = flash
+				var id = lp_params[1];	// impression depth
+				var et = lp_params[2];	// vital event type
+
+				var img_src = "/vital/"+ et + ".png?x=" + bp + ";" + id;
+
+				load_image(img_src);
+
+				// reset param 2 so google analytics tracks properly
+				if (bp == 'L') {
+					params[2] = 'leaderboard_click';
+				} else if (bp == 'S') {
+					params[2] = 'skyscraper_click';
+				} else if (bp == 'F') {
+					params[2] = 'endtest_click';
+				}
+			}
+		}
+
+	    _gaq.push(params);
+	  }
+
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-389482-3']);
+	  _gaq.push(['_setDomainName', 'speedtest.net']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+	  	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	  	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	  	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+	</script>
+
+</head>
+<body id="home" class="">
+
+<div id="home-header-container">
+
+<div id="header">
+
+<div id="logo">
+<a href="/">Ookla Speedtest</a>
+</div><!--/logo-->
+
+
+
+<div id="nav">
+<span id="nav-left"></span>
+<ul>
+	<li class="nav-results"><a href="/results.php">My Results</a></li>
+<li class="nav-support"><a href="/support.php">Support</a></li>
+<li class="nav-settings"><a href="/user-settings.php">Settings</a></li>
+<li class="nav-login last"><a class="login-title" href="/user-login.php">Login</a></li>
+
+</ul><span id="nav-right"></span>
+</div><!--/nav-->
+
+<!--
+<div id="lang">
+<span class="current-lang">en</span>
+<ul class="other-lang">
+	<li><a href="/switch_language.php?lang=de">DE</a></li>
+	<li><a href="/switch_language.php?lang=en">EN</a></li>
+	<li><a href="/switch_language.php?lang=es">ES</a></li>
+	<li><a href="/switch_language.php?lang=fr">FR</a></li>
+	<li><a href="/switch_language.php?lang=id">ID</a></li>
+	<li><a href="/switch_language.php?lang=it">IT</a></li>
+	<li><a href="/switch_language.php?lang=nl">NL</a></li>
+	<li><a href="/switch_language.php?lang=pl">PL</a></li>
+	<li><a href="/switch_language.php?lang=pt">PT</a></li>
+	<li><a href="/switch_language.php?lang=ru">RU</a></li>
+	<li><a href="/switch_language.php?lang=sv">SV</a></li>
+</ul>
+</div>
+-->
+
+<div class="login-box">
+	<form method="post" action="https://www.speedtest.net/user-login.php" >
+		<fieldset>
+			<input id="action" type="hidden" name="action" value="login" />
+			<input id="login-email" type="text" name="email" class="field" placeholder="Email" />
+			<input id="login-pw" type="password" name="password" class="field" placeholder="Password" />
+			<div class="pw-help">
+				<input id="remember-me" type="checkbox" name="remember-me" />
+				<label for="remember-me">Remember Me</label><br /><a href="/password-reset.php">Forgot Password?</a>
+			</div>
+			<div id="form-submit-login-menu"><input type="submit" value="Login"></input></div>
+		</fieldset>
+	</form>
+</div><!--/login-box-->
+
+
+<div id="createaccount"><a href="/user-register.php">Create Account</a></div>
+</div><!--/header-->
+</div><!--/home-header-container-->
+
+<div id="home-content-container">
+	<div id="home-content">
+
+		<div class="test-area-wrapper ad-stack">
+			<div id="ad-top-wrap">
+				<div class="ad-space ad-horizontal">
+					<script type="text/javascript"><!--
+google_ad_client = "ca-pub-1273248303616359";
+/* Speedtest.net Leaderboard - FR Priority */
+google_ad_slot = "2887090992";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script><div id='beacon_f6a5e984b7' style='position: absolute; left: 0px; top: 0px; visibility: hidden;'><img src='http://ads.ookla.com/www/delivery/lg.php?bannerid=1835&amp;campaignid=950&amp;zoneid=42&amp;OACAP=1&amp;loc=1&amp;referer=http%3A%2F%2Fwww.speedtest.net%2F&amp;cb=f6a5e984b7' width='0' height='0' alt='' style='width: 0px; height: 0px;' /></div>
+					<noscript><a href='http://ads.ookla.com/www/delivery/ck.php?n=a7748b62&amp;cb=345345' target='_blank'><img src='http://ads.ookla.com/www/delivery/avw.php?zoneid=42&amp;cb=345345&amp;n=a7748b62' border='0' alt='' /></a></noscript>
+				</div><!--/ad-space-->
+				<div class="ad-btn-home">
+					<div class="social-follow">
+	<a class="facebook" target="_blank" onClick="_gaq.push(['_trackEvent', 'social_click', 'facebook']);" href="http://www.facebook.com/teamookla">Facebook</a>
+	<a class="twitter" target="_blank" onClick="_gaq.push(['_trackEvent', 'social_click', 'twitter']);" href="https://twitter.com/intent/follow?source=followbutton&amp;variant=1.0&amp;screen_name=ookla">Twitter</a>
+	<a class="gplus" target="_blank" onClick="_gaq.push(['_trackEvent', 'social_click', 'google_plus']);" href="https://plus.google.com/+ookla">Google+</a>
+</div>
+
+				</div>
+			</div>
+
+			<div id="st-flash">
+													<script type="text/javascript" src="http://c.speedtest.net/javascript/swfobject.js?v=2.2"></script>
+							<!--		<script type="text/javascript" src="http://c.speedtest.net/javascript/swfmacmousewheel2.js?v=1.0"></script> -->
+									<script type="text/javascript" src="http://c.speedtest.net/javascript/extMouseWheel.js"></script>
+									<div id="flashcontent">
+										<div class="noflash">
+											<div class="no-flash-us">
+	<span class="chrome-message">
+<strong>Speedtest.net requires Flash</strong>
+<span>You must have Adobe Flash installed and JavaScript enabled to use Speedtest.net.</span>
+<span>We recommend using Google Chrome which includes both by default.</span>
+</span>
+</div>
+										</div>
+									</div>
+									<div id="speed" result_up="0" result_dn="0" result_png="0"></div>
+								<script type="text/javascript">
+									
+									function test_completed(result_id) {
+										var social = document.getElementById('social_result_links');
+																				
+										social.style.display = "inline";
+									}
+									
+									function promo_completed(download, upload, ping) {
+										
+									}
+									
+									function test_error() {
+										window.location.reload();
+									}
+									
+									var flashvars = {
+										ad: "banner",
+										adurl: "",
+										showsurvey: "1",
+										threads: "4",
+										cdnconfig: "prod",
+										promo: ""
+										
+									};
+									var params = {
+										bgcolor: "#ffffff",
+										quality: "high",
+										menu: "false",
+										allowScriptAccess: "always",
+										scale: 'default',
+										salign: 'lt',
+										wmode: 'transparent'
+									};
+									var attributes = {
+										id: 'speedtest',
+										name: 'speedtest'
+									};
+									
+									if (swfobject.hasFlashPlayerVersion("10.0.0")) {
+										// User has flash
+										swfobject.embedSWF("http://c.speedtest.net/flash/speedtest.swf?v=338958", "flashcontent", "728", "450", "10.0.0", "flash/expressInstall.swf", flashvars, params, attributes);
+										//swfmacmousewheel.registerObject(attributes.id);
+									} else {
+										// don't redirect again
+										if ( window.location.search.indexOf("noflash=1") == -1 ) {
+											// User does not have flash
+											window.location="/?noflash=1";											
+										}
+									}
+
+								</script>
+				<div class="ad-eot" id="ad-eot"></div>
+				<div class="search-eot" id="search-eot">
+					<div class="search-eot-search">
+									<h3>Get more speed in</h3>
+			<!-- adsense search -->
+				<form action="http://www.google.com/cse" id="cse-search-box" target="_blank">
+					<div>
+						<input type="hidden" name="cx" value="partner-pub-1273248303616359:2003744413" />
+						<input type="hidden" name="ie" value="UTF-8" />
+						<input type="text" id="search-eot-input" name="q" size="55" value="faster broadband deals" />
+						<input type="submit" name="sa" value="Search" />
+					</div>
+				</form>
+				<script type="text/javascript" src="http://www.google.com/coop/cse/brand?form=cse-search-box&amp;lang=en"></script>
+			<!-- end adsense search -->
+					</div>
+					<div class="search-eot-ad" id="search-eot-ad">
+						<!-- 350x40 ad -->
+					</div>
+				</div>
+				<div class="search-eot" id="bbsearch-eot">
+					<div class="search-eot-search">
+							<h3>Find Faster Broadband  In Your Area</h3>
+	<!-- broadbandchoices search -->
+	<form id="broadband_search" action="http://www.broadbandchoicespartners.co.uk/ookla/results" target="_blank">
+		<div>
+			<input type="hidden" value="tsid:51569" name="_$ja" id="tsid" />
+			<input type="text" id="postcode" name="postcode" size="55" max-length="8" placeholder="Enter postcode" />
+			<input type="submit" name="sa" value="Search" />
+		</div>
+	</form>
+	<script type="text/javascript">
+
+		function validPostcode(element) {
+			// There are 6 possible valid UK postcodes: where L = letter and N = Number
+			// LN NLL LLN NLL LNN NLL LNL NLL LLNN NLL LLNL NLL
+			var pcode = element.value;
+			var pcType1 = /^[A-Z]{1}\d{1}\s{1}\d{1}[A-Z]{2}/;
+			var pcType2 = /^[A-Z]{2}\d{1}\s{1}\d{1}[A-Z]{2}/;
+			var pcType3 = /^[A-Z]{1}\d{2}\s{1}\d{1}[A-Z]{2}/;
+			var pcType4 = /^[A-Z]{2}\d{2}\s{1}\d{1}[A-Z]{2}/;
+			var pcType5 = /^[A-Z]{2}\d{1}[A-Z]{1}\s{1}\d{1}[A-Z]{2}/;
+			var pcType6 = /^[A-Z]{1}\d{1}[A-Z]{1}\s{1}\d{1}[A-Z]{2}/;
+			var sAlertEmpty = "Please enter a valid UK post code.";
+			var sAlertLength = "Sorry, but the postcode you entered was too long or too short. " + sAlertEmpty;
+			var sAlertInvalid = "Sorry, the postcode [" + pcode + "] is not valid. " + sAlertEmpty;
+			if (pcode == null || pcode == "") {
+				_gaq.push(['_trackEvent', 'advertising', 'bbchoices', 'bbchoices_error']);
+				alert(sAlertEmpty); return false;
+			}
+			pcode = formatPostcode(pcode);
+			if (pcode.length < 6 || pcode.length > 8) {
+				_gaq.push(['_trackEvent', 'advertising', 'bbchoices', 'bbchoices_error']);
+				alert(sAlertLength); return false;
+			}
+			if (pcode.match(pcType1) || pcode.match(pcType2) || pcode.match(pcType3) || pcode.match(pcType4) || pcode.match(pcType5) || pcode.match(pcType6)) {
+				_gaq.push(['_trackEvent', 'advertising', 'bbchoices', 'bbchoices_submit']);
+				element.value = pcode; return true;
+			} else {
+				_gaq.push(['_trackEvent', 'advertising', 'bbchoices', 'bbchoices_error']);
+				alert(sAlertInvalid); return false;
+			}
+		}
+
+		function formatPostcode(xPC) {
+			xPC = xPC.toUpperCase();
+			// replace all spaces
+			xRegExp = / /g;
+			xPC = xPC.replace(xRegExp, "");
+			// replace all !
+			xRegExp = /!/g;
+			xPC = xPC.replace(xRegExp, "");
+			// now put the space back in the right place
+			xLen = xPC.length;
+			xLastStart = xLen - 3;
+			xPart1 = xPC.substr(0, xLastStart);
+			xPart2 = xPC.substr(xLastStart, 3);
+			xPC = xPart1 + " " + xPart2;
+			return xPC;
+		}
+
+		$(document).ready( function() {
+			$('#broadband_search').on( 'submit', function () {
+				return validPostcode(document.getElementById("postcode"));
+			});
+		});
+
+	</script>
+	<!-- end broadbandchoices search -->
+
+					</div>
+				</div>
+			</div><!--/st-flash-->
+
+			<div class="ad-vertical-container no-shadow">
+				<div class="ad-space ad-vertical">
+					<div class="ad-vertical-stack-ad"><script type="text/javascript"><!--
+google_ad_client = "ca-pub-1273248303616359";
+/* Speedtest.net Top Rectangle 300x250 - FR Priority */
+google_ad_slot = "2833594997";
+google_ad_width = 300;
+google_ad_height = 250;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script><div id='beacon_ce1682d7fb' style='position: absolute; left: 0px; top: 0px; visibility: hidden;'><img src='http://ads.ookla.com/www/delivery/lg.php?bannerid=9696&amp;campaignid=950&amp;zoneid=64&amp;OACAP=1&amp;loc=1&amp;referer=http%3A%2F%2Fwww.speedtest.net%2F&amp;cb=ce1682d7fb' width='0' height='0' alt='' style='width: 0px; height: 0px;' /></div></div>
+<div class="ad-vertical-stack-ad"><script type="text/javascript"><!--
+google_ad_client = "ca-pub-1273248303616359";
+/* Speedtest.net Bottom Rectangle 300x250 - FR Priority */
+google_ad_slot = "5787061394";
+google_ad_width = 300;
+google_ad_height = 250;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script><div id='beacon_3db6e8f822' style='position: absolute; left: 0px; top: 0px; visibility: hidden;'><img src='http://ads.ookla.com/www/delivery/lg.php?bannerid=9697&amp;campaignid=950&amp;zoneid=65&amp;OACAP=1&amp;loc=1&amp;referer=http%3A%2F%2Fwww.speedtest.net%2F&amp;cb=3db6e8f822' width='0' height='0' alt='' style='width: 0px; height: 0px;' /></div></div>
+				</div><!--/ad-space-->
+			</div><!--/ad-vertical-container-->
+
+			<div id="home-features" class="lbc lbc-single">
+				<div class="lbc-box">
+					<div class="lbc-ad fakead fakead1"></div>
+				</div>
+				<div class="features"><ul>
+	<li><h2>Speed Wave</h2><p>Compete with others and gather broadband statistics.</p><a href="wave/352148b0b28b3eba?a=i">Learn more &rarr;</a></li>
+	<li><h2>Pingtest.net</h2><p>Bandwidth only tells part of the story - test quality as well!</p><a href="http://pingtest.net/">See how &rarr;</a></li>
+	<li><h2>My Results</h2><p>Examine your past results and see how they compare.</p><a href="results.php">View now &rarr;</a></li>
+</ul></div>
+			</div><!--/home-features-->
+		</div>
+
+		<div id="st-info">
+			<h2>Welcome to Ookla Speedtest</h2>
+<p>Are you getting the speed you pay for? Our <a class="tooltip" title="The median ratio of actual download speed to the download speed subscribed to (&quot;promised speed&quot;)." href="http://www.netindex.com/" target="_blank">Promise Index&trade;</a> and Ookla Speedtest help keep your ISP honest! You can help too and join over 250 million others like you who want to test or troubleshoot their Internet connection. <i>What's your Speed?</i></p>
+<p>Share and compare your speed results with friends quickly and easily &mdash; or get a free Account to track multiple connections. Use Ookla Speedtest at work, at home or even on the go with our <a href="http://www.speedtest.net/mobile/">Android or iPhone Applications</a>.</p>
+			
+		</div><!--/st-info-->
+
+		<div id="st-actions">
+			<ul>
+				<ul>
+	<li id="icon-st-mobile"><a href="mobile/"><h3>Mobile</h3><p>Get Ookla Speedtest for your mobile device.</p></a></li>
+	<li id="icon-become-a-host"><a href="host.php"><h3>Become a Host</h3><p>Host a Ookla Speedtest testing server in your area.</p></a></li>
+	<li id="icon-st-mini" class="st-actions-last"><a href="mini.php"><h3>Ookla Speedtest Mini</h3><p>Put a mini version of Ookla Speedtest on your site.</p></a></li>
+</ul>
+			</ul>
+		</div><!--/st-actions-->
+
+	</div><!--/home-content-->
+</div><!--/container-->
+
+<div id="footer">
+
+<div id="footer-nav">
+
+<ul>
+	<li class="footer-title" id="footer-company">Company</li>
+	<li><a href="/about.php">About</a></li>
+	<li><a href="/advertise">Advertise</a></li>
+	<li><a href="/support.php">Support</a></li>
+	<li><a href="/host.php">Become A Host</a></li>
+	<li><a href="/isp-performance">ISP Performance</a></li>
+	<li><a href="/location-performance">Location Performance</a></li>
+</ul>
+
+<ul>
+	<li class="footer-title" id="footer-products">Products</li>
+	<li><a href="/mobile/">Ookla Speedtest Mobile</a></li>
+	<li><a href="/mini.php">Ookla Speedtest Mini</a></li>
+	<li><a href="http://www.pingtest.net">Pingtest.net</a></li>
+	<li><a href="http://www.netindex.com">NetIndex.com</a></li>
+</ul>
+
+<ul>
+	<li class="footer-title" id="footer-social">Follow</li>
+	<li><a href="/link.php">Link to Us</a></li>
+	<li><a href="http://www.twitter.com/ookla">Twitter</a></li>
+	<li><a href="http://www.facebook.com/teamookla">Facebook</a></li>
+	<li><a href="/support.php">Contact</a></li>
+</ul>
+
+<div id="footer-ookla">
+<a href="http://www.ookla.com/"></a>
+<!-- <p>Check out the <a href="http://blog.ookla.com/">Ookla Blog</a></p> -->
+</div><!--/footer-ookla-->
+
+</div><!--/footer-nav-->
+
+<div id="footer-lang">
+	<a href="/switch_language.php?lang=de">DE</a> |
+	<a href="/switch_language.php?lang=en">EN</a> |
+	<a href="/switch_language.php?lang=es">ES</a> |
+	<a href="/switch_language.php?lang=fr">FR</a> |
+	<a href="/switch_language.php?lang=id">ID</a> |
+	<a href="/switch_language.php?lang=it">IT</a> |
+	<a href="/switch_language.php?lang=nl">NL</a> |
+	<a href="/switch_language.php?lang=pl">PL</a> |
+	<a href="/switch_language.php?lang=pt">PT</a> |
+	<a href="/switch_language.php?lang=ru">RU</a> |
+	<a href="/switch_language.php?lang=sv">SV</a>
+</div>
+
+<span id="copyright"><strong>Accurate, free and powered by <a href="http://ookla.com/">Ookla</a> &mdash; the global standard in network testing.</strong><br>
+&copy; Copyright 2013 <a href="http://ookla.com/">Ookla</a> | <a href="/privacy.php">Privacy Policy</a></span>
+
+<iframe id="iframedl" name="iframedl" frameborder="0"></iframe>
+
+</div><!--/footer-->
+
+
+
+<!-- Quantcast Tag -->
+<script type="text/javascript">
+var _qevents = _qevents || [];
+
+(function() {
+var elem = document.createElement('script');
+elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+elem.async = true;
+elem.type = "text/javascript";
+var scpt = document.getElementsByTagName('script')[0];
+scpt.parentNode.insertBefore(elem, scpt);
+})();
+
+_qevents.push({
+qacct:"p-8cnxEy2n0W4mf"
+});
+</script>
+
+<noscript>
+<div style="display:none;">
+<img src="//pixel.quantserve.com/pixel/p-8cnxEy2n0W4mf.gif" border="0" height="1" width="1" alt="Quantcast"/>
+</div>
+</noscript>
+<!-- End Quantcast tag -->
+
+</body>
+</html>

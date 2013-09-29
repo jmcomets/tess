@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
     <title>Tess Labeler</title>
@@ -8,19 +8,15 @@
         overflow-x: hidden;
       }
     </style>
-
-    <!--
-      - JavaScript and HTML must be in separate files: see our Content Security
-      - Policy documentation[1] for details and explanation.
-      -
-      - [1]: http://developer.chrome.com/extensions/contentSecurityPolicy.html
-     -->
-    <script src="popup.js"></script>
+    <script type="text/javascript" src="popup.js"></script>
   </head>
   <body>
-    <p>Is this a product page?</p>
-    <button id="yes" type="button">Yes</button>
-    <button id="no" type="button">No</button>
+    <div id="label">
+        <p>Is this a product page?</p>
+        <button id="yes" type="button">Yes</button>
+        <button id="no" type="button">No</button>
+    </div>
+    <div id="redirect" style="display:none;"></div>
   </body>
 </html>
 

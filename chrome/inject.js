@@ -1,15 +1,23 @@
-chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-        if (request.method == "getContext") {
-            console.log("Loaded");
-            var documentContext = {
-                method: "documentContext",
-                url : window.location.protocol + window.location.hostname + window.location.pathname,
-                title : document.title,
-                event: event
-            };
+var TessClient = {
+  baseURL: 'http://92.39.246.129:5000',
+  label: function(url, yes_no) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', this.baseURL + '/api/label', true);
+    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xhr.send('label=' + yes_no + '&url=' + encodeURI(url));
+  }
+};
 
-            console.log("Sending docContext");
-                chrome.extension.sendRequest(documentContext, function(){});
-                console.log("docContext sent.");
-        }
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+  if (request.type == 'label') {
+    TessClient.label(window.location.href, request.yes_no);
+  } else if (request.type == 'get_link') {
+    var aTags = document.getElementsByTagName('a'),
+      url = aTags[Math.floor(Math.random()*aTags.length)].href;
+    sendResponse({ url: url });
+  } else if (request.type == 'redirect') {
+    window.location.href = request.url;
+  }
 });
+
+// vim: ft=javascript et sw=2 sts=2
