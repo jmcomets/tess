@@ -22,6 +22,9 @@ class Classifier(object):
         self.clf = clf
         self.learned = True
 
+    def dump(self, fp):
+        pickle.dump(self.clf, fp)
+
 class Predictor(object):
     YES_NO_BOUNDARY = 0.5
 
@@ -30,7 +33,7 @@ class Predictor(object):
         self.cls = classifier
 
     def predict(self, attr_scores):
-        return [self.YES_NO_BOUNDARY < x for x in self.cls.predict(attr_scores)]
+        return [self.YES_NO_BOUNDARY < x for x in self.cls.clf.predict(attr_scores)]
 
     @classmethod
     def from_file(self, fp):
@@ -38,9 +41,6 @@ class Predictor(object):
         cls.clf = pickle.load(fp)
         cls.learned = True
         return Predictor(cls)
-
-    def dump(self, fp):
-        pickle.dump(self.cls.clf, fp)
 
 def get_headers(fp):
     delimiter = '\n'
@@ -57,11 +57,11 @@ def get_data(attributes, fp):
                 }
         for attr_score in row:
             attr, score = attr_score.split(':')
-            assert attr in attributes
-            page_data['attributes'].append({
-                'name': attr,
-                'score': int(score),
-                })
+            if attr in attributes:
+                page_data['attributes'].append({
+                    'name': attr,
+                    'score': int(score),
+                    })
         yield page_data
 
 def format_data(attributes, data):
@@ -83,22 +83,13 @@ def format_data(attributes, data):
             'pages': pages,
             }
 
-if __name__ == '__main__':
-    print 'Loading headers...'
-    with open('headers.txt', 'r') as fp:
-        attributes = list(get_headers(fp))
-        assert sorted(attributes)
-    print 'Loading data...'
-    with open('data.csv', 'r') as fp:
-        data = list(get_data(attributes, fp))
-
+def five_fold_cross_validation(attributes, data):
     # five fold cross validation
     import random
     for _ in xrange(5):
         test_size = len(data) / 5
         random.shuffle(data)
 
-        print 'Classifying data...'
         cls = Classifier()
         cls.learn(attributes, data)
         predictor = Predictor(cls)
@@ -119,3 +110,23 @@ if __name__ == '__main__':
         print 'recall =', yes_ok, '/', count(real_yes), '=', recall
         precision = yes_ok / count(labeled_yes)
         print 'precision =', yes_ok, '/', count(labeled_yes), '=', precision
+
+def run_and_save(attributes, data):
+    cls = Classifier()
+    cls.learn(attributes, data)
+    with open('predictor.txt', 'w') as fp:
+        cls.dump(fp)
+
+if __name__ == '__main__':
+    # load data
+    with open('headers.txt', 'r') as fp:
+        attributes = list(get_headers(fp))
+        assert sorted(attributes)
+    with open('data.csv', 'r') as fp:
+        data = list(get_data(attributes, fp))
+
+    import sys
+    if '--test' in sys.argv:
+        five_fold_cross_validation(attributes, data)
+    else:
+        run_and_save(attributes, data)
