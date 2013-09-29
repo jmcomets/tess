@@ -3,7 +3,12 @@ $(function() {
     AC_URL = "/api/auto_suggest",
     $resultBox = $('.result-box'),
     $searchBar = $('#search-bar'),
-    options = { serviceUrl : AC_URL };
+    options = {
+      serviceUrl: AC_URL,
+      onSelect: function(value, data) {
+        renderResults(value.value);
+      }
+    };
 
 $searchBar.autocomplete(options);
 
@@ -12,6 +17,10 @@ $searchBar.keyup(function(e) {
   e.preventDefault();
 
   var text = $searchBar.val();
+  renderResults(text);
+});
+
+function renderResults(text) {
   if (!text) return;
 
   var query_url = QUERY_URL + formatForUrl(text);
@@ -20,7 +29,7 @@ $searchBar.keyup(function(e) {
     $resultBox.html(html);
     history.pushState('', '', '/' + formatForUrl(text));
   });
-});
+}
 
 function formatForUrl(str) {
   var separator = ' ';

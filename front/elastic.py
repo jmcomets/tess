@@ -59,7 +59,7 @@ def auto_suggest(query):
         bool_query['should'].append(dict(prefix=dict(brand=dict(prefix=token,  boost=4))))
         bool_query['should'].append(dict(prefix=dict(industry=dict(prefix=token,  boost=2))))
 
-    elas_query = dict(query=dict(bool=bool_query), size=10, sort=[], facets={})
+    elas_query = dict(query=dict(bool=bool_query), size=5, sort=[], facets={})
     elas_query['from'] = 0
 
     r = requests.post(SEARCH_URL, data=json.dumps(elas_query)).json()
