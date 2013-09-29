@@ -1,7 +1,7 @@
 import json
 import requests
 
-SEARCH_URL = 'http://92.39.246.129:9200/object/_search'
+SEARCH_URL = 'http://92.39.246.129:9200/{object,test}/_search'
 
 def format_results(results):
     """
