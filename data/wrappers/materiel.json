@@ -2,7 +2,7 @@
   "_id": "materiel",
   "name": "materiel",
   "pattern": [
-     "/[\\w\\-]+/[\\w\\-]+\\.html"
+     "/\\w+[\\w\\-]*\\.html"
   ],
   "rules": {
    	"name":        "//span[@property='v:name'][1]/text()",
