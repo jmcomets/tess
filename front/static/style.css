@@ -67,3 +67,44 @@
   font-size: 16px;
   margin: 0 5px;
 }
+
+.autocomplete-suggestions {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border:1px solid #ccc;
+    margin: 0;
+}
+
+.autocomplete-suggestion {
+    padding: 5px;
+    background-color: #fff;
+    cursor: default;
+    text-align: left;
+    max-height: 350px;
+    overflow: auto;
+    font-size: 17px;
+    _height: 350px;
+    _margin: 0;
+    _overflow-x: hidden;
+}
+
+.autocomplete-suggestion:hover {
+    background-color: #428bca;
+    color: #fff;
+}
+
+.autocomplete .selected {
+    background: #F0F0F0;
+}
+
+.autocomplete div {
+    padding: 2px 5px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.autocomplete strong {
+    font-weight: normal;
+    color: #3399FF;
+}
