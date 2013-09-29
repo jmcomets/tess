@@ -146,11 +146,13 @@ def five_fold_cross_validation(attributes, data):
         yes_ok_intersect = intersect(labeled_yes, real_yes)
         yes_ok = count(yes_ok_intersect)
         recall = yes_ok / count(real_yes)
-        print 'recall =', yes_ok, '/', count(real_yes), '=', recall
         precision = yes_ok / count(labeled_yes)
+
+        # output recall/precision
+        print 'recall =', yes_ok, '/', count(real_yes), '=', recall
         print 'precision =', yes_ok, '/', count(labeled_yes), '=', precision
 
-def run_and_save(attributes, data):
+def run_and_index(attributes, data):
     cls = Classifier()
     cls.learn(attributes, data)
     with open(pickle_file, 'w') as fp:
@@ -164,6 +166,6 @@ if __name__ == '__main__':
 
     import sys
     if '--test' in sys.argv:
-        five_fold_cross_validation(attributes, data)
+        five_fold_cross_validation(attributes, data) # test
     else:
-        run_and_save(attributes, data)
+        run_and_index(attributes, data) # run and index
