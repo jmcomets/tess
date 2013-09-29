@@ -1,6 +1,6 @@
 $(function() {
   var QUERY_URL = "/api/search?query=",
-    AC_URL = "/api/auto-suggest",
+    AC_URL = "/api/auto_suggest",
     $resultBox = $('.result-box'),
     $searchBar = $('#search-bar'),
     options = { serviceUrl : AC_URL };
