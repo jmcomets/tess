@@ -64,7 +64,7 @@ def auto_suggest(query):
 
     r = requests.post(SEARCH_URL, data=json.dumps(elas_query)).json()
 
-    suggestions = [suggestion['_source']['name'] for suggestion in r['hits']['hits']]
+    suggestions = [suggestion['_source']['name'][0] for suggestion in r['hits']['hits']]
 
     return suggestions
 
