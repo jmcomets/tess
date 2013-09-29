@@ -9,7 +9,11 @@ var TessLabeler = {
     });
   },
   label: function(type) {
-
+	  var requestContext = {
+              method: "getContext",
+              event: event
+      }
+      chrome.tabs.sendMessage(tabId, requestContext, function(){}); 
   }
 };
 
