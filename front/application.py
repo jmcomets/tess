@@ -51,7 +51,6 @@ def search():
 def label():
     url = request.form['url']
     label = request.form['label']
-    print "yes" if label == 'true' else "no"
     download(url, (yes_folder if label == 'true' else no_folder))
     return ""
 
