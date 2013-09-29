@@ -2,6 +2,7 @@
   color: rgb(30, 90, 180);
   text-decoration: none;
 }
+
 .search-form {
   padding: 15px;
   margin: 0 auto;
@@ -16,6 +17,8 @@
     display: block;
     margin: 10px auto;
     font-size: 0;
+    color: rgb(200, 200, 200);
+    padding: 5px;
 }
 
 .result img {
