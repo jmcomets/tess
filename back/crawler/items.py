@@ -68,7 +68,8 @@ class PersonItem(Item):
     url = Field()
     name = Field()
     description = Field()
+    thumbnail = Field()
     industry = Field()
-    
+
     def clean(self):
         pass
