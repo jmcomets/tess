@@ -21,6 +21,8 @@ def generate_spider(domain, category, settings):
     params_r.raise_for_status()
     params = json.loads(params_r.text)['hits']['hits'][0]['_source']
 
+    log.msg('"{}" using parameters -> {}'.format(domain, params))
+
     # TODO : debug
     # with open('../../data/wrappers/ldlc.json') as p_f:
     #     params = json.loads(p_f.read())
