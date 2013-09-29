@@ -54,7 +54,7 @@ class ProductItem(Item):
                 break
 
         if 1 <= len(price.split(',')) <= 2:
-            price = price.replace(',', '.')
+            price = price.replace(',', '.').replace(' ', '')
             self['price']['value'] = float(price)
 
         # DEBUG ONLY:
