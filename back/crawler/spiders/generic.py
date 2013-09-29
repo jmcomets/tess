@@ -36,7 +36,7 @@ def generate_spider(domain, category, settings):
         start_urls = ['http://{}'.format(domain)]
         fields_xpath = params['rules']
         rules = [Rule(SgmlLinkExtractor(allow=params['pattern']), 'parse_product', follow=True),
-                Rule(SgmlLinkExtractor(allow=('.*', )), 'detect_product',follow=True)]
+                 Rule(SgmlLinkExtractor(allow=('.*', )), 'detect_product',follow=True)]
 
         def detect_product(self, response):
             """ Detects if the crawled page is a product page """
@@ -54,7 +54,6 @@ def generate_spider(domain, category, settings):
             product = ProductItem()
 
             product['url'] = response.url
-            product['_id'] = hashlib.sha256(response.url).hexdigest()
 
             for field in product.fields:
                 if field in {'url', '_id'}:
@@ -62,6 +61,10 @@ def generate_spider(domain, category, settings):
                 xpath = self.fields_xpath[field]
                 product[field] = x.select(xpath).extract()
                 # log.msg('Applying "{}" for "{}" -> {}'.format(xpath, field, product[field]))
+
+            #product['_id'] = hashlib.sha256(response.url).hexdigest()
+            product['_id'] = hashlib.sha256('{}{}'.format(product['name'], product['description'])).hexdigest()
+
 
             return product
 
