@@ -51,7 +51,8 @@ def search():
 def label():
     url = request.form['url']
     label = request.form['label']
-    download(url, (yes_folder if label else no_folder))
+    print "yes" if label == 'true' else "no"
+    download(url, (yes_folder if label == 'true' else no_folder))
     return ""
 
 def ensure_dir(f):
@@ -60,18 +61,14 @@ def ensure_dir(f):
         os.makedirs(d)
 
 def url2name(url):
-    return basename(urlsplit(url)[2])
+    keepcharacters = (' ','_', '-')
+    return "".join(c for c in url if c.isalnum() or c in keepcharacters).rstrip() + '.html'
 
 def download(url, path, localFileName = None):
     localName = url2name(url)
     req = urllib2.Request(url)
     r = urllib2.urlopen(req)
-    if r.info().has_key('Content-Disposition'):
-        # If the response has Content-Disposition, we take file name from it
-        localName = r.info()['Content-Disposition'].split('filename=')[1]
-        if localName[0] == '"' or localName[0] == "'":
-            localName = localName[1:-1]
-    elif r.url != url:
+    if r.url != url:
         # if we were redirected, the real file name we take from the final URL
         localName = url2name(r.url)
     if localFileName:
