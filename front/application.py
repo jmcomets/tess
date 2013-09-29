@@ -5,6 +5,7 @@ from urlparse import urlsplit
 import elastic
 import os
 import urllib2
+import json
 
 app = Flask(__name__)
 
@@ -57,9 +58,8 @@ def label():
 @app.route('/api/auto_suggest', methods=['GET'])
 def auto_suggest():
     query = request.args.get('query')
-    result = elastic.auto_suggest(query)
-    return str(result)
-    return ''
+    result = dict(suggestions=elastic.auto_suggest(query), query=query) 
+    return json.dumps(result)
 
 
 def ensure_dir(f):
