@@ -2,16 +2,15 @@ var TessLabeler = {
   addEventListeners: function() {
     var self = this;
     document.getElementById('yes').addEventListener('click', function(e) {
-      self.label("yes");
+      self.label(true);
     });
     document.getElementById('no').addEventListener('click', function(e) {
-      self.label("no");
+      self.label(false);
     });
-  },
-  label: function(type) {
-    console.log(type);
+  }, label: function(yes_no) {
     var requestContext = {
-      type: type
+      type: "label",
+      yes_no: yes_no
     };
 
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
