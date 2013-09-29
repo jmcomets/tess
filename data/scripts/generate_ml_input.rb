@@ -3,10 +3,12 @@ require 'csv'
 
 IS_PRODUCT = ARGV[1] || 1
 DATA_FILE = "data.csv"
+DATA_TEST_FILE = "data-test.csv"
 HEADERS_FILE = "headers.txt"
 CLASS_SET = Set.new
 
 `touch #{DATA_FILE}`
+`touch #{DATA_TEST_FILE}`
 `touch #{HEADERS_FILE}`
 
 class String
@@ -27,21 +29,35 @@ def get_subwords(word)
 end
 
 def generate_ml_inputs(folder_name, is_root)
-  Dir.glob("#{folder_name}/*") do |file|
-    next if file == '.' or file == '..'
-    if File.directory?(file)
-      generate_ml_inputs(file, false)
-    else
-      append_classes_from_file(file)
+  if File.directory?(folder_name)
+    Dir.glob("#{folder_name}/*") do |file|
+      next if file == '.' or file == '..'
+      if File.directory?(file)
+        generate_ml_inputs(file, false)
+      else
+        append_data_to_file(file)
+      end
     end
+  else
+    append_data_to_file(folder_name)
   end
 
   if is_root
-    File.open(HEADERS_FILE, "a") { |file| file.write("#{CLASS_SET.to_a.join(",")}\n") }
+    to_write = CLASS_SET.to_a.join("\n")
+
+    if (File.size(HEADERS_FILE) != 0)
+        to_write = "\n" + to_write
+    end
+
+    File.open(HEADERS_FILE, "a") { |file| file.write(to_write) }
+
+    `mv #{HEADERS_FILE} temp.txt`
+    `sort temp.txt | uniq > #{HEADERS_FILE}`
+    `rm temp.txt`
   end
 end
 
-def append_classes_from_file(file)
+def append_data_to_file(file)
   class_map = {}
   text = IO.read(file).force_encoding("ISO-8859-1").encode("utf-8", replace: nil)
   classes = text.scan(/[class|id]="([\w\-\s]+)"/).map { |a| get_subwords(a[0]) }.flatten(1)
@@ -51,13 +67,21 @@ def append_classes_from_file(file)
     CLASS_SET.add(c)
   end
 
-  CSV.open(DATA_FILE, "ab") do |csv|
+  do_split = rand(5)
+  write_file = DATA_FILE
+
+  #20% chance of writing to the other file
+  if (do_split == 0)
+    write_file = DATA_TEST_FILE
+  end
+
+  CSV.open(write_file, "ab") do |csv|
     csv << [file.gsub(",", ""), IS_PRODUCT, class_map.map { |k,v| "#{k}:#{v}" }].flatten(1)
   end
 end
 
 if !(ARGV.first)
-  puts "please provide the name of the folder containing websites"
+  puts "please provide the name of the folder containing websites. second argument (defaults to 1) sets is_product boolean"
   exit
 end
 
