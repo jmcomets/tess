@@ -1,7 +1,7 @@
 import json
 import requests
 
-SEARCH_URL = 'http://92.39.246.129:9200/object/product/_search'
+SEARCH_URL = 'http://92.39.246.129:9200/object/_search'
 
 def format_results(results):
     """
@@ -22,11 +22,9 @@ def format_matchall(query):
     bool_query['should'] = [dict(query_string=dict(default_field="_all", query=query)),
                             dict(query_string=dict(default_field="name", query=query, boost=7)),
                             dict(query_string=dict(default_field="url", query=query, boost=3))]
+    
     for token in query.split(' '):
         bool_query['should'].append(dict(prefix=dict(_all=dict(prefix=token,  boost=0.6))))
-
-
-
 
     elas_query = dict(query=dict(bool=bool_query), size=60, sort=[], facets={})
     elas_query['from'] = 0
