@@ -15,6 +15,9 @@
       "js": ["inject.js"]
     }
   ],
+  "background": {
+    "scripts" : ["background.js"]
+  },
   "permissions": [
     "debugger",
     "tabs",
@@ -24,8 +27,19 @@
     "http://*/*",
     "https://*/*",
     "notifications",
-    "history",
-    "management",
     "topSites"
-  ]
+  ],
+  "commands": {
+    "labelPage": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+L",
+        "mac": "Command+Shift+L"
+      },
+      "shortcut": {
+        "default": "Ctrl+Shift+L",
+        "mac": "Command+Shift+L"
+      },
+      "description": "Opens the extension to label the current page"
+    }
+  }
 }
