@@ -38,9 +38,10 @@ def generate_spider(domain, category, settings):
         def detect_product(self, response):
             """ Detects if the crawled page is a product page """
 
-            classes_freq = Counter(lxml.html.fromstring(response.body).xpath('//@class'))
+            #classes_freq = Counter(lxml.html.fromstring(response.body).xpath('//@class'))
             # predictor = self.settings.PREDICTOR
             # prediction = predictor.predict(classes_freq.items())
+            pass
 
         def parse_product(self, response):
             """ Parses a product page """
