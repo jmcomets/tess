@@ -1,19 +1,31 @@
+function validateURL(textval) {
+      var urlregex = new RegExp(
+            "^(http|https|ftp)\://([a-zA-Z0-9\.\-]+(\:[a-zA-Z0-9\.&amp;%\$\-]+)*@)*((25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9])\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9]|0)\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9]|0)\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[0-9])|([a-zA-Z0-9\-]+\.)*[a-zA-Z0-9\-]+\.(com|edu|gov|int|mil|net|org|biz|arpa|info|name|pro|aero|coop|museum|[a-zA-Z]{2}))(\:[0-9]+)*(/($|[a-zA-Z0-9\.\,\?\'\\\+&amp;%\$#\=~_\-]+))*$");
+      return urlregex.test(textval);
+}
+
 <% if (results.length > 0) { %>
-  <% for (var i=0; i < results.length; i++) { %>
+  <% for (var i=0; i < results.length; i++) {
+         result = results[i];
+         if (!validateURL(result.thumbnail)) {
+             continue;
+         }
+   %>
+   
   <div class="result row">
     <div class="thumbnail">
-      <a href="<%= results[i].url %>">
-        <img src="<%= results[i].thumbnail %>">
+      <a href="<%= result.url %>">
+        <img src="<%= result.thumbnail %>">
       </a>
     </div>
 
     <div class="product-info">  <!-- class="col-sm-6 col-md-3"> -->
       <h3 class="product-title">
-        <%= results[i].name %>
+        <%= result.name %>
       </h3>
       <div class="caption">
-        <p><%= results[i].description %></p>
-        <p class="prix"><%= results[i].price %></p>
+        <p><%= result.description %></p>
+        <p class="prix"><%= result.price %></p>
       </div>
     </div>
   </div>
