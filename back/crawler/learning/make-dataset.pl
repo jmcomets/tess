@@ -2,7 +2,7 @@
 use JSON qw/decode_json/;
 use XML::LibXML;
 
-my $candXpath = "/*/*/*/*//*[self::div or self::p or self::span]";
+my $candXpath = "/*/*/*/*//*[self::div or self::p or self::span or self::h1 or self::h2 or self::h3]";
 
 my %features = (
   "parProd"   => 'number(contains(parent::*/@class,"prod"))',
@@ -10,7 +10,7 @@ my %features = (
   "ancDesc"   => 'count(ancestor::*[contains(@class,"desc")])',
   "selfProd"  => 'number(contains(@class,"prod"))',
   "selfDesc"  => 'number(contains(@class,"desc"))',
-  "selfCurr"  => 'number(contains(text(),"£") or contains(text(),"€") or contains(text(), "EUR"))',
+  "selfCurr"  => 'number(contains(text(),"£") or contains(text(),"€")  or contains(text(),"$") or contains(text(), "EUR"))',
   "selfDesc"  => 'number(contains(text(),"Desc") or contains(text(),"desc"))',
   "selfEl"    => 'local-name(.)',
   "parEl"     => 'local-name(..)',
@@ -19,6 +19,7 @@ my %features = (
   "parClass"  => '../@class',
   "selfDepth" => 'count(ancestor::*)',
   "selfDesc"  => 'count(descendant::*)',
+  "inHn"      => 'ancestor-or-self::h1 or ancestor-or-self::h2 or ancestor-or-self::h3',
   "gpClass"   => sub {
      my ($cand) = @_;
      my @n = $cand->findnodes('../../@class');
