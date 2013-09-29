@@ -2,12 +2,12 @@
   "_id": "zalando",
   "name": "zalando",
   "pattern": [
-     "/[\\w\\-/]+.html"
+     "/\\w+[\\-\\w]*\\.html"
   ],
   "rules": {
     "name":        "//span[@itemprop='name'][1]/text()",
-    "description": "concat((//span[@class='price specialPrice nowrap'])[1]/text(), //span[@itemprop='description'][1]/text())",
-    "price": "//span[@itemprop='price'][1]/text()",
+    "description": "//span[@itemprop='description'][1]/text()",
+    "price": "concat(//span[@itemprop='price'][1]/text(), (//span[@class='price specialPrice nowrap'])[1]/text())",
     "brand": "//span[@itemprop='brand'][1]/text()",
     "model": "string('')",
     "thumbnail": "//img[@itemprop='image'][1]/@src"

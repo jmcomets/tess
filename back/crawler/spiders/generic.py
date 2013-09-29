@@ -42,7 +42,7 @@ def generate_spider(domain, category, settings):
             classes_freq = Counter(lxml.html.fromstring(response.body).xpath('//@class'))
             prediction = predict.make_prediction(classes_freq.items())
             
-            # log.msg('###########\n\n {} -> {} \n\n###############'.format(response.url, prediction))
+            #log.msg('###########\n\n {} -> {} \n\n###############'.format(response.url, prediction))
 
         def parse_product(self, response):
             """ Parses a product page """
