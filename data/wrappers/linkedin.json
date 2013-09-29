@@ -1,0 +1,13 @@
+{
+  "_id": "linkedin",
+  "name": "linkedin",
+  "pattern": [
+     "/in/[^/]*"
+  ],
+  "rules": {
+    "name":        "//h1//span[@class='full-name']",
+    "description": "//div[@class='profile-header']//p[@class='headline-title title']/text()",
+    "thumbnail":   "//div[@id='profile-picture']/img[@class='photo']/@src"
+  },
+  "category": "person"
+}
