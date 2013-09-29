@@ -33,9 +33,13 @@ class ProductItem(Item):
 
         # TODO: Parsing prices
         if not self['price']:
+            self['price'] = dict(raw='N/A', currency=None, value=None)
             return
         
-        raw_price = self['price'][0].encode('utf-8').replace(' ', '').strip()
+        raw_price = self['price'][0].encode('utf-8').strip(' \t\n')
+        for stop_char in {' ', '\t', '\n'}:
+            raw_price = raw_price.replace(stop_char, '')
+        
         self['price'] = dict()
         self['price']['raw'] = raw_price
         price = raw_price
@@ -46,7 +50,7 @@ class ProductItem(Item):
             if any(signature in price for signature in signatures):
                 price_cur = currency
                 for signature in signatures:
-                    price.replace(signature, '')
+                    price = price.replace(signature, '')
                 break
 
         if 1 <= len(price.split(',')) <= 2:
