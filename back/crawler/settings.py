@@ -15,5 +15,5 @@ ITEM_PIPELINES = {
 }
 SERVER = '92.39.246.129:9200'
 PREDICTOR_PATH = 'learning/predictor.txt'
-# Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'crawler (+http://www.yourdomain.com)'
+
+USER_AGENT = 'Mozilla/5.0 (Windows; U; Windows NT 6.1; rv:2.2) Gecko/20110201'

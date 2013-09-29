@@ -11,5 +11,6 @@
     "brand": "//span[@property='v:brand'][1]/text()",
     "model": "//span[@property='v:name'][1]/text()",
     "thumbnail": "(//img[@rel='v:photo'])[1]/@src"
-  }
+  },
+  "target" : "product"
 }

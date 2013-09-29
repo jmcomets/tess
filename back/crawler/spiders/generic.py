@@ -3,7 +3,7 @@ from scrapy.contrib.linkextractors.sgml import SgmlLinkExtractor
 from scrapy.contrib.spiders import CrawlSpider, Rule
 from scrapy import log
 
-from items import ProductItem
+from items import ProductItem, PersonItem
 from learning import predict
 
 from collections import defaultdict, Counter
@@ -12,6 +12,8 @@ import requests
 import hashlib
 import json
 import lxml.html
+
+ITEM_MAP = {'product' : ProductItem, 'person': PersonItem}
 
 def generate_spider(domain, category, settings):
 
@@ -34,24 +36,30 @@ def generate_spider(domain, category, settings):
         main_domain = domain
         allowed_domains = [domain]
         start_urls = ['http://{}'.format(domain)]
+        if 'start_urls' in params:
+            start_urls += params['start_urls']
+
         fields_xpath = params['rules']
         rules = [Rule(SgmlLinkExtractor(allow=params['pattern']), 'parse_product', follow=True),
                  Rule(SgmlLinkExtractor(allow=('.*', )), 'detect_product',follow=True)]
+
+        category = params['category'] if 'category' in params else 'product'
+        item_type = ITEM_MAP[category]
 
         def detect_product(self, response):
             """ Detects if the crawled page is a product page """
 
             classes_freq = Counter(lxml.html.fromstring(response.body).xpath('//@class'))
-            prediction = predict.make_prediction(classes_freq.items())
+            # prediction = predict.make_prediction(classes_freq.items())
             
-            #log.msg('###########\n\n {} -> {} \n\n###############'.format(response.url, prediction))
+            # log.msg('###########\n\n {} -> {} \n\n###############'.format(response.url, prediction))
 
         def parse_product(self, response):
             """ Parses a product page """
 
             x = HtmlXPathSelector(response)
 
-            product = ProductItem()
+            product = self.item_type()
 
             product['url'] = response.url
 
@@ -60,6 +68,11 @@ def generate_spider(domain, category, settings):
                     continue
                 xpath = self.fields_xpath[field]
                 product[field] = x.select(xpath).extract()
+
+                # Removing trailing spaces from extracted data
+                for i, element in enumerate(product[field]):
+                    product[field][i] = element.strip()
+                    
                 # log.msg('Applying "{}" for "{}" -> {}'.format(xpath, field, product[field]))
 
             #product['_id'] = hashlib.sha256(response.url).hexdigest()
