@@ -27,7 +27,7 @@ class ProductItem(Item):
 
         # Correcting absolute image URLs
         for i, thumbnail in enumerate(self['thumbnail']):
-            if thumbnail.startswith('/'):
+            if thumbnail.startswith('/') and not thumbnail.startswith('//'):
                 self['thumbnail'][i] = 'http://' + domain + self['thumbnail'][i]
 
         # # TODO: Parsing prices
@@ -38,6 +38,9 @@ class ProductItem(Item):
         #     for signature in signatures:
         #         if signature in raw_price.startswith(signature) or raw_price.endswith('raw_price'):
         #             clean_price = raw_price.replace(signature, '')
+        #             if len(clean_price.split(',')) == 2 and not '.' in clean_price:
+        #                 clean_price = clean_price.replace(',', '.')
+        #              
         #             self['price'] = {'raw': raw_price,
         #                              'value': float(clean_price),
         #                              'currency': currency}

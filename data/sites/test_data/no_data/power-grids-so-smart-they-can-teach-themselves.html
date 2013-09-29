@@ -1,0 +1,2192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Smart grids in Abu Dhabi to use machine learning algorithms | The National</title>
+<meta name="title" content="Smart grids in Abu Dhabi to use machine learning algorithms | The National" />
+<meta name="Keywords" content="" />
+<meta name="Description" content="Today's power grid is too simple for the future of electricity. If we aim to convert our electrical infrastructure to use renewable energy sources, we need to develop a smart grid that can handle it. The best way to do that is to use programs that let the grid learn for itself." />
+<meta property="og:title" content="Smart grids in Abu Dhabi to use machine learning algorithms | The National" />
+<meta property="og:description" content="Today's power grid is too simple for the future of electricity. If we aim to convert our electrical infrastructure to use renewable energy sources, we need to develop a smart grid that can handle it. The best way to do that is to use programs that let the grid learn for itself." />
+<meta property="og:url" content="http://www.thenational.ae/uae/power-grids-so-smart-they-can-teach-themselves" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="" />
+<meta name="news_keywords" content="" />
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta http-equiv="Content-Language" content="en-gb" />
+
+  <link rel="stylesheet" type="text/css" href="/styles/thenational.css" />
+<link href="/styles/images/favicon.ico" rel="icon"       type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="/styles/screen.css" media="screen, projection" />
+<link rel="stylesheet" type="text/css" href="/styles/print.css" media="print" />
+<script type="text/javascript" src="/js/jquery-1.3.2.min1.js"></script>
+<script type="text/javascript" src="/js/functions.js"></script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript">
+var myMark = new Array();
+var myInfo = new Array();
+var myDiv = new Array();
+var myNam = new Array();
+var myLoc = new Array();
+var myLat = new Array();
+var myLng = new Array();
+var indexLoc = 0;
+var actLat = new Array();
+var actLng = new Array();
+var minLat = null;
+var minLng = null;
+var maxLat = null;
+var maxLng = null;
+var ctrLat = null;
+var ctrLon = null;
+var map = null;
+function setAuto() {
+  for (indexLoop2 in myLoc) {
+    if(indexLoop2 < myLoc.length) {
+      if(indexLoop2 < myLoc.length) {
+        if(minLat == null) {
+          minLat = actLat[indexLoop2];
+          maxLat = actLat[indexLoop2];
+        }
+        else if(actLat[indexLoop2] < minLat) {
+          minLat = actLat[indexLoop2];
+        }
+        else if(actLat[indexLoop2] > maxLat) {
+          maxLat = actLat[indexLoop2];
+        }
+        if(minLng == null) {
+          minLng = actLng[indexLoop2];
+          maxLng = actLng[indexLoop2];
+        }
+        else if(actLng[indexLoop2] < minLng) {
+          minLng = actLng[indexLoop2];
+        }
+        else if(actLng[indexLoop2] > maxLng) {
+          maxLng = actLng[indexLoop2];
+        }
+      }
+    }
+  }
+  mapDistance = (3958.75 * Math.acos(Math.sin(minLat / 57.2958) * Math.sin(maxLat / 57.2958) + Math.cos(minLat / 57.2958) * Math.cos(maxLat / 57.2958) * Math.cos(maxLng / 57.2958 - minLng / 57.2958)));
+  if(mapDistance < 0.5) {
+    mapZoom = 14;
+  }
+  else if(mapDistance < 1) {
+    mapZoom = 13;
+  }
+  else if(mapDistance < 2) {
+    mapZoom = 12;
+  }
+  else if(mapDistance < 3) {
+    mapZoom = 11;
+  }
+  else if(mapDistance < 7) {
+    mapZoom = 10;
+  }
+  else if(mapDistance < 15) {
+    mapZoom = 9;
+  }
+  else if(mapDistance < 30) {
+    mapZoom = 8;
+  }
+  else if(mapDistance < 70) {
+    mapZoom = 7;
+  }
+  else if(mapDistance < 120) {
+    mapZoom = 6;
+  }
+  else if(mapDistance < 250) {
+    mapZoom = 5;
+  }
+  else if(mapDistance < 500) {
+    mapZoom = 4;
+  }
+  else if(mapDistance < 1000) {
+    mapZoom = 3;
+  }
+  else if(mapDistance < 2000) {
+    mapZoom = 2;
+  }
+  else if(mapDistance < 3000) {
+    mapZoom = 1;
+  }
+  else if(mapDistance > 3000) {
+    mapZoom = 0;
+  }
+  else {
+    mapZoom = 2;
+  }
+  map.setZoom(mapZoom);
+  cenLat = minLat + ((maxLat - minLat) / 2);
+  cenLng = minLng + ((maxLng - minLng) / 2);
+  var myLatlng = new google.maps.LatLng(cenLat, cenLng);
+  map.setCenter(myLatlng);
+  map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
+}
+function initialize() {
+  var geocoder = new google.maps.Geocoder();
+  var myLatlng = new google.maps.LatLng(35.360026, -73.604571);
+  var myLatlng = new google.maps.LatLng(0, 0);
+  var myIcon = new google.maps.MarkerImage ('/styles/images/red-marker.png');
+  var myOptions = {
+    zoom: 8,
+    streetViewControl: false,
+    panControl: false,
+    mapTypeControl: true,
+    GoogleMapZoomControl: true,
+    center: myLatlng,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  }
+  if (document.getElementById("map-canvas") != null) {
+    // Check if there is markers on the section
+    if (myLoc != '') {
+      map = new google.maps.Map(document.getElementById("map-canvas"), myOptions);
+      // Loop through all markers
+      for (indexLoop in myLoc) {
+        if(indexLoop < myLoc.length) {
+          codeAddress(myLoc[indexLoop], indexLoop, myNam[indexLoop]);
+        }
+      }
+    }
+  }
+  function codeAddress(address, addrCount, addrName) {
+    geocoder.geocode( {'address': address},
+      function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+          var marker = new google.maps.Marker({
+            icon: myIcon,
+            map: map,
+            position: results[0].geometry.location,
+            title: addrName,
+            zIndex: Number(myLoc.length - addrCount)
+          });
+          myMark[addrCount] = marker;
+          codeAddress = results[0].geometry.location;
+          actLat[addrCount] = codeAddress.lat();
+          actLng[addrCount] = codeAddress.lng();
+          /* *** Removed (We not use this feature right now) *** */
+          /*
+          var strContent = document.getElementById('myInfo' + Number(Number(addrCount) + 1)).innerHTML;
+          var infowindow = new google.maps.InfoWindow({
+              content: strContent
+          });
+          myInfo[addrCount] = infowindow;
+          */
+          /*
+          The window is to small to have this feature. Remove for now.
+          google.maps.event.addListener(myMark[addrCount], 'click', function() {
+            for(xInfo in myInfo) {
+              if(xInfo < myLoc.length) {
+                myInfo[xInfo].close();
+              }
+            }
+            myInfo[addrCount].open(map, myMark[addrCount]);
+          });
+          */
+          /* *** Removed (We not use this feature right now) *** */
+          /*
+          myDiv[addrCount] = document.getElementById('newsitemLoc' + Number(Number(addrCount) + 1));
+          google.maps.event.addDomListener(myDiv[addrCount], 'click', function() {
+            google.maps.event.trigger(myMark[addrCount], 'click');
+          });
+          */
+          setAuto();
+        }
+        else {
+          //error
+        }
+        if(addrCount == myLoc.length - 1) {
+          //setAuto();
+        }
+      }
+    );
+  }
+}
+$(document).ready(function() {
+    initialize();
+});
+</script>
+<script  src="/js/hcomponent.js"></script>
+<script type="text/javascript" src="/js/pollMiniAjax.js"></script>
+<script language="javascript" type="text/javascript" src="/js/poll_cookies.js"></script>
+<script type="text/javascript" src="/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="/js/jquery.easing-1.3.js"></script>
+<script type="text/javascript" src="/js/jquery.royalslider.min.js"></script>
+<link href="/css/royalslider.css" rel="stylesheet">
+<link href="/css/rs-default.css" rel="stylesheet">
+<link href="/css/slider.css" rel="stylesheet">
+<script type="text/javascript" src="/js/slider.js"></script>
+<script type="text/javascript" src="/js/jquery.tooltip.min.js"></script>
+
+   <!-- Takes: Section,subsection,topic,topics,authors pages-->
+<script type='text/javascript'>
+  (function() {
+  var useSSL = 'https:' == document.location.protocol;
+  var src = (useSSL ? 'https:' : 'http:') +
+  '//www.googletagservices.com/tag/js/gpt.js';
+  document.write('<scr' + 'ipt src="' + src + '"></scr' + 'ipt>');
+  })();
+</script>
+<script type='text/javascript'>
+googletag.defineSlot('/5730/tn.ae_background/background_news/news_uae', [1, 1], 'div-gpt-ad-background').addService(googletag.pubads()).setTargeting('bg','article');
+googletag.defineSlot('/5730/tn.ae_news/news_uae/home/article', [[728, 90],[960, 60]], 'div-gpt-ad-leaderboard').addService(googletag.pubads());
+googletag.defineSlot('/5730/tn.ae_news/news_uae/home/article', [[160, 600], [120, 600], [220, 550]], 'div-gpt-ad-spacebanner').addService(googletag.pubads());
+googletag.defineSlot('/5730/tn.ae_news/news_uae/home/article', [300, 250],'div-gpt-ad-mpu').addService(googletag.pubads());
+googletag.defineSlot('/5730/tn.ae_news/news_uae/home/article', [200, 90], 'div-gpt-ad-200x90').addService(googletag.pubads());
+googletag.defineSlot('/5730/tn.ae_news/news_uae/home/article', [220, 50], 'div-gpt-ad-220x50').addService(googletag.pubads());
+googletag.defineOutOfPageSlot('/5730/tn.ae_news/news_uae/home/article', 'div-gpt-ad-outofpage-oop').addService(googletag.pubads());
+googletag.pubads().setTargeting('page','home');
+googletag.pubads().setTargeting('lan','en');
+googletag.pubads().enableSyncRendering();
+googletag.pubads().enableSingleRequest();
+googletag.enableServices();
+//var used in multimedia detail page
+var url       = '/misc/misc/ads.pbs&mainslot=news/news_uae';
+var commontag = '/5730/tn.ae_news/news_uae/home';
+var targettag = 'home';
+</script>
+<script type="text/javascript" src="/apps/js/sc.js"></script><script type="text/javascript">  var sc = new StatsCollector('AB');  sc.type      = 'story';  sc.date      = '20130928';  sc.id        = '130929200';  sc.category  = 'ARTICLE';</script>
+</head>
+<!-- 1. Advert_Type1_Background -->
+<div id='div-gpt-ad-background'>
+<script type='text/javascript'>
+googletag.display('div-gpt-ad-background');
+</script>
+</div>
+<!-- 1. Advert_Type1_Background -->
+<script type="text/javascript">
+<!--
+var _articleAuthor = '';
+-->
+</script>
+<!-- BEGIN Google Analytics Code -->
+<script type="text/javascript">
+var _gaq = _gaq || [];
+var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+_gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+_gaq.push(['_setAccount', 'UA-18693758-1']);
+_gaq.push(['_setDomainName', '.thenational.ae']);
+if (_articleAuthor){
+_gaq.push(['_setCustomVar',1,'Author',_articleAuthor,3]);
+}
+_gaq.push(['_trackPageview']);
+(function(){ 
+	var ga = document.createElement('script'); 
+	ga.type = 'text/javascript'; ga.async = true; 
+	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js'; 
+	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s); 
+})();
+</script>
+<!--END Google Analytics Code -->
+<!--START Rank Tracking Script Code -->
+<script>
+if (document.referrer.match(/google\.com/gi) && document.referrer.match(/cd/gi)) {
+var myString = document.referrer;
+var r = myString.match(/cd=(.*?)&/);
+var rank = parseInt(r[1]);
+var kw = myString.match(/q=(.*?)&/);
+if (kw[1].length > 0) {
+var keyWord = decodeURI(kw[1]);
+} else {
+keyWord = "(not provided)";
+}
+var p = document.location.pathname;
+_gaq.push(['_trackEvent', 'RankTracker', keyWord, p, rank, true]);
+}
+if (document.referrer.match(/google\.([a-zA-Z]{2,5})/gi)) {
+var myString = document.referrer;
+var r = myString.match(/cd=(.*?)&/);
+var rank = parseInt(r[1]);
+var kw = myString.match(/q=(.*?)&/);
+if (kw[1].length > 0) {
+var keyWord = decodeURI(kw[1]);
+} else {
+keyWord = "(not provided)";
+}
+var p = document.location.pathname;
+_gaq.push(['_trackEvent', 'ReferralCheck', keyWord, p, rank, true]);
+}
+</script>
+<!-- End Rank Tracking Script Code -->
+<!-- BEGIN Google Event Tracking for outbound links -->
+<script type="text/javascript">
+function recordOutboundLink(link, category, action)
+{ _gat._getTrackerByName()._trackEvent(category, action); setTimeout('document.location = "' + link.href + '"', 100); }
+</script>
+<!--END Google Event Tracking for outbound links -->
+<!-- Start Publishflow -->
+<script type='text/javascript'>
+var _sf_async_config=
+{uid:2876,domain:'thenational.ae'}
+;(function(){function loadPublishflow()
+{window._sf_endpt=(new Date()).getTime();var e = document.createElement('script');e.setAttribute('language', 'javascript');e.setAttribute('type', 'text/javascript');e.setAttribute('src',(('https:' == document.location.protocol) ? 'https://s3.amazonaws.com/' : 'http://s3.amazonaws.com/') + 'publishflow/javascript/data.js');document.body.appendChild(e);}
+var oldonload = window.onload;window.onload = (typeof window.onload != 'function') ?loadPublishflow : function()
+{ oldonload(); loadPublishflow(); }
+;})();
+</script>
+<!-- End Publishflow -->
+
+<body>
+<!-- BEGIN EFFECTIVE MEASURE CODE -->
+<!-- COPYRIGHT EFFECTIVE MEASURE -->
+<script type="text/javascript">
+  (function() {
+    var em = document.createElement('script'); em.type = 'text/javascript'; em.async = true;
+    em.src = ('https:' == document.location.protocol ? 'https://me-ssl' : 'http://me-cdn') + '.effectivemeasure.net/em.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(em, s);
+  })();
+</script>
+<noscript>
+<img src="//me.effectivemeasure.net/em_image" alt="" style="position:absolute; left:-5px;" />
+</noscript>
+<!--END EFFECTIVE MEASURE CODE -->
+<!-- BEGIN Tynt Script --> 
+<script type="text/javascript"> 
+if(document.location.protocol=='http:'){ 
+var Tynt=Tynt||[];Tynt.push('dWaPA6hc8r4PVbacwqm_6l');Tynt.i={"w":"TheNationalUAE","f":"thenational.ae"}; 
+(function(){var s=document.createElement('script');s.async="async";s.type="text/javascript";s.src='http://tcr.tynt.com/ti.js';var h=document.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);})(); 
+} 
+</script> 
+<!-- END Tynt Script --> 
+<div class="mainwrap clear">
+	<div class="header">
+    <div class="logo">
+      <a href="/"><img src="/styles/images/logo-the-national.png" width="350" height="57" alt="" border="0" /></a>
+    </div>
+    <div class="righttopbox">
+      <div class="righttopnav" id="loggedout" style="display:none;">
+        <h2>My National</h2>
+        <ul>
+          <li><a rel="nofollow" href="/register">Register</a></li>
+          <li><a rel="nofollow" href="/login">Sign in</a></li>
+          <li><a rel="nofollow" href="/subscribe">Subscribe</a></li>
+        </ul>
+      </div>
+      <div class="righttopnav" id="loggedin" style="display:none;width:300px;">
+        <h2>My National</h2>
+        <ul>
+          <li><a rel="nofollow" href="/my-profile" id="loggeduser"></a></li>
+          <li><a rel="nofollow" href="javascript:EatCookie();">Sign out</a></li>
+          <li><a rel="nofollow" href="/subscribe">Subscribe</a></li>
+        </ul>
+      </div>
+        <script>
+          // Logout 
+          function EatCookie() {
+            document.cookie="usernamepassword=;Path=/;expires=;"
+            document.cookie="UserRegID=;Path=/;expires=;"
+            document.cookie="LoggedIn=;Path=/;expires=;"
+            document.location="/apps/pbcs.dll/frontpage?RegLogout=1"
+          }
+          function getCookie(name) {
+            var dc = document.cookie;
+            var prefix = name + "=";
+            var begin = dc.indexOf("; " + prefix);
+            if (begin == -1) {
+                begin = dc.indexOf(prefix);
+                if (begin != 0) return null;
+            }
+            else
+            {
+                begin += 2;
+                var end = document.cookie.indexOf(";", begin);
+                if (end == -1) {
+                end = dc.length;
+                }
+            }
+            return unescape(dc.substring(begin + prefix.length, end));
+          } 
+          function setCookie(c_name,value,expiredays)
+          {
+             var exdate=new Date();
+             exdate.setTime(exdate.getTime() + (3600*1000));
+             domain_name_part =document.location.host;
+             domain_name = domain_name_part.slice(2);
+             document.cookie=c_name+ "=" +escape(value)+ ((expiredays==null) ? "" : ";expires="+exdate.toGMTString()+";domain=."+domain_name+";path=/");
+          }
+          if(getCookie("LoggedIn") != '' && getCookie("LoggedIn") != null)
+          {
+            setCookie('LoggedIn',getCookie("LoggedIn"),3600)
+            document.getElementById("loggeduser").innerHTML  = 'Hello '+getCookie("LoggedIn")+' (Update Profile)';
+            document.getElementById("loggedin").style.display = '';
+          }
+          else
+            document.getElementById("loggedout").style.display = '';
+        </script>
+      <script type="text/javascript">
+      function increaseFontSize(size) {
+        var p = document.getElementsByTagName('div');
+        for(i=0;i<p.length;i++) {
+          var check=p[i].align;
+          if(p[i].style.fontSize)	{
+            var s = parseInt(p[i].style.fontSize.replace("px",""));
+          } else {
+            var s = size;
+          }
+          if(s != size) {
+            s = size
+          }
+          s += 2;
+             p[i].style.fontSize = s+"px"
+        }
+      }
+      </script>
+      <div class="text-size">
+        <h2>Text size:</h2>
+        <ul>
+          <li class="small">
+            <a href="javascript:increaseFontSize(12)"><img alt="Small" src="/styles/images/icon-text-size-small.gif" border="0"></a>
+          </li>
+          <li class="medium">
+            <a href="javascript:increaseFontSize(14)"><img alt="Normal" src="/styles/images/icon-text-size-normal.gif" border="0"></a>
+          </li>
+          <li class="large">
+            <a href="javascript:increaseFontSize(18)"><img alt="Large" src="/styles/images/icon-text-size-large.gif" border="0"></a>
+          </li>
+        </ul>
+      </div>
+      <div class="weatherbox">
+        <iframe width="200" scrolling="no" height="22" frameborder="0" name="weatheriframe" src="http://www.admedia.ae/thenational/weather/index.php"></iframe>
+      </div>
+    </div>
+    <div class="leaderboardbox">    
+      <!-- 2. Advert_Type2_Leaderboard -->
+      <div class="leaderboard" id='div-gpt-ad-leaderboard'>
+      <script type='text/javascript'>
+      googletag.display('div-gpt-ad-leaderboard');
+      </script>
+      </div>
+      <!-- 2. Advert_Type2_Leaderboard -->
+      <!-- 5. Advert_Type5_200x90   -->
+	  <div style="float: right;" id='div-gpt-ad-200x90'>
+		<script type='text/javascript'>
+			var myDiv = $('#div-gpt-ad-leaderboard #pushIdentifier');
+			if ( myDiv.length > 0){
+				//do nothing
+			}
+			else{
+				googletag.display('div-gpt-ad-200x90');
+			}
+		</script>
+	  </div>
+	  <!-- 5. Advert_Type5_200x90  -->
+    </div>
+	<!-- 7. Advert_Type_7_Out_of_page  -->
+	<div id='div-gpt-ad-outofpage-oop'>
+	  <script type='text/javascript'>
+	    googletag.display('div-gpt-ad-outofpage-oop');
+	  </script>
+	</div>
+	<!-- 7 Advert_Type_7_Out_of_page-->
+    <div class="mainmenubox">
+      <div class="search-navigation clear">
+        <div class="navigation contains-flyout">
+  <ul>
+  <li id="Navigation_1003" class="first-child current">
+    <a href="/uae" class="root link channel-1003" title="counterUAE"><span>UAE</span></a>
+    <div class="flyout" id="flyouthover_controls_1003">
+      <ul class="sections-nav sec-1003">
+        <li class="sections">
+          <h3>Sections</h3>
+          <div class="content-subnav">
+            <ul>
+		<li>
+		  <a title="Courts" href="/uae/courts">Courts</a>
+		</li>
+		<li>
+		  <a title="Education" href="/uae/education">Education</a>
+		</li>
+		<li>
+		  <a title="Environment" href="/uae/environment">Environment</a>
+		</li>
+		<li>
+		  <a title="Health" href="/uae/health">Health</a>
+		</li>
+		<li>
+		  <a title="Heritage" href="/uae/heritage">Heritage</a>
+		<ul><li><a title="National Day" href="/uae/national-day">National Day</a></li></ul>
+		</li>
+		<li>
+		  <a title="Government" href="/uae/government">Government</a>
+		</li>
+		<li>
+		  <a title="Science" href="/uae/science">Science</a>
+		</li>
+		<li>
+		  <a title="Technology" href="/uae/technology">Technology</a>
+		</li>
+		<li>
+		  <a title="Tourism" href="/uae/tourism">Tourism</a>
+		</li>
+		<li>
+		  <a title="Transport" href="/uae/transport">Transport</a>
+		</li>
+            </ul>
+          </div>
+        </li>
+        <li class="headlines">
+          <h3>Latest UAE Headlines</h3>
+          <div class="headlines-subnav">
+            <ul>
+                <li><a href="/sheikh-abdullah-calls-on-international-community-to-press-iran-over-occupation-of-uae-islands" title="Sheikh Abdullah calls on international community to press Iran over occupation of UAE islands">Sheikh Abdullah calls on international community to press Iran over occupation of UAE islands</a></li>
+<li><a href="/uae/the-last-of-the-emirati-dallah-artisans" title="The last of the Emirati dallah artisans">The last of the Emirati dallah artisans</a></li>
+<li><a href="/uae/emirates-red-crescent-helps-pakistani-area" title="Emirates Red Crescent helps Pakistani area">Emirates Red Crescent helps Pakistani area</a></li>
+<li><a href="/uae/winners-of-fun-city-contest-announced" title="Winners of Fun City contest announced">Winners of Fun City contest announced</a></li>
+<li><a href="/uae/emirati-physician-on-path-to-academia" title="Emirati physician on path to academia">Emirati physician on path to academia</a></li>
+<li><a href="/uae/abu-dhabi-royal-staff-give-back-to-the-community" title="Abu Dhabi royal staff give back to the community">Abu Dhabi royal staff give back to the community</a></li>
+<li><a href="/uae/poignant-tribute-in-dubai-to-triathlete-roy-nasr" title="Poignant tribute in Dubai to triathlete Roy Nasr">Poignant tribute in Dubai to triathlete Roy Nasr</a></li>
+<li><a href="/uae/only-1-in-10-uae-government-departments-heed-nursery-requirement" title="Only 1 in 10 UAE government departments heed nursery requirement">Only 1 in 10 UAE government departments heed nursery requirement</a></li>
+<li><a href="/uae/government/uae-ministry-of-social-affairs-nursery-is-a-trailblazer" title="UAE Ministry of Social Affair&#x2019;s nursery is a trailblazer">UAE Ministry of Social Affair&#x2019;s nursery is a trailblazer</a></li>
+<li><a href="/uae/project-management-academy-set-up-to-support-development-programme-in-uae" title="Project-management academy set up to support development programme in UAE">Project-management academy set up to support development programme in UAE</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="popular">
+        <h3>Popular Stories</h3>
+          <div class="popular-subnav">
+          <ul>
+              <li>
+  <a href="/sport/kobe-bryant-thrills-uae-fans" title="Kobe Bryant thrills UAE fans">
+    <img src="http://www.thenational.ae/storyimage/AB/20130927/ARTICLE/130929272/AR/0/AR-130929272.jpg&MaxW=340&imageVersion=default" alt=""><br>
+    Kobe Bryant thrills UAE fans
+  </a>
+</li><li>
+  <a href="/uae/unscrupulous-filipino-recruiters-lie-to-workers-about-jobs-and-destinations" title="Unscrupulous Filipino recruiters lie to workers about jobs and destinations">
+    Unscrupulous Filipino recruiters lie to workers about jobs and destinations
+  </a>
+</li><li>
+  <a href="/uae/abu-dhabi-royal-staff-give-back-to-the-community" title="Abu Dhabi royal staff give back to the community">
+    Abu Dhabi royal staff give back to the community
+  </a>
+</li>
+          </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </li>
+  <li id="Navigation_1004" class="first-child">
+    <a href="/world" class="root link channel-1004" title="counterWorld"><span>World</span></a>
+    <div class="flyout" id="flyouthover_controls_1004">
+      <ul class="sections-nav sec-1004">
+        <li class="sections">
+          <h3>Sections</h3>
+          <div class="content-subnav">
+            <ul>
+		<li>
+		  <a title="Middle East and North Africa" href="/world/middle-east">Middle East and North Africa</a>
+		</li>
+		<li>
+		  <a title="South Asia" href="/world/south-asia">South Asia</a>
+		</li>
+		<li>
+		  <a title="Americas" href="/world/americas">Americas</a>
+		</li>
+		<li>
+		  <a title="Europe" href="/world/europe">Europe</a>
+		</li>
+		<li>
+		  <a title="Asia Pacific" href="/world/asia-pacidic">Asia Pacific</a>
+		</li>
+		<li>
+		  <a title="Africa" href="/world/africa">Africa</a>
+		</li>
+		<li>
+		  <a title="Central Asia" href="/world/central-asia">Central Asia</a>
+		</li>
+		<li>
+		  <a title="East Asia" href="/world/east-asia">East Asia</a>
+		</li>
+		<li>
+		  <a title="Southeast Asia" href="/world/southeast-asia">Southeast Asia</a>
+		</li>
+            </ul>
+          </div>
+        </li>
+        <li class="headlines">
+          <h3>Latest World Headlines</h3>
+          <div class="headlines-subnav">
+            <ul>
+                <li><a href="/world/americas/a-15-minute-phone-call-thaws-34-years-of-ice-between-us-and-iran" title="A 15-minute phone call thaws 34 years of ice between US and Iran">A 15-minute phone call thaws 34 years of ice between US and Iran</a></li>
+<li><a href="/world/americas/brazilian-man-in-legal-fight-to-keep-nine-tigers" title="Brazilian man in legal fight to keep nine tigers">Brazilian man in legal fight to keep nine tigers</a></li>
+<li><a href="/world/middle-east/un-resolution-shifts-focus-to-syrian-peace-process" title="UN resolution shifts focus to Syrian peace process">UN resolution shifts focus to Syrian peace process</a></li>
+<li><a href="/world/south-asia/indian-university-offers-students-lessons-on-love" title="Indian university offers students lessons on love">Indian university offers students lessons on love</a></li>
+<li><a href="/world/south-asia/at-least-22-dead-as-powerful-new-earthquake-hits-pakistan" title="At least 22 dead as powerful new earthquake hits Pakistan">At least 22 dead as powerful new earthquake hits Pakistan</a></li>
+<li><a href="/world/middle-east/tunisias-islamist-ennahda-party-agrees-to-step-down-to-end-crisis" title="Tunisia&#x2019;s Islamist Ennahda party agrees to step down to end crisis">Tunisia&#x2019;s Islamist Ennahda party agrees to step down to end crisis</a></li>
+<li><a href="/world/middle-east/rebels-seize-military-post-on-syrias-southern-border" title="Rebels seize military post on Syria&#x2019;s southern border">Rebels seize military post on Syria&#x2019;s southern border</a></li>
+<li><a href="/world/middle-east/lebanon-confirms-21-citizens-killed-in-capsize-of-australia-bound-boat" title="Lebanon confirms 21 citizens killed in capsize of Australia-bound boat">Lebanon confirms 21 citizens killed in capsize of Australia-bound boat</a></li>
+<li><a href="/world/middle-east/un-votes-to-eliminate-syrias-chemical-weapons" title="UN votes to eliminate Syria&#x2019;s chemical weapons">UN votes to eliminate Syria&#x2019;s chemical weapons</a></li>
+<li><a href="/world/south-asia/search-grows-bleak-in-mumbai-building-collapse-as-toll-rises-to-45" title="Search grows bleak in Mumbai building collapse as toll rises to 45">Search grows bleak in Mumbai building collapse as toll rises to 45</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="popular">
+        <h3>Popular Stories</h3>
+          <div class="popular-subnav">
+          <ul>
+              <li>
+  <a href="/world/americas/a-15-minute-phone-call-thaws-34-years-of-ice-between-us-and-iran" title="A 15-minute phone call thaws 34 years of ice between US and Iran">
+    <img src="http://www.thenational.ae/storyimage/AB/20130928/ARTICLE/130929199/AR/0/AR-130929199.jpg&MaxW=340&imageVersion=default" alt=""><br>
+    A 15-minute phone call thaws 34 years of ice between US and Iran
+  </a>
+</li><li>
+  <a href="/world/men-accused-of-hacking-british-soldier-to-death-plead-not-guilty" title="Men accused of hacking British soldier to death plead not guilty">
+    Men accused of hacking British soldier to death plead not guilty
+  </a>
+</li><li>
+  <a href="/world/middle-east/obama-and-rouhani-speak-by-phone-as-iran-nuclear-talks-gain-steam" title="Obama and Rouhani speak by phone as Iran nuclear talks gain steam">
+    Obama and Rouhani speak by phone as Iran nuclear talks gain steam
+  </a>
+</li>
+          </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </li>
+  <li id="Navigation_1005" class="first-child">
+    <a href="/business" class="root link channel-1005" title="counterBusiness"><span>Business</span></a>
+    <div class="flyout" id="flyouthover_controls_1005">
+      <ul class="sections-nav sec-1005">
+        <li class="sections">
+          <h3>Sections</h3>
+          <div class="content-subnav">
+            <ul>
+		<li>
+		  <a title="Personal Finance" href="/business/personal-finance">Personal Finance</a>
+		</li>
+		<li>
+		  <a title="Industry Insights" href="/business/industry-insights">Industry Insights</a>
+		</li>
+		<li>
+		  <a title="Aviation" href="/business/aviation">Aviation</a>
+		</li>
+		<li>
+		  <a title="Banking" href="/business/banking">Banking</a>
+		</li>
+		<li>
+		  <a title="Economy" href="/business/economy">Economy</a>
+		</li>
+		<li>
+		  <a title="Energy" href="/business/energy">Energy</a>
+		</li>
+		<li>
+		  <a title="Markets" href="/business/markets">Markets</a>
+		</li>
+		<li>
+		  <a title="Media" href="/business/media">Media</a>
+		</li>
+		<li>
+		  <a title="Property" href="/business/property">Property</a>
+		</li>
+		<li>
+		  <a title="Retail" href="/business/retail">Retail</a>
+		</li>
+		<li>
+		  <a title="Technology" href="/business/technology">Technology</a>
+		</li>
+		<li>
+		  <a title="Telecoms" href="/business/telecoms">Telecoms</a>
+		</li>
+		<li>
+		  <a title="Travel & Tourism" href="/business/travel-tourism">Travel & Tourism</a>
+		</li>
+            </ul>
+          </div>
+        </li>
+        <li class="headlines">
+          <h3>Latest Business Headlines</h3>
+          <div class="headlines-subnav">
+            <ul>
+                <li><a href="/business/industry-insights/retail/carrefour-is-first-to-open-at-abu-dhabis-deerfields-townsquare-shopping-mall" title="Carrefour is first to open at Abu Dhabi&#x2019;s Deerfields Townsquare shopping mall">Carrefour is first to open at Abu Dhabi&#x2019;s Deerfields Townsquare shopping mall</a></li>
+<li><a href="/business/industry-insights/property/dubai-gets-its-confidence-back-on-the-property-front-and-risk-returns" title="Dubai gets its confidence back on the property front &#x2013; and risk returns">Dubai gets its confidence back on the property front &#x2013; and risk returns</a></li>
+<li><a href="/business/industry-insights/tourism/img-group-seeks-builders-for-dubais-mall-of-arabia" title="IMG Group seeks builders for Dubai&#x2019;s Mall of Arabia">IMG Group seeks builders for Dubai&#x2019;s Mall of Arabia</a></li>
+<li><a href="/business/industry-insights/the-life/a-day-in-the-life-of-an-abu-dhabi-thrift-shop-manager" title="A day in the life of an Abu Dhabi thrift shop manager">A day in the life of an Abu Dhabi thrift shop manager</a></li>
+<li><a href="/business/industry-insights/property/stampede-to-complete-dubai-property-deals-before-transfer-fees-double" title="Stampede to complete Dubai property deals before transfer fees double">Stampede to complete Dubai property deals before transfer fees double</a></li>
+<li><a href="/uae-economy-minister-wants-closer-innovation-links-with-britain" title="UAE Economy Minister wants closer innovation links with Britain">UAE Economy Minister wants closer innovation links with Britain</a></li>
+<li><a href="/business/industry-insights/tourism/abu-dhabi-draws-record-visitors-thanks-to-affordable-room-rates" title="Abu Dhabi draws record visitors thanks to affordable room rates">Abu Dhabi draws record visitors thanks to affordable room rates</a></li>
+<li><a href="/business/industry-insights/tourism/20130928/abu-dhabi-couple-find-bundle-of-joy-at-indias-gujarat-surrogacy-clinic" title="Abu Dhabi couple find bundle of joy at India&#x2019;s Gujarat surrogacy clinic">Abu Dhabi couple find bundle of joy at India&#x2019;s Gujarat surrogacy clinic</a></li>
+<li><a href="/business/blackberry-committed-to-change-as-it-posts-965m-loss" title="BlackBerry committed to change as it posts $965m loss">BlackBerry committed to change as it posts $965m loss</a></li>
+<li><a href="/business/industry-insights/tourism/r-hotels-targets-dubais-booming-tourism-market-with-dh1-5bn-investment" title="R Hotels targets Dubai&#x2019;s booming tourism market with Dh1.5bn investment">R Hotels targets Dubai&#x2019;s booming tourism market with Dh1.5bn investment</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="popular">
+        <h3>Popular Stories</h3>
+          <div class="popular-subnav">
+          <ul>
+              <li>
+  <a href="/business/industry-insights/property/dubai-gets-its-confidence-back-on-the-property-front-and-risk-returns" title="Dubai gets its confidence back on the property front &#x2013; and risk returns">
+    <img src="http://www.thenational.ae/storyimage/AB/20130928/ARTICLE/130929249/AR/0/AR-130929249.jpg&MaxW=340&imageVersion=default" alt=""><br>
+    Dubai gets its confidence back on the property front &#x2013; and risk returns
+  </a>
+</li><li>
+  <a href="/business/industry-insights/tourism/img-group-seeks-builders-for-dubais-mall-of-arabia" title="IMG Group seeks builders for Dubai&#x2019;s Mall of Arabia">
+    IMG Group seeks builders for Dubai&#x2019;s Mall of Arabia
+  </a>
+</li><li>
+  <a href="/business/industry-insights/retail/carrefour-is-first-to-open-at-abu-dhabis-deerfields-townsquare-shopping-mall" title="Carrefour is first to open at Abu Dhabi&#x2019;s Deerfields Townsquare shopping mall">
+    Carrefour is first to open at Abu Dhabi&#x2019;s Deerfields Townsquare shopping mall
+  </a>
+</li>
+          </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </li>
+  <li id="Navigation_1040" class="first-child">
+    <a href="/sport" class="root link channel-1040" title="counterSport"><span>Sport</span></a>
+    <div class="flyout" id="flyouthover_controls_1040">
+      <ul class="sections-nav sec-1040">
+        <li class="sections">
+          <h3>Sections</h3>
+          <div class="content-subnav">
+            <ul>
+		<li>
+		  <a title="UAE Sport" href="/sport/uae-sport">UAE Sport</a>
+		</li>
+		<li>
+		  <a title="Football" href="/sport/football">Football</a>
+		<ul><li><a title="Arabian Gulf League" href="/sport/arabian-gulf-league">Arabian Gulf League</a></li></ul>
+		</li>
+		<li>
+		  <a title="Formula One" href="/sport/formula-one">Formula One</a>
+		<ul><li><a title="Abu Dhabi Grand Prix" href="/sport/abu-dhabi-grand-prix">Abu Dhabi Grand Prix</a></li></ul>
+		</li>
+		<li>
+		  <a title="Cricket" href="/sport/cricket">Cricket</a>
+		</li>
+		<li>
+		  <a title="Golf" href="/sport/golf">Golf</a>
+		</li>
+		<li>
+		  <a title="Horse Racing" href="/sport/horse-racing">Horse Racing</a>
+		</li>
+		<li>
+		  <a title="Tennis" href="/sport/tennis">Tennis</a>
+		</li>
+		<li>
+		  <a title="Rugby" href="/sport/rugby">Rugby</a>
+		</li>
+		<li>
+		  <a title="Motorsport" href="/sport/motorsport">Motorsport</a>
+		</li>
+		<li>
+		  <a title="North American Sport" href="/sport/north-american-sport">North American Sport</a>
+		</li>
+		<li>
+		  <a title="Other Sport" href="/sport/other-sport">Other Sport</a>
+		</li>
+            </ul>
+          </div>
+        </li>
+        <li class="headlines">
+          <h3>Latest Sport Headlines</h3>
+          <div class="headlines-subnav">
+            <ul>
+                <li><a href="/sport/rugby/bonus-blues-mar-springboks-win" title="Bonus blues mar Springboks&#x2019; win
+">Bonus blues mar Springboks&#x2019; win
+</a></li>
+<li><a href="/barcelona-sweat-over-fitness-of-lionel-messi-ahead-of-celtic-match" title="Barcelona sweat over fitness of Lionel Messi ahead of Celtic match">Barcelona sweat over fitness of Lionel Messi ahead of Celtic match</a></li>
+<li><a href="/sport/uae-open-asian-volleyball-championships-campaign-with-win-over-uzbekistan" title="UAE open Asian Volleyball Championships campaign with win over Uzbekistan
+">UAE open Asian Volleyball Championships campaign with win over Uzbekistan
+</a></li>
+<li><a href="/sport/horse-racing/sky-lantern-and-vorda-book-tickets-to-hong-kong-and-united-states" title="Sky Lantern and Vorda book tickets to Hong Kong and United States
+">Sky Lantern and Vorda book tickets to Hong Kong and United States
+</a></li>
+<li><a href="/sport/liverpools-worrying-second-half-stat-does-not-concern-manager-brendan-rodgers" title="Liverpool&#x2019;s worrying second-half stat does not concern manager Brendan Rodgers">Liverpool&#x2019;s worrying second-half stat does not concern manager Brendan Rodgers</a></li>
+<li><a href="/mourinho-points-finger-at-vertonghen-for-torres-dismissal" title="Mourinho points finger at Vertonghen for Torres&#x2019; dismissal">Mourinho points finger at Vertonghen for Torres&#x2019; dismissal</a></li>
+<li><a href="/sport/20130928/worrying-times-for-moyes-as-manchester-united-lose-again" title="Worrying times for Moyes as Manchester United lose again">Worrying times for Moyes as Manchester United lose again</a></li>
+<li><a href="/sport/football/quique-sanchez-flores-up-for-the-challenge-at-al-ain" title="Quique Sanchez Flores up for the challenge at Al Ain">Quique Sanchez Flores up for the challenge at Al Ain</a></li>
+<li><a href="/sport/north-american-sport/nfl-and-los-angeles-do-not-seem-to-miss-each-other" title="NFL and Los Angeles do not seem to miss each other
+">NFL and Los Angeles do not seem to miss each other
+</a></li>
+<li><a href="/sport/north-american-sport/kansas-city-chiefs-living-up-to-their-talent-thanks-to-andy-reid" title="Kansas City Chiefs living up to their talent thanks to Andy Reid
+">Kansas City Chiefs living up to their talent thanks to Andy Reid
+</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="popular">
+        <h3>Popular Stories</h3>
+          <div class="popular-subnav">
+          <ul>
+              <li>
+  <a href="/sport/20130928/worrying-times-for-moyes-as-manchester-united-lose-again" title="Worrying times for Moyes as Manchester United lose again">
+    <img src="http://www.thenational.ae/storyimage/AB/20130928/ARTICLE/130929193/AR/0/AR-130929193.jpg&MaxW=340&imageVersion=default" alt=""><br>
+    Worrying times for Moyes as Manchester United lose again
+  </a>
+</li><li>
+  <a href="/mourinho-points-finger-at-vertonghen-for-torres-dismissal" title="Mourinho points finger at Vertonghen for Torres&#x2019; dismissal">
+    Mourinho points finger at Vertonghen for Torres&#x2019; dismissal
+  </a>
+</li><li>
+  <a href="/sport/liverpools-worrying-second-half-stat-does-not-concern-manager-brendan-rodgers" title="Liverpool&#x2019;s worrying second-half stat does not concern manager Brendan Rodgers">
+    Liverpool&#x2019;s worrying second-half stat does not concern manager Brendan Rodgers
+  </a>
+</li>
+          </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </li>
+  <li id="Navigation_1006" class="first-child">
+    <a href="/lifestyle" class="root link channel-1006" title="counterLifestyle"><span>Lifestyle</span></a>
+    <div class="flyout" id="flyouthover_controls_1006">
+      <ul class="sections-nav sec-1006">
+        <li class="sections">
+          <h3>Sections</h3>
+          <div class="content-subnav">
+            <ul>
+		<li>
+		  <a title="Motoring" href="/lifestyle/motoring">Motoring</a>
+		</li>
+		<li>
+		  <a title="Travel" href="/lifestyle/travel">Travel</a>
+		</li>
+		<li>
+		  <a title="House & Home" href="/lifestyle/house-home">House & Home</a>
+		</li>
+		<li>
+		  <a title="Fashion" href="/lifestyle/fashion">Fashion</a>
+		</li>
+		<li>
+		  <a title="Food" href="/lifestyle/food">Food</a>
+		</li>
+		<li>
+		  <a title="Well Being" href="/lifestyle/well-being">Well Being</a>
+		</li>
+		<li>
+		  <a title="Family" href="/lifestyle/family">Family</a>
+		</li>
+            </ul>
+          </div>
+        </li>
+        <li class="headlines">
+          <h3>Latest Lifestyle Headlines</h3>
+          <div class="headlines-subnav">
+            <ul>
+                <li><a href="/lifestyle/fashion/reema-ameer-from-bylines-to-fashion-lines" title="Reema Ameer: from bylines to fashion lines">Reema Ameer: from bylines to fashion lines</a></li>
+<li><a href="/five-things-to-do-today-see-some-extremely-colourful-photographs" title="Five Things to Do Today: see some extremely colourful photographs">Five Things to Do Today: see some extremely colourful photographs</a></li>
+<li><a href="/lifestyle/well-being/the-worlds-most-luxurious-spa-treatment-launched-in-dubai" title="The world&#x2019;s most luxurious spa treatment launched in Dubai">The world&#x2019;s most luxurious spa treatment launched in Dubai</a></li>
+<li><a href="/lifestyle/my-kind-of-place/budapest-boasts-twice-the-delights" title="Budapest boasts twice the delights">Budapest boasts twice the delights</a></li>
+<li><a href="/lifestyle/travel/pinatubos-glow-in-the-philippines" title="Pinatubo&#x2019;s glow in the Philippines">Pinatubo&#x2019;s glow in the Philippines</a></li>
+<li><a href="/lifestyle/motoring/motoring-with-the-bentley-comfort-is-king" title="Motoring: With the Bentley, comfort is king">Motoring: With the Bentley, comfort is king</a></li>
+<li><a href="/lifestyle/profiles/my-uae-ali-al-dhahni-is-dibbas-beekeeper" title="My UAE: Ali Al Dhahni is Dibba&#x2019;s beekeeper">My UAE: Ali Al Dhahni is Dibba&#x2019;s beekeeper</a></li>
+<li><a href="/lifestyle/profiles/newsmaker-nicki-lauda" title="Newsmaker: Nicki Lauda">Newsmaker: Nicki Lauda</a></li>
+<li><a href="/lifestyle/travel/hotel-review-sofitel-in-dubai" title="Hotel review: Sofitel in Dubai">Hotel review: Sofitel in Dubai</a></li>
+<li><a href="/uae/arabic-language/the-joy-of-arabic" title="The joy of Arabic">The joy of Arabic</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="popular">
+        <h3>Popular Stories</h3>
+          <div class="popular-subnav">
+          <ul>
+              <li>
+  <a href="/lifestyle/well-being/the-worlds-most-luxurious-spa-treatment-launched-in-dubai" title="The world&#x2019;s most luxurious spa treatment launched in Dubai">
+    <img src="http://www.thenational.ae/storyimage/AB/20130928/ARTICLE/130929242/AR/0/AR-130929242.jpg&MaxW=340&imageVersion=default" alt=""><br>
+    The world&#x2019;s most luxurious spa treatment launched in Dubai
+  </a>
+</li><li>
+  <a href="/lifestyle/fashion/reema-ameer-from-bylines-to-fashion-lines" title="Reema Ameer: from bylines to fashion lines">
+    Reema Ameer: from bylines to fashion lines
+  </a>
+</li><li>
+  <a href="/five-things-to-do-today-see-some-extremely-colourful-photographs" title="Five Things to Do Today: see some extremely colourful photographs">
+    Five Things to Do Today: see some extremely colourful photographs
+  </a>
+</li>
+          </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </li>
+  <li id="Navigation_1007" class="first-child">
+    <a href="/arts-culture" class="root link channel-1007" title="counterArts & Culture"><span>Arts & Culture</span></a>
+    <div class="flyout" id="flyouthover_controls_1007">
+      <ul class="sections-nav sec-1007">
+        <li class="sections">
+          <h3>Sections</h3>
+          <div class="content-subnav">
+            <ul>
+		<li>
+		  <a title="Art" href="/arts-culture/art">Art</a>
+		</li>
+		<li>
+		  <a title="Books" href="/arts-culture/books">Books</a>
+		</li>
+		<li>
+		  <a title="Television" href="/arts-culture/television">Television</a>
+		</li>
+		<li>
+		  <a title="Film" href="/arts-culture/film">Film</a>
+		</li>
+		<li>
+		  <a title="Music" href="/arts-culture/music">Music</a>
+		</li>
+		<li>
+		  <a title="On Stage" href="/arts-culture/on-stage">On Stage</a>
+		</li>
+            </ul>
+          </div>
+        </li>
+        <li class="headlines">
+          <h3>Latest Arts & Culture Headlines</h3>
+          <div class="headlines-subnav">
+            <ul>
+                <li><a href="/arts-culture/music/high-notes-of-dubai-music-week" title="High notes of Dubai Music Week">High notes of Dubai Music Week</a></li>
+<li><a href="/sea-of-success" title="Sea of success
+">Sea of success
+</a></li>
+<li><a href="/arts-culture/books/lailamah-giselle-khans-eight-year-old-wisdom-hits-shelves-in-dubai" title="Lailamah Giselle Khan&#x2019;s eight-year-old wisdom hits shelves in Dubai">Lailamah Giselle Khan&#x2019;s eight-year-old wisdom hits shelves in Dubai</a></li>
+<li><a href="/arts-culture/shah-rukh-khan-honours-memory-of-yash-chopra" title="Shah Rukh Khan honours memory of Yash Chopra">Shah Rukh Khan honours memory of Yash Chopra</a></li>
+<li><a href="/arts-culture/breaking-up-is-so-very-hard-to-do" title="Breaking up is so very hard to do">Breaking up is so very hard to do</a></li>
+<li><a href="/arts-culture/art/dubai-photography-award-wants-you-to-help-create-the-future" title="Dubai photography award wants you to help create the future">Dubai photography award wants you to help create the future</a></li>
+<li><a href="/arts-culture/music/tina-sani-serenades-dubai" title="Tina Sani serenades Dubai">Tina Sani serenades Dubai</a></li>
+<li><a href="/lebanese-singer-xriss-jor-impresses-quincy-jones-at-dubai-music-week" title="Lebanese singer Xriss Jor impresses Quincy Jones at Dubai Music Week">Lebanese singer Xriss Jor impresses Quincy Jones at Dubai Music Week</a></li>
+<li><a href="/arts-culture/selena-gomez-i-just-want-it-to-be-fun-for-all-the-people" title="Selena Gomez: &#x2018;I just want it to be fun for all the people&#x2019;">Selena Gomez: &#x2018;I just want it to be fun for all the people&#x2019;</a></li>
+<li><a href="/arts-culture/books/coffee-table-book-keeps-alive-a-dead-genre" title="Coffee table book keeps alive a dead genre">Coffee table book keeps alive a dead genre</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="popular">
+        <h3>Popular Stories</h3>
+          <div class="popular-subnav">
+          <ul>
+              <li>
+  <a href="/arts-culture/shah-rukh-khan-honours-memory-of-yash-chopra" title="Shah Rukh Khan honours memory of Yash Chopra">
+    <img src="http://www.thenational.ae/storyimage/AB/20130928/ARTICLE/130929245/AR/0/AR-130929245.jpg&MaxW=340&imageVersion=default" alt=""><br>
+    Shah Rukh Khan honours memory of Yash Chopra
+  </a>
+</li><li>
+  <a href="/arts-culture/music/high-notes-of-dubai-music-week" title="High notes of Dubai Music Week">
+    High notes of Dubai Music Week
+  </a>
+</li><li>
+  <a href="/arts-culture/art/dubai-photography-award-wants-you-to-help-create-the-future" title="Dubai photography award wants you to help create the future">
+    Dubai photography award wants you to help create the future
+  </a>
+</li>
+          </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </li>
+  <li id="Navigation_2340" class="first-child">
+    <a href="/thenationalconversation" class="root link channel-2340" title="counterOpinion"><span>Opinion</span></a>
+    <div class="flyout" id="flyouthover_controls_2340">
+      <ul class="sections-nav sec-2340">
+        <li class="sections">
+          <h3>Sections</h3>
+          <div class="content-subnav">
+            <ul>
+		<li>
+		  <a title="Comment" href="/thenationalconversation/comment">Comment</a>
+		</li>
+		<li>
+		  <a title="Editorial" href="/thenationalconversation/editorial">Editorial</a>
+		</li>
+		<li>
+		  <a title="Feedback" href="/thenationalconversation/feedback">Feedback</a>
+		</li>
+		<li>
+		  <a title="Sport Comment" href="/thenationalconversation/sport-comment">Sport Comment</a>
+		</li>
+		<li>
+		  <a title="Culture Comment" href="/thenationalconversation/culture-comment">Culture Comment</a>
+		</li>
+		<li>
+		  <a title="Lifestyle Comment" href="/thenationalconversation/lifestyle-comment">Lifestyle Comment</a>
+		</li>
+		<li>
+		  <a title="Cartoon" href="/thenationalconversation/cartoon">Cartoon</a>
+		</li>
+            </ul>
+          </div>
+        </li>
+        <li class="headlines">
+          <h3>Latest Opinion Headlines</h3>
+          <div class="headlines-subnav">
+            <ul>
+                <li><a href="/sport/arabian-gulf-league/al-ain-in-uncharted-territory-in-arabian-gulf-league" title="Al Ain in uncharted territory in Arabian Gulf League
+">Al Ain in uncharted territory in Arabian Gulf League
+</a></li>
+<li><a href="/some-clerics-and-media-show-islamist-bias" title="Some clerics and media show Islamist bias">Some clerics and media show Islamist bias</a></li>
+<li><a href="/constructive-engagement-brings-rewards-at-the-un" title="Constructive engagement brings rewards at the UN
+">Constructive engagement brings rewards at the UN
+</a></li>
+<li><a href="/a-jihad-against-terrorists-is-needed" title="A jihad against terrorists is needed
+">A jihad against terrorists is needed
+</a></li>
+<li><a href="/rouhanis-call-offers-promise-on-nuclear-question" title="Rouhani&#x2019;s call offers promise on nuclear question
+">Rouhani&#x2019;s call offers promise on nuclear question
+</a></li>
+<li><a href="/fishing-industry-receives-a-fillip" title="Fishing industry receives a fillip
+">Fishing industry receives a fillip
+</a></li>
+<li><a href="/wake-up-in-fright" title="Wake up in fright
+">Wake up in fright
+</a></li>
+<li><a href="/charismatic-miliband-shows-his-teeth-in-stirring-seaside-speech" title="Charismatic Miliband shows his teeth in stirring seaside speech
+">Charismatic Miliband shows his teeth in stirring seaside speech
+</a></li>
+<li><a href="/universal-jurisdiction-raises-as-many-problems-as-it-solves" title="Universal jurisdiction raises as many problems as it solves
+">Universal jurisdiction raises as many problems as it solves
+</a></li>
+<li><a href="/thenationalconversation/comment/snapshots-of-imamate-highlight-yemens-still-unresolved-history" title="Snapshots of imamate highlight Yemen&#x2019;s still unresolved history
+">Snapshots of imamate highlight Yemen&#x2019;s still unresolved history
+</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="popular">
+        <h3>Popular Stories</h3>
+          <div class="popular-subnav">
+          <ul>
+              <li>
+  <a href="/sport/football/whats-the-matter-with-mata-and-mourinho" title="What&#x2019;s the matter with Mata and Mourinho?">
+    <img src="http://www.thenational.ae/storyimage/AB/20130927/OPINION/130929274/AR/0/AR-130929274.jpg&MaxW=340&imageVersion=default" alt=""><br>
+    What&#x2019;s the matter with Mata and Mourinho?
+  </a>
+</li><li>
+  <a href="/thenationalconversation/comment/snapshots-of-imamate-highlight-yemens-still-unresolved-history" title="Snapshots of imamate highlight Yemen&#x2019;s still unresolved history
+">
+    Snapshots of imamate highlight Yemen&#x2019;s still unresolved history
+  </a>
+</li><li>
+  <a href="/charismatic-miliband-shows-his-teeth-in-stirring-seaside-speech" title="Charismatic Miliband shows his teeth in stirring seaside speech
+">
+    Charismatic Miliband shows his teeth in stirring seaside speech
+  </a>
+</li>
+          </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </li>
+  </ul>
+</div>
+<script type="text/javascript">
+var field = '1E8C90';
+if (field){
+	document.body.className+='section-'+field+' js';
+}
+</script>
+
+        <script type="text/javascript">
+          function searchsubmit()
+          {
+            var strsearch = document.getElementById('searchquery').value;
+            strsearch =  strsearch.replace(/^\s+|\s+$/g,"");
+              if(strsearch != null && strsearch != "" ){
+              return true;
+            } else {
+              alert('Enter Valid Search Keyword');
+              return false;
+            }
+          }
+        </script>
+        <form method="get" action="/apps/pbcs.dll/search">
+        <input type="hidden" name="StartDate" value="19000101" />
+        <input type="hidden" name="EndDate" value="20130928" />
+        <input type="hidden" name="SearchCategory" value="%" />
+        <input type="hidden" name="BuildNavigators" value="1" />
+        <input type="hidden" name="sortdirection" value="descending" />        
+        <div class="searchbox">
+          <div class="search-bx">
+            <input type="image" src="/styles/images/button_search.gif" value="" class="search-bt" onclick="searchsubmit()" />
+          </div>
+          <div class="search-bx">
+            <label for="search_query">Search:</label>
+            <input type="text" class="placeholder-text search-input" value="Enter search terms" size="20" name="crit" id="searchquery"/>
+          </div>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+<div class="ticker">
+  <div class="ticker-breadcrumb">
+	<div class="breadcrumb">
+		<ol>
+			<li class="last"><a title="/uae" href="/uae">UAE</a></li>
+		</ol>
+	</div>
+</div>
+
+  <div class="socialtop">
+    <ul>
+      <li>Connect:
+        <a title="The National @ Facebook" href="http://www.facebook.com/thenational.ae">
+          <img height="14px" alt="facebook" src="/styles/images/facebook.jpg" border="0" />
+        </a>
+        <a title="The National @ Twitter" href="http://twitter.com/thenationaluae//the-national-on-twitter/members">
+          <img height="14px" alt="twitter" src="/styles/images/twitter.jpg" border="0" />
+        </a>
+        <a title="Google Plus" href="https://plus.google.com/u/0/114199182733631864965">
+          <img height="14px" alt="Google Plus" src="/styles/images/googlePlus.jpg" border="0" />
+        </a>
+      </li>
+      <li>Radio:
+        <a title="Classic FM" target="new" href="http://www.adradio.ae/abudhabiclassicfm/">
+          <img height="14px" alt="Classic FM" src="/styles/images/radio_icon.gif" border="0" />
+        </a>
+      </li>
+      <li class="last">Feed:
+        <a title="News" href="/section/rss/1003">
+          <img height="14px" alt="rss" src="/styles/images/icon-rss.gif" border="0" />
+        </a>
+      </li>
+    </ul>	
+  </div>
+</div>
+
+<script type="text/javascript">
+	function createCookie(title,articleLink,imagepath){
+		var finlaStatus= false;
+		var x = getCookieByName ( "nationalVisitors" );
+		if(x!=null) {
+			finlaStatus=checkChannel(x,title,articleLink,imagepath);
+		} else{
+	    	finlaStatus = true;
+	        document.cookie ="nationalVisitors" + "= title:"+escape(title)+"|link:"+escape(articleLink)+"|imagePath:"+escape(imagepath)+"|; path=/";
+	    }
+		return finlaStatus;
+	}
+	function checkChannel(channelsid,title,articleLink,imagepath) {            
+		var flag = false;
+		var name='title:';
+		var start =name.length ;
+		channelsid = unescape(channelsid);
+		var ciTitle = getCiTitle(channelsid);
+		var titles = checkDuplicates(ciTitle,title);
+		var ciLink = getCiLink(channelsid);
+		var cilinks = checkDuplicates(ciLink,articleLink);
+		document.cookie ="nationalVisitors" + "= title:"+titles+"|link:"+cilinks+"|imagePath:"+imagepath +"|; path=/";
+	}
+	function checkDuplicates(channelsid, id) {
+		var flag = false;
+		var ids = channelsid.split("~");
+		//var size =ids.length;
+		var target = null;
+		target = escape(id);
+		var size = 0;
+		for (i = 0; i < ids.length; i++) {
+			if (size < 8) {
+				if (ids[i] == id) {
+					count = 1;
+				} else {
+					target = target + "~" + ids[i];
+					count = 0;
+				}
+				size++;
+			} else {
+				break;
+			}
+		}
+		return target;
+	}
+	function getCookieByName(cookie_name) {
+		var results = document.cookie.match('(^|;) ?' + cookie_name
+				+ '=([^;]*)(;|$)');
+		if (results)
+			return (unescape(results[2]));
+		else
+			return null;
+	}
+	function getCiTitle(channelsid) {
+		var name = 'title:';
+		var start = name.length;
+		var titles = channelsid.substring(start, channelsid.indexOf("|"));
+		return titles;
+	}
+	function getCiLink(channelsid) {
+		var link = 'link:';
+		var linkStart = link.length;
+		var linkChannelsid = channelsid.substring(channelsid.indexOf("link:"),
+				channelsid.length);
+		var ciLink = linkChannelsid.substring(linkStart, linkChannelsid
+				.indexOf("|"));
+		return ciLink;
+	}
+</script>	
+
+<div class="mainbar">
+  <!-- Right side Start -->
+<div class="rightcol">
+	<div class="editors-pick">
+	<h2>Editor's Picks</h2>
+    <div id="edit-slider" class="royalSlider-edit contentSlider rsDefault rsDefault-edi">
+		<!-- freestyle start placement="EditorsPicksFrontpage" type="story" placement="EditorsPicksFrontpage" objectclass="1" -->
+  <div class="edi">
+  <a href="/business/industry-insights/retail/middle-east-gears-up-for-the-fastest-most-powerful-rolls-royce-ever"><img width="200" height="133" src="http://www.thenational.ae/storyimage/AB/20130928/ARTICLE/130929246/AR/0/AR-130929246.jpg&MaxW=200&imageVersion=default" border="" alt="" class="rsImg" /></a>
+  <a href="/business/industry-insights/retail/middle-east-gears-up-for-the-fastest-most-powerful-rolls-royce-ever"><h4>Middle East ready for the fastest Rolls-Royce ever</h4></a>
+  <p>The new Dh1.2 million Rolls-Royce Wraith hits the Middle East next month as Abu Dhabi bids to retain top billing for bespokse sales.</p>
+</div><div class="edi">
+  <a href="/business/industry-insights/the-life/a-day-in-the-life-of-an-abu-dhabi-thrift-shop-manager"><img width="200" height="133" src="http://www.thenational.ae/storyimage/AB/20130928/ARTICLE/130929250/AR/0/AR-130929250.jpg&MaxW=200&imageVersion=default" border="" alt="" class="rsImg" /></a>
+  <a href="/business/industry-insights/the-life/a-day-in-the-life-of-an-abu-dhabi-thrift-shop-manager"><h4>A day in the life of an Abu Dhabi thrift shop manager</h4></a>
+  <p>Graham Box is a volunteer who manages the thrift shop at the St Andrew's Centre in Abu Dhabi, where now and then shoppers  come across some treasure.</p>
+</div><div class="edi">
+  <a href="/sport/arabian-gulf-league/al-ain-in-uncharted-territory-in-arabian-gulf-league"><img width="200" height="133" src="http://www.thenational.ae/storyimage/AB/20130928/OPINION/130929177/AR/0/AR-130929177.jpg&MaxW=200&imageVersion=default" border="" alt="" class="rsImg" /></a>
+  <a href="/sport/arabian-gulf-league/al-ain-in-uncharted-territory-in-arabian-gulf-league"><h4>Al Ain in uncharted territory in Arabian Gulf League</h4></a>
+  <p>As it enters a three-week break, the Arabian Gulf League is mostly settling into a familiar shape. Except for one club. Al Ain's dramatic loss of form as defending champions has been the story of the season so far.&#xa0;</p>
+</div><div class="edi">
+  <a href="/business/industry-insights/retail/20130926/lamborghini-made-from-gold-worlds-most-expensive-model-car-on-display-in-dubai"><img width="200" height="133" src="http://www.thenational.ae/storyimage/AB/20130926/ARTICLE/130929373/AR/0/AR-130929373.jpg&MaxW=200&imageVersion=default" border="" alt="" class="rsImg" /></a>
+  <a href="/business/industry-insights/retail/20130926/lamborghini-made-from-gold-worlds-most-expensive-model-car-on-display-in-dubai"><h4>Lamborghini made from gold: world&#x2019;s most expensive model car</h4></a>
+  <p>The world&#x2019;s most expensive model car, a Lamborghini Aventador LP 700-4, is on sale for a mere Dh26,7 million, having been carved from a 500g solid block of gold.</p>
+</div><div class="edi">
+  <a href="/lifestyle/travel/pinatubos-glow-in-the-philippines"><img width="200" height="133" src="http://www.thenational.ae/storyimage/AB/20130926/ARTICLE/130929372/AR/0/AR-130929372.jpg&MaxW=200&imageVersion=default" border="" alt="" class="rsImg" /></a>
+  <a href="/lifestyle/travel/pinatubos-glow-in-the-philippines"><h4>Pinatubo&#x2019;s glow in the Philippines</h4></a>
+  <p>The colossal 1991 eruption left in its wake stunning new views of traumatised geography and &#x2013; where a peak used to be &#x2013; a blue-green lake that asks more questions than it answers.</p>
+</div><div class="edi">
+  <a href="/uae/technology/games13-let-the-video-games-begin"><img width="200" height="133" src="http://www.thenational.ae/storyimage/AB/20130926/ARTICLE/130929311/AR/0/AR-130929311.jpg&MaxW=200&imageVersion=default" border="" alt="" class="rsImg" /></a>
+  <a href="/uae/technology/games13-let-the-video-games-begin"><h4>Games13: Let the video games begin</h4></a>
+  <p>Sony&#x2019;s PlayStation 4 and Microsoft&#x2019;s XBox One are the stars of the Gaming Alliance Middle East Show (Games13) at the Dubai World Trade Centre.</p>
+</div>
+<!-- freestyle end -->                 
+    </div>
+</div>
+	<!-- 3. Advert_Type3_SpaceBanner -->
+<div id='div-gpt-ad-spacebanner'>
+<script type='text/javascript'>
+googletag.display('div-gpt-ad-spacebanner');
+</script>
+</div>
+<!-- 3. Advert_Type3_SpaceBanner -->
+<div class="blog-box">
+  <h2><a href="http://blogs.thenational.ae">Blogs</a></h2>
+  <div class="blog-list">
+  <h4 class="blog-list-headline"><a href="http://blogs.thenational.ae/others/my-year-at-the-national/my-struggle-with-tribalism">My struggle with tribalism</a></h4>
+  <p><a href="http://blogs.thenational.ae/others/my-year-at-the-national">My year at The National</a></p>
+</div><div class="blog-list">
+  <h4 class="blog-list-headline"><a href="http://blogs.thenational.ae/lifestyle/scene-heard/a-super-sharjah-saturday">A Super Sharjah Saturday</a></h4>
+  <p><a href="http://blogs.thenational.ae/lifestyle/scene-heard">Scene&Heard</a></p>
+</div><div class="blog-list">
+  <h4 class="blog-list-headline"><a href="http://blogs.thenational.ae/lifestyle/all-dressed-up/olympia-le-tan-clutches-now-available-in-the-uae">Olympia Le Tan clutches now available in the UAE</a></h4>
+  <p><a href="http://blogs.thenational.ae/lifestyle/all-dressed-up">All Dressed Up</a></p>
+</div><div class="blog-list">
+  <h4 class="blog-list-headline"><a href="http://blogs.thenational.ae/lifestyle/scene-heard/selena-gomez-is-feeling-grown-up-in-dubai">Selena Gomez is feeling grown up in Dubai</a></h4>
+  <p><a href="http://blogs.thenational.ae/lifestyle/scene-heard">Scene&Heard</a></p>
+</div><div class="blog-list">
+  <h4 class="blog-list-headline"><a href="http://blogs.thenational.ae/photography/national-view/the-best-photography-from-around-the-region-this-week-sept-26-2013">The best photography from around the region this week: Sept 26, 2013</a></h4>
+  <p><a href="http://blogs.thenational.ae/photography/national-view">National View</a></p>
+</div>
+</div>
+<div class="sound-pick">
+  <h2><a href="/multimedia">Sound & Vision</a></h2>
+  <div id="sound-slider" class="royalSlider-sound contentSlider rsDefault rsDefault-edi1">
+  <div>
+  <div class="edi1">
+    <a href="/audio-in-conversation-with-kofi-kingston">
+      <div class="mult-iconpicbox">
+        <div class="mult-iconpic">
+          <img border="0" width="14" height="14" alt="" src="/styles/images/icon-video.gif">
+        </div>
+      </div>
+      <img class="rsImgSound" width="200" height="133" border="0" alt="" src="http://www.thenational.ae/storyimage/AB/20130927/VIDEO/130929292/AR/0/AR-130929292.jpg&MaxW=200&imageVersion=default">
+    </a>
+    <a href="/audio-in-conversation-with-kofi-kingston">
+      <h4>Audio: In conversation with Kofi Kingston
+</h4>
+    </a>
+    <p><span><a href="/audio-in-conversation-with-kofi-kingston">Full screen</a></span></p>
+  </div>
+</div>
+<div>
+  <div class="edi1">
+    <a href="/video-selena-gomez-in-dubai">
+      <div class="mult-iconpicbox">
+        <div class="mult-iconpic">
+          <img border="0" width="14" height="14" alt="" src="/styles/images/icon-video.gif">
+        </div>
+      </div>
+      <img class="rsImgSound" width="200" height="133" border="0" alt="" src="http://www.thenational.ae/storyimage/AB/20130926/VIDEO/130929333/AR/0/AR-130929333.jpg&MaxW=200&imageVersion=default">
+    </a>
+    <a href="/video-selena-gomez-in-dubai">
+      <h4>Video: Selena Gomez in Dubai
+</h4>
+    </a>
+    <p><span><a href="/video-selena-gomez-in-dubai">Full screen</a></span></p>
+  </div>
+</div>
+<div>
+  <div class="edi1">
+    <a href="/video-kobe-bryant-shares-some-basketball-skills-in-abu-dhabi">
+      <div class="mult-iconpicbox">
+        <div class="mult-iconpic">
+          <img border="0" width="14" height="14" alt="" src="/styles/images/icon-video.gif">
+        </div>
+      </div>
+      <img class="rsImgSound" width="200" height="133" border="0" alt="" src="http://www.thenational.ae/storyimage/AB/20130926/VIDEO/130929325/AR/0/AR-130929325.jpg&MaxW=200&imageVersion=default">
+    </a>
+    <a href="/video-kobe-bryant-shares-some-basketball-skills-in-abu-dhabi">
+      <h4>Video: Kobe Bryant shares some basketball skills in Abu Dhabi
+</h4>
+    </a>
+    <p><span><a href="/video-kobe-bryant-shares-some-basketball-skills-in-abu-dhabi">Full screen</a></span></p>
+  </div>
+</div>
+<div>
+  <div class="edi1">
+    <a href="/world/world-in-pictures-09-26-2013">
+      <div class="mult-iconpicbox">
+        <div class="mult-iconpic">
+          <img border="0" width="14" height="14" alt="" src="/styles/images/icon-gallery.gif">
+        </div>
+      </div>
+      <img class="rsImgSound" width="200" height="133" border="0" alt="" src="http://www.thenational.ae/storyimage/AB/20130926/GALLERY/130929346/AR/0/AR-130929346.jpg&MaxW=200&imageVersion=default">
+    </a>
+    <a href="/world/world-in-pictures-09-26-2013">
+      <h4>In pictures: The best images around the world from the last 24 hours</h4>
+    </a>
+    <p><span><a href="/world/world-in-pictures-09-26-2013">Full screen</a></span></p>
+  </div>
+</div>
+<div>
+  <div class="edi1">
+    <a href="/business/in-pictures-googles-15th-anniversary">
+      <div class="mult-iconpicbox">
+        <div class="mult-iconpic">
+          <img border="0" width="14" height="14" alt="" src="/styles/images/icon-gallery.gif">
+        </div>
+      </div>
+      <img class="rsImgSound" width="200" height="133" border="0" alt="" src="http://www.thenational.ae/storyimage/AB/20130926/GALLERY/130929355/AR/0/AR-130929355.jpg&MaxW=200&imageVersion=default">
+    </a>
+    <a href="/business/in-pictures-googles-15th-anniversary">
+      <h4>In pictures: Google&#x2019;s 15th anniversary</h4>
+    </a>
+    <p><span><a href="/business/in-pictures-googles-15th-anniversary">Full screen</a></span></p>
+  </div>
+</div>
+<div>
+  <div class="edi1">
+    <a href="/world/world-in-pictures-09-25-2013">
+      <div class="mult-iconpicbox">
+        <div class="mult-iconpic">
+          <img border="0" width="14" height="14" alt="" src="/styles/images/icon-gallery.gif">
+        </div>
+      </div>
+      <img class="rsImgSound" width="200" height="133" border="0" alt="" src="http://www.thenational.ae/storyimage/AB/20130925/GALLERY/130929475/AR/0/AR-130929475.jpg&MaxW=200&imageVersion=default">
+    </a>
+    <a href="/world/world-in-pictures-09-25-2013">
+      <h4>In Pictures: The best images of the day from around the world - September 25, 2013</h4>
+    </a>
+    <p><span><a href="/world/world-in-pictures-09-25-2013">Full screen</a></span></p>
+  </div>
+</div>
+  </div>
+</div>
+<div class="blog-box">
+	<h2><a href="/events">Events</a></h2>
+	<p>To add your event to The National listings, <a href="/submit-event">click here</a></p>
+</div>
+<!-- SEcond faze
+<div class="blog-box">
+	<h2><a href="">THE GUIDE</a></h2>
+	<p>The National will soon launch its new guide to the UAE. To add your business or organisation, <a href="">click here</a></p>
+</div>
+-->
+<div class="blog-box righttopicteaser">
+  <h2><a href="/topics">Topics</a> <span><a class="tooltip" title="The National Topics aggregates our in-depth coverage from the UAE, Middle East and across the globe." href="javascript:void(0);">   (What is this) </a></span></h2>
+  <ul>
+<li><a href="/business/bounced-cheques">Bounced cheques</a></li>
+<li><a href="/lifestyle/dolce-gabbana">Dolce & Gabbana</a></li>
+<li><a href="/uae/abu-dhabi-development">Abu Dhabi development</a></li>
+<li><a href="/uae/road-safety">Road safety</a></li>
+  </ul>
+</div>
+<div class="fb-widget">
+  <iframe src="//www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fthenational.ae&width=220&height=290&colorscheme=light&show_faces=true&border_color&stream=false&header=true" 
+	  scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:220px; height:195px;" allowTransparency="true"></iframe>
+  <iframe src="//www.facebook.com/plugins/activity.php?site=www.thenational.ae&action&width=220&height=270&header=true&colorscheme=light&linktarget=_top&border_color&font&recommendations=true" 
+	  scrolling="no" frameborder="0" style="border:none; overflow:hidden; 
+	  width:220px; height:270px;" allowTransparency="true"></iframe>
+</div>
+<div class="blog-box">
+	<h2><a href="http://thenational.newspaperdirect.com/epaper/viewer.aspx">E-paper</a></h2>
+	<div class="picdiv"><img width="123" height="201" alt="" src="/assets/epaperthumbs/Home.jpg"></div>
+	<div class="blog-list blog-list-wid">
+		<h4><a href="http://thenational.newspaperdirect.com/epaper/viewer.aspx">View the paper as it appeared in print</a></h4>
+		<p><a href="http://thenational.newspaperdirect.com/epaper/viewer.aspx">Register here</a></p>
+	</div>
+	<div class="blog-list blog-list-wid">
+		<h4><a href="/ereader">Download the iPad ereader</a></h4>
+		<p><a href="/ereader">Here</a></p>
+	</div>
+</div>
+<div class="blog-box">
+  <h2><a href="http://itunes.apple.com/ae/app/the-national-newspaper/id366965100?mt=8">App</a></h2>
+  <div class="picdiv"><img width="123" alt="" src="/styles/images/apppic.jpeg.gif"></div>
+  <div class="blog-list blog-list-wid">
+	<h4><a href="http://itunes.apple.com/ae/app/the-national-newspaper/id366965100?mt=8">Keep up to date with the latest news on the move</a></h4>
+	<p><a href="http://itunes.apple.com/ae/app/the-national-newspaper/id366965100?mt=8">Get your iPhone app here</a></p>
+  </div> 
+</div>
+<div class="newsletterbox">
+	<h2>Get the most from
+	<img width="166" height="31" src="/styles/images/logo-newsletter.gif" alt="The National">
+	</h2>
+	<form action="/misc/misc/SSONewsletter.pbs" method="POST">
+	  <input type="hidden" name="redirecturl" value="/login&redirecturl=%2Fmy-profile%23newsletter">
+		<label for="signup_emailaddress">Sign up to our newsletter</label>
+		<input type="text" class="text" name="emailID" value="">
+		<input type="submit" value="Sign Up" class="button">
+	</form>
+</div>
+</div>
+<!-- Right side End -->
+
+  <div class="article">
+	
+	<script>
+		var GArticleMainPicture = '';
+	</script>
+	<div class="merglm">
+		<div class="header2">
+			<div class="logo">
+				<a href="/">
+				  <img width="350" border="0" height="57" alt="" src="/styles/images/logo-the-national.png">
+				</a>
+			</div>
+		</div>
+		<div class="containermid-first">
+			<div class="con-mid1">
+				<div class="mainflash">
+						<div class="mainflash-body">
+							
+							
+							
+							<h4>Power grids so smart they can teach themselves</h4>
+							<script>
+							 var GArticleTitle= 'Power grids so smart they can teach themselves';
+							</script>
+							<script>
+								createCookie(GArticleTitle,'/uae/power-grids-so-smart-they-can-teach-themselves',GArticleMainPicture);
+							</script>
+							<div class="article_author_date">
+								<div class="article_author">
+									
+									<div class="article_date">
+										<span id="article_date_day">Sep 28, 2013</span>
+										
+											<span id="article_date_time">Updated: Sep 28, 2013 20:04:00</span>
+										
+									</div>
+								</div>
+								<div class="article_save" id="save">
+									<p class="save">
+										<a href="#" OnClick="UserDataUpdate(1,3,'8EB34379-4ED4-4E6C-91F1-D8BA53965D8A','save');return false;" rel="nofollow">Save this article</a>
+									</p>
+								</div>
+                <script>
+                  if(getCookie("LoggedIn") != '' && getCookie("LoggedIn") != null)
+                    document.getElementById("save").style.display = '';
+								</script>
+								
+							</div>
+							<div class="share borderbottom2">
+								<span class="st_email"></span>
+								<span onclick="window.print(); return false;">
+									<span style="width: 16px;" class="stButton">
+										<span class="chicklets print">&nbsp;</span>
+									</span>
+								</span>
+								<span class="st_twitter_button" displayText="Tweet" st_via="TheNationalUAE" st_title="Power grids so smart they can teach themselves"></span>
+								<span class="st_linkedin_button" displayText="LinkedIn"></span>
+								<span class="st_plusone_button"></span>
+								<span class="st_fbrec" ></span>
+							</div>
+							
+							<div class="bodytext">
+								<div class="article-body-page">
+								
+									<div class="tempAssets">										
+										<div class="related">
+										
+										<div class="article-teaser article-teaser-with-image">
+										  
+                        <div id="relatedcontent1"></div>
+                      
+                      
+											
+										</div>
+										
+										</div>
+										<div class="pointerBoxes">
+										
+										</div>
+									</div>
+									<div class="body"><p>The future of electricity transmission depends on two things &#x2013; renewable way to get energy and an efficient way to get it where it needs to go. The former is well under way, but the latter has a distance to go.</p><p>To make these adaptive and environmentally friendly distribution systems, or smart grids, we will need a number of significant advances in the supporting technologies and systems.</p><p>Today&#x2019;s power grids are based on radial topologies &#x2013; they are one-way streets coming from a single point. Electricity is generated at a central source, then transmitted and distributed to consumers in a one-way outflow. Easy to understand and easier to manage.</p><p>But soon this simplistic configuration will no longer suffice.</p><p>We expect in future that a large chunk of our energy will come from renewable sources, which are less predictable than current ones.</p><p>Sun and wind are the most obvious of these, but unfortunately neither sunlight nor wind speed is constant. It can be sunny, or windy, or both, or neither. The best science in the world cannot control the weather.</p><p>Nor, of course, is the demand for electricity constant. People will turn up their air conditioning in the heat of the day, but few people are up using their electronics and appliances in the middle of the night.</p><p>To make matters even more complicated, renewable sources of energy are quite often physically spread out, such as the case with solar roof panels. Instead of a single large source, such as a power plant, you have lots of small sources in many places.</p><p>Even power grids that include lots of alternative energy sources would still require conventional power plants to meet the peak demand for electricity.</p><p>As a result, we need grids in which power can flow in both directions &#x2013; individual users can be either a net supplier or consumer at any given time, depending on the conditions. Think of a motorway system instead of one-way streets.</p><p>Consumers need to be able to tap the grid for electricity when their own renewable energy supply runs low, or supply it back to the same grid when their rooftop solar panel or backyard wind turbine provides an excess.</p><p>A complex problem calls for a complex solution, and among the most powerful computational tools available to scientists today are machine learning algorithms.</p><p>These are mathematical techniques that enable computers to adapt and &#x201c;learn&#x201d; to handle specific and complex tasks. They have been deployed in systems ranging from smart phones to advanced robotics.</p><p>In the context of an electricity grid, we are looking to design algorithms that can mitigate the conflicts and problems resulting from the complexities of a smart grid whose flow changes with the flick of every light switch.</p><p>In particular, our team of researchers at the Masdar Institute of Science and Technology has been tackling the problem of fault detection.</p><p>Faults are abnormal occurrences in a power grid that can choke r interrupt the supply of electricity. They can have extremely serious consequences &#x2013; a sudden power spike can damage equipment, or injure or even kill the people near it.</p><p>Beyond simply detecting faults, these intelligent algorithms eventually promise more advanced capabilities such as finding the locations of faults, identifying their causes and even predicting them before they happen.</p><p>These machine learning techniques will be used to design relays that can help to protect a system and its users from these potential dangers.</p><p>And while these systems should work from the moment we switch them on, that is just the start. As they are used more, they will be able to adapt and learn, constantly getting better.</p><p>By providing some of the smarts in a smart grid, these systems will help keep future power grids online so people have all the energy they need without interruption.</p><p>The reliable and affordable supply of energy is critical not only to living comfortably, but also to economic strength and stability, which are essential for any competitive and ambitious country.</p><p> </p><p>Dr Wei Lee Woon is an associate professor of computing and information science at the Masdar Institute of Science and Technology. Dr Hatem Zeineldin is an associate professor of electrical power engineering at the Masdar Institute, and head of the department of electrical engineering and computer science.</p></div>
+	
+									
+									
+									
+									
+									
+									
+									
+									
+									<!-- <p><a title="Send email to newsdesk@thenational.ae" href="mailto:newsdesk@thenational.ae">newsdesk@thenational.ae</a></p> -->
+									
+									
+	
+								</div>
+							</div>
+									
+							<div class="pagination-back-to-top clear">
+							  <div class="pagination-article">
+									<h2>Pages:</h2>
+									<ul></ul>
+							  </div>
+								
+								
+								<div class="related">
+								  
+								    <div id="relatedcontent2">
+  <div class="related-assets">
+    <h3>Related</h3>
+    <ul>
+      <li>
+  
+  <div class="image" id="relatedImage" style="display:none;">
+	  <a href="/news/uae-news/science/masdars-plan-for-smart-power"><img src="http://www.thenational.ae/storyimage/AB/20100822/OPINION/308229936/AR/0/0/AR-308229936.jpg&amp;MaxW=220&amp;imageVersion=default"></a>
+	</div>
+	
+	
+	
+	<a href="/news/uae-news/science/masdars-plan-for-smart-power" ><span><img src="/styles/images/comment.gif" alt="Comment"></span> Masdar's plan for smart power</a>
+	
+</li>
+
+<li>
+  
+	
+	<a href="/business/economy/uae-links-to-gcc-electricity-grid" ><span>&#9632;</span> UAE links to GCC electricity grid</a>
+	
+	
+</li>
+
+<li>
+  
+	
+	<a href="/news/uae-news/environment/abu-dhabi-to-pioneer-new-smart-power-grid" ><span>&#9632;</span> Abu Dhabi to pioneer new 'smart' power grid</a>
+	
+	
+</li>
+
+<li>
+  
+	
+	<a href="/business/energy/smart-grid-will-help-cut-electricity-use" ><span>&#9632;</span> Smart grid will help cut electricity use</a>
+	
+	
+</li>
+
+
+    </ul>
+  </div>
+</div>
+<script>
+$("#relatedcontent1").html($("#relatedcontent2").html());
+$( ".article-body-page .image" ).css( "display", "block" );
+</script>
+
+									
+									
+									
+								</div>
+								
+								<p class="back-to-top" id="back-top">
+								<a title="Back to the top" href="#top">Back to the top</a></p>
+								<script type="text/javascript">
+									$(document).ready(function(){
+										// scroll body to 0px on click
+										$('#back-top a').click(function () {
+											$('body,html').animate({
+												scrollTop: 0
+											}, 800);
+												return false;
+										});
+									});
+								</script>
+
+							</div>
+							
+							<div class="share">
+								<span class="st_email"></span>
+								<span onclick="window.print(); return false;">
+									<span style="width: 16px;" class="stButton">
+										<span class="chicklets print">&nbsp;</span>
+									</span>
+								</span>
+								<span class="st_twitter_hcount" st_via="TheNationalUAE" displayText="Tweet" st_title="Power grids so smart they can teach themselves"></span>
+								<span class="st_linkedin_hcount" displayText="LinkedIn"></span>
+								<span class="st_sharethis_hcount" displayText="ShareThis"></span>
+								<span class="st_plusone_hcount"></span>
+								<span class="st_fbrec_hcount" ></span>
+							</div>
+						</div> 
+
+						
+							<script type="text/javascript" src="/js/UserCommentsJquery.js"></script>
+	
+							<div id="commentssubmit"></div>
+							<div id="commentscontainer"></div>
+							
+							<script>
+							$(document).ready(function(){
+								$("#commentssubmit").load('/misc/misc/SubmitUserComments.pbs?AID=/20130928/ARTICLE/130929200&commenttype=AR&nocache=1&r='+ RandomString(20)+'#getme');
+								$("#commentscontainer").load('/apps/pbcs.dll/UserComments?AID=/20130928/ARTICLE/130929200&commenttype=AR');
+							}); 
+							</script>
+						
+						
+						<div class="article-navigation1">
+							<h2>More articles</h2>
+							<ul>
+								<li class="channel-link"><a href="/uae">Back to UAE</a></li>
+								<li class="next-article"></li>
+								<li class="previous-article"></li>
+							</ul>
+						</div>
+						
+						<div class="soundboxinner">
+	<div class="sound-boxtitle">
+		<a href="/multimedia">Sound &amp; Vision</a>
+	</div>
+  <script src="/js/jquery.bxSlider.min.js" type="text/javascript">
+</script>
+  <div id="mgallery-sliderinner" class="royalSlider-mgalleryinner contentSlider rsDefault rsDefault-mgalleryinner">
+<div>
+	<ul class="mmgallerybox-inner">
+		<li>
+			<div class="wrapper-inner">
+				<div class="caption">
+					<a href="/in-pictures-deerfields-townsquare-mall-opens-in-abu-dhabi">
+						<div class="">
+							<div class="mult-iconpic">
+								<img border="0" width="14" height="14" alt="" src="/styles/images/icon-gallery.gif">
+							</div>
+						</div>
+						<img border="0" alt="" src="http://www.thenational.ae/storyimage/AB/20130928/GALLERY/130929203/AR/0/AR-130929203.jpg&MaxW=160&imageVersion=default">
+					</a>
+					<span class="desription desription-inner"><strong>In pictures: Deerfields Townsquare mall opens in Abu Dhabi</strong>
+						<a class="more" href="/in-pictures-deerfields-townsquare-mall-opens-in-abu-dhabi"> Full screen</a>
+					</span>
+				</div>
+			</div>
+		</li> 
+		<li>
+			<div class="wrapper-inner">
+				<div class="caption">
+					<a href="/video-massive-aftershock-rocks-quake-stricken-region-of-pakistan">
+						<div class="">
+							<div class="mult-iconpic">
+								<img border="0" width="14" height="14" alt="" src="/styles/images/icon-video.gif">
+							</div>
+						</div>
+						<img border="0" alt="" src="http://www.thenational.ae/storyimage/AB/20130928/VIDEO/130929218/AR/0/AR-130929218.jpg&MaxW=160&imageVersion=default">
+					</a>
+					<span class="desription desription-inner"><strong>Video: Massive aftershock rocks quake-stricken region of Pakistan
+</strong>
+						<a class="more" href="/video-massive-aftershock-rocks-quake-stricken-region-of-pakistan"> Watch Video</a>
+					</span>
+				</div>
+			</div>
+		</li> 
+		<li>
+			<div class="wrapper-inner">
+				<div class="caption">
+					<a href="/arts-culture/srk-dubai-pictures">
+						<div class="">
+							<div class="mult-iconpic">
+								<img border="0" width="14" height="14" alt="" src="/styles/images/icon-gallery.gif">
+							</div>
+						</div>
+						<img border="0" alt="" src="http://www.thenational.ae/storyimage/AB/20130928/GALLERY/130929229/AR/0/AR-130929229.jpg&MaxW=160&imageVersion=default">
+					</a>
+					<span class="desription desription-inner"><strong>In pictures: Shah Rukh Khan in Dubai</strong>
+						<a class="more" href="/arts-culture/srk-dubai-pictures"> Full screen</a>
+					</span>
+				</div>
+			</div>
+		</li> 
+	</ul>
+</div>
+<div>
+	<ul class="mmgallerybox-inner">
+		<li>
+			<div class="wrapper-inner">
+				<div class="caption">
+					<a href="/video-children-in-china-rescued-from-trafficking-ring">
+						<div class="">
+							<div class="mult-iconpic">
+								<img border="0" width="14" height="14" alt="" src="/styles/images/icon-video.gif">
+							</div>
+						</div>
+						<img border="0" alt="" src="http://www.thenational.ae/storyimage/AB/20130928/VIDEO/130929232/AR/0/AR-130929232.jpg&MaxW=160&imageVersion=default">
+					</a>
+					<span class="desription desription-inner"><strong>Video: Children in China rescued from trafficking ring
+</strong>
+						<a class="more" href="/video-children-in-china-rescued-from-trafficking-ring"> Watch Video</a>
+					</span>
+				</div>
+			</div>
+		</li> 
+		<li>
+			<div class="wrapper-inner">
+				<div class="caption">
+					<a href="/video-more-deaths-reported-in-mumbai-building-collapse">
+						<div class="">
+							<div class="mult-iconpic">
+								<img border="0" width="14" height="14" alt="" src="/styles/images/icon-video.gif">
+							</div>
+						</div>
+						<img border="0" alt="" src="http://www.thenational.ae/storyimage/AB/20130928/VIDEO/130929233/AR/0/AR-130929233.jpg&MaxW=160&imageVersion=default">
+					</a>
+					<span class="desription desription-inner"><strong>Video: More deaths reported in Mumbai building collapse
+</strong>
+						<a class="more" href="/video-more-deaths-reported-in-mumbai-building-collapse"> Watch Video</a>
+					</span>
+				</div>
+			</div>
+		</li> 
+		<li>
+			<div class="wrapper-inner">
+				<div class="caption">
+					<a href="/video-un-approves-syria-resolution">
+						<div class="">
+							<div class="mult-iconpic">
+								<img border="0" width="14" height="14" alt="" src="/styles/images/icon-video.gif">
+							</div>
+						</div>
+						<img border="0" alt="" src="http://www.thenational.ae/storyimage/AB/20130928/VIDEO/130929234/AR/0/AR-130929234.jpg&MaxW=160&imageVersion=default">
+					</a>
+					<span class="desription desription-inner"><strong>Video: UN approves Syria resolution
+</strong>
+						<a class="more" href="/video-un-approves-syria-resolution"> Watch Video</a>
+					</span>
+				</div>
+			</div>
+		</li> 
+	</ul>
+</div>
+<div>
+	<ul class="mmgallerybox-inner">
+		<li>
+			<div class="wrapper-inner">
+				<div class="caption">
+					<a href="/video-historic-phone-call-between-obama-and-irans-rouhani">
+						<div class="">
+							<div class="mult-iconpic">
+								<img border="0" width="14" height="14" alt="" src="/styles/images/icon-video.gif">
+							</div>
+						</div>
+						<img border="0" alt="" src="http://www.thenational.ae/storyimage/AB/20130928/VIDEO/130929235/AR/0/AR-130929235.jpg&MaxW=160&imageVersion=default">
+					</a>
+					<span class="desription desription-inner"><strong>Video: Historic phone call between Obama and Iran&#x2019;s Rouhani
+</strong>
+						<a class="more" href="/video-historic-phone-call-between-obama-and-irans-rouhani"> Watch Video</a>
+					</span>
+				</div>
+			</div>
+		</li> 
+		<li>
+			<div class="wrapper-inner">
+				<div class="caption">
+					<a href="/video-israeli-forces-clash-with-palestinians-over-al-aqsa-visits">
+						<div class="">
+							<div class="mult-iconpic">
+								<img border="0" width="14" height="14" alt="" src="/styles/images/icon-video.gif">
+							</div>
+						</div>
+						<img border="0" alt="" src="http://www.thenational.ae/storyimage/AB/20130928/VIDEO/130929237/AR/0/AR-130929237.jpg&MaxW=160&imageVersion=default">
+					</a>
+					<span class="desription desription-inner"><strong>Video: Israeli forces clash with Palestinians over al-Aqsa visits
+</strong>
+						<a class="more" href="/video-israeli-forces-clash-with-palestinians-over-al-aqsa-visits"> Watch Video</a>
+					</span>
+				</div>
+			</div>
+		</li> 
+		<li>
+			<div class="wrapper-inner">
+				<div class="caption">
+					<a href="/video-one-direction-signs-record-deal-jon-hamm-to-undergo-surgery">
+						<div class="">
+							<div class="mult-iconpic">
+								<img border="0" width="14" height="14" alt="" src="/styles/images/icon-video.gif">
+							</div>
+						</div>
+						<img border="0" alt="" src="http://www.thenational.ae/storyimage/AB/20130928/VIDEO/130929238/AR/0/AR-130929238.jpg&MaxW=160&imageVersion=default">
+					</a>
+					<span class="desription desription-inner"><strong>Video: One Direction signs record deal, Jon Hamm to undergo surgery
+</strong>
+						<a class="more" href="/video-one-direction-signs-record-deal-jon-hamm-to-undergo-surgery"> Watch Video</a>
+					</span>
+				</div>
+			</div>
+		</li> 
+	</ul>
+</div>
+	</div>	
+</div>
+
+
+					</div>
+					</div>
+					<div class="con-left1">
+
+					
+<div class="boxtitle" style="background-color:#1E8C90;">
+	<a href="/uae">UAE</a>
+</div>
+<div class="con-latestnews con-220">
+	<ul>
+		<li><a href="/sheikh-abdullah-calls-on-international-community-to-press-iran-over-occupation-of-uae-islands">Sheikh Abdullah calls on international community to press Iran over occupation of UAE islands</a></li>
+<li><a href="/uae/the-last-of-the-emirati-dallah-artisans">The last of the Emirati dallah artisans</a></li>
+<li><a href="/uae/emirates-red-crescent-helps-pakistani-area">Emirates Red Crescent helps Pakistani area</a></li>
+<li><a href="/uae/winners-of-fun-city-contest-announced">Winners of Fun City contest announced</a></li>
+<li><a href="/uae/emirati-physician-on-path-to-academia">Emirati physician on path to academia</a></li>
+<li><a href="/uae/abu-dhabi-royal-staff-give-back-to-the-community">Abu Dhabi royal staff give back to the community</a></li>
+						
+	</ul>
+</div>
+
+					
+					<div class="most">
+						<div id="mosttap1" class="MtapS1">
+							<ul class="ui-tabs-nav">
+								<li class="first-child ui-tabs-selected">
+									Most Viewed
+								</li>
+								<li class="ui-state-default ui-corner-top">
+									<a  href="javascript:void(0)" onclick="
+									document.getElementById('mosttap1').className = 'MtapH1';
+									document.getElementById('mosttap2').className = 'MtapS2';">Most Commented</a>
+								</li>
+							</ul>
+							<div class="ui-tabs-panel">
+								<ol>
+                    <li><a title="Kobe Bryant thrills UAE fans" href="/sport/kobe-bryant-thrills-uae-fans">Kobe Bryant thrills UAE fans</a></li><li><a title="Unscrupulous Filipino recruiters lie to workers about jobs and destinations" href="/uae/unscrupulous-filipino-recruiters-lie-to-workers-about-jobs-and-destinations">Unscrupulous Filipino recruiters lie to workers about jobs and destinations</a></li><li><a title="Abu Dhabi royal staff give back to the community" href="/uae/abu-dhabi-royal-staff-give-back-to-the-community">Abu Dhabi royal staff give back to the community</a></li><li><a title="New Dubai bus route" href="/uae/transport/new-dubai-bus-route">New Dubai bus route</a></li><li><a title="Fisherman flouting rules caught out" href="/uae/dubai/fisherman-flouting-rules-caught-out">Fisherman flouting rules caught out</a></li>
+
+								</ol>
+							</div>
+						</div>
+						<div id="mosttap2" class="MtapH2">
+							<ul class="ui-tabs-nav">
+								<li class="first-child ui-corner-top">
+									<a  href="javascript:void(0)" onclick="
+									document.getElementById('mosttap1').className = 'MtapS1';
+									document.getElementById('mosttap2').className = 'MtapH2';">Most Viewed</a>
+								</li>
+								<li class="ui-tabs-selected ui-state-default ">
+									Most Commented
+								</li>
+							</ul>
+							<div class="ui-tabs-panel">
+								<ol>
+								    <li><a href="/news/uae-news/education/parents-brand-arabic-teaching-in-uae-private-schools-a-disaster" title="Parents brand Arabic teaching in UAE private schools a 'disaster'">Parents brand Arabic teaching in UAE private schools a 'disaster'</a></li><li><a href="/news/world/middle-east/arab-league-says-assad-crossed-global-red-line-with-chemical-attack" title="Arab League says Assad crossed 'global red line' with chemical attack">Arab League says Assad crossed 'global red line' with chemical attack</a></li><li><a href="/uae/heritage/my-niqab-and-why-i-wear-it-women-in-the-uae-state-their-case-as-global-debate-rages" title="&#x2018;My niqab, and why I wear it&#x2019;: Women in the UAE state their case as global debate rages">&#x2018;My niqab, and why I wear it&#x2019;: Women in the UAE state their case as global debate rages</a></li><li><a href="/uae/education/wadeemas-law-hundreds-of-uae-nursery-staff-learn-to-spot-child-abuse" title="Wadeema&#x2019;s Law: Hundreds of UAE nursery staff learn to spot child abuse">Wadeema&#x2019;s Law: Hundreds of UAE nursery staff learn to spot child abuse</a></li><li><a href="/news/uae-news/for-brother-of-uae-crash-victim-tragedy-doesn-t-seem-real" title="For brother of UAE crash victim, tragedy doesn’t seem real">For brother of UAE crash victim, tragedy doesn’t seem real</a></li>
+
+								</ol>
+							</div>
+						</div>
+					</div>
+					
+					<div name="pollMini" id="pollMini50">
+</div>
+<script>
+var doLoad = true;
+if (doLoad) {
+  updatePollMini("/apps/pbcs.dll/miniquery?NoStat=1&TARGET=_top&W=130&H=60&Labels=leading&Category=polls&ObjectClass=-1&Profile=2473&BGColor=&LabelTrim=","50");
+}
+</script>
+
+					
+					<div class="fb-widget">
+					
+						<iframe src="//www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fthenational.ae&amp;width=220&amp;height=290&amp;colorscheme=light&amp;show_faces=true&amp;border_color&amp;stream=false&amp;header=true" 
+						scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:220px; height:195px;" allowTransparency="true"></iframe>
+						
+						<iframe src="//www.facebook.com/plugins/activity.php?site=www.thenational.ae&amp;action&amp;width=220&amp;height=270&amp;header=true&amp;colorscheme=light&amp;linktarget=_top&amp;border_color&amp;font&amp;recommendations=true" 
+						scrolling="no" frameborder="0" style="border:none; overflow:hidden; 
+						width:220px; height:270px;" allowTransparency="true"></iframe>
+					
+					</div>
+					
+				</div>
+		</div>
+	</div>
+</div>
+
+</div>
+<div class="article-navigator">
+	<div class="header-navigator">
+		<div class="logo-navigator">
+			<img src="/styles/images/hlogo.png">
+		</div>
+		<div class="close">
+			<a href="javascript:void();" title="Close" class="close" >
+				<img border="0" src="/styles/images/close.png">
+			</a>
+		</div>
+		<div class="line">
+			<img src="/styles/images/line_article_navigator.png">
+			</div>
+	</div>
+	<br>
+	<div class="next-article">
+	<h3>Next article</h3>
+	<a href="/20130928/quique-sanchez-flores-confirmed-as-new-al-ain-manager"><img src="/styles/images/arrow-pink-right.gif" border="0"></a>
+	<p><a href="/20130928/quique-sanchez-flores-confirmed-as-new-al-ain-manager">Quique Sanchez Flores confirmed as new Al Ain manager</a></p>
+</div>
+  <div class="previous-article">
+	<h3>Previous article</h3>
+	<a href="/sport/football/tough-trip-for-uae-to-hong-hong-next"><img src="/styles/images/arrow-pink-left.gif" border="0"></a>
+	<p><a href="/sport/football/tough-trip-for-uae-to-hong-hong-next">Tough trip for UAE to Hong Hong next</a></p>
+</div>
+	<div class="footer-navigator">
+		<a href="/uae" title="Back to UAE">Back to UAE</a>			
+	</div>
+</div>
+
+<script>
+  function UserDataUpdateMessage(AItemType)
+  {
+    switch(AItemType) 
+    {
+      case 1:
+        return '<p class="savecontent">topic is saved</p>';
+      break;
+      case 2:
+        return '<p class="savecontent">event is saved</p>';
+      break;
+      case 3:
+        return '<p class="savecontent">article is saved</p>';
+      break;
+      case 4:
+        return '<p class="savecontent">invalid data</p>';
+      break;
+      case 5:
+        return '<p class="savecontent">please, sign in</p>';
+      break;
+    }
+  }
+  function UserDataUpdate(AItemAction,AItemType,AItem,AResult)
+  {
+    $.ajax(
+    {
+    type: 'POST',
+    data: { 
+      itemaction: AItemAction,
+      itemtype: AItemType, 
+      item: AItem  
+    },
+    url: '/misc/misc/MyNational.pbs' ,
+    success: function(data){
+      var LData = data || "no response text";
+      if(AItemAction == 0)
+      {
+        console.log(LData);
+        $('#'+AResult).hide();
+        if(AItemType == 1)
+          $('#currenttopic').hide();
+        LTemp = $('#MyNationalCount_'+AItemType).html();
+        LTemp = (LTemp.replace("(","")).replace(")","");
+        LTemp = parseInt(LTemp)-1;
+        $('#MyNationalCount_'+AItemType).html('('+ LTemp + ')');
+      }
+      else 
+      {
+        if(LData.search("saved") != -1)
+          $('#'+AResult).html(UserDataUpdateMessage(AItemType));
+        else if(LData.search("invalid") != -1)
+          $('#'+AResult).html(UserDataUpdateMessage(4));
+        else
+          $('#'+AResult).html(UserDataUpdateMessage(5));
+      }
+    },
+      error: function(){ console.log('Error, something went wrong...') }
+    });
+  }  
+</script>
+
+<div class="footerboxes">
+    	<div class="sec-nav">
+        	<div class="national-conv">
+            	<h3>The National <span>Conversation</span></h3>
+              <ul>
+  <li><a href="/thenationalconversation/comment">Comment</a></li>
+  <li><a href="/thenationalconversation/editorial">Editorial</a></li>
+  <li><a href="/thenationalconversation/feedback">Feedback</a></li>
+  <li><a href="/thenationalconversation/sport-comment">Sport Comment</a></li>
+  <li><a href="/thenationalconversation/culture-comment">Culture Comment</a></li>
+  <li><a href="/thenationalconversation/lifestyle-comment">Lifestyle Comment</a></li>
+  <li><a href="/thenationalconversation/cartoon">Cartoon</a></li>
+              </ul>
+            </div>
+            <div class="spe-box">
+            	<h3><a href="/multimedia">Sound & Vision</a></h3>
+              <ul>
+                      <li><a href="/multimedia">Pictures</a></li>
+                    <li><a href="/multimedia">Videos</a></li>
+              </ul>
+            </div>
+            <div class="spe-box">
+            	<h3><a href="/events">Events</a></h3>
+                <!--
+				<ul>
+                    <li><a href="/events">Upcoming Events</a></li>
+                    <li><a href="/my-national">My events</a></li>
+				</ul>
+				-->
+            </div>
+            <div class="spe-box">
+            	<h3>Online Features</h3>
+                <ul>
+                    <li><a href="http://thenational.newspaperdirect.com/">E-Paper</a></li>
+                    <li><a href="/weather/abu-dhabi">Weather</a></li>
+				</ul>
+            </div>
+            <div class="spe-boxlast">
+            	<h3><a href="/my-national">My National</a></h3>
+                <ul>
+                    <li><a href="/my-profile">Edit preferences</a></li>
+                    <li><a href="/my-national">Manage alerts</a></li>
+				</ul>
+                <p class="story"><a title="Do you have a story?" href="/contact-us">Do you have a story?</a></p>
+            </div>
+        </div>
+        <div class="sitemap">
+        	<ul>
+			<li class="listfot uaecolor1">
+              <h3><a href="/uae">UAE news</a></h3>
+              <ul>
+  <li><a href="/uae/courts">Courts</a></li>
+  <li><a href="/uae/education">Education</a></li>
+  <li><a href="/uae/environment">Environment</a></li>
+  <li><a href="/uae/health">Health</a></li>
+  <li><a href="/uae/heritage">Heritage</a></li>
+  <li><a href="/uae/government">Government</a></li>
+  <li><a href="/uae/science">Science</a></li>
+  <li><a href="/uae/technology">Technology</a></li>
+  <li><a href="/uae/tourism">Tourism</a></li>
+  <li><a href="/uae/transport">Transport</a></li>
+              </ul>
+              <h3 style="margin-top:60px;"><a href="/world">World</a></h3>
+              <ul>
+  <li><a href="/world/middle-east">Middle East and North Africa</a></li>
+  <li><a href="/world/south-asia">South Asia</a></li>
+  <li><a href="/world/americas">Americas</a></li>
+  <li><a href="/world/europe">Europe</a></li>
+  <li><a href="/world/asia-pacidic">Asia Pacific</a></li>
+  <li><a href="/world/africa">Africa</a></li>
+  <li><a href="/world/central-asia">Central Asia</a></li>
+  <li><a href="/world/east-asia">East Asia</a></li>
+  <li><a href="/world/southeast-asia">Southeast Asia</a></li>
+              </ul>
+            </li>
+            <li class="listfot buscolor1">
+              <h3><a href="/business">Business</a></h3>
+              <ul>
+  <li><a href="/business/personal-finance">Personal Finance</a></li>
+  <li><a href="/business/industry-insights">Industry Insights</a></li>
+  <li><a href="/business/aviation">Aviation</a></li>
+  <li><a href="/business/banking">Banking</a></li>
+  <li><a href="/business/economy">Economy</a></li>
+  <li><a href="/business/energy">Energy</a></li>
+  <li><a href="/business/markets">Markets</a></li>
+  <li><a href="/business/media">Media</a></li>
+  <li><a href="/business/property">Property</a></li>
+  <li><a href="/business/retail">Retail</a></li>
+  <li><a href="/business/technology">Technology</a></li>
+  <li><a href="/business/telecoms">Telecoms</a></li>
+  <li><a href="/business/travel-tourism">Travel & Tourism</a></li>
+              </ul>
+            </li>
+            <li class="listfot spcolor1">
+              <h3><a href="/sport">Sport</a></h3>
+              <ul>
+  <li><a href="/sport/uae-sport">UAE Sport</a></li>
+  <li><a href="/sport/football">Football</a></li>
+  <li><a href="/sport/formula-one">Formula One</a></li>
+  <li><a href="/sport/cricket">Cricket</a></li>
+  <li><a href="/sport/golf">Golf</a></li>
+  <li><a href="/sport/horse-racing">Horse Racing</a></li>
+  <li><a href="/sport/tennis">Tennis</a></li>
+  <li><a href="/sport/rugby">Rugby</a></li>
+  <li><a href="/sport/motorsport">Motorsport</a></li>
+  <li><a href="/sport/north-american-sport">North American Sport</a></li>
+  <li><a href="/sport/other-sport">Other Sport</a></li>
+              </ul>
+            </li>
+            <li class="listfot lifecolor1">
+              <h3><a href="/lifestyle">Lifestyle</a></h3>
+              <ul>
+  <li><a href="/lifestyle/motoring">Motoring</a></li>
+  <li><a href="/lifestyle/travel">Travel</a></li>
+  <li><a href="/lifestyle/house-home">House & Home</a></li>
+  <li><a href="/lifestyle/fashion">Fashion</a></li>
+  <li><a href="/lifestyle/food">Food</a></li>
+  <li><a href="/lifestyle/well-being">Well Being</a></li>
+  <li><a href="/lifestyle/family">Family</a></li>
+              </ul>
+            </li>
+            <li class="listfot artcolor1">
+              <h3><a href="/arts-culture">Arts & Culture</a></h3>
+              <ul>
+  <li><a href="/arts-culture/art">Art</a></li>
+  <li><a href="/arts-culture/books">Books</a></li>
+  <li><a href="/arts-culture/television">Television</a></li>
+  <li><a href="/arts-culture/film">Film</a></li>
+  <li><a href="/arts-culture/music">Music</a></li>
+  <li><a href="/arts-culture/on-stage">On Stage</a></li>
+              </ul>
+            </li>
+          </ul>
+        <div class="bottomftext">
+          Can't find what you are looking for? Try <a title="The National Topics" href="/topics">The National Topics</a>
+        </div>
+      </div>
+    </div>
+</div>
+<div class="footerlinks">
+	<ul>
+		<li><a href="/about-us">About us</a></li>
+		<li><a href="/contact-us">Contact us</a></li>
+		<li><a href="http://www.admedia.ae/en/career.php">Work with us</a></li>
+		<li><a href="/privacy-policy">Privacy policy</a></li>
+		<li><a href="/terms-and-conditions">Terms and conditions</a></li>
+		<li><a href="/advertise-with-us">Advertise with us</a></li>
+		<li><a href="/subscribe">Subscribe</a></li>
+		<li><a href="http://blogs.thenational.ae/">Blogs</a></li>
+		<li><a href="/sitemap">Sitemap</a></li>
+	</ul>
+	<iframe width="100%" scrolling="no" height="62" frameborder="0" style="position:relative;top:1em" src="http://www.admedia.ae/crosspromotionfooter/footer.html"></iframe>
+</div>
+<script type="text/javascript">
+    var __st_loadLate=true; //if __st_loadLate is defined then the widget will not load on domcontent ready
+    var switchTo5x=true;
+</script>
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">
+    stLight.options({
+        publisher:'23fdbcbf-f771-4d8d-9d9d-5f88e5ad632f',
+        publisherGA:'UA-18693758-1', //Google Analytics
+        onhover: false,
+		doNotHash:true,
+		doNotCopy:true,
+		hashAddressBar:false
+    }); 
+</script>
+<script type="text/javascript">  document.write(sc.createImageTag());</script><noscript><img src="/apps/Sc.dll/AB/NoJS/NoJS/story/20130928/ARTICLE/130929200?nojs=1" width="1px" height="1px"></noscript>
+</body>
+</html>
+
+<!--Updated: 2013/09/29 07:40:48-->

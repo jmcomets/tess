@@ -16,7 +16,25 @@ def format_results(results):
 
 def format_matchall(query):
     """ Specialized query formatter """
-    return '{"query":{"bool":{"must":[{"query_string":{"default_field":"_all","query":"%s"}}],"must_not":[],"should":[]}},"from":0,"size":50,"sort":[],"facets":{}}' % query
+    bool_query = dict()
+    bool_query['must'] = [dict(query_string=dict(default_field="_all", query=query))]
+    bool_query['must_not'] = []
+    bool_query['should'] = []
+
+    elas_query = dict(query=dict(bool=bool_query), size=50, sort=[], facets={})
+    elas_query['from'] = 0
+
+    print json.dumps(elas_query)
+    return json.dumps(elas_query)
+
+    # return '{"query":{\
+    #          "bool":{"must":[{"query_string":{"default_field":"_all","query":"%s"}}],\
+    #                  "must_not":[],\
+    #                  "should":[]}},\
+    #                  "from":0,\
+    #                  "size":50,\
+    #                  "sort":[],\
+    #                  "facets":{}}' % query
 
 def search(query):
     r = requests.post(SEARCH_URL, data=format_matchall(query))

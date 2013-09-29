@@ -43,9 +43,14 @@ if __name__ == '__main__':
     for domain, category in domains:
         setup_crawler(domain, category, settings, spider_cache)
 
+
+    # Setting up the predictor
+    # with open(settings['PREDICTOR_PATH']) as predictor_file:
+    #     settings.PREDICTOR = predict.Predictor.from_file(predictor_file)
+        
     # Setting up the logger
     loglevel = log.DEBUG if '--debug' in sys.argv else log.INFO
     log.start(loglevel=loglevel, logstdout=True)
-    
+
     # Running the crawlers
     reactor.run()
