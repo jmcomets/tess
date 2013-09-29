@@ -52,10 +52,12 @@ def auto_suggest(query):
     bool_query['must_not'] = []
     bool_query['should'] = [dict(query_string=dict(default_field="_all", query=query))]
 
-    # for token in query.split(' '):
-    #     bool_query['should'].append(dict(prefix=dict(_all=dict(prefix=token,  boost=0.6))))
-    #     bool_query['should'].append(dict(prefix=dict(industry=dict(prefix=token,  boost=5))))
-    #     bool_query['should'].append(dict(prefix=dict(location=dict(prefix=token,  boost=3))))
+    for token in query.split(' '):
+        bool_query['should'].append(dict(prefix=dict(_all=dict(prefix=token,  boost=0.6))))
+
+        bool_query['should'].append(dict(prefix=dict(name=dict(prefix=token,  boost=1.2))))
+        bool_query['should'].append(dict(prefix=dict(brand=dict(prefix=token,  boost=4))))
+        bool_query['should'].append(dict(prefix=dict(industry=dict(prefix=token,  boost=2))))
 
     elas_query = dict(query=dict(bool=bool_query), size=10, sort=[], facets={})
     elas_query['from'] = 0
