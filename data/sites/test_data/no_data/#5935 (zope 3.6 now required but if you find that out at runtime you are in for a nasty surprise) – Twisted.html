@@ -1,0 +1,866 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  
+  
+
+  
+
+
+  
+
+  <head>
+        <meta name="ROBOTS" content="NOODP" />
+        <meta name="Description" content="An event-driven networking engine written in Python and MIT licensed." />
+        <link rel="stylesheet" href="/trac/chrome/common/css/bootstrap.min.css" />
+        <script type="text/javascript" src="/trac/chrome/common/js/jquery-1.7.1.min.js"></script>
+    <title>
+          #5935 (zope 3.6 now required but if you find that out at runtime you are in for a nasty surprise)
+     – Twisted
+    </title>
+        <link rel="search" href="/trac/search" />
+        <link rel="prev" href="/trac/ticket/5934" title="Ticket #5934" />
+        <link rel="last" href="/trac/ticket/6764" title="Ticket #6764" />
+        <link rel="help" href="/trac/wiki/TracGuide" />
+        <link rel="alternate" href="/trac/ticket/5935?format=csv" type="text/csv" class="csv" title="Comma-delimited Text" /><link rel="alternate" href="/trac/ticket/5935?format=tab" type="text/tab-separated-values" class="tab" title="Tab-delimited Text" /><link rel="alternate" href="/trac/ticket/5935?format=rss" type="application/rss+xml" class="rss" title="RSS Feed" />
+        <link rel="next" href="/trac/ticket/5936" title="Ticket #5936" />
+        <link rel="start" href="/trac/wiki" />
+        <link rel="stylesheet" href="/trac/chrome/common/css/trac.css" type="text/css" /><link rel="stylesheet" href="/trac/chrome/common/css/ticket.css" type="text/css" />
+        <link rel="first" href="/trac/ticket/1" title="Ticket #1" />
+        <link rel="shortcut icon" href="/images/favicon.png" type="image/png" />
+        <link rel="icon" href="/images/favicon.png" type="image/png" />
+      <link type="application/opensearchdescription+xml" rel="search" href="/trac/search/opensearch" title="Search Twisted" />
+    <script type="text/javascript" src="/trac/chrome/common/js/trac.js"></script><script type="text/javascript" src="/trac/chrome/common/js/search.js"></script>
+    <!--[if lt IE 7]>
+    <script type="text/javascript" src="/trac/chrome/common/js/ie_pre7_hacks.js"></script>
+    <![endif]-->
+    <script type="text/javascript" src="/trac/chrome/common/js/wikitoolbar.js"></script><script type="text/javascript">
+      jQuery(document).ready(function($) {
+        $("div.description").find("h1,h2,h3,h4,h5,h6").addAnchor("Link to this section");
+        $("#changelog h3.change").addAnchor("Link to this change");
+        /* only enable control elements for the currently selected action */
+        var actions = $("#action input[name='action']");
+        function updateActionFields() {
+          actions.each(function () {
+            $(this).siblings().find("*[id]").enable($(this).checked());
+            $(this).siblings().filter("*[id]").enable($(this).checked());
+          });
+        }
+        actions.click(updateActionFields);
+        updateActionFields();
+      });
+    </script>
+        <script type="text/javascript" src="https://www.google.com/jsapi?key=ABQIAAAAJE-f7vmwI1-jxkmwRe4lUxTAs18ELyhzmLGaHoc1qJwmpJy3zhR3LMRRdwqg5PSY4tnVO684msUklQ"></script>
+        <script type="text/javascript" src="/trac/chrome/common/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="/trac/chrome/common/js/twisted.js"></script>
+    </head>
+  <body>
+    <div id="banner">
+        <div id="top_grad"></div>
+        <div id="tab">
+            <a href="/trac/wiki">HOME</a>
+            <a href="/trac/wiki/FrequentlyAskedQuestions">FAQ</a>
+            <a href="/trac/wiki/Documentation">DOCS</a>
+            <a href="/trac/wiki/Downloads">DOWNLOAD</a>
+        </div>
+      <div id="header">
+        <a id="logo" href="/trac/"><img src="/trac/chrome/common/trac_banner.png" alt="Twisted" /></a>
+      </div>
+      <form id="search" action="/trac/search" method="get">
+        <div>
+          <label for="proj-search">Search:</label>
+          <input type="text" id="proj-search" name="q" size="18" value="" />
+          <input type="submit" value="Search" />
+        </div>
+      </form>
+      <div id="metanav" class="nav">
+    <ul>
+      <li class="first"><a href="/trac/login">Login</a></li><li><a href="/trac/prefs">Preferences</a></li><li class="last"><a href="/trac/register">Register</a></li>
+    </ul>
+  </div>
+    </div>
+    <div id="mainnav" class="nav">
+    <ul>
+      <li class="first"><a href="/trac/wiki">Wiki</a></li><li><a href="/trac/timeline">Timeline</a></li><li><a href="/trac/roadmap">Roadmap</a></li><li><a href="/trac/browser">Browse Source</a></li><li class="active"><a href="/trac/report">View Tickets</a></li><li class="last"><a href="/trac/search">Search</a></li>
+    </ul>
+  </div>
+    <div id="main">
+      <div id="ctxtnav" class="nav">
+        <h2>Context Navigation</h2>
+          <ul>
+              <li class="first"><span>&larr; <a class="prev" href="/trac/ticket/5934" title="Ticket #5934">Previous Ticket</a></span></li><li class="last"><span><a class="next" href="/trac/ticket/5936" title="Ticket #5936">Next Ticket</a> &rarr;</span></li>
+          </ul>
+        <hr />
+      </div>
+    <div id="content" class="ticket">
+      <h1>
+            <span class="title">
+              Ticket #5935
+      </span>
+            <span class="statuses">
+            <span class="type">defect</span>
+            <span class="status">closed</span>
+            <span class="resolution">fixed</span>
+        </span>
+        </h1>
+      <!-- Do not show the ticket (pre)view when the user first comes to the "New Ticket" page.
+           Wait until they hit preview. -->
+        <!-- Ticket Box (ticket fields along with description) -->
+        <div id="ticket">
+          <div class="date">
+            <p>Opened <a class="timeline" href="/trac/timeline?from=2012-09-02T19%3A36%3A15-0600&amp;precision=second" title="2012-09-02T19:36:15-0600 in Timeline">13 months</a> ago</p>
+            <p>Last modified <a class="timeline" href="/trac/timeline?from=2012-09-14T06%3A58%3A19-0600&amp;precision=second" title="2012-09-14T06:58:19-0600 in Timeline">13 months</a> ago</p>
+          </div>
+          <!-- use a placeholder if it's a new ticket -->
+          <h2 class="summary searchable">zope 3.6 now required but if you find that out at runtime you are in for a nasty surprise</h2>
+          <table class="properties">
+            <tr>
+              <th id="h_reporter">Reported by:</th>
+              <td headers="h_reporter" class="searchable">glyph</td>
+              <th id="h_owner">Owned by:</th>
+              <td headers="h_owner">exarkun
+              </td>
+            </tr>
+            <tr>
+                <th id="h_priority">
+                  Priority:
+                </th>
+                <td headers="h_priority">
+                      normal
+                </td>
+                <th id="h_milestone">
+                  Milestone:
+                </th>
+                <td headers="h_milestone">
+                      <a class="closed milestone" href="/trac/milestone/Python%203.3%20Minimal">Python 3.3 Minimal</a>
+                </td>
+            </tr><tr>
+                <th id="h_component">
+                  Component:
+                </th>
+                <td headers="h_component">
+                      core
+                </td>
+                <th id="h_keywords">
+                  Keywords:
+                </th>
+                <td headers="h_keywords" class="searchable">
+                </td>
+            </tr><tr>
+                <th id="h_cc">
+                  Cc:
+                </th>
+                <td headers="h_cc" class="searchable">
+                      thijs
+                </td>
+                <th id="h_branch">
+                  Branch:
+                </th>
+      <td headers="h_branch">
+        branches/check-zi-version-5935-2
+          <br />
+          (<a href="/~diffresource.twistd/5935">diff</a>,
+          <a href="https://github.com/twisted/twisted/compare/trunk...check-zi-version-5935-2">github</a>,
+          <a href="https://buildbot.twistedmatrix.com/boxes-supported?branch=/branches/check-zi-version-5935-2">buildbot</a>,
+          <a href="/trac/log/branches/check-zi-version-5935-2">log</a>)
+      </td>
+            </tr><tr>
+                <th id="h_branch_author">
+                  Author:
+                </th>
+                <td headers="h_branch_author">
+                      exarkun
+                </td>
+                <th id="h_launchpad_bug">
+                  Launchpad Bug:
+                </th>
+                <td headers="h_launchpad_bug">
+                </td>
+            </tr>
+          </table>
+            <div class="description">
+              <h3 id="comment:description">
+                Description
+              </h3>
+              <div class="searchable">
+                <p>
+If you happen to have Zope Interface 3.5.1 - which, I should note, is the version included with just about every release of OS X people are now using, you get this error:
+</p>
+<pre class="wiki">File ".../twisted/application/reactors.py", line 12, in &lt;module&gt;
+    from twisted.plugin import IPlugin, getPlugins
+  File ".../twisted/plugin.py", line 34, in &lt;module&gt;
+    from twisted.python.modules import getModule
+  File ".../twisted/python/modules.py", line 68, in &lt;module&gt;
+    from twisted.python.filepath import FilePath, UnlistableError
+  File ".../twisted/python/filepath.py", line 555, in &lt;module&gt;
+    class FilePath(AbstractFilePath):
+  File ".../zope/interface/declarations.py", line 495, in __call__
+    raise TypeError("Can't use implementer with classes.  Use one of "
+TypeError: Can't use implementer with classes.  Use one of the class-declaration functions instead.
+</pre><p>
+It should instead say something like "You need Zope Interface at least 3.6 (but ideally earlier than 4.0 unless you want to see warnings...)" so the user knows what to fix.
+</p>
+
+              </div>
+            </div>
+        </div>
+          <h2>Change History</h2>
+          <div id="changelog">
+        <form method="get" action="#comment" class="printableform">
+            <a href="#comment:1">
+                <h2 class="comment-number">1</h2>
+            </a>
+            <div class="change">
+                <h3 class="change" id="comment:1">
+                    <span class="threading">
+                         
+                    </span>
+                    Changed <a class="timeline" href="/trac/timeline?from=2012-09-02T19%3A37%3A16-0600&amp;precision=second" title="2012-09-02T19:37:16-0600 in Timeline">13 months</a> ago by glyph
+                </h3>
+      <ul class="changes">
+        <li>
+          <strong>owner</strong>
+            set to <em>itamar</em>
+        </li><li>
+          <strong>type</strong>
+              changed from <em>enhancement</em> to <em>defect</em>
+        </li>
+      </ul>
+      <div class="comment searchable">
+        <p>
+Itamar promises me a fix this week :).
+</p>
+
+      </div>
+            </div>
+        </form><form method="get" action="#comment" class="printableform">
+            <a href="#comment:2">
+                <h2 class="comment-number">2</h2>
+            </a>
+            <div class="change">
+                <h3 class="change" id="comment:2">
+                    <span class="threading">
+                         
+                    </span>
+                    Changed <a class="timeline" href="/trac/timeline?from=2012-09-02T20%3A40%3A00-0600&amp;precision=second" title="2012-09-02T20:40:00-0600 in Timeline">13 months</a> ago by glyph
+                </h3>
+      <div class="comment searchable">
+        <p>
+Trying to be a bit more pro-active than we usually are about documenting issues like this, <a class="ext-link" href="http://labs.twistedmatrix.com/2012/09/quick-fix-upgrading-zope-interface-so.html"><span class="icon"> </span>I put something on the Twisted Matrix Labs</a> blog that we can direct contributors to in the meanwhile.  (But they're all subscribed to the blog's RSS already so they don't <i>need</i> us to point them to it, right?)
+</p>
+
+      </div>
+            </div>
+        </form><form method="get" action="#comment" class="printableform">
+            <a href="#comment:3">
+                <h2 class="comment-number">3</h2>
+            </a>
+            <div class="change">
+                <h3 class="change" id="comment:3">
+                    <span class="threading">
+                         
+                    </span>
+                    Changed <a class="timeline" href="/trac/timeline?from=2012-09-03T05%3A39%3A54-0600&amp;precision=second" title="2012-09-03T05:39:54-0600 in Timeline">13 months</a> ago by exarkun
+                </h3>
+      <ul class="changes">
+        <li>
+          <strong>branch</strong>
+              set to <em>branches/check-zi-version-5935</em>
+        </li><li>
+          <strong>branch_author</strong>
+              set to <em>exarkun</em>
+        </li>
+      </ul>
+      <div class="comment searchable">
+        <p>
+(In <a class="changeset" href="/trac/changeset/35490" title="Branching to 'check-zi-version-5935'">[35490]</a>) Branching to 'check-zi-version-5935'
+</p>
+
+      </div>
+            </div>
+        </form><form method="get" action="#comment" class="printableform">
+            <a href="#comment:4">
+                <h2 class="comment-number">4</h2>
+            </a>
+            <div class="change">
+                <h3 class="change" id="comment:4">
+                    <span class="threading">
+                         
+                    </span>
+                    Changed <a class="timeline" href="/trac/timeline?from=2012-09-03T06%3A27%3A47-0600&amp;precision=second" title="2012-09-03T06:27:47-0600 in Timeline">13 months</a> ago by exarkun
+                </h3>
+      <div class="comment searchable">
+        <p>
+Well, this sucks.  There's no obvious better approach though.  There's <i>still</i> no version attribute on zope.interface and <tt>pkg_resources</tt> is only sometimes available.  Neither is there any obvious way to actually unit test this behavior.  One approach could be to mock all of all recent versions of zope.interface and then exercise the code against each of them (somehow - execfile/sys.modules hacking?  or with copies of <span class="underline">init</span>.py to create new importable packages?) and verify the behavior is as desired against each.  That sounds like a pretty big mess.  We could mock a minimal subset instead, but that seems like a pretty low quality test to me.
+</p>
+
+      </div>
+            </div>
+        </form><form method="get" action="#comment" class="printableform">
+            <a href="#comment:5">
+                <h2 class="comment-number">5</h2>
+            </a>
+            <div class="change">
+                <h3 class="change" id="comment:5">
+                    <span class="threading">
+                         
+                    </span>
+                    Changed <a class="timeline" href="/trac/timeline?from=2012-09-03T06%3A32%3A25-0600&amp;precision=second" title="2012-09-03T06:32:25-0600 in Timeline">13 months</a> ago by exarkun
+                </h3>
+      <ul class="changes">
+        <li>
+          <strong>keywords</strong>
+            <em>review</em> added
+        </li>
+      </ul>
+      <div class="comment searchable">
+        <p>
+Results of manual testing:
+</p>
+<pre class="wiki">
+exarkun@top:~/Scratch/Source/zope.interface-3.5.0/build/lib.linux-x86_64-2.7$ python
+Python 2.7.3 (default, Aug  1 2012, 05:14:39) 
+[GCC 4.6.3] on linux2
+Type "help", "copyright", "credits" or "license" for more information.
+&gt;&gt;&gt; import twisted
+Traceback (most recent call last):
+  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
+  File "/home/exarkun/Projects/Twisted/branches/check-zi-version-5935/twisted/__init__.py", line 22, in &lt;module&gt;
+    raise RuntimeError("Twisted requires zope.interface 3.6 or later.")
+RuntimeError: Twisted requires zope.interface 3.6 or later.
+&gt;&gt;&gt; 
+exarkun@top:~/Scratch/Source/zope.interface-3.5.0/build/lib.linux-x86_64-2.7$ cd ..
+exarkun@top:~/Scratch/Source/zope.interface-3.5.0/build$ cd ..
+exarkun@top:~/Scratch/Source/zope.interface-3.5.0$ cd ..
+exarkun@top:~/Scratch/Source$ cd zope.interface-3.6.0/build/lib.linux-x86_64-2.7/
+exarkun@top:~/Scratch/Source/zope.interface-3.6.0/build/lib.linux-x86_64-2.7$ python
+Python 2.7.3 (default, Aug  1 2012, 05:14:39) 
+[GCC 4.6.3] on linux2
+Type "help", "copyright", "credits" or "license" for more information.
+&gt;&gt;&gt; import twisted
+&gt;&gt;&gt; 
+</pre><p>
+<a class="ext-link" href="http://buildbot.twistedmatrix.com/boxes-supported?branch=/branches/check-zi-version-5935"><span class="icon"> </span>Partial buildbot run results</a>
+</p>
+
+      </div>
+            </div>
+        </form><form method="get" action="#comment" class="printableform">
+            <a href="#comment:6">
+                <h2 class="comment-number">6</h2>
+            </a>
+            <div class="change">
+                <h3 class="change" id="comment:6">
+                    <span class="threading">
+                        follow-up:
+      <a href="#comment:7"><small>↓ 7</small></a>
+                         
+                    </span>
+                    Changed <a class="timeline" href="/trac/timeline?from=2012-09-03T06%3A58%3A15-0600&amp;precision=second" title="2012-09-03T06:58:15-0600 in Timeline">13 months</a> ago by exarkun
+                </h3>
+      <div class="comment searchable">
+        <p>
+Unfortunately this introduces a failure into the MSI build process.  Review of other considerations would still be appreciated though.
+</p>
+
+      </div>
+            </div>
+        </form><form method="get" action="#comment" class="printableform">
+            <a href="#comment:7">
+                <h2 class="comment-number">7</h2>
+            </a>
+            <div class="change">
+                <h3 class="change" id="comment:7">
+                    <span class="threading">
+                        in reply to:
+      <a href="#comment:6"><small>↑ 6</small></a>
+                         
+                    </span>
+                    Changed <a class="timeline" href="/trac/timeline?from=2012-09-04T17%3A09%3A56-0600&amp;precision=second" title="2012-09-04T17:09:56-0600 in Timeline">13 months</a> ago by glyph
+                </h3>
+      <div class="comment searchable">
+        <p>
+Replying to <a href="/trac/ticket/5935#comment:6" title="Comment 6 for Ticket #5935">exarkun</a>:
+</p>
+<blockquote class="citation">
+<p>
+ Unfortunately this introduces a failure into the MSI build process.  Review of other considerations would still be appreciated though.
+</p>
+</blockquote>
+<p>
+You may already know this, but the type of error presented on the MSI buildbot can be fixed by doing 'python setup.py egg_info' before attempting to programmatically discover the version number.  It might be good to add that builder step if the misconfiguration is specific to the MSI builder.
+</p>
+
+      </div>
+            </div>
+        </form><form method="get" action="#comment" class="printableform">
+            <a href="#comment:8">
+                <h2 class="comment-number">8</h2>
+            </a>
+            <div class="change">
+                <h3 class="change" id="comment:8">
+                    <span class="threading">
+                         
+                    </span>
+                    Changed <a class="timeline" href="/trac/timeline?from=2012-09-04T17%3A13%3A34-0600&amp;precision=second" title="2012-09-04T17:13:34-0600 in Timeline">13 months</a> ago by glyph
+                </h3>
+      <div class="comment searchable">
+        <p>
+Oddly, <tt>http://buildbot.twistedmatrix.com/builders/windows7-64-py2.7-msi/builds/1124/steps/setproperty/logs/stdio</tt> looks like things are properly separated out into stdout/stderr, and a trivial capturing of stdout as the version would not introduce this bug.  So I guess the buildbot configuration is in fact to blame.
+</p>
+
+      </div>
+            </div>
+        </form><form method="get" action="#comment" class="printableform">
+            <a href="#comment:9">
+                <h2 class="comment-number">9</h2>
+            </a>
+            <div class="change">
+                <h3 class="change" id="comment:9">
+                    <span class="threading">
+                         
+                    </span>
+                    Changed <a class="timeline" href="/trac/timeline?from=2012-09-04T17%3A20%3A57-0600&amp;precision=second" title="2012-09-04T17:20:57-0600 in Timeline">13 months</a> ago by glyph
+                </h3>
+      <ul class="changes">
+        <li>
+          <strong>keywords</strong>
+            <em>review</em> removed
+        </li><li>
+          <strong>owner</strong>
+            changed from <em>itamar</em> to <em>exarkun</em>
+        </li>
+      </ul>
+      <div class="comment searchable">
+        <p>
+Great, thanks for turning this around so fast.
+</p>
+<ol><li>Obviously this needs some test coverage.  Maybe just an <tt>execfile</tt> in an environment with an artificially broken zope.interface.  Alternately, put the whole thing into a private function which is called at module level, which obviates the need for <tt>del implementor_only</tt>.
+</li><li>Why <tt>RuntimeError</tt>?  This ought to be just an <tt>ImportError</tt> with a more descriptive error message, no?
+</li><li>Consider catching <tt>AttributeError</tt> separately from <tt>ImportError</tt>.  It would be helpful to have separate messages for "you've got zope.interface installed and it's the wrong version" versus "you don't have zope.interface installed".  I say this because when considering my own point 2, I realize that the <tt>ImportError</tt> from Zope might have its own informative message in there that we don't want to quash.
+</li></ol><p>
+I don't see the need for much review beyond this though, the approach is fine and if you can fix the MSI issue one way or another it can be merged.  (Hooray for module-scope code which is always implicitly covered.)
+</p>
+<p>
+-glyph
+</p>
+
+      </div>
+            </div>
+        </form><form method="get" action="#comment" class="printableform">
+            <a href="#comment:10">
+                <h2 class="comment-number">10</h2>
+            </a>
+            <div class="change">
+                <h3 class="change" id="comment:10">
+                    <span class="threading">
+                         
+                    </span>
+                    Changed <a class="timeline" href="/trac/timeline?from=2012-09-04T18%3A17%3A05-0600&amp;precision=second" title="2012-09-04T18:17:05-0600 in Timeline">13 months</a> ago by exarkun
+                </h3>
+      <div class="comment searchable">
+        <p>
+The MSI issue is blocked on <a class="ext-link" href="https://bugs.launchpad.net/twisted-buildbot-configuration/+bug/1045314"><span class="icon"> </span>https://bugs.launchpad.net/twisted-buildbot-configuration/+bug/1045314</a>
+</p>
+
+      </div>
+            </div>
+        </form><form method="get" action="#comment" class="printableform">
+            <a href="#comment:11">
+                <h2 class="comment-number">11</h2>
+            </a>
+            <div class="change">
+                <h3 class="change" id="comment:11">
+                    <span class="threading">
+                         
+                    </span>
+                    Changed <a class="timeline" href="/trac/timeline?from=2012-09-05T00%3A41%3A27-0600&amp;precision=second" title="2012-09-05T00:41:27-0600 in Timeline">13 months</a> ago by glyph
+                </h3>
+      <div class="comment searchable">
+        <p>
+Alternately, since this warning is always, always, always, always, 100% of the time completely spurious and useless, you could add a filter to the warnings module right before doing the import...
+</p>
+
+      </div>
+            </div>
+        </form><form method="get" action="#comment" class="printableform">
+            <a href="#comment:12">
+                <h2 class="comment-number">12</h2>
+            </a>
+            <div class="change">
+                <h3 class="change" id="comment:12">
+                    <span class="threading">
+                         
+                    </span>
+                    Changed <a class="timeline" href="/trac/timeline?from=2012-09-13T06%3A31%3A00-0600&amp;precision=second" title="2012-09-13T06:31:00-0600 in Timeline">13 months</a> ago by exarkun
+                </h3>
+      <ul class="changes">
+        <li>
+          <strong>milestone</strong>
+              set to <em>Python 3.3 Minimal</em>
+        </li>
+      </ul>
+      <div class="comment searchable">
+        
+      </div>
+            </div>
+        </form><form method="get" action="#comment" class="printableform">
+            <a href="#comment:13">
+                <h2 class="comment-number">13</h2>
+            </a>
+            <div class="change">
+                <h3 class="change" id="comment:13">
+                    <span class="threading">
+                         
+                    </span>
+                    Changed <a class="timeline" href="/trac/timeline?from=2012-09-13T07%3A31%3A19-0600&amp;precision=second" title="2012-09-13T07:31:19-0600 in Timeline">13 months</a> ago by exarkun
+                </h3>
+      <div class="comment searchable">
+        <p>
+(In <a class="changeset" href="/trac/changeset/35622" title="Address review comments
+
+  * Factor requirements checks into a function ...">[35622]</a>) Address review comments
+</p>
+<ul><li>Factor requirements checks into a function where they can more easily be tested (though this does not help demonstrate that <span class="underline">init</span>.py actually runs the checks)
+</li><li>Add unit tests for the checks (with some grossness probably not easily avoided)
+</li><li>Add the test module to the Python 3 ported list too
+</li></ul><p>
+refs <a class="closed ticket" href="/trac/ticket/5935" title="defect: zope 3.6 now required but if you find that out at runtime you are in for a ... (closed: fixed)">#5935</a>
+</p>
+
+      </div>
+            </div>
+        </form><form method="get" action="#comment" class="printableform">
+            <a href="#comment:14">
+                <h2 class="comment-number">14</h2>
+            </a>
+            <div class="change">
+                <h3 class="change" id="comment:14">
+                    <span class="threading">
+                         
+                    </span>
+                    Changed <a class="timeline" href="/trac/timeline?from=2012-09-13T07%3A33%3A46-0600&amp;precision=second" title="2012-09-13T07:33:46-0600 in Timeline">13 months</a> ago by exarkun
+                </h3>
+      <ul class="changes">
+        <li>
+          <strong>branch</strong>
+              changed from <em>branches/check-zi-version-5935</em> to <em>branches/check-zi-version-5935-2</em>
+        </li>
+      </ul>
+      <div class="comment searchable">
+        <p>
+(In <a class="changeset" href="/trac/changeset/35623" title="Branching to 'check-zi-version-5935-2'">[35623]</a>) Branching to 'check-zi-version-5935-2'
+</p>
+
+      </div>
+            </div>
+        </form><form method="get" action="#comment" class="printableform">
+            <a href="#comment:15">
+                <h2 class="comment-number">15</h2>
+            </a>
+            <div class="change">
+                <h3 class="change" id="comment:15">
+                    <span class="threading">
+                         
+                    </span>
+                    Changed <a class="timeline" href="/trac/timeline?from=2012-09-13T07%3A51%3A05-0600&amp;precision=second" title="2012-09-13T07:51:05-0600 in Timeline">13 months</a> ago by exarkun
+                </h3>
+      <div class="comment searchable">
+        <p>
+(In <a class="changeset" href="/trac/changeset/35625" title="try to make the error messages even nicer?
+
+refs #5935
+">[35625]</a>) try to make the error messages even nicer?
+</p>
+<p>
+refs <a class="closed ticket" href="/trac/ticket/5935" title="defect: zope 3.6 now required but if you find that out at runtime you are in for a ... (closed: fixed)">#5935</a>
+</p>
+
+      </div>
+            </div>
+        </form><form method="get" action="#comment" class="printableform">
+            <a href="#comment:16">
+                <h2 class="comment-number">16</h2>
+            </a>
+            <div class="change">
+                <h3 class="change" id="comment:16">
+                    <span class="threading">
+                         
+                    </span>
+                    Changed <a class="timeline" href="/trac/timeline?from=2012-09-13T08%3A31%3A07-0600&amp;precision=second" title="2012-09-13T08:31:07-0600 in Timeline">13 months</a> ago by itamar
+                </h3>
+      <div class="comment searchable">
+        <p>
+Python 3 needs to check for a newer version, 4.0, which is the first version with the <tt>__qualname__</tt> fix.
+</p>
+
+      </div>
+            </div>
+        </form><form method="get" action="#comment" class="printableform">
+            <a href="#comment:17">
+                <h2 class="comment-number">17</h2>
+            </a>
+            <div class="change">
+                <h3 class="change" id="comment:17">
+                    <span class="threading">
+                         
+                    </span>
+                    Changed <a class="timeline" href="/trac/timeline?from=2012-09-13T08%3A36%3A59-0600&amp;precision=second" title="2012-09-13T08:36:59-0600 in Timeline">13 months</a> ago by exarkun
+                </h3>
+      <div class="comment searchable">
+        <blockquote class="citation">
+<p>
+ Python 3 needs to check for a newer version, 4.0, which is the first version with the <span class="underline">qualname</span> fix.
+</p>
+</blockquote>
+<p>
+grooooooaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaan
+</p>
+
+      </div>
+            </div>
+        </form><form method="get" action="#comment" class="printableform">
+            <a href="#comment:18">
+                <h2 class="comment-number">18</h2>
+            </a>
+            <div class="change">
+                <h3 class="change" id="comment:18">
+                    <span class="threading">
+                         
+                    </span>
+                    Changed <a class="timeline" href="/trac/timeline?from=2012-09-13T11%3A06%3A52-0600&amp;precision=second" title="2012-09-13T11:06:52-0600 in Timeline">13 months</a> ago by exarkun
+                </h3>
+      <ul class="changes">
+        <li>
+          <strong>owner</strong>
+            changed from <em>exarkun</em> to <em>glyph</em>
+        </li><li>
+          <strong>keywords</strong>
+            <em>review</em> added
+        </li>
+      </ul>
+      <div class="comment searchable">
+        <p>
+Sorry, this is horrible.  It's also missing some obvious bits of documentation.  If the rest looks good, then of course I'll fill those in.  If the rest is too appalling then I'd really prefer not to bother.
+</p>
+
+      </div>
+            </div>
+        </form><form method="get" action="#comment" class="printableform">
+            <a href="#comment:19">
+                <h2 class="comment-number">19</h2>
+            </a>
+            <div class="change">
+                <h3 class="change" id="comment:19">
+                    <span class="threading">
+                        follow-up:
+      <a href="#comment:20"><small>↓ 20</small></a>
+                         
+                    </span>
+                    Changed <a class="timeline" href="/trac/timeline?from=2012-09-13T11%3A09%3A39-0600&amp;precision=second" title="2012-09-13T11:09:39-0600 in Timeline">13 months</a> ago by thijs
+                </h3>
+      <ul class="changes">
+        <li>
+          <strong>cc</strong>
+            <em>thijs</em> added
+        </li>
+      </ul>
+      <div class="comment searchable">
+        <p>
+The <tt>INSTALL</tt> documentation wasn't updated and maybe the Python3 porting howto should mention it as well.
+</p>
+
+      </div>
+            </div>
+        </form><form method="get" action="#comment" class="printableform">
+            <a href="#comment:20">
+                <h2 class="comment-number">20</h2>
+            </a>
+            <div class="change">
+                <h3 class="change" id="comment:20">
+                    <span class="threading">
+                        in reply to:
+      <a href="#comment:19"><small>↑ 19</small></a>
+                         
+                    </span>
+                    Changed <a class="timeline" href="/trac/timeline?from=2012-09-13T12%3A15%3A28-0600&amp;precision=second" title="2012-09-13T12:15:28-0600 in Timeline">13 months</a> ago by glyph
+                </h3>
+      <ul class="changes">
+        <li>
+          <strong>status</strong>
+              changed from <em>new</em> to <em>assigned</em>
+        </li>
+      </ul>
+      <div class="comment searchable">
+        <p>
+Replying to <a href="/trac/ticket/5935#comment:19" title="Comment 19 for Ticket #5935">thijs</a>:
+</p>
+<blockquote class="citation">
+<p>
+ The <tt>INSTALL</tt> documentation wasn't updated and maybe the Python3 porting howto should mention it as well.
+</p>
+</blockquote>
+<p>
+This is a good catch but it can be done separately.  We don't need to overload tedious little chores like this with a million extra requirements.  We could <i>easily</i> get lost in the weeds of doing environment-detecting versioning requirements with setuptools.
+</p>
+<p>
+Reviewing.
+</p>
+
+      </div>
+            </div>
+        </form><form method="get" action="#comment" class="printableform">
+            <a href="#comment:21">
+                <h2 class="comment-number">21</h2>
+            </a>
+            <div class="change">
+                <h3 class="change" id="comment:21">
+                    <span class="threading">
+                         
+                    </span>
+                    Changed <a class="timeline" href="/trac/timeline?from=2012-09-13T13%3A01%3A37-0600&amp;precision=second" title="2012-09-13T13:01:37-0600 in Timeline">13 months</a> ago by glyph
+                </h3>
+      <ul class="changes">
+        <li>
+          <strong>status</strong>
+              changed from <em>assigned</em> to <em>new</em>
+        </li><li>
+          <strong>keywords</strong>
+            <em>review</em> removed
+        </li><li>
+          <strong>owner</strong>
+            changed from <em>glyph</em> to <em>exarkun</em>
+        </li>
+      </ul>
+      <div class="comment searchable">
+        <p>
+Please Fix:
+</p>
+<ol><li>"miscellaneous"
+</li></ol><ol start="2"><li><tt>_AssertRaisesContext</tt> is never going to go away on its own.  On the other hand, who cares, maybe.  Consider filing a ticket to delete it that someone might find in the tracker (along with appropriate warnings in the description explaining when it can be fixed).
+</li></ol><ol start="3"><li>Obviously you need to write a couple more docstrings for the test stuff; you already knew that though.
+</li></ol><ol start="4"><li>Deal with thijs's suggestion about mentioning py3 in an appropriate timeframe, probably not on this ticket.  I don't know if there's already a ticket for py3 adjustments to installation documentation.
+</li></ol><p>
+Some thoughts:
+</p>
+<ol><li>Woah, this <i>is</i> horrible.  It strikes me that this is stuff that Python or distutils or setuptools or <i>something</i> ought to be doing for us.  This is a topic we should keep in mind for discussion at PyCon.
+</li></ol><ol start="2"><li><tt>SetAsideModule</tt> is a pretty interesting little utility for testing. There are other tests within Twisted that could benefit from it; at the very least, for example, <tt>twisted.internet.test.test_glibbase</tt>.  (Probably something in the plugin tests too, and probably somewhere within Conch's tests...)  I am a little surprised that there isn't anything like it already.  It always worries me a little when a potentially generally-useful test utility like this is squirreled away in a specific test module.  We need a place where not-fully-tested-themselves testing utilities can go to be staged so that at least we can prevent our fixture-maintenance efforts from being diffused into uselessly rewriting a million different versions of everything.
+</li></ol><ol start="3"><li>Similarly, <tt>_makePackages</tt> - you went so far as to make a test for this <i>private</i> testing utility in a test module, but it's still sitting around by itself?
+</li></ol><ol start="4"><li><tt>SetAsideModule</tt> and <tt>_makePackages</tt> are obviously intended to go along with each other but their implementations aren't helpfully related.  Plus, all the module-level attribute package description dictionaries don't have an immediately clear purpose.  I can't help but bikeshed here:
+<div class="code"><pre>_zope35 <span class="o">=</span> MockPackage<span class="p">({</span>
+    <span class="s">'zope'</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">'interface'</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s">'Interface'</span><span class="p">:</span> _SuccessInterface<span class="p">,</span>
+            <span class="s">'implementer'</span><span class="p">:</span> _functionOnlyImplementer<span class="p">,</span>
+            <span class="p">},</span>
+        <span class="p">},</span>
+    <span class="p">})</span>
+<span class="c"># ...</span>
+<span class="k">def</span> <span class="nf">test_something</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">with</span> _zope38<span class="p">:</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span>assertRaises<span class="p">(</span><span class="ne">ImportError</span><span class="p">)</span> <span class="k">as</span> raised<span class="p">:</span>
+            _checkRequirements<span class="p">()</span>
+</pre></div></li></ol><ol start="5"><li><a class="ext-link" href="http://buildbot.twistedmatrix.com/boxes-supported?branch=/branches/check-zi-version-5935-2"><span class="icon"> </span>I forced some builds</a>.  They mostly look good, but it looks like one of the supported builders is failing and needs a dependency upgrade.  At least the error message is sensible now!  Maybe Tom Prince is already on the case...
+</li></ol><ol start="6"><li><tt>except ImportError:</tt> is still quashing any error message that z.i might try to throw out.
+</li></ol><ol start="7"><li>Also, <tt>except:</tt> should always print the original traceback, shouldn't it?
+</li></ol><p>
+Finally: I felt I should give all the feedback I discovered while reading this branch, but <i>please</i> don't feel obligated to address everything - or, in fact, anything - in the second section.  The purpose of the review process is simply to make sure that changes are all improvements; this change (modulo the lack of docstrings for a few things that might make it a little trickier for maintainers) already meets that criterion.  At this point I am sorry I didn't just give it a passing review right away :).
+</p>
+
+      </div>
+            </div>
+        </form><form method="get" action="#comment" class="printableform">
+            <a href="#comment:22">
+                <h2 class="comment-number">22</h2>
+            </a>
+            <div class="change">
+                <h3 class="change" id="comment:22">
+                    <span class="threading">
+                         
+                    </span>
+                    Changed <a class="timeline" href="/trac/timeline?from=2012-09-14T06%3A58%3A19-0600&amp;precision=second" title="2012-09-14T06:58:19-0600 in Timeline">13 months</a> ago by exarkun
+                </h3>
+      <ul class="changes">
+        <li>
+          <strong>status</strong>
+              changed from <em>new</em> to <em>closed</em>
+        </li><li>
+          <strong>resolution</strong>
+              set to <em>fixed</em>
+        </li>
+      </ul>
+      <div class="comment searchable">
+        <p>
+(In <a class="changeset" href="/trac/changeset/35648" title="Merge check-zi-version-5935-2
+
+Author: exarkun
+Reviewer: glyph
+Fixes: ...">[35648]</a>) Merge check-zi-version-5935-2
+</p>
+<p>
+Author: exarkun
+Reviewer: glyph
+Fixes: <a class="closed ticket" href="/trac/ticket/5935" title="defect: zope 3.6 now required but if you find that out at runtime you are in for a ... (closed: fixed)">#5935</a>
+</p>
+<p>
+Add a check for the required version of zope.interface to <tt>twisted/__init__.py</tt> and present
+a meaningful exception when the requirement is not satisfied.  This improves on the previous
+behavior where a strange and often confusing exception would be raised when a too-old version
+of zope.interface is installed.
+</p>
+
+      </div>
+            </div>
+        </form>
+    </div>
+      <div id="help">
+        <strong>Note:</strong> See
+        <a href="/trac/wiki/TracTickets">TracTickets</a> for help on using
+        tickets.
+      </div>
+    </div>
+    <script type="text/javascript">
+        jQuery.loadStyleSheet("/trac/pygments/trac.css", "text/css");
+    </script>
+    <div id="altlinks">
+      <h3>Download in other formats:</h3>
+      <ul>
+        <li class="first">
+          <a rel="nofollow" href="/trac/ticket/5935?format=csv" class="csv">Comma-delimited Text</a>
+        </li><li>
+          <a rel="nofollow" href="/trac/ticket/5935?format=tab" class="tab">Tab-delimited Text</a>
+        </li><li class="last">
+          <a rel="nofollow" href="/trac/ticket/5935?format=rss" class="rss">RSS Feed</a>
+        </li>
+      </ul>
+    </div>
+    </div>
+    <div id="footer" lang="en" xml:lang="en">
+        <div class="sitemeter">
+            <!--WEBBOT bot="HTMLMarkup" startspan ALT="Site Meter" -->
+            <!--
+            <script type="text/javascript" language="JavaScript">var site="sm7twistedmatrix"</script>
+            <script type="text/javascript" language="JavaScript1.2" src="https://sm7.sitemeter.com/js/counter.js?site=sm7twistedmatrix"></script>
+            <noscript>
+                -->
+                <a href="https://sm7.sitemeter.com/stats.asp?site=sm7twistedmatrix" target="_top">
+                    <img src="https://sm7.sitemeter.com/meter.asp?site=sm7twistedmatrix" alt="Site Meter" border="0" />
+                </a>
+            <!-- </noscript> -->
+            <!-- Copyright (c)2002 Site Meter -->
+            <!--WEBBOT bot="HTMLMarkup" Endspan -->
+            <!-- Google analytics, obviously. -->
+            <script src="https://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+            <script type="text/javascript">
+                _uacct = "UA-99018-6";
+                urchinTracker();
+            </script>
+        </div>
+        <div class="credits">
+            <p><a href="/trac/wiki/SiteCredits">Site design credits</a></p>
+        </div>
+        <div class="right">
+            <p></p>
+        </div>
+    </div>
+  </body>
+</html>

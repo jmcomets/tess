@@ -1,6 +1,8 @@
 from scrapy.selector import HtmlXPathSelector
 from scrapy.contrib.linkextractors.sgml import SgmlLinkExtractor
 from scrapy.contrib.spiders import CrawlSpider, Rule
+from scrapy import log
+
 from items import ProductItem
 
 from collections import defaultdict
@@ -13,7 +15,7 @@ def generate_spider(domain, category, settings):
 
     # Getting the crawling parameters for the spider
     server_ip = settings['SERVER']
-    params_r = requests.get("http://{}/crawl/wrapper/_search?q=name={}".format(server_ip, category))
+    params_r = requests.get("http://{}/crawl/wrapper/_search?q=_id={}".format(server_ip, category))
     params_r.raise_for_status()
     params = json.loads(params_r.text)['hits']['hits'][0]['_source']
 
@@ -49,6 +51,7 @@ def generate_spider(domain, category, settings):
                     continue
                 xpath = self.fields_xpath[field]
                 product[field] = x.select(xpath).extract()
+                # log.msg('Applying "{}" for "{}" -> {}'.format(xpath, field, product[field]))
 
             return product
 

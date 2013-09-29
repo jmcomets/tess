@@ -1,0 +1,3212 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml">
+<head>
+
+
+
+
+
+<title>Triforce | Geek & Tech Tees | 6 Dollar Shirts</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+
+
+
+
+<meta name="description" content="Triforce, The three goddesses left it behind, so we made it a tee. • Professionally printed silkscreen • High-quality, 100% cotton tee. • Ships within 2 business days • Designed and printed in the USA " />
+<meta name="keywords" content="Triforce, zelda, triforce, gaming, T-Shirt, t-shirts, shirt, shirts, tee, tees, funny t-shirts" />
+
+<meta name="robots" content="index, follow" />
+<script type="text/javascript">
+<!--
+var number_format_dec = '.';
+var number_format_th = ',';
+var number_format_point = '2';
+var store_language = 'US';
+var xcart_web_dir = "";
+var images_dir = "http://6dollar.threadpitinc.netdna-cdn.com/skin1/images";
+var lbl_no_items_have_been_selected = 'No items have been selected';
+var current_area = 'C';
+-->
+</script><script language="JavaScript" type="text/javascript">
+<!--
+// $Id: common.js,v 1.12.2.26 2008/07/25 09:54:19 ferz Exp $
+
+//
+// Enviroment identificator
+//
+var localIsDOM = document.getElementById?true:false;
+var localIsJava = navigator.javaEnabled();
+var localIsStrict = document.compatMode=='CSS1Compat';
+var localPlatform = navigator.platform;
+var localVersion = "0";
+var localBrowser = "";
+var localBFamily = "";
+var isHttps = false;
+if (window.opera && localIsDOM) {
+	localBFamily = localBrowser = "Opera";
+	if (navigator.userAgent.search(/^.*Opera.([\d.]+).*$/) != -1)
+		localVersion = navigator.userAgent.replace(/^.*Opera.([\d.]+).*$/, "$1");
+	else if (window.print)
+		localVersion = "6";
+	else
+		localVersion = "5";
+} else if (document.all && document.all.item)
+	localBFamily = localBrowser = 'MSIE';
+if (navigator.appName=="Netscape") {
+	localBFamily = "NC";
+	if (!localIsDOM) {
+		localBrowser = 'Netscape';
+		localVersion = navigator.userAgent.replace(/^.*Mozilla.([\d.]+).*$/, "$1");
+		if(localVersion != '')
+			localVersion = "4";
+	} else if(navigator.userAgent.indexOf("Safari") >= 0)
+		localBrowser = 'Safari';
+	else if (navigator.userAgent.indexOf("Netscape") >= 0)
+		localBrowser = 'Netscape';
+	else if (navigator.userAgent.indexOf("Firefox") >= 0)
+		localBrowser = 'Firefox';
+	else 
+		localBrowser = 'Mozilla';
+	
+}
+if (navigator.userAgent.indexOf("MSMSGS") >= 0)
+	localBrowser = "WMessenger";
+else if (navigator.userAgent.indexOf("e2dk") >= 0)
+	localBrowser = "Edonkey";
+else if (navigator.userAgent.indexOf("Gnutella") + navigator.userAgent.indexOf("Gnucleus") >= 0)
+	localBrowser = "Gnutella";
+else if (navigator.userAgent.indexOf("KazaaClient") >= 0)
+	localBrowser = "Kazaa";
+
+if (localVersion == '0' && localBrowser != '') {
+	var rg = new RegExp("^.*"+localBrowser+".([\\d.]+).*$");
+	localVersion = navigator.userAgent.replace(rg, "$1");
+}
+var localIsCookie = ((localBrowser == 'Netscape' && localVersion == '4')?(document.cookie != ''):navigator.cookieEnabled);
+
+if (document.location.protocol == "https:") { 
+    isHttps = true;
+}
+
+function change_antibot_image(id) {
+	var image = document.getElementById(id);
+	if (image)
+		image.src = xcart_web_dir+"/antibot_image.php?tmp="+Math.random()+"&section="+id+"&regenerate=Y";
+}
+
+
+/*
+	Find element by classname
+*/
+function getElementsByClassName( clsName ) {
+	var arr = new Array(); 
+	var elems = document.getElementsByTagName("*");
+	
+	for ( var cls, i = 0; ( elem = elems[i] ); i++ ) {
+		if ( elem.className == clsName ) {
+			arr[arr.length] = elem;
+		}
+	}
+	return arr;
+}
+//
+// Opener/Closer HTML block
+//
+function visibleBox(id,skipOpenClose) {
+	elm1 = document.getElementById("open"+id);
+	elm2 = document.getElementById("close"+id);
+	elm3 = document.getElementById("box"+id);
+
+	if(!elm3)
+		return false;
+
+	if (skipOpenClose) {
+		elm3.style.display = (elm3.style.display == "")?"none":"";
+	} else if(elm1) {
+		if (elm1.style.display == "") {
+			elm1.style.display = "none";
+			if(elm2)
+				elm2.style.display = "";
+			elm3.style.display = "none";
+			var class_objs = getElementsByClassName('DialogBox');
+			for (var i = 0; i < class_objs.length; i++) {
+				class_objs[i].style.height = "1%";
+			}
+		} else {
+			elm1.style.display = "";
+			if(elm2)
+				elm2.style.display = "none";
+			elm3.style.display = "";
+		}
+	}
+}
+
+/*
+	URL encode
+*/
+function urlEncode(url) {
+	return url.replace(/\s/g, "+").replace(/&/, "&amp;").replace(/"/, "&quot;")
+}
+
+/*
+	Math.round() wrapper
+*/
+function round(n, p) {
+	if (isNaN(n))
+		n = parseFloat(n);
+	if (!p || isNaN(p))
+		return Math.round(n);
+	p = Math.pow(10, p);
+	return Math.round(n*p)/p;
+}
+
+/*
+	Price format
+*/
+function price_format(price, thousand_delim, decimal_delim, precision) {
+	var thousand_delim = (arguments.length > 1 && thousand_delim !== false) ? thousand_delim : number_format_th;
+	var decimal_delim = (arguments.length > 2 && decimal_delim !== false) ? decimal_delim : number_format_dec;
+	var precision = (arguments.length > 3 && precision !== false) ? precision : number_format_point;
+
+	if (precision > 0) {
+		precision = Math.pow(10, precision);
+		price = Math.round(price*precision)/precision;
+		var top = Math.floor(price);
+		var bottom = Math.round((price-top)*precision)+precision;
+
+	} else {
+		var top = Math.round(price);
+		var bottom = 0;
+	}
+
+	top = top+"";
+	bottom = bottom+"";
+	var cnt = 0;
+	for (var x = top.length; x >= 0; x--) {
+		if (cnt % 3 == 0 && cnt > 0 && x > 0)
+			top = top.substr(0, x)+thousand_delim+top.substr(x, top.length);
+
+		cnt++;
+	}
+
+	return (bottom > 0) ? (top+decimal_delim+bottom.substr(1, bottom.length)) : top;
+}
+
+/*
+	Substitute
+*/
+function substitute(lbl) {
+var x, rg;
+	for(x = 1; x < arguments.length; x+=2) {
+		if(arguments[x] && arguments[x+1]) {
+			rg = new RegExp("\\{\\{"+arguments[x]+"\\}\\}", "gi");
+			lbl = lbl.replace(rg,  arguments[x+1]);
+			rg = new RegExp('~~'+arguments[x]+'~~', "gi");
+			lbl = lbl.replace(rg,  arguments[x+1]);
+		}
+	}
+	return lbl;
+}
+
+function getWindowOutWidth(w) {
+	if (!w)
+		w = window;
+	if (localBFamily == "MSIE")
+		return w.document.body.clientWidth;
+	else
+		return w.outerWidth;
+}
+
+function getWindowOutHeight(w) {
+	if (!w)
+		w = window;
+	if (localBFamily == "MSIE")
+		return w.document.body.clientHeight;
+	else
+		return w.outerHeight;
+}
+
+function getWindowWidth(w) {
+	if (!w)
+		w = window;
+    if (localBFamily == "MSIE")
+		return w.document.body.clientWidth;
+    else 
+		return w.innerWidth;
+}
+
+function getWindowHeight(w) {
+	if (!w)
+		w = window;
+    if (localBFamily == "MSIE")
+		return w.document.body.clientHeight;
+	else
+		return w.innerHeight;
+}
+
+function getDocumentHeight(w){
+	if (!w)
+		 w = window;
+	if (localBFamily == "MSIE" || (localBFamily == "Opera" && localVersion >= 7 && localVersion < 8))
+		return isStrict ? w.document.documentElement.scrollHeight : w.document.body.scrollHeight;
+	if (localBFamily == "NC")
+		return w.document.height
+	if (localBFamily == "Opera")
+		return w.document.body.style.pixelHeight
+}
+
+function getDocumentWidth(w) {
+	if (!w)
+		w = window;
+	if (localBFamily == "MSIE" || (localBFamily == "Opera" && localVersion >= 7 && localVersion < 8))
+		return isStrict ? w.document.documentElement.scrollWidth : w.document.body.scrollWidth;
+	if (localBFamily == "NC")
+		return w.document.width;
+	if (localBFamily == "Opera")
+		return w.document.body.style.pixelWidth;
+}
+
+function expandWindowX(w, step, limit) {
+	if (!w)
+		w = window;
+
+	if (!step)
+		step = 10;
+
+	var go = true;
+	var i = 200;
+	while (go && i--) {
+		if (limit && getWindowOutWidth()+step > limit)
+			break;
+
+		try {
+			w.scrollTo(step, 0);
+			go = (w.document.documentElement && w.document.documentElement.scrollLeft > 0) || (w.document.body && w.document.body.scrollLeft > 0);
+			if (go)
+				w.resizeBy(step, 0);
+
+		} catch (e) {
+			return false;
+		}
+	}
+
+	return true;
+}
+
+function expandWindowY(w, step, limit) {
+	if (!w)
+		w = window;
+
+	if (!step)
+		step = 10;
+
+	var go = true;
+	var i = 200;
+	while (go && i--) {
+		if (limit && getWindowOutHeight()+step > limit)
+			 break;
+
+		try {
+			w.scrollTo(0, step);
+			go = (w.document.documentElement && w.document.documentElement.scrollTop > 0) || (w.document.body && w.document.body.scrollTop > 0);
+			if (go)
+				w.resizeBy(0, step);
+
+		} catch(e) {
+			return false;
+		}
+	}
+
+	return true;
+}
+
+/*
+	Check list of checkboxes
+*/
+function checkMarks(form, reg, lbl) {
+var is_exist = false;
+
+	if (form.elements.length == 0)
+		return true;
+
+	for (var x = 0; x < form.elements.length; x++) {
+		if (form.elements[x].name.search(reg) == 0 && form.elements[x].type == 'checkbox' && !form.elements[x].disabled) {
+			is_exist = true;
+			if (form.elements[x].checked)
+				return true;
+		}
+	}
+
+	if (!is_exist)
+		return true;
+	else if (lbl)
+		alert(lbl);
+	else if (lbl_no_items_have_been_selected)
+		alert(lbl_no_items_have_been_selected);
+	return false;
+}
+
+/*
+	Submit form with specified value of 'mode' parmaeters
+*/
+function submitForm(formObj, formMode) {
+	if (!formObj)
+		return false;
+	if (formObj.tagName != "FORM") {
+		if (!formObj.form)
+			return false;
+		formObj = formObj.form;
+	}
+	if (formObj.mode)
+		formObj.mode.value = formMode;
+	formObj.submit();
+}
+
+/*
+	Analogue of PHP function sleep()
+*/
+function sleep(msec) {
+	var then = new Date().getTime()+msec;
+	while (then >= new Date().getTime()){
+	}
+}
+
+/*
+	Convert number from current format
+	(according to 'Input and display format for floating comma numbers' option)
+	to float number
+*/
+function convert_number(num) {
+	var regDec = new RegExp(reg_quote(number_format_dec), "gi");
+	var regTh = new RegExp(reg_quote(number_format_th), "gi");
+	var pow = Math.pow(10, parseInt(number_format_point));
+	num = parseFloat(num.replace(" ", "").replace(regTh, "").replace(regDec, "."));
+	return Math.round(num*pow)/pow;
+}
+
+/*
+	Check string as number
+	(according to 'Input and display format for floating comma numbers' option)
+*/
+function check_is_number(num) {
+	var regDec = new RegExp(reg_quote(number_format_dec), "gi");
+	var regTh = new RegExp(reg_quote(number_format_th), "gi");
+	num = num.replace(" ", "").replace(regTh, "").replace(regDec, ".");
+	return (num.search(/^[+-]?[0-9]+(\.[0-9]+)?$/) != -1);
+}
+
+/*
+	Qutation for RegExp class
+*/
+function reg_quote(s) {
+	return s.replace(/\./g, "\\.").replace(/\//g, "\\/").replace(/\*/g, "\\*").replace(/\+/g, "\\+").replace(/\[/g, "\\[").replace(/\]/g, "\\]");
+}
+
+function setCookie(name, value, path, expires) {
+	if (typeof(expires) == 'object') {
+		try {
+			var days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+			var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+			if (days[expires.getDay()] && months[expires.getMonth()])
+				expires = days[expires.getDay()]+" "+expires.getDate()+"-"+months[expires.getMonth()]+"-"+expires.getFullYear()+" "+expires.getHours()+":"+expires.getMinutes()+":"+expires.getSeconds()+" GMT";
+		} catch(e) { }
+	}
+
+	if (typeof(expires) != 'string')
+		expires = false;
+
+	document.cookie = name+"="+escape(value)+(expires ? "; expires=" + expires : "")+(path ? "; path="+path : "");
+}
+
+function deleteCookie(name) {
+	document.cookie = name+"=0; expires=Fri, 31 Dec 1999 23:59:59 GMT;";
+}
+
+/*
+	Clone object
+*/
+function cloneObject(orig) {
+	var r = {};
+	for (var i in orig) {
+		r[i] = orig[i];
+	}
+
+	return r;
+}
+
+/*
+	Get first checkbox and redirect to URL
+*/
+function getFirstCB(form, reg) {
+
+	while (form.tagName && form.tagName.toUpperCase() != 'FORM')
+		form = form.parentNode;
+
+	if (!form.tagName || form.tagName.toUpperCase() != 'FORM' || form.elements.length == 0)
+        return false;
+
+	var selectedChk = false;
+    for (var x = 0; x < form.elements.length; x++) {
+        if (form.elements[x].name.search(reg) == 0 && form.elements[x].type == 'checkbox' && !form.elements[x].disabled && form.elements[x].checked) {
+			selectedChk = form.elements[x];
+			break;
+        }
+    }
+    
+    if (!selectedChk) {
+		if (lbl_no_items_have_been_selected)
+			alert(lbl_no_items_have_been_selected);
+
+        return false;
+	}
+
+    return selectedChk;
+}
+
+/*
+	getElementById() wrapper
+*/
+function _getById(id) {
+	if (typeof(id) != 'string' || !id)
+		return false;
+
+	var obj = document.getElementById(id);
+	if (obj && obj.id != id) {
+		obj = false;
+		for (var i = 0; i < document.all.length && obj === false; i++) {
+			if (document.all[i].id == id)
+				obj = document.all[i];
+		}
+	}
+
+	return obj;
+}
+
+// undefined or not
+function isset(obj) {
+	return typeof(obj) != 'undefined' && obj !== null;
+}
+
+
+// Check - variable is function or not
+function isFunction(f) {
+	return (typeof(f) == 'function' || (typeof(f) == 'object' && (f+"").search(/\s*function /) === 0));
+}
+
+-->
+</script>
+
+
+<meta name="robots" content="index, follow" />
+
+
+<link rel="image_src" href="http://6dollarshirts.com/images/P/Tri_Force_NEW_T_SHIRT_black.jpg"/>
+<meta property="og:site_name" content="6DollarShirts"/>
+<meta property="og:title" content="Triforce | 6DollarShirts"/>
+<meta property="og:type" content="product" />
+<meta property="og:url" content="http://www.6dollarshirts.com/product.php?productid=11469"/>
+<meta property="og:image" content="http://6dollarshirts.com/images/P/Tri_Force_NEW_T_SHIRT_black.jpg"/>
+<meta property="og:description" content="The three goddesses left it behind, so we made it a tee.
+
+-Professionally printed silkscreen
+
+- High-quality, 100% cotton tee.
+
+-Ships within 2 business days
+
+- Designed and printed in the USA
+
+"/>
+<meta property="fb:admins" content="2025004" />
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" src="/skin1/highslide/highslide-full.js"></script>
+<script type="text/javascript" src="/skin1/highslide/highslide.config.js" charset="utf-8"></script>
+<link rel="stylesheet" type="text/css" href="/skin1/highslide/highslide.css" />
+<!--[if lt IE 7]>
+<link rel="stylesheet" type="text/css" href="/skin1/highslide/highslide-ie6.css" />
+<![endif]-->
+
+
+
+<style type="text/css">
+/* wrapperClass for remocing the mac style close button */
+.no-button .closebutton {
+	display: none;
+}
+/* wrapperClass for removing Move and Close text when using the mac style closebutton */
+.no-move-close .highslide-header .highslide-close *, .no-move-close .highslide-header .highslide-move * {
+	display: none;
+}
+</style>
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+<link type="text/css" rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/themes/humanity/jquery-ui.css" />
+<link type="text/css" rel="stylesheet" href="../js/rateit/rateit.css" />
+<script type="text/javascript" src="../js/rateit/jquery.rateit.min.js"></script>
+<script type="text/javascript" src="../js/infinitescroll.js?1380414473"></script>
+<script type="text/javascript" src="../js/submissions.js?1380414473"></script>
+<link type="text/css" rel="stylesheet" href="../css/submissions.css" />
+
+
+
+
+
+
+
+<script type="text/javascript" src='skin1/countdown.js'></script>
+
+<script type="text/javascript">var switchTo5x=true;</script>
+<!-- -->
+
+
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script> 
+<script type="text/javascript">stLight.options(); </script>
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="http://6dollar.threadpitinc.netdna-cdn.com/skin1/skin1.css" />
+<link rel="shortcut icon" href="favicon.ico">
+
+
+
+
+<!--Start of Zopim Live Chat Script-->
+<script type="text/javascript">
+window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+_.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute('charset','utf-8');
+$.src='//cdn.zopim.com/?tO1AYLQNn7e0WM9LAKimbQMuBgjFLIOl';z.t=+new Date;$.
+type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
+</script>
+<!--End of Zopim Live Chat Script-->
+
+
+
+
+</head>
+<body   >
+
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+<table class="Container" cellpadding="0" cellspacing="0" width="950" align=center>
+<tr><td class="Container"><table cellpadding="0" cellspacing="0" width="100%">
+<tr > 
+	<td class="HeadLogo" ><a href="home.php"><img src="http://6dollar.threadpitinc.netdna-cdn.com/skin1/images/6dollarshirts_logo_reg.gif"  width="150" height="114" alt="" /></a></td>
+	<td class="HeadRightBox">	
+	
+
+
+
+
+<div style=" text-align:left; margin-top:20px; margin-bottom:10px; margin-left:30px;"> 
+<span style="">
+<span class=tt_5 style="width:185px; padding: 0px 0px 0px 0px;  float:left; border-right: 2px solid #BBBA9A;">
+
+<a href="#" onclick="return hs.htmlExpand(this, { contentId: 'highslide-10for50' , width: '550' } )" class="highslide">
+
+<span style="font-size:18px;">10 Tees Only $50!</span><br>Everyday Special<br>Hundreds of Designs.<br>Yes, Really <img src="http://6dollar.threadpitinc.netdna-cdn.com/skin1/images/arrow_right.png"></a>
+
+<div class="highslide-html-content" id="highslide-10for50">
+<div class="highslide-body">
+<table width="510"  cellpadding="0" cellspacing="0" align=center>
+<tr><td>
+<hr class="tt_hr" style="margin-top:8px;margin-bottom:5px; width:100%">
+<span class=tt_2 style="FONT-SIZE: 23px;" align=center>
+Get Any 10 Of Our Original Tees For Only $50!
+</span><hr class="tt_hr" style="margin-top:5px;margin-bottom:8px; width:100%">
+<img src="http://6dollar.threadpitinc.netdna-cdn.com/skin1/images/10for50_promo.png" width="510"  alt="Get Any 10 T-Shirts for Only $50!" /><br><br>
+
+<hr class="tt_hr" style="margin-top:0px;margin-bottom:8px; width:100%">
+As if $6 for one of our awesome original t-shirts wasn't cheap enough, we are offering you, the sweet public, a bountiful ten t-shirts for the absurdly low price of only 50 bucks!
+<br>
+Pick from over 300 tantalizing designs in over 15 different titillating categories. No other online t-shirt store can even come close to these prices!
+<br><br>
+Your discount will be applied automatically to your shopping cart total at the time of checkout. Shipping is not included. 
+<b>Please Note:</b> The 10 for $50 promotion excludes Premium Band Tees, our Tee Time Daily Special, Hooded Sweatshirts, and Sale Items. 6DollarShirts reserves the right to potentially exclude other items from the promotion at our discretion.
+<br><span class=tt_tiny_talk><br><br>Some Poetic Nonsense:<br>What is the cost, of financial loss?<br>A declining nation, or hyper inflation?<br>Seek out this deal, and know how it feels.<br>To never be poor, with 10 sweet tees in your drawer!
+<br><br>
+Now close this goddamn window and buy some frickin' t-shirts!
+</span>
+<hr class="tt_hr" style="margin-top:8px;margin-bottom:5px; width:100%">
+</td></tr><tr><td colspan=3>
+<br>
+<span align=right><a href="#" onclick="return hs.close(this)"><b>CLOSE</b></a></span>
+</td></tr></table>
+</div></div>
+</span>
+<span  class=tt_5 style="width:180px; padding: 0px 0px 0px 20px; float:left;">
+<a href=home.php?cat=275><span style="font-size:18px;"><img src="http://6dollar.threadpitinc.netdna-cdn.com/skin1/images/rock_on.png" > Rock On Brah</span><br>New Premium Band<br>Tees Are Here!<br>Have a Look <img src="http://6dollar.threadpitinc.netdna-cdn.com/skin1/images/arrow_right.png"></a>
+</span>
+<span class=tt_5 style="width:180px; padding: 0px 0px 0px 20px; float:left;  border-left: 2px solid #BBBA9A;">
+<a href=teetime><span style="font-size:18px;">Visit TeeTime&trade;</span><br>Today's Featured Design Only $6.<br>$2 US Shipping! <img src="http://6dollar.threadpitinc.netdna-cdn.com/skin1/images/arrow_right.png"></a>
+</span>
+
+<span class=tt_5 style="width:170px; padding: 0px 0px 0px 0px; float:right;margin-top:-20px; margin-bottom:-10px;">
+<img src="http://6dollar.threadpitinc.netdna-cdn.com/skin1/images/media/topright_12-29-2012_top_right_holder.png">
+</span>
+
+</span>
+</div>
+
+
+
+		</td>
+	
+</tr>
+
+</table>
+
+
+
+
+<table cellpadding="0" cellspacing="0" width="100%">
+
+
+
+
+<tr> 
+
+<td class="HeadLine_L" align="left" width=138>
+ 
+</td>
+
+	<td class="HeadLine" style="TEXT-ALIGN: left; padding-left: 55px;" height="22" >
+ 
+<b><nobr>6DollarShirts ~ High Quality Silk Screened T-Shirts Shipped Daily for Only $6 Each!</nobr></b>
+	</td>
+	<td class="HeadLine_R" align="right" width=12>
+
+
+ 
+	</td>
+</tr>
+
+
+
+
+
+
+
+
+
+
+<tr>
+	<td colspan="2" valign="middle" height="6">
+<table cellspacing="0" cellpadding="0" width="100%">
+<tr>
+	<td class="HeadTopPad"><img src="http://6dollar.threadpitinc.netdna-cdn.com/skin1/images/spacer.gif" alt="" /></td>
+</tr>
+</table>
+	</td>
+</tr>
+
+</table><!-- main area -->
+<table width="100%" cellpadding="0" cellspacing="0"><tr><td >
+
+
+
+
+
+
+<table width="100%" cellpadding="0" cellspacing="0" align=center>
+<tr>
+<td class="VertMenuLeftColumn">
+
+
+<div class=face_box>
+
+
+<table cellspacing="1" width="100%"><tr><td class="TopLabel" style="padding-left: 0px; padding-right: 0px;">CATEGORIES
+</td></tr><tr><td>
+
+<font class="CategoriesList"><a href="home.php?cat=270" class="VertMenuItems">Newest T-Shirts</a></font><br />
+<font class="CategoriesList"><a href="home.php?cat=249" class="VertMenuItems">Funny Tees</a></font><br />
+<font class="CategoriesList"><a href="home.php?cat=258" class="VertMenuItems">Pet & Wildlife Tees</a></font><br />
+<font class="CategoriesList"><a href="home.php?cat=272" class="VertMenuItems">Internet and Meme Tees</a></font><br />
+<font class="CategoriesList"><a href="home.php?cat=262" class="VertMenuItems">Cool & Artistic Tees</a></font><br />
+<font class="CategoriesList"><a href="home.php?cat=250" class="VertMenuItems">TV & Movie Tees</a></font><br />
+<font class="CategoriesList"><a href="home.php?cat=253" class="VertMenuItems">Music Tees</a></font><br />
+<font class="CategoriesList"><a href="home.php?cat=251" class="VertMenuItems">Retro & Vintage Tees</a></font><br />
+<font class="CategoriesList"><a href="home.php?cat=252" class="VertMenuItems">Political Tees</a></font><br />
+<font class="CategoriesList"><a href="home.php?cat=254" class="VertMenuItems">International Tees</a></font><br />
+<font class="CategoriesList"><a href="home.php?cat=256" class="VertMenuItems">Sports & Games Tees</a></font><br />
+<font class="CategoriesList"><a href="home.php?cat=259" class="VertMenuItems">Geek & Tech Tees</a></font><br />
+<font class="CategoriesList"><a href="home.php?cat=260" class="VertMenuItems">Holiday & Costume Tees</a></font><br />
+<font class="CategoriesList"><a href="home.php?cat=263" class="VertMenuItems">St. Patty's Day Tees</a></font><br />
+<font class="CategoriesList"><a href="home.php?cat=276" class="VertMenuItems">Blank Tees</a></font><br />
+<font class="CategoriesList"><a href="home.php?cat=273" class="VertMenuItems">Clearance Items!</a></font><br />
+<font class="CategoriesList"><a href="home.php?cat=271" class="VertMenuItems">Hooded Sweatshirts</a></font><br />
+<font class="CategoriesList"><a href="home.php?cat=264" class="VertMenuItems">Vintage Sunglasses</a></font><br />
+<font class="CategoriesList"><a href="home.php?cat=268" class="VertMenuItems">Bumper Stickers</a></font><br />
+<font class="CategoriesList"><a href="home.php?cat=261" class="VertMenuItems">Other Stuff For Sale</a></font><br />
+<font class="CategoriesList"><a href="home.php?cat=269" class="VertMenuItems">Posters and Prints</a></font><br />
+<font class="CategoriesList"><a href="home.php?cat=278" class="VertMenuItems">Trucker Hats</a></font><br />
+<font class="CategoriesList"><a href="home.php?cat=275" class="VertMenuItems">Premium Band Tees</a></font><br />
+<font class="CategoriesList"><a href="home.php?cat=281" class="VertMenuItems">Pattern Pocket Tees</a></font><br />
+<font class="CategoriesList"><a href="home.php?cat=283" class="VertMenuItems">Phone Cases</a></font><br />
+<div class=vis_op_1><font class="CategoriesList"><a href="teetime" class="VertMenuItems">Tee Time</a></font> <img src="http://6dollar.threadpitinc.netdna-cdn.com/skin1/images/tt_new.png" alt="" /></div>
+<font class="CategoriesList"><a href="home.php" class="VertMenuItems">Browse All Tees</a></font>
+
+</td></tr></table>
+
+
+
+
+
+
+
+<table cellspacing="1" width="100%"><tr><td class="TopLabel" style="padding-left: 0px; padding-right: 0px;">
+</td></tr><tr><td>
+<a href="giftcert.php" class="VertMenuItems">Gift Certificates</a><br />
+</td></tr></table>
+
+
+<br />
+
+
+
+
+
+
+<form method="post" action="search.php" name="productsearchform">
+<input type="hidden" name="simple_search" value="Y" />
+<input type="hidden" name="mode" value="search" />
+<input type="hidden" name="posted_data[by_title]" value="Y" />
+<input type="hidden" name="posted_data[by_shortdescr]" value="Y" />
+<input type="hidden" name="posted_data[by_fulldescr]" value="Y" />
+<input type="hidden" name="posted_data[by_sku]" value="Y" />
+<input type="hidden" name="posted_data[including]" value="all" />
+<table cellpadding="0" cellspacing="0">  
+<tr> 
+	<td class="TopLabel" style="padding-left: 0px; padding-right: 5px;">SEARCH</td></tr><tr><td>
+
+
+
+	<input type="text" class=nick name="posted_data[substring]" size="16" value="" />
+
+</td>
+	<td valign="middle" style="padding-top: 2px; padding-left: 5px; padding-right: 0px;"><input type="image" src="http://6dollar.threadpitinc.netdna-cdn.com/skin1/images/go.gif" class="GoImage" alt="" /></td></tr><tr><td>
+</form>
+
+</td>
+</tr>
+</table><br>
+
+
+
+<table cellspacing="1" width="100%"><tr><td class="TopLabel" style="padding-left: 0px; padding-right: 0px;">
+</td></tr><tr><td>
+<table cellpadding="1" cellspacing="0">
+<tr>
+	<td rowspan="2" width="23"><a href="cart.php"><img src="http://6dollar.threadpitinc.netdna-cdn.com/skin1/images/cart_empty.gif" width="19" height="16" alt="" /></a></td>
+	<td class="VertMenuItems" align="center" valign=bottom><a href="cart.php"><b>View Cart</b></a></td>
+</tr>
+</table>
+
+
+ 
+
+
+</td></tr></table>
+
+<br />
+
+
+
+
+
+
+
+
+<table cellspacing="1" width="100%"><tr><td class="TopLabel" style="padding-left: 0px; padding-right: 0px;">SUBMISSIONS<img src=skin1/images/new_icon.gif>
+</td></tr><tr><td>
+
+<a href="design_contest.php">Submit Your Design $$$</a><br>
+<a href="design_contest.php?view=gallery">View Submissions</a><br>
+<a href="design_contest.php?view=community">Design Community</a><br>
+<a href=secure_login.php?mode=update&action=submit>Login</a><br><a href=register.php?action=submit>Create an Account</a>
+
+
+</td></tr></table>
+<br />
+
+
+<table cellspacing="1" width="100%"><tr><td class="TopLabel" style="padding-left: 0px; padding-right: 0px;">HELP
+</td></tr><tr><td>
+<a href="help.php?section=about&mode=update" class="VertMenuItems">About Us</a><br />
+<a href="help.php?section=FAQ&mode=update" class="VertMenuItems">Ordering Info</a><br />
+<a href="help.php?section=contactus&mode=update" class="VertMenuItems">Contact Us</a><br />
+<a href="help.php?section=affiliates&mode=update" class="VertMenuItems">Become an Affiliate</a><br />
+<a href="help.php?section=careers&mode=update" class="VertMenuItems">Career Opportunities</a><br />
+
+
+
+
+<a href="secure_login.php" class="VertMenuItems">User Login</a>
+<br />
+
+
+
+
+
+
+</td></tr></table>
+<br />
+
+
+
+<center>
+<img src="http://6dollar.threadpitinc.netdna-cdn.com/skin1/images/spacer.gif" alt="" width="155" height="1" />
+<br>
+<img src="http://6dollar.threadpitinc.netdna-cdn.com/skin1/images/credit_cards_accepted.gif" width="150" height="63" alt="Accepted Credit Cards" />
+<img src="http://6dollar.threadpitinc.netdna-cdn.com/skin1/images/we_ship_globally.gif" width="136" height="64" alt="We Ship Globally" />
+</center>
+
+
+
+</div>
+
+
+
+<br>
+
+</center>
+<div align=right>
+
+
+
+
+	<div class="highslide-html-content" id="sponsor">
+	<div class="highslide-body">
+<center>
+<span class=tt_2 style="FONT-SIZE: 18px;">Hawk Your Goods & Services With Us!</span><br>
+<b>Easier Than Selling Cigarettes In 3rd World Countries!</b>
+</center>
+<hr>
+<br>
+Our customers are young, smart, and ready to have some banner/text ads shoved down their throats. 
+For only a few bucks per 1000 views, you can have our podium to blast them whatever message you want.
+<br><br>
+Hosting an End of the World mass suicide party? Get the word out with a classy 160x600 banner ad!
+<br><br>
+Unloading a warehouse of butt plug shaped ice cube trays? Try a discreet text ad in the footer of our site.
+<br><br>
+The possibilities are unlimited, but our ad space is not. If you would like to learn more about our rates, ad sizes, tracking, rotations, etc., shoot us an email at:
+<br><br>
+<a href="mailto:advertising@6dollarshirts.com"><b>advertising@6dollarshirts.com</b></a>
+<br><br>
+<b>Please include some of the following:</b><br>
+• Your name or symbol you go by<br>
+• Company or organization you represent<br>
+• Ad types of interest and traffic volume<br>
+• Web address where ads will link to<br>
+• Ways to get in contact with you<br>
+<br>
+Stay Blessed!
+<br><br>
+<span class=tt_tiny_talk>
+*Ad discounts will be given to the following:
+<br>Satanic Cults, Whiskey Bootleggers, and Eunichs<br><br>
+*Additional charges will be levied upon:
+<br>Presidential Candidates, Tow Truck Drivers, and Tim Tebow
+</span>
+
+<br><br><br>
+<span align=right><a href="#" onclick="return hs.close(this)"><b>CLOSE</b></a></span>
+</div></div>
+
+
+<center>
+<span class=tt_tiny_talk>advertisement</span><br>
+
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-2558083052930351";
+/* teetime left side */
+google_ad_slot = "2801683085";
+google_ad_width = 160;
+google_ad_height = 600;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+<a href="#" onclick="return hs.htmlExpand(this, { contentId: 'sponsor' , width: '350' } )" class="highslide"><span class=tt_tiny_talk>see your ad here</span></a>
+
+
+</center>
+<br>
+
+</div>
+
+
+
+
+
+
+
+
+</td>
+<td valign="top" width="100%">
+<!-- central space -->
+
+
+
+
+<script language="JavaScript" type="text/javascript">
+<!--
+// $Id: popup_image.js,v 1.4.2.1 2006/09/13 14:03:29 max Exp $
+function popup_image(type, id, max_x, max_y, title) {
+
+	max_x = parseInt(max_x);
+	max_y = parseInt(max_y);
+
+	if (!max_x)
+		max_x = 160;
+	else
+		max_x += 25;
+	if (!max_y)
+		max_y = 120;
+	else
+		max_y += 25;
+
+	return window.open(xcart_web_dir+'/popup_image.php?type='+type+'&id='+id+'&title='+title+'&area='+current_area,'images','width='+max_x+',height='+max_y+',toolbar=no,status=no,scrollbars=yes,resizable=yes,menubar=no,location=no,direction=no');
+}
+
+
+
+function popup_image_size(type, id, max_x, max_y, title) {
+
+	max_x = parseInt(max_x);
+	max_y = parseInt(max_y);
+
+
+	return window.open(xcart_web_dir+'/skin1/size_chart.html','images','width='+max_x+',height='+max_y+',toolbar=no,status=no,scrollbars=no,resizable=no,menubar=no,location=no,direction=no');
+}
+
+-->
+</script>
+<script type="text/javascript" language="JavaScript 1.2">
+<!--
+function FormValidation() {
+
+        if(!check_exceptions()) {
+        alert(exception_msg);
+        return false;
+    }
+	    
+	if(document.getElementById('product_avail'))
+	    if(document.getElementById('product_avail').value == 0) {
+    	    alert("Out of stock");
+        	return false;
+	    }
+
+
+
+    return true;
+}
+
+
+
+
+
+-->
+</script>
+
+
+<div class=face_box_big >
+
+
+<a name="topp"></a><form name="orderform" method="post" action="cart.php?mode=add" onsubmit="javascript: return FormValidation();">
+<table width="100%">
+
+
+<tr><td colspan=2>
+<img src="http://6dollar.threadpitinc.netdna-cdn.com/skin1/images/evil_eye.gif" alt="" width="19" height="19" />  <font class=NickProductTitle>Triforce T-Shirt</font>
+
+</td></tr>
+
+
+
+
+<tr>
+	<td class="PImgBox" rowspan="2">
+
+
+
+
+
+<div class="detimg">
+	
+
+
+	<a href="#detailed"><img id="product_thumbnail" src="http://6dollar.threadpitinc.netdna-cdn.com/images/P/Tri_Force_NEW_T_SHIRT_black.jpg" width="350" height="400" alt="Triforce" />
+
+
+
+
+<div class="detimg2"><img src="/skin1/images/zoom_image.gif" alt="SEE DETAILED IMAGES" /> <b>See Detailed Images</b></a>
+</div>
+
+
+<div class="addthis_toolbox addthis_default_style" style="margin:0px 0 0 0; width: 350px; align:center;" align=center>
+<a class="addthis_button_facebook_like" fb:like:layout="button_count" style="margin-left:40px; margin-right:20px; margin-top:0px; margin-bottom:0px;"></a><a class="addthis_button_tweet"></a>
+<a class="addthis_button_email"><img  src="/skin1/images/email_btn.jpg" width="54" height="20" alt="E-Mail"  /></a>
+</div>
+
+
+<script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=threadpit"></script>
+
+
+
+		
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+<script type="text/javascript">
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+
+
+
+
+
+
+
+	</td>
+
+
+
+
+	<td valign="top" width="100%">
+
+
+<table width="100%" cellspacing="0" cellpadding="0">
+
+
+
+<tr><td><nobr><font class="ProductDetailsTitle">Description</font></b>
+
+</nobr>
+
+</td></tr>
+<tr><td class="Line" height="1" colspan="2"><img src="http://6dollar.threadpitinc.netdna-cdn.com/skin1/images/spacer.gif" class="Spc" alt="" /></td></tr>
+<tr><td colspan="2" style="line-height: 3px;"> </td></tr>
+
+
+<tr>
+	<td><img src="http://6dollar.threadpitinc.netdna-cdn.com/skin1/images/spacer.gif" alt="" width="1" height="5" />The three goddesses left it behind, so we made it a tee.<br />
+<br />
+• Professionally printed silkscreen
+<br />
+•  High-quality, 100% cotton tee.
+<br />
+• Ships within 2 business days
+<br />
+•  Designed and printed in the USA
+<br />
+<br>
+
+
+</td>
+	<td align="right" valign="top" width="60" id="save_percent_box" style="display: none;">
+
+
+	</td>
+</tr>
+</table>
+
+
+
+
+
+<table width="100%" cellpadding="0" cellspacing="0">
+<tr>
+<td align=right><font class="NickCat">Only</font><br>
+
+
+
+
+<font class="NickPrice"><span id="product_price" style="white-space: nowrap;"><span style="position: relative; top: -0.4em; font-size: 70%;">$</span>6.00
+</span></font>
+
+
+</td>
+</tr>
+</table>
+
+
+
+<table width="100%" cellpadding="0" cellspacing="0">
+
+
+<tr><td colspan="2">
+<b><font class="ProductDetailsTitle">Customize!</font></b>
+</td>
+</tr>
+<tr><td class="Line" height="1" colspan="2"><img src="http://6dollar.threadpitinc.netdna-cdn.com/skin1/images/spacer.gif" class="Spc" alt="" /></td></tr>
+<tr><td colspan="2" style="line-height: 5px;"> </td></tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+<script type="text/javascript" language="JavaScript 1.2">
+<!--
+
+window.onload = function () {fillCategory()}
+
+
+
+
+
+function fillCategory(){ 
+ // this function is used to fill the category list on load
+
+
+
+ 
+
+
+
+													addOption(document.orderform.po2655, "139803", "Guys Tee", "");
+												addOption(document.orderform.po2655, "139804", "Girls Tee (+$0.50)", "");
+	
+
+
+
+													addOption(document.orderform.po2010,"139815", "Black", "selected");
+															addOption(document.orderform.po2010,"139807", "Navy Blue", "");
+															addOption(document.orderform.po2010,"139812", "Heather Kelly", "");
+															addOption(document.orderform.po2010,"139805", "Kelly Green", "");
+																													
+
+
+
+
+
+							addOption(document.orderform.po2011,"139828", "Small", "selected");
+								addOption(document.orderform.po2011,"139829", "Medium", "");
+								addOption(document.orderform.po2011,"139830", "Large", "");
+								addOption(document.orderform.po2011,"139831", "X-Large", "");
+								addOption(document.orderform.po2011,"139832", "2X-Large (+$2.00)", "");
+								addOption(document.orderform.po2011,"139833", "3X-Large (+$3.00)", "");
+			
+
+
+
+
+ 
+}
+function SelectSubCat(){
+// ON selection of category this function will work
+ 
+
+
+removeAllOptions(document.orderform.po2010);
+removeAllOptions(document.orderform.po2011);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+if(document.orderform.po2655.value == '139803')
+ {
+ 
+
+
+									addOption(document.orderform.po2010,"139815", "Black", "selected");
+										addOption(document.orderform.po2010,"139807", "Navy Blue", "");
+										addOption(document.orderform.po2010,"139812", "Heather Kelly", "");
+										addOption(document.orderform.po2010,"139805", "Kelly Green", "");
+																		
+
+
+
+
+}
+
+
+
+
+if(document.orderform.po2655.value == '139804')
+ 
+{
+ 
+
+
+																										
+			addOption(document.orderform.po2010,"139824", "Midnight", "");
+							
+			addOption(document.orderform.po2010,"139820", "True Navy", "");
+							
+			addOption(document.orderform.po2010,"139825", "Lucky Green", "");
+			
+
+
+}
+
+
+
+if(document.orderform.po2655.value == '')
+ 
+{
+ 
+
+
+																							
+
+
+}
+
+
+
+
+if(document.orderform.po2655.value == '')
+ 
+{
+ 
+
+
+																							
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+	if(document.orderform.po2655.value == '139803')
+	 
+	{
+	 
+									addOption(document.orderform.po2011,"139828", "Small", "selected");		
+												addOption(document.orderform.po2011,"139829", "Medium", "");		
+												addOption(document.orderform.po2011,"139830", "Large", "");		
+												addOption(document.orderform.po2011,"139831", "X-Large", "");		
+												addOption(document.orderform.po2011,"139832", "2X-Large (+$2.00)", "");		
+												addOption(document.orderform.po2011,"139833", "3X-Large (+$3.00)", "");		
+						
+	}
+	
+
+
+
+
+	if(document.orderform.po2655.value == '139804')
+	 
+	{
+	 
+									addOption(document.orderform.po2011,"139828", "Small", "selected");		
+												addOption(document.orderform.po2011,"139829", "Medium", "");		
+												addOption(document.orderform.po2011,"139830", "Large", "");		
+												addOption(document.orderform.po2011,"139831", "X-Large", "");		
+																
+	}
+	
+	
+	
+	
+	
+	if(document.orderform.po2655.value == '')
+	 
+	{
+	 
+																																	
+	}
+	
+	
+	
+	
+	if(document.orderform.po2655.value == '')
+	 
+	{
+	 
+																																	
+	}
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+function removeAllOptions(selectbox)
+{
+	var i;
+	for(i=selectbox.options.length-1;i>=0;i--)
+	{
+		//selectbox.options.remove(i);
+		selectbox.remove(i);
+	}
+}
+
+
+function addOption(selectbox, value, text, selected)
+{
+	var optn = document.createElement("OPTION");
+	optn.text = text;
+	optn.value = value;
+	optn.selected = selected;
+
+	selectbox.options.add(optn);
+}
+
+
+// -->
+</script>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			<tr>
+		<td valign="middle" height="25" align=right><b>Style</b><img src="http://6dollar.threadpitinc.netdna-cdn.com/skin1/images/spacer.gif" alt="" / height=1 width=10></td>
+		<td valign="middle"  >
+							
+
+
+
+
+
+					<select id="po2655" name="product_options[2655]" onChange="javascript: SelectSubCat(); check_options(); " style="width: 130px;">
+
+			</select>
+
+
+
+		
+
+				<tr>
+		<td valign="middle" height="25" align=right><b>Color</b><img src="http://6dollar.threadpitinc.netdna-cdn.com/skin1/images/spacer.gif" alt="" / height=1 width=10></td>
+		<td valign="middle"  >
+							
+
+
+
+
+
+		
+			<select id="po2010" name="product_options[2010]" onchange="javascript: check_options();" style="width: 130px;">
+			</select>
+
+		
+
+				<tr>
+		<td valign="middle" height="25" align=right><b>Size</b><img src="http://6dollar.threadpitinc.netdna-cdn.com/skin1/images/spacer.gif" alt="" / height=1 width=10></td>
+		<td valign="middle"  >
+							
+
+
+
+
+
+					<select id="po2011" name="product_options[2011]" onchange="javascript: check_options();" style="width: 130px;">
+			</select>
+
+
+
+		
+
+	
+
+
+
+
+
+
+
+<script type="text/javascript" language="JavaScript 1.2">
+<!--
+var alert_msg = '';
+-->
+</script>
+<script type="text/javascript" language="JavaScript 1.2">
+<!--
+
+/*
+variants array:
+	0 - array:
+		0 - taxed price
+		1 - quantity
+		2 - variantid if variant have thumbnail
+		3 - weight
+		4 - original price (without taxes)
+		5 - productcode
+	1 - array: variant options as classid => optionid
+	2 - array: taxes as taxid => tax amount
+	3 - wholesale prices array:
+		0 - quantity
+		1 - next quantity
+		2 - taxed price
+		3 - taxes array: as taxid => tax amount
+		4 - original price (without taxes)
+*/
+var variants = [];
+variants[958798] = [[6.00, 873, new Image(), '0.63', 6.00, "8235"],{},{},[]];
+variants[958798][1][2010] = 139805;
+variants[958798][0][2].src = "http://6dollarshirts.com/images/W/Tri_Force_NEW_T_SHIRT_kellygreen_luckygreen_swatch.jpg"; 
+variants[958800] = [[6.00, 489, new Image(), '0.63', 6.00, "8237"],{},{},[]];
+variants[958800][1][2010] = 139807;
+variants[958800][0][2].src = "http://6dollarshirts.com/images/W/Tri_Force_NEW_T_SHIRT_navy_truenavy_swatch.jpg"; 
+variants[958808] = [[6.00, 693, new Image(), '0.63', 6.00, "8245"],{},{},[]];
+variants[958808][1][2010] = 139815;
+variants[958808][0][2].src = "http://6dollarshirts.com/images/W/Tri_Force_NEW_T_SHIRT_black.jpg"; 
+variants[958813] = [[6.00, 903, new Image(), '0.63', 6.00, "8250"],{},{},[]];
+variants[958813][1][2010] = 139820;
+variants[958813][0][2].src = "http://6dollarshirts.com/images/W/Tri_Force_NEW_T_SHIRT_navy_truenavy_swatch.jpg"; 
+variants[958817] = [[6.00, 575, new Image(), '0.63', 6.00, "8254"],{},{},[]];
+variants[958817][1][2010] = 139824;
+variants[958817][0][2].src = "http://6dollarshirts.com/images/W/Tri_Force_NEW_T_SHIRT_midnight.jpg"; 
+variants[958818] = [[6.00, 544, new Image(), '0.63', 6.00, "8255"],{},{},[]];
+variants[958818][1][2010] = 139825;
+variants[958818][0][2].src = "http://6dollarshirts.com/images/W/Tri_Force_NEW_T_SHIRT_kellygreen_luckygreen_swatch.jpg"; 
+variants[966787] = [[6.00, 418, new Image(), '0.63', 6.00, "SKU62731"],{},{},[]];
+variants[966787][1][2010] = 139812;
+variants[966787][0][2].src = "http://6dollarshirts.com/images/W/Tri_Force_NEW_T_SHIRT_greenheather_swatch.jpg"; 
+
+/*
+modifiers array: as clasid => array: as optionid => array:
+	0 - price_modifier
+	1 - modifier_type
+	2 - taxes array: as taxid => tax amount
+*/
+var modifiers = [];
+// names array: as classid => class name
+var names = [];
+names[2655] = {class_name: "Style", options: []};
+names[2655]['options'][139803] = "Guys Tee";
+names[2655]['options'][139804] = "Girls Tee";
+modifiers[2655] = {}
+modifiers[2655][139803] = [0.00,'$',{}];
+modifiers[2655][139804] = [0.50,'$',{}];
+names[2010] = {class_name: "Color", options: []};
+names[2010]['options'][139815] = "Black";
+names[2010]['options'][139807] = "Navy Blue";
+names[2010]['options'][139812] = "Heather Kelly";
+names[2010]['options'][139805] = "Kelly Green";
+names[2010]['options'][139824] = "Midnight";
+names[2010]['options'][139820] = "True Navy";
+names[2010]['options'][139825] = "Lucky Green";
+names[2011] = {class_name: "Size", options: []};
+names[2011]['options'][139828] = "Small";
+names[2011]['options'][139829] = "Medium";
+names[2011]['options'][139830] = "Large";
+names[2011]['options'][139831] = "X-Large";
+names[2011]['options'][139832] = "2X-Large";
+names[2011]['options'][139833] = "3X-Large";
+modifiers[2011] = {}
+modifiers[2011][139828] = [0.00,'$',{}];
+modifiers[2011][139829] = [0.00,'$',{}];
+modifiers[2011][139830] = [0.00,'$',{}];
+modifiers[2011][139831] = [0.00,'$',{}];
+modifiers[2011][139832] = [2.00,'$',{}];
+modifiers[2011][139833] = [3.00,'$',{}];
+
+/*
+taxes array: as taxid => array()
+	0 - calculated tax value for default product price
+	1 - tax name
+	2 - tax type ($ or %)
+	3 - tax value
+*/
+var taxes = [];
+
+// exceptions array: as exctionid => array: as clasid => optionid
+var exceptions = [];
+
+/*
+_product_wholesale array: as id => array:
+	0 - quantity
+	1 - next quantity
+	2 - taxed price
+	3 - taxes array: as taxid => tax amount
+	4 - original price (without taxes)
+*/
+var product_wholesale = [];
+var _product_wholesale = [];
+
+var product_image = new Image();
+product_image.src = "http://6dollarshirts.com/images/P/Tri_Force_NEW_T_SHIRT_black.jpg";
+var exception_msg = "Sorry, this combination of product options is not available.";
+var exception_msg_html = "Sorry, this combination of product options is not available.";
+var txt_out_of_stock = "Out of stock";
+var pconf_price = 0
+var default_price = 6.00;
+var currency_symbol = "$";
+var alter_currency_symbol = "&#8364;";
+var alter_currency_rate = 0.87;
+var lbl_no_items_available = "No items available";
+var txt_items_available = "{{items}} item(s) available";
+var list_price = 6.00;
+var price = 6.00;
+var orig_price = 6.00;
+var mq = 20;
+var dynamic_save_money_enabled = true;
+var is_unlimit = false;
+
+var lbl_item = "Item";
+var lbl_items = "Items";
+var lbl_quantity = "Quantity";
+var lbl_price = "Price";
+var txt_note = "Note";
+var lbl_including_tax = "including {{tax}}";
+var lbl_product_minquantity_error = "Sorry, the minimum order quantity for this product is {{min}}.";
+var lbl_product_maxquantity_error = "Sorry, the maximum order quantity for this product is {{max}}.";
+var lbl_product_quantity_type_error = "You can specify a number from {{min}} to {{max}}.";
+
+-->
+</script>
+
+<script language="JavaScript" type="text/javascript">
+<!--
+// $Id: func.js,v 1.16.2.18 2008/06/04 07:53:55 max Exp $
+
+var current_taxes = [];
+var product_thumbnail = document.getElementById('product_thumbnail');
+var availObj = document.getElementById('product_avail');
+
+/*
+	Rebuild page if some options is changed
+*/
+function check_options() {
+	var local_taxes = [];
+	var is_rebuild_wholesale = false;
+	var variantid = false;
+
+	for (var t in taxes)
+		local_taxes[t] = taxes[t][0];
+	price = default_price;
+
+	/* Find variant */
+	for (var x in variants) {
+		if (variants[x][1].length == 0)
+			continue;
+
+		variantid = x;
+		for (var c in variants[x][1]) {
+			if (getPOValue(c) != variants[x][1][c]) {
+				variantid = false;
+				break;
+			}
+		}
+
+		if (variantid)
+			break;
+	}
+
+	/* If variant found ... */
+	if (variantid) {
+		price = variants[variantid][0][0];
+		orig_price = variants[variantid][0][4];
+		avail = variants[variantid][0][1];
+
+		/* Get variant wholesale prices */
+		if (variants[variantid][3]) {
+			product_wholesale = [];
+			for (var t in variants[variantid][3]) {
+				var _tmp = modi_price(variants[variantid][3][t][2], cloneObject(variants[variantid][3][t][3]), variants[variantid][3][t][4]);
+				product_wholesale[t] = [
+					variants[variantid][3][t][0], 
+					variants[variantid][3][t][1], 
+					_tmp[0],
+					[]
+				];
+
+				/* Get variant wholesale taxes */
+				for (var c in _tmp[1]) {
+					product_wholesale[t][3][c] = _tmp[1][c];
+				}
+			}
+			is_rebuild_wholesale = true;
+		}
+
+		/* Get variant taxes */
+		for (var t in local_taxes) {
+			if (variants[variantid][2][t])
+				local_taxes[t] = parseFloat(variants[variantid][2][t]);
+		}
+
+		if (!product_thumbnail)
+			product_thumbnail = document.getElementById('product_thumbnail');
+
+		/* Change product thumbnail */
+		if (product_thumbnail) {
+			if (variants[variantid][0][2].src && variants[variantid][0][2].width > 0 && variants[variantid][0][2].height > 0) {
+				if (product_thumbnail.src != variants[variantid][0][2].src) {
+					product_thumbnail.src = variants[variantid][0][2].src;
+					product_thumbnail.width = variants[variantid][0][2].width;
+					product_thumbnail.height = variants[variantid][0][2].height;
+				}
+			} else if (document.getElementById('product_thumbnail').src != product_image.src) {
+				product_thumbnail.src = product_image.src;
+				if (product_image.width > 0 && product_image.height > 0) {
+					product_thumbnail.width = product_image.width;
+					product_thumbnail.height = product_image.height;
+				}
+			}
+		}
+
+		/* Change product weight */
+		if (document.getElementById('product_weight'))
+			document.getElementById('product_weight').innerHTML = price_format(variants[variantid][0][3]);
+		if (document.getElementById('product_weight_box'))
+			document.getElementById('product_weight_box').style.display = parseFloat(variants[variantid][0][3]) > 0 ? "" : "none";
+
+		/* Change product code */
+		if (document.getElementById('product_code'))
+			document.getElementById('product_code').innerHTML = variants[variantid][0][5];
+
+	}
+
+	if (pconf_price > 0)
+		price = pconf_price;
+
+	/* Find modifiers */
+	var _tmp = modi_price(price, local_taxes, orig_price);
+	price = _tmp[0];
+	local_taxes = _tmp[1];
+	if (!variantid) {
+		product_wholesale = [];
+		for (var t in _product_wholesale) {
+			_tmp = modi_price(_product_wholesale[t][2], _product_wholesale[t][3].slice(0), _product_wholesale[t][4]);
+			product_wholesale[t] = [
+				_product_wholesale[t][0],
+				_product_wholesale[t][1],
+				_tmp[0],
+				_tmp[1]
+			];
+		}
+		is_rebuild_wholesale = true;
+	}
+
+	/* Update taxes */
+	for (var t in local_taxes) {
+		if (document.getElementById('tax_'+t)) {
+			document.getElementById('tax_'+t).innerHTML = currency_symbol+price_format(local_taxes[t] < 0 ? 0 : local_taxes[t]);
+		}
+		current_taxes[t] = local_taxes[t];
+	}
+
+	if (is_rebuild_wholesale)
+		rebuild_wholesale();
+
+	/* Update form elements */
+	/* Update price */
+	if (document.getElementById('product_price'))
+		document.getElementById('product_price').innerHTML = currency_symbol+price_format(price < 0 ? 0 : price);
+
+	/* Update alt. price */
+	if (alter_currency_rate > 0 && alter_currency_symbol != "" && document.getElementById('product_alt_price')) {
+		var altPrice = price*alter_currency_rate;
+		document.getElementById('product_alt_price').innerHTML = "("+alter_currency_symbol+" "+price_format(altPrice < 0 ? 0 : altPrice)+")";
+	}
+
+	/* Update Save % */
+	if (document.getElementById('save_percent') && document.getElementById('save_percent_box') && list_price > 0 && dynamic_save_money_enabled) {
+		var save_percent = Math.round(100-(price/list_price)*100);
+		if (save_percent > 0) {
+			document.getElementById('save_percent_box').style.display = '';
+			document.getElementById('save_percent').innerHTML = save_percent;
+		} else {
+			document.getElementById('save_percent_box').style.display = 'none';
+			document.getElementById('save_percent').innerHTML = '0';
+		}
+	}
+
+	/* Update product quantity */
+	if (document.getElementById('product_avail_txt')) {
+		if (avail > 0) {
+			document.getElementById('product_avail_txt').innerHTML = substitute(txt_items_available, "items", (variantid ? avail : product_avail));
+		} else {
+			document.getElementById('product_avail_txt').innerHTML = lbl_no_items_available;
+		}
+	}
+
+	if ((mq > 0 && avail > mq+min_avail) || is_unlimit)
+		avail = mq+min_avail-1;
+
+	avail = avail > mq ? mq : avail;
+
+	var select_avail = min_avail;
+	/* Update product quantity selector */
+	if (!availObj)
+		availObj = document.getElementById('product_avail');
+
+	if (availObj && availObj.tagName.toUpperCase() == 'SELECT') {
+
+		// Select box
+		if (!isNaN(min_avail) && !isNaN(avail)) {
+			var first_value = -1;
+			if (availObj.options[0])
+				first_value = availObj.options[0].value;
+
+			if (first_value == min_avail) {
+
+				/* New and old first value in quantities list is equal */
+				if ((avail-min_avail+1) != availObj.options.length) {
+					if (availObj.options.length > avail) {
+						var cnt = availObj.options.length;
+						for (var x = (avail < 0 ? 0 : avail); x < cnt; x++)
+							availObj.options[availObj.options.length-1] = null;
+					} else {
+						var cnt = availObj.options.length;
+						for (var x = cnt+1; x <= avail; x++)
+							availObj.options[cnt++] = new Option(x, x);
+					}
+				}
+			} else {
+
+				/* New and old first value in quantities list is differ */
+				while (availObj.options.length > 0)
+					availObj.options[0] = null;
+				var cnt = 0;
+				for (var x = min_avail; x <= avail; x++)
+					availObj.options[cnt++] = new Option(x, x);
+			}
+			if (availObj.options.length == 0 || min_avail > avail)
+				availObj.options[0] = new Option(txt_out_of_stock, 0);
+		}
+		select_avail = availObj.options[availObj.selectedIndex].value;
+
+	} else if (availObj && availObj.tagName.toUpperCase() == 'INPUT' && availObj.type.toUpperCase() == 'TEXT') {
+
+		// Input box
+        if (!isNaN(min_avail) && !isNaN(avail)) {
+			availObj.minQuantity = min_avail;
+			availObj.maxQuantity = avail;
+		}
+        select_avail = availObj.value;
+	}
+
+	check_wholesale(select_avail);
+
+	if ((alert_msg == 'Y') && (min_avail > avail))
+		alert(txt_out_of_stock);
+	
+	/* Check exceptions */
+	var ex_flag = check_exceptions();
+	if (!ex_flag && (alert_msg == 'Y'))
+		alert(exception_msg);
+			
+	if (document.getElementById('exception_msg'))
+		document.getElementById('exception_msg').innerHTML = (ex_flag ? '' : exception_msg_html+"<br /><br />");
+
+	return true;
+}
+
+/*
+	Calculate product price with price modificators 
+*/
+function modi_price(_price, _taxes, _orig_price) {
+	var return_price = round(_price, 2);
+
+	/* List modificators */
+	for (var x2 in modifiers) {
+		var value = getPOValue(x2);
+		if (!value || !modifiers[x2][value])
+			continue;
+
+		/* Get selected option */
+		var elm = modifiers[x2][value];
+		return_price += parseFloat(elm[1] == '$' ? elm[0] : (_price*elm[0]/100));
+
+		/* Get tax extra charge */
+		for (var t2 in _taxes) {
+			if (elm[2][t2]) {
+				_taxes[t2] += parseFloat(elm[1] == '$' ? elm[2][t2] : (_orig_price*elm[2][t2]/100));
+			}
+		}
+	}
+
+	return [return_price, _taxes];
+}
+
+/*
+	Check product options exceptions
+*/
+function check_exceptions() {
+	if (!exceptions)
+		return true;
+
+	/* List exceptions */
+	for (var x in exceptions) {
+		if (isNaN(x))
+			continue;
+
+		var found = true;
+        for (var c in exceptions[x]) {
+			var value = getPOValue(c);
+			if (!value)
+				return true;
+
+            if (value != exceptions[x][c]) {
+				found = false;
+				break;
+			}
+		}
+		if (found)
+			return false;
+	}
+
+	return true;
+}
+
+/*
+	Rebuild wholesale tables
+*/
+function rebuild_wholesale() {
+
+	var obj = document.getElementById('wl_table');
+	if (!obj)
+		return false;
+
+	/* Clear wholesale span object if product wholesale prices service array is empty */
+	if (!product_wholesale || product_wholesale.length == 0) {
+		obj.innerHTML = "";
+		return false;
+	}
+
+	/* Display headline */
+	var str = '';
+	var i = 0;
+	for (var x in product_wholesale) {
+		if (product_wholesale[x][0] == 0)
+			continue;
+
+		if (i == 0)
+			str += '<br /><table cellpadding="2" cellspacing="2"><tr class="TableHead"><td align="right"><b>'+lbl_quantity+':&nbsp;</b></td>';
+
+		str += '<td>'+product_wholesale[x][0];
+		if (x == product_wholesale.length-1) {
+			str += '+';
+		} else if (product_wholesale[x][0] < product_wholesale[x][1]) {
+			str += '-'+product_wholesale[x][1];
+		}
+		str += '&nbsp;'+(product_wholesale[x][0] == 1 ? lbl_item : lbl_items)+'</td>';
+		i++;
+	}
+
+	if (i == 0)
+		return false;
+
+    /* Display wholesale prices taxes */
+	var tax_str = '';
+    if (taxes.length > 0) {
+        for (var x in taxes) {
+            if (current_taxes[x] > 0)
+                tax_str += substitute(lbl_including_tax, 'tax', taxes[x][1])+'<br />';
+        }
+    }
+
+	/* Display wholesale prices */
+	str += '</tr><tr bgcolor="#EEEEEE"><td align="right"><b>'+lbl_price+(tax_str.length > 0 ? '*' : '')+':&nbsp;</b></td>';
+	for (var x in product_wholesale) {
+		if (product_wholesale[x][0] == 0)
+			continue;
+		str += '<td>'+price_format(product_wholesale[x][2] < 0 ? 0 : product_wholesale[x][2])+'</td>';
+	}
+
+	str += '</tr></table>';
+
+	if (tax_str.length > 0)
+		str += '<br /><table><tr><td class="FormButton" valign="top"><b>*'+txt_note+':</b>&nbsp;</td><td nowrap="nowrap" valign="top">'+tax_str+'</td></tr></table>';
+
+	str += '<br />';
+	obj.innerHTML = str;
+
+	return true;
+}
+
+/*
+	Display current wholesale price as product price
+*/
+function check_wholesale(qty) {
+	if (product_wholesale.length == 0)
+		return true;
+
+	var wl_taxes = current_taxes.slice(0);
+	var wl_price = price;
+	var found = false;
+	for (var x = 0; x < product_wholesale.length; x++) {
+		if (product_wholesale[x][0] <= qty && (product_wholesale[x][1] >= qty || product_wholesale[x][1] == 0)) {
+			wl_price = product_wholesale[x][2];
+			wl_taxes = product_wholesale[x][3].slice(0);
+			found = true;
+		}
+		if (document.getElementById('wp'+x)) {
+			var wPrice = price-default_price+product_wholesale[x][2];
+			document.getElementById('wp'+x).innerHTML = currency_symbol+price_format(wPrice < 0 ? 0 : wPrice);
+		}
+	}
+
+	if (document.getElementById('product_price'))
+		document.getElementById('product_price').innerHTML = currency_symbol+price_format(wl_price < 0 ? 0 : wl_price);
+	if (alter_currency_rate > 0 && alter_currency_symbol != "" && document.getElementById('product_alt_price')) {
+		var altPrice = wl_price*alter_currency_rate;
+		document.getElementById('product_alt_price').innerHTML = "("+alter_currency_symbol+" "+price_format(altPrice < 0 ? 0 : altPrice)+")";
+	}
+
+	/* Update Save % */
+	if (document.getElementById('save_percent') && document.getElementById('save_percent_box') && list_price > 0 && dynamic_save_money_enabled) {
+		var save_percent = Math.round(100-((wl_price < 0 ? 0 : wl_price)/list_price)*100);
+		if (save_percent > 0) {
+			document.getElementById('save_percent_box').style.display = '';
+			document.getElementById('save_percent').innerHTML = save_percent;
+		} else {
+			document.getElementById('save_percent_box').style.display = 'none';
+			document.getElementById('save_percent').innerHTML = '0';
+		}
+	}
+
+
+	for (var x in taxes) {
+		if (document.getElementById('tax_'+x) && wl_taxes[x] && current_taxes[x]) {
+			document.getElementById('tax_'+x).innerHTML = currency_symbol+price_format(wl_taxes[x] < 0 ? 0 : wl_taxes[x]);
+		}
+	}
+
+	return true;
+}
+
+// Check quantity input box
+function check_quantity_input_box(inp) {
+	if (isNaN(inp.minQuantity))
+		inp.minQuantity = min_avail;
+
+	if (isNaN(inp.maxQuantity))
+		inp.maxQuantit = avail;
+
+	if (!isNaN(inp.minQuantity) && !isNaN(inp.maxQuantity)) {
+		var q = parseInt(inp.value);
+		if (isNaN(q)) {
+			alert(substitute(lbl_product_quantity_type_error, "min", inp.minQuantity, "max", inp.maxQuantity));
+			return false;
+		}
+
+		if (q < inp.minQuantity) {
+			alert(substitute(lbl_product_minquantity_error, "min", inp.minQuantity));
+			return false;
+		}
+
+		if (q > inp.maxQuantity) {
+			alert(substitute(lbl_product_maxquantity_error, "max", inp.maxQuantity));
+			return false;
+		}
+
+		check_wholesale(inp.value);
+	}
+	return true;
+}
+
+/*
+	Get product option value
+*/
+function getPOValue(c) {
+	if (!document.getElementById('po'+c) || document.getElementById('po'+c).tagName.toUpperCase() != 'SELECT')
+		return false;
+	return document.getElementById('po'+c).options[document.getElementById('po'+c).selectedIndex].value;
+}
+
+/*
+    Get product option object by class name / class id
+*/
+function product_option(classid) {
+	if (!isNaN(classid))
+		 return document.getElementById("po"+classid);
+
+	if (!names)
+		return false;
+
+	for (var x in names) {
+		if (names[x]['class_name'] != classid)
+			continue;
+		return document.getElementById('po'+x);
+    }
+
+	return false;
+}
+
+/*
+	Get product option value by class name / or class id
+*/
+function product_option_value(classid) {
+	var obj = product_option(classid);
+	if (!obj)
+		return false;
+
+	if (obj.type != 'select-one')
+		return obj.value;
+
+	var classid = parseInt(obj.id.substr(2));
+	var optionid = parseInt(obj.options[obj.selectedIndex].value);
+	if (names[classid] && names[classid]['options'][optionid])
+		return names[classid]['options'][optionid];
+
+	return false;
+}
+
+
+-->
+</script>
+</td></tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<tr><td height="25" width="30%"  align=right><b>Qty.</b><img src="http://6dollar.threadpitinc.netdna-cdn.com/skin1/images/spacer.gif" alt="" / height=1 width=10></td>
+<td align=left>
+
+
+
+
+
+
+
+
+<script type="text/javascript" language="JavaScript 1.2">
+<!--
+var min_avail = 1;
+var avail = 21-1;
+var product_avail = 693;
+-->
+</script>
+<select id="product_avail" name="amount" onchange="javascript: check_wholesale(this.value);">
+	<option value="1">1</option>
+	<option value="2">2</option>
+	<option value="3">3</option>
+	<option value="4">4</option>
+	<option value="5">5</option>
+	<option value="6">6</option>
+	<option value="7">7</option>
+	<option value="8">8</option>
+	<option value="9">9</option>
+	<option value="10">10</option>
+	<option value="11">11</option>
+	<option value="12">12</option>
+	<option value="13">13</option>
+	<option value="14">14</option>
+	<option value="15">15</option>
+	<option value="16">16</option>
+	<option value="17">17</option>
+	<option value="18">18</option>
+	<option value="19">19</option>
+	<option value="20">20</option>
+</select>
+
+
+<img src="http://6dollar.threadpitinc.netdna-cdn.com/skin1/images/spacer.gif" alt="" / height=1 width=7><a href="http://6dollar.threadpitinc.netdna-cdn.com/skin1/images/size_chart.jpg" class="highslide" onclick="return hs.expand(this)">Size Chart <img src="http://6dollar.threadpitinc.netdna-cdn.com/skin1/images/tt_size_chart.png" alt="" /></a>
+
+
+
+</td></tr>
+<tr><td colspan="2">
+<input type="hidden" name="mode" value="add" />
+<div id="wl_table"></div><br>
+<div align=center>        			  
+<table cellspacing="0" cellpadding="0" onclick="javascript:  document.orderform.submit();" class="ButtonTable">
+<tr><td>
+<label id="add_to_cart2" ><img src="/skin1/images/tt_cart_icon2.png" alt="Add To Cart" /> Add to Cart</label>
+</td></tr>
+</table>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br /><br />
+</td>
+</tr></table>
+
+
+
+
+
+</td>
+</tr>
+</table>
+<input type="hidden" name="productid" value="11469" />
+<input type="hidden" name="cat" value="" />
+<input type="hidden" name="page" value="" />
+</form>
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<img src="http://6dollar.threadpitinc.netdna-cdn.com/skin1/images/spacer.gif" alt="" / height=8 width=1>
+<div class=face_box_big >
+<font class=NickTopLabel>Here Are Some More Winners Just For You!</font>
+<table cellspacing="5">
+
+<tr class="ItemsList">
+
+		<td  align=center valign=top><a href="product.php?productid=11433" class="ItemsList">
+
+
+
+<img src="http://6dollar.threadpitinc.netdna-cdn.com/images/T/Format_NEW_Heros_Tunic_tn.jpg" width="185" alt="" /><br>
+
+
+
+
+
+
+</a></td>
+
+
+		<td  align=center valign=top><a href="product.php?productid=11219" class="ItemsList">
+
+
+
+<img src="http://6dollar.threadpitinc.netdna-cdn.com/images/T/Biohazard_T_SHIRT_tn.jpg" width="185" alt="" /><br>
+
+
+
+
+
+
+</a></td>
+
+
+		<td  align=center valign=top><a href="product.php?productid=11769" class="ItemsList">
+
+
+
+<img src="http://6dollar.threadpitinc.netdna-cdn.com/images/T/Take_Knee_Insert_Arrow-T-SHIRT-tn.jpg" width="185" alt="" /><br>
+
+
+
+
+
+
+</a></td>
+
+</tr>
+<tr><td colspan=3 align=center width=100%>
+
+
+<table cellspacing="0"cellpadding=0 width=609 align=center><tr>
+<td align=center>
+
+	<a href="product.php?productid=12177" class="ItemsList">
+
+
+
+
+
+
+	<img src="http://6dollar.threadpitinc.netdna-cdn.com/images/T/Merica_T_SHIRT_tn.jpg" height="91" alt="Merica T-Shirt" /> 
+
+
+
+
+
+</a>
+
+
+</td>
+<td align=center>
+
+	<a href="product.php?productid=11558" class="ItemsList">
+
+
+
+
+
+
+	<img src="http://6dollar.threadpitinc.netdna-cdn.com/images/T/Cassette_Recorder_Classic_T_SHIRT_tnntw-01.jpg" height="91" alt="Cassette Recorder Classic" /> 
+
+
+
+
+
+</a>
+
+
+</td>
+<td align=center>
+
+	<a href="product.php?productid=11575" class="ItemsList">
+
+
+
+
+
+
+	<img src="http://6dollar.threadpitinc.netdna-cdn.com/images/T/Arrowhead_Arsenal_T_SHIRT_tnntw.jpg" height="91" alt="Arrowhead Arsenal" /> 
+
+
+
+
+
+</a>
+
+
+</td>
+<td align=center>
+
+	<a href="product.php?productid=11473" class="ItemsList">
+
+
+
+
+
+
+	<img src="http://6dollar.threadpitinc.netdna-cdn.com/images/T/Cretaceous_Beach_T_SHIRT_tn.jpg" height="91" alt="Cretaceous Beach" /> 
+
+
+
+
+
+</a>
+
+
+</td>
+<td align=center>
+
+	<a href="product.php?productid=11901" class="ItemsList">
+
+
+
+
+
+
+	<img src="http://6dollar.threadpitinc.netdna-cdn.com/images/T/Format_NEW_Groovy_tn.jpg" height="91" alt="Groovy T-Shirt" /> 
+
+
+
+
+
+</a>
+
+
+</td>
+<td align=center>
+
+	<a href="product.php?productid=11484" class="ItemsList">
+
+
+
+
+
+
+	<img src="http://6dollar.threadpitinc.netdna-cdn.com/images/T/Nerd_Cat_T_SHIRT_tn.jpg" height="91" alt="Nerd Cat " /> 
+
+
+
+
+
+</a>
+
+
+</td>
+</tr></table>
+
+
+
+
+</td></tr>
+
+
+</table>
+</div>
+
+
+
+
+<img src="http://6dollar.threadpitinc.netdna-cdn.com/skin1/images/spacer.gif" alt="" / height=8 width=1>
+
+
+<div class=face_box_big >
+<table width="100%" cellpadding="0" cellspacing="0">
+
+<tr style="display:none">
+<td>
+<script type="text/javascript">
+<!--
+var lbl_err_filling_form = "Please fill in all the required fields.";
+var required_review_Fields = [
+                		["review_author", "Your Name"],
+		                ["review_message", "Your Review"],
+		            ];
+
+function check_reviews_form() {
+	var result;
+
+	result = checkRequired(required_review_Fields);
+	if (result) {
+		document.getElementById('reviewform').submit();		
+	}
+}
+
+-->
+</script>
+<script language="JavaScript" type="text/javascript">
+<!--
+/* $Id: check_required_fields_js.js,v 1.3.2.3 2006/12/25 11:23:19 max Exp $ */
+
+/*
+	Check required fields
+*/
+function checkRequired(lFields, id) {
+	if (!lFields || lFields.length == 0)
+		return true;
+
+	if (id) {
+		for (var x = 0; x < lFields.length; x++) {
+			if (lFields[x][0] == id) {
+				lFields = [lFields[x]];
+				break;
+			}
+		}
+	}
+
+	for (var x = 0; x < lFields.length; x++) {
+		if (!lFields[x] || !document.getElementById(lFields[x][0]))
+			continue;
+
+		var obj = _getById(lFields[x][0]);
+		if ((obj.type == 'text' || obj.type == 'password' || obj.type == 'textarea') && !obj.value.search(/^[\s]*$/gi)) {
+			if (lbl_required_field_is_empty != '') {
+				alert(substitute(lbl_required_field_is_empty, 'field', lFields[x][1]));
+			} else {
+				alert(lFields[x][1]);
+			}
+
+			if (!obj.disabled && obj.type != 'hidden') {
+				checkRequiredShow(obj);
+				obj.focus();
+			}
+
+			return false;
+
+		}
+	}
+
+	return true;
+}
+
+/*
+	Show hidden element and element's parents
+*/
+function checkRequiredShow(elm) {
+	if (elm.style && elm.style.display == 'none') {
+
+		if (elm.id == 'ship_box' && document.getElementById('ship2diff')) {
+			/* Exception for Register page */
+			document.getElementById('ship2diff').checked = true;
+			document.getElementById('ship2diff').onclick();
+			
+		} else
+			elm.style.display = '';
+	}
+
+	if (elm.parentNode)
+		checkRequiredShow(elm.parentNode);
+
+}
+
+
+-->
+</script>
+</td>
+</tr>
+<tr>
+	<td colspan="2">
+
+
+<font class=NickTopLabel>What Others Are Saying</font>
+<hr></td>
+</tr>
+<tr>
+	<td colspan="2"><br><b>Strumples wrote </b><br />They need to make one of these shirts with the button sequence for the song of storms on Ocarina of Time.....<br /><br><hr>
+
+
+</td>
+</tr>
+<tr>
+	<td colspan="2"><br><b>jadensword3 wrote </b><br />I bet Chuggaaconroy already has this.<br /><br><hr>
+
+
+</td>
+</tr>
+<tr>
+	<td colspan="2"><br><b>Umm wrote </b><br />That's the Fischer's logo... copyright issues?<br /><br><hr>
+
+
+</td>
+</tr>
+<tr>
+	<td colspan="2"><br><b>Benjamin wrote </b><br />Looks more like the Hojo clan symbol from the Feudal Era in Japan. Just saying. If only the symbol were purple.<br /><br><hr>
+
+
+</td>
+</tr>
+<tr>
+	<td colspan="2"><br><b>Cody Webster wrote </b><br />Simple but effective. I got the gray background and someone already gave me a compliment on it.<br /><br><hr>
+
+
+</td>
+</tr>
+<tr>
+	<td colspan="2"><br><b>Dustin wrote </b><br />Just got mine. I ordered it in green of course. Looks great with a green background. Love the shirt.<br /><br><hr>
+
+<br>
+<center>
+<span class=tt_tiny_talk>advertisement</span><br>
+
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-2558083052930351";
+/* reviews ad */
+google_ad_slot = "2473651040";
+google_ad_width = 300;
+google_ad_height = 250;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<br>
+<a href="#" onclick="return hs.htmlExpand(this, { contentId: 'sponsor' , width: '350' } )" class="highslide"><span class=tt_tiny_talk>see your ad here</span></a>
+
+</center>
+<br /><hr>
+
+</td>
+</tr>
+<tr>
+	<td colspan="2"><br><b>Jason wrote </b><br />I was a little disappointed, because I was expecting the Triforce to be larger, going by the picture on the site.  For $6 I can't complain.  Still a good buy.<br /><br><hr>
+
+
+</td>
+</tr>
+<tr>
+	<td colspan="2"><br><b>yo wrote </b><br />nerd jizz<br /><br><hr>
+
+
+</td>
+</tr>
+<tr>
+	<td colspan="2"><br><b>EpicYoshiGir wrote </b><br />You know wat,Chuggaachonry would love this!!!<br /><br><hr>
+
+
+</td>
+</tr>
+<tr>
+	<td colspan="2"><br><b>Ashley wrote </b><br />Just got mine today...fits perfectly and the Triforce looks great. THANK YOU~<br /><br><hr>
+
+
+</td>
+</tr>
+<tr>
+	<td colspan="2"><br><b>OLDFAG wrote </b><br />  &amp;amp;#9650;<br />&amp;amp;#9650; &amp;amp;#9650;<br />LOL<br /><br><hr>
+
+
+</td>
+</tr>
+<tr>
+	<td colspan="2"><br><b>Patrick wrote </b><br />AH YEAH! buying this for sure!<br /><br><hr>
+
+
+</td>
+</tr>
+<tr>
+	<td colspan="2"><br><b>Roger :D wrote </b><br />FUUCK YEAH!!! WAAAAY cheaper than the Hot Topic one form 20$ to just 6$!?? OMG :DD<br /><br><hr>
+
+
+</td>
+</tr>
+<tr>
+	<td colspan="2"><br><b>Nick wrote </b><br />You guys know where i can get a cheap Paddy's Pub tee?<br /><br><hr>
+
+
+</td>
+</tr>
+<tr>
+	<td colspan="2"><br><b>Tony wrote </b><br />I love this shirt! And somehow, I knew it existed all along.<br /><br><hr>
+
+
+</td>
+</tr>
+<tr>
+	<td colspan="2"><br><b>Sam wrote </b><br />I hope this t-shirt was green so i could put my green skirt on...<br /><br><hr>
+
+
+</td>
+</tr>
+<tr>
+	<td colspan="2"><br><b>mimo wrote </b><br />the best friend<br /><br><hr>
+
+
+</td>
+</tr>
+<tr>
+	<td colspan="2"><br><b>Leslie wrote </b><br />I am a HUGE nerd of Zelda!! but im broke :( I don't even have 5 bucks to my name! If i get the job working for my friends grandfathers farm, then i might consider :)<br /><br><hr>
+
+
+</td>
+</tr>
+<tr>
+	<td colspan="2"><br><b>Lillian wrote </b><br />Waaaaiiiitiinnnng forrr my shiiiirrrrts :D<br /><br><hr>
+
+
+</td>
+</tr>
+<tr>
+	<td colspan="2"><br><b>kitty wrote </b><br />best shirt ive evr seen zelda is beast and 6 dollars hell ya<br /><br><hr>
+
+
+</td>
+</tr>
+<tr>
+	<td colspan="2"><br><b>Carson wrote </b><br />i want the blue tunic...<br /><br><hr>
+
+
+</td>
+</tr>
+<tr>
+	<td colspan="2"><br><b>Nikki wrote </b><br />@Lawrence<br />what are you talking about?<br />This is obviously Donkey Kong<br /><br><hr>
+
+
+</td>
+</tr>
+<tr>
+	<td colspan="2"><br><b>John wrote </b><br />@Lawrence:<br />Obvious troll is obvious.<br /><br><hr>
+
+
+</td>
+</tr>
+<tr>
+	<td colspan="2"><br><b>Lawrence wrote </b><br />ZOOOOOOOOOOOOMG<br />I LOVE MARIO<br />I NEED THIS SHIRT!<br /><br><hr>
+
+
+</td>
+</tr>
+<tr>
+	<td colspan="2"><br><b>kiki wrote </b><br />totally love it<br /><br><hr>
+
+
+</td>
+</tr>
+<tr>
+	<td colspan="2"><br><b>GG wrote </b><br />so awesome, an good price too. i want it for sure<br /><br><hr>
+
+
+</td>
+</tr>
+<tr>
+	<td colspan="2"><br><b>Madeleine Emily wrote </b><br />hellooooo savings! yus! now i won't have to go pot-smashing for good deals on kokiri swag ANY LONGER!<br /><br><hr>
+
+
+</td>
+</tr>
+<tr>
+	<td colspan="2"><br><b>Cole wrote </b><br />I definitely need this shirt<br /><br><hr>
+
+
+</td>
+</tr>
+<tr>
+	<td colspan="2"><br><b>J Newby wrote </b><br />YUSS!! Must have it!!<br /><br><hr>
+
+
+</td>
+</tr>
+<tr>
+	<td colspan="2"><br><b>Lydia #2 wrote </b><br />hey another person with my name who loves Zelda!?<br /><br><hr>
+
+
+</td>
+</tr>
+
+<tr>
+	<td colspan="2"><br /><b><font class="NickCart">Add Your Review</font></b><hr></td>
+</tr>
+<tr>
+	<td colspan="2">
+
+<form method="post" action="product.php?mode=review&productid=11469" id="reviewform">
+<input type="hidden" name="productid" value='11469' />
+
+<table width="100%" cellpadding="2" cellspacing="0">
+
+<tr>
+	<td  class="FormButton">Your Name:<br>
+<input type="text" size="35" maxlength="128" name="review_author" id="review_author" value="" /><br><br>
+Your Review:
+<br>
+		<textarea cols="37" rows="5" name="review_message" id="review_message"></textarea><br>Max. review length is 2000 chars. 
+
+		
+<table width="100%" cellpadding="0" cellspacing="0">
+
+<tr>
+	<td colspan="3">
+
+<br />
+
+<table cellpadding="3" cellspacing="1">
+<tr>
+	<td colspan="2">Type the code:</td>
+</tr>
+<tr>
+	<td  align="left" width="10%">
+<img src="/antibot_image.php?section=on_reviews" id="on_reviews" alt="" /><br />
+<a href="javascript: change_antibot_image('on_reviews');">Get new code</a>
+	</td>
+	<td align="left">
+<input type="text" name="antibot_input_str" size=15/>
+	</td>
+</tr>
+</table>
+
+		</td>
+</tr></table>
+
+
+<br><div align=center>
+          			  
+<table cellspacing="0" cellpadding="0" onclick="javascript: check_reviews_form();" class="ButtonTable">
+<tr><TD><label id="add_to_cart2" style=" left:0px; margin-top: 0px; margin: 10px 10px 10px 10px; float:none;">Add Review</label></td></tr>
+</table>
+</div>
+<br><br>
+
+</td><td align=right valign=top>
+<br>
+
+
+
+
+	</td>
+</tr>
+</table>
+</form>
+
+	</td>
+</tr>
+</table>
+</div>
+
+
+
+
+
+<a name="detailed"></a>
+<p />
+<div class=face_box_big >
+<center>
+<br><br><br>
+
+
+
+<img src="http://6dollar.threadpitinc.netdna-cdn.com/images/D/triforce-t-shirt.jpg" alt="Triforce T-Shirt" style="padding-bottom: 10px;" />
+<br/><br/>
+
+<img src="http://6dollar.threadpitinc.netdna-cdn.com/images/D/Tri_Force_NEW_T_SHIRT_detail.jpg" alt="Triforce" style="padding-bottom: 10px;" />
+<br/><br/>
+<br>
+
+<a href="#topp"><img src="/skin1/images/tt_arrow_up.png" alt=""> Return to Top of Page</a>
+</center>
+</div>
+
+
+<script type="text/javascript" language="JavaScript 1.2">
+<!--
+
+-->
+</script>
+
+
+
+
+
+<br>
+<center>
+<a href="help.php?section=about&mode=update"  >About Us</a> | <a href="help.php?section=FAQ&mode=update" >Ordering Info</a> | <a href="help.php?section=contactus&mode=update" >Contact Us</a> | <a href="help.php?section=affiliates&mode=update" class="VertMenuItems">Become an Affiliate</a><br><a href="help.php?section=careers" class="VertMenuItems"> </a>  <a href="help.php?section=business" >Privacy Policy</a> | <a href="help.php?section=conditions" >Terms of Use</a> | 
+
+
+<a href="secure_login.php" class="VertMenuItems">User Login</a>
+</center> <br>
+
+
+
+<center>
+<font class="CategoriesList"><a href="home.php?cat=270" class="VertMenuItems">Newest T-Shirts | </a></font> 
+<font class="CategoriesList"><a href="home.php?cat=249" class="VertMenuItems">Funny Tees | </a></font> 
+<font class="CategoriesList"><a href="home.php?cat=258" class="VertMenuItems">Pet & Wildlife Tees | </a></font> 
+<font class="CategoriesList"><a href="home.php?cat=272" class="VertMenuItems">Internet and Meme Tees | </a></font> 
+<font class="CategoriesList"><a href="home.php?cat=262" class="VertMenuItems">Cool & Artistic Tees | </a></font> 
+<font class="CategoriesList"><a href="home.php?cat=250" class="VertMenuItems">TV & Movie Tees | </a></font> 
+<font class="CategoriesList"><a href="home.php?cat=253" class="VertMenuItems">Music Tees | </a></font> 
+<font class="CategoriesList"><a href="home.php?cat=251" class="VertMenuItems">Retro & Vintage Tees | </a></font> 
+<font class="CategoriesList"><a href="home.php?cat=252" class="VertMenuItems">Political Tees | </a></font> 
+<font class="CategoriesList"><a href="home.php?cat=254" class="VertMenuItems">International Tees | </a></font> 
+<font class="CategoriesList"><a href="home.php?cat=256" class="VertMenuItems">Sports & Games Tees | </a></font> 
+<font class="CategoriesList"><a href="home.php?cat=259" class="VertMenuItems">Geek & Tech Tees | </a></font> 
+<font class="CategoriesList"><a href="home.php?cat=260" class="VertMenuItems">Holiday & Costume Tees | </a></font> 
+<font class="CategoriesList"><a href="home.php?cat=263" class="VertMenuItems">St. Patty's Day Tees | </a></font> 
+<font class="CategoriesList"><a href="home.php?cat=276" class="VertMenuItems">Blank Tees | </a></font> 
+<font class="CategoriesList"><a href="home.php?cat=273" class="VertMenuItems">Clearance Items! | </a></font> 
+<font class="CategoriesList"><a href="home.php?cat=271" class="VertMenuItems">Hooded Sweatshirts | </a></font> 
+<font class="CategoriesList"><a href="home.php?cat=264" class="VertMenuItems">Vintage Sunglasses | </a></font> 
+<font class="CategoriesList"><a href="home.php?cat=268" class="VertMenuItems">Bumper Stickers | </a></font> 
+<font class="CategoriesList"><a href="home.php?cat=261" class="VertMenuItems">Other Stuff For Sale | </a></font> 
+<font class="CategoriesList"><a href="home.php?cat=269" class="VertMenuItems">Posters and Prints | </a></font> 
+<font class="CategoriesList"><a href="home.php?cat=278" class="VertMenuItems">Trucker Hats | </a></font> 
+<font class="CategoriesList"><a href="home.php?cat=275" class="VertMenuItems">Premium Band Tees | </a></font> 
+<font class="CategoriesList"><a href="home.php?cat=281" class="VertMenuItems">Pattern Pocket Tees | </a></font> 
+<font class="CategoriesList"><a href="home.php?cat=283" class="VertMenuItems">Phone Cases | </a></font> 
+</center><br>
+
+
+<div align=center>
+<script type="text/javascript"><!--
+google_ad_client = "pub-2558083052930351";
+/* 468x15, created 1/25/09 */
+google_ad_slot = "4177727547";
+google_ad_width = 468;
+google_ad_height = 15;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div><br>
+
+<!-- /central space -->
+ 
+</td>
+<td><img src="http://6dollar.threadpitinc.netdna-cdn.com/skin1/images/spacer.gif" alt="" width="8" height="1" /></td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<td valign=top>
+
+
+
+
+
+<div class=face_box align=center >
+
+<font class="ProductDetailsTitle">Last Item Ordered</font><br>
+<span style="display: block; padding: 3px 0px 3px 0px;">
+
+<a href=product.php?productid=12157><img src="http://6dollar.threadpitinc.netdna-cdn.com/images/T/Ive_Got_Your_Back_T_SHIRT_tn.jpg" alt="" width="150"  />
+
+
+
+</span>
+<center>
+<font class=NickSubmit2>I've Got Your Back T-Shirt</b></a></font>
+<br>
+<font class=NickSubmit>
+Bought 1 minute ago
+<br>
+by Peter in Austin, TX
+</font>
+</center>
+
+</div>
+<br>
+
+
+
+
+
+
+
+
+<div class=vis_op_1>
+<div class=face_box align=center >
+<font class=NickSubmit2 style="font-size:16px;">T-Shirt of the Day</font>
+<span style="display: block; padding: 3px 0px 3px 0px;">
+
+
+<a href=teetime><img src=/tt/det/tee_time_det.gif  atl=""></a>
+
+
+</span>
+<font class=NickSubmit2 ><a href=teetime>Get It For Only $6!</a></font>
+
+
+<div id="cdcontainer"></div>
+<script type="text/javascript">
+var ds = new Date();
+var ns = ds.getSeconds(); 
+var dm = new Date();
+var nm = dm.getMinutes();
+var dh = new Date();
+var nh = dh.getHours();
+var launchdate=new cdLocalTime("cdcontainer", "server-php", 0,"Nov 2, 2012 00:00:00", '','Nov 1, 2012 '+nh+':'+nm+':'+ns)
+launchdate.displaycountdown("days", formatresults4)
+</script>
+
+
+</div>
+<br>
+</div>
+
+
+
+<div class=face_box align=center >
+<span style="display: block; padding: 0px 0px 3px 0px;">
+<a href=product.php?productid=11611><img src="http://6dollar.threadpitinc.netdna-cdn.com/skin1/images/random_promo.jpg" alt="" width="150" height="243" />
+</span>
+<font class=NickSubmit2>Random Mystery Shirts Only $2.95!</font></a>
+
+</div>
+
+<br>
+
+
+<div class=face_box align=center >
+<font class=NickSubmit2 style="font-size:16px;">Oh, So You Likey?</font>
+<iframe src="http://www.facebook.com/plugins/likebox.php?href=http://www.facebook.com%2Fsixdollarshirts&amp;width=170&amp;connections=0&amp;stream=false&amp;header=true&amp;height=75" scrolling="no" frameborder="0" style="position: relative; border:0px; height:70px; margin: 0px -48px 0px -40px;  width:170px;  font-style:normal; left:0px;" allowTransparency="true"></iframe>
+
+
+<link href="/skin1/jquery.slider.css" rel="stylesheet" type="text/css" />
+<script src="/skin1/jquery.slider.js" type="text/javascript"></script>
+
+
+
+</div>
+
+
+
+
+
+<br>
+
+
+
+
+
+<center>
+<span class=tt_tiny_talk>advertisement</span>
+
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-2558083052930351";
+/* Whole Site Right */
+google_ad_slot = "3305324876";
+google_ad_width = 160;
+google_ad_height = 600;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+<a href="#" onclick="return hs.htmlExpand(this, { contentId: 'sponsor' , width: '350' } )" class="highslide"><span class=tt_tiny_talk>see your ad here</span></a>
+
+</center>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-1719414-6");
+pageTracker._trackPageview();
+</script>
+
+
+
+<!-- Google Code for list1 Remarketing List -->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1070592111;
+var google_conversion_language = "en";
+var google_conversion_format = "3";
+var google_conversion_color = "ffffff";
+var google_conversion_label = "9PddCJOfuQIQ7-C__gM";
+var google_conversion_value = 0;
+/* ]]> */
+</script>
+<script type="text/javascript" src="http://www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="http://www.googleadservices.com/pagead/conversion/1070592111/?label=9PddCJOfuQIQ7-C__gM&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>
+
+
+
+
+
+
+</td>
+</tr>
+</table>
+
+	</td>
+</tr>
+
+<tr>
+	<td><img src="http://6dollar.threadpitinc.netdna-cdn.com/skin1/images/spacer.gif" class="Spc" alt="" /></td>
+</tr>
+<tr>
+	<td class="BottomRow">
+
+<br><br><br><br><br><br>
+<table width="100%" cellpadding="0" cellspacing="0"><tr>
+<td  align="left">6DollarShirts.com: High quality silk screened t-shirts shipped daily for only $6 each!</td>
+<td  align="right">Copyright &copy; 2005-2013 6 Dollar Shirts</td>
+</tr>
+</table>	</td>
+</tr>
+</table>
+
+
+
+
+
+</td></tr></table>
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,1123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+  <meta name="apple-itunes-app" content="app-id=453142230" />
+  <link href="/css/splash/smart-app-banner.min.css" rel="stylesheet">
+
+    
+
+  <!-- ===================================================================== -->
+  <!-- PAGE TITLE -->
+  <!-- ===================================================================== -->
+  <title>Piazza &#8226; Ask. Answer. Explore. Whenever.</title>
+
+
+  <!-- ===================================================================== -->
+  <!-- META TAGS -->
+  <!-- ===================================================================== -->
+
+  <!-- Forces page to render at the client device's width. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Specify character set -->
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=EDGE"/>
+
+  <!-- Description for search results -->
+  <meta name="description" content="Piazza is a free online gathering place where students can ask, answer, and explore 24/7, under the guidance of their instructors. Students as well as instructors can answer questions, fueling a healthy, collaborative discussion." />
+  <meta name="keywords" content="classroom,homework,help,q&amp;a,question and answer,school,university" />
+
+  <!-- Description for Facebook -->
+  <meta property="og:title" content="Piazza &#8226; Ask. Answer. Explore. Whenever."/>
+  <meta property="og:image" content="http://piazza.com/images/splash/PageTop/Piazza-Icon.png"/>
+  <meta property="og:url"
+    
+      content="http://www.piazza.com"
+    
+  />
+  <meta property="og:description" content="With Piazza, easily answer questions, manage course materials, and track student participation. It'll save you time, and your students will love using it. It's free, and easy to get started."/>
+  
+
+  <!-- ===================================================================== -->
+  <!-- CSS -->
+  <!-- ===================================================================== -->
+
+  <!-- Third-Party -->
+  <link rel="stylesheet" type="text/css" href="/css/shared/lib/bootstrap/bootstrap.min.css?v=296" />
+<!-- https://dvngeac8rg9mb.cloudfront.net -->
+
+  <link rel="stylesheet" type="text/css" href="/css/shared/lib/bootstrap/bootstrap-responsive.min.css?v=296" />
+<!-- https://dvngeac8rg9mb.cloudfront.net -->
+
+  <link rel="stylesheet" type="text/css" href="/css/plugins/fancybox-1.3.4.css?v=296" />
+<!-- https://dvngeac8rg9mb.cloudfront.net -->
+
+
+  <!-- ===================================================================== -->
+  <!-- JQUERY -->
+  <!-- ===================================================================== -->
+
+  <!-- jQuery is the one JS file we do include at the top of the page, since so much HTML-nested code requires it. -->
+  <script type="text/javascript" src="/javascripts/jquery-1.7.1.min.js?v=296"></script>
+<!--https://dvngeac8rg9mb.cloudfront.net-->
+
+  <!-- CSS -->  
+  <link rel="stylesheet" type="text/css" href="/css/plugins/fancybox-1.3.4.css?v=296" />
+<!-- https://dvngeac8rg9mb.cloudfront.net -->
+  <link rel="stylesheet" type="text/css" href="/css/splash/splash-responsive.css?v=296" />
+<!-- https://dvngeac8rg9mb.cloudfront.net -->
+
+</head>
+<body>
+
+  <div class="topbar">
+  <div class="container">
+    <a class="logo" href="/signup"></a>
+
+    <!-- Back Button (for splash pages only) -->
+    
+
+    <!-- Signup Buttons -->
+    <div class="btn-group pull-right">
+      <a class="btn btn-topbar dropdown-toggle log_click" id="signup_dropdown" data-toggle="dropdown" href="#">
+        Sign Up
+        <span class="caret"></span>
+      </a>
+      <ul class="dropdown-menu">
+        <li><button class="btn btn-warning btn-large btn-block" onClick="location.href='/instructors/school-search'">Instructors Get Started</button></li>
+        <li><button class="btn btn-success btn-large btn-block" onClick="location.href='/school-search'">Students Get Started</button></li>
+      </ul>
+    </div>
+
+    <!-- Login Buttons -->
+    <button id="topbar_login" class="btn btn-topbar pull-right log_click" href="#myModal" onclick="showLogin();">Log in</button>
+
+    
+
+  </div>
+</div><script>
+  function submitenter(myfield,e) {
+    var keycode;
+    if (window.event) keycode = window.event.keyCode;
+    else if (e) keycode = e.which;
+    else return true;
+
+    if (keycode == 13) {
+      myfield.form.submit();
+      return false;
+    } else return true;
+  }
+</script>
+<div class="modal modal-small hide" id="login">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h3>Log in</h3>
+  </div>
+  
+  <div class="modal-body">
+    <form class="form-horizontal" id="login-form" method="post" action="https://piazza.com/class">
+      <input type="hidden" name="from" value="/signup"/>
+      <div>
+        <div class="control-group">
+          <label class="control-label" for="inputEmail">Email:</label>
+          <div class="controls">
+            <input type="text" class="input-block-level" id="email_field" name="email" value=""/>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="inputPassword">Password:</label>
+          <div class="controls">
+            <input type="password" class="input-block-level" id="password_field" name="password" onKeyPress="return submitenter(this,event)"/>
+          </div>
+        </div>
+        <div class="control-group">
+          <div class="controls">
+            <label class="checkbox">
+              <input type="checkbox" id="remember" name="remember" checked="checked"/> Remember me
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="btn-toolbar">
+        <button class="btn btn-link" onclick="window.location.href='/account/password/forgot'; return false;">Forgot your password?</button>
+        <button class="btn pull-right">Log in</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+
+<script type="text/javascript">
+
+function showLogin() {
+  $('#login').modal('show');
+  
+  $('#email_field').focus();
+  
+}
+
+</script>
+
+  <div class="page">
+
+    <div class="carousel_tabs">
+  <div class="container">
+    <ul class="nav nav-tabs">
+      <li rel="carousel-pseudo-indicator" class="active" carousel-target="home_carousel_overview">Overview</li>
+      <li rel="carousel-pseudo-indicator" carousel-target="home_carousel_product">Product</li>
+      <li rel="carousel-pseudo-indicator" carousel-target="home_carousel_advantage">Our Advantage</li>
+      <li rel="carousel-pseudo-indicator" carousel-target="home_carousel_examples">Real Examples</li>
+      <li rel="carousel-pseudo-indicator" carousel-target="home_carousel_support">Support</li>
+    </ul>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $('.carousel_tabs li[rel="carousel-pseudo-indicator"]').click(function() {
+    var carouselTargetID = $(this).attr('carousel-target');
+    $('#' + carouselTargetID).click();
+    $(this).siblings().removeClass('active');
+    $(this).addClass('active');
+  });
+</script>
+
+    <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="span12">
+            
+<script>
+$(document).ready(function() {
+
+
+  $('.carousel').carousel({
+    interval: false
+  });
+
+  
+    $('#watch_video').click(function() {
+      PA.call_pj("generic.page_event", {type:"homepage.watch_video_product"}, 1, function(){});
+      var domain = "https://d26vy68u0k3u92.cloudfront.net/piazza-intro/piazza-intro-480."
+      // not all videos that are loaded using this code are actually in the same place, so we need to have some weird logic here
+      jwplayer('OverviewVideo').setup({
+        levels: [
+          { file: domain + 'mp4' },
+          { file: domain + 'ogv' },
+          { file: domain + 'webm' }
+        ],
+        'centerOnScroll': true,
+        'controlbar': 'over',
+        'bufferlength': '5',
+        'autostart': 'true',
+        'width': '640',
+        'height': '360',
+        'modes': [
+          {type: 'flash', src: "https://dvngeac8rg9mb.cloudfront.net/js/jwplayer/player.swf"},
+          {type: 'html5'},
+          {type: 'download'}
+        ]
+      });
+
+      $.fancybox({
+        'autoScale'		: false,
+        'title'			  : this.title,
+        'width'       : 640,
+        'height'      : 360,
+        'autoDimensions'  : true,
+        'href'			: "#OverviewVideo_wrapper",
+        'type'			: 'inline',
+        'onClosed'                : function() {
+          //var dur = (new Date()).getTime() - opened;
+          //dur = dur / 1000;
+          //var data = {'view_time': dur};
+          //PA.trackEvent(true, "video_closed/"+id, loc(), data);
+        }
+      });
+
+      //var video_name = id;
+      //if (video_name == "WatchVideoButton")
+      //  video_name = "WelcomeToPiazza";
+
+      //pageTracker._trackPageview("video_view/" + video_name);
+      //_gaq.push(['_trackPageview', 'video_view/' + video_name]); //new GA tracking
+
+
+      //PA.trackEvent(true, "video_view/" + video_name, loc());
+      //opened = (new Date()).getTime();
+      //pageTracker._trackPageview("/video_view/" + name_video($(this)));
+      return false;
+    });
+  
+});
+</script>
+<div id="feature_carousel" class="carousel slide carousel_layout">
+
+  <ol class="carousel-indicators">
+    <li data-target="#feature_carousel" data-slide-to="0" class="active log_click" id="home_carousel_overview"><a href="#">Overview</a></a></li>
+    <li data-target="#feature_carousel" data-slide-to="1" class="log_click" id="home_carousel_product"><a href="#">Product</a></li>
+    <li data-target="#feature_carousel" data-slide-to="2" class="log_click" id="home_carousel_advantage"><a href="#">Our Advantage</a></li>
+    <li data-target="#feature_carousel" data-slide-to="3" class="log_click" id="home_carousel_examples"><a href="#">Real Examples</a></li>
+    <li data-target="#feature_carousel" data-slide-to="4" class="log_click" id="home_carousel_support"><a href="#">Support</a></li>
+  </ol>
+
+  <!-- Carousel items -->
+  <div class="carousel-inner">
+
+    <!-- Page: Overview -->
+    <div class="item active">
+      <div class="title_graphic company_logo"></div>
+      <h1 class="hero-heading">
+        Trusted by Over 15,000 Professors for Course Communication
+        <small class="subtitle">Completely Online. Completely Free.</small>
+      </h1>
+      <div class="row">
+        <div class="span5 offset1">
+          <ul class="prominent brand_bullets">
+            <li>Rich, class-edited Q&amp;A</li>
+            <li>Workflow saves instructors 10-15 hrs/week</li>
+            <li>Detailed participation statistics</li>
+          </ul>
+        </div>
+        <div class="span5">
+          <ul class="prominent brand_bullets">
+            <li>Seamless LMS integration</li>
+            <li>Free iPhone &amp; Android mobile apps</li>
+            <li>Real-time polls to check pulse of the class</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Page: Product -->
+    <div class="item">
+      <div class="row">
+        
+
+          <div class="span5 offset1 hidden-phone">
+            <h4 class="heading-flush">See 2-Minute Product Demonstration &darr;</h4>
+            <div class="preview preview-small product-demo">
+              <div class="screen-overlay" id="watch_video">
+                <div class="screen-overlay-glare"></div>
+                <div class="screen-overlay-play-pill">
+                  <i></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="span5">
+
+        
+
+          <p>Piazza is an online platform where students and instructors come together to learn and teach. It offers a refined Q&amp;A environment along with key features for effective course collaboration.</p>
+          <p>We built Piazza to model the face-to-face discussion among students and instructors. To do this effectively, Piazza displays updates as soon as they happen so you see changes in real time.</p>
+          <p>Piazza uses the power of community to increase collaboration through wiki-style editing, endorsed posts, student-to-student learning, and instructor feedback.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Page: Our Advantage -->
+    <div class="item">
+      <div class="row">
+        <div class="span10 offset1">
+          <h3 class="heading-flush">Instructors Appreciate Piazza for a Number of Reasons</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span5 offset1">
+          <ul class="brand_bullets">
+            <li>Never get asked the same question twice</li>
+            <li>Free your inbox of emails</li>
+            <li>All class information is in one space</li>
+            <li>Intuitive interface and user experience</li>
+            <li>Wiki-style editing creates single, high-quality answers</li>
+            <li>Professors have full editorial control</li>
+            <li>Detailed student participation and engagement stats</li>
+            <li>One-click endorsed answers</li>
+            <li>Students actually use it, and love it</li>
+          </ul>
+        </div>
+        <div class="span5">
+          <ul class="brand_bullets">
+            <li>Real-time updates</li>
+            <li>Class resources can be made public or private</li>
+            <li>Mobile apps let you read, answer, and post on the go</li>
+            <li>Instructors can set anonymity permissions</li>
+            <li>Check the pulse of your students with in-class polls</li>
+            <li>Private staff communication</li>
+            <li>Students answer each other's questions</li>
+            <li>Clearly see who posted what</li>
+            <li>Unresolved questions stand out</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Page: Real Examples -->
+    <div class="item">
+      <div class="row">
+        <div class="span10 offset1">
+          <h3 class="heading-flush">See Real Classes in Action</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span5 offset1">
+          <ul class="no_bullets">
+            <li class="button_item">
+              <a class="btn" target="_blank" href="https://piazza.com/demo_login?nid=hc9idjhhem06wd&auth=31fbf40">View</a>
+              <span>Intermediate Accounting</span>
+              <span class="muted">David Emerson, VCU</span>
+            </li>
+            <li class="button_item">
+              <a target="_blank" href="https://piazza.com/demo_login?nid=h6fgsodauikzu&auth=471fac9" class="btn">View</a>
+              <span>Biology I</span>
+              <span class="muted">Michael Dini, Texas Tech</span>
+            </li>
+            <li class="button_item">
+              <a target="_blank" href="https://piazza.com/demo_login?nid=gqlmvvjxDJ2&auth=2fba5dd" class="btn">View</a>
+              <span>General Chemistry</span>
+              <span class="muted">David Zax, Cornell</span>
+            </li>
+            <li class="button_item">
+              <a target="_blank" href="https://piazza.com/demo_login?nid=gvzx233qmwdv3&auth=6d356b8" class="btn">View</a>
+              <span>Operating Systems</span>
+              <span class="muted">John Ousterhout, Stanford</span>
+            </li>
+            <li class="button_item">
+              <a target="_blank" href="https://piazza.com/demo_login?nid=h6v7q2b4ric7ou&auth=af34b7c" class="btn">View</a>
+              <span>Intro to Microeconomics</span>
+              <span class="muted">Rebecca Stein, Penn</span>
+            </li>
+          </ul>
+        </div>
+        <div class="span5">
+          <ul class="no_bullets">
+            <li class="button_item">
+              <a target="_blank" href="https://piazza.com/demo_login?nid=gy3cz8tx345ti&auth=59b42cc" class="btn">View</a>
+              <span>Digital Communication Systems</span>
+              <span class="muted">Hari Balakrishan, MIT</span>
+            </li>
+            <li class="button_item">
+              <a target="_blank" href="https://piazza.com/demo_login?nid=gxjgh0nsxld700&auth=18c0708" class="btn">View</a>
+              <span>Computational Fluid Dynamics</span>
+              <span class="muted">Lorena Barba, Boston University</span>
+            </li>
+            <li class="button_item">
+              <a target="_blank" href="https://piazza.com/demo_login?nid=gy6nftpxkfp6d&auth=c1caa4e" class="btn">View</a>
+              <span>Contemporary Civilization</span>
+              <span class="muted">Bob Neer, Columbia</span>
+            </li>
+            <li class="button_item">
+              <a target="_blank" href="https://piazza.com/demo_login?nid=gw9jakygzvs616&auth=50e021f" class="btn">View</a>
+              <span>Calculus</span>
+              <span class="muted">Slobodan Simic, Berkeley</span>
+            </li>
+            <li class="button_item">
+              <a target="_blank" href="https://piazza.com/demo_login?nid=h5wtxdzhjms7kg&auth=5d90523" class="btn">View</a>
+              <span>Electricity &amp; Magnetism</span>
+              <span class="muted">Ed Greco, Georgia Tech</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Page: Support -->
+    <div class="item">
+      <div class="row">
+        <div class="span6 offset1">
+          <h3 class="heading-flush">Our Philosophy</h3>
+          <div class="alert brand_alert">Piazza has become what it is today thanks to our users.</div>
+          <p>
+            You've been telling us how you'd like to use Piazza, and we've been using that information to constantly refine our product. We created Piazza for you, so if you have an idea, tweak, or recommendation&mdash;our team is at the ready! Message us and let's continue to make learning better.
+          </p>
+        </div>
+        <div class="span4">
+          <h3 class="heading-flush">Contact</h3>
+          <a href="mailto:team@piazza.com" class="image_cell image_cell_inline">
+            <i class="email"></i>
+            <span>team@piazza.com</span>
+          </a>
+          <div class="image_cell image_cell_inline">
+            <i class="phone"></i>
+            <span>(800) 818-4124</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Carousel nav -->
+  <a class="carousel-control left" href="#feature_carousel" data-slide="prev">&lsaquo;</a>
+  <a class="carousel-control right" href="#feature_carousel" data-slide="next">&rsaquo;</a>
+</div>
+
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="span6 offset3">
+            <form class="signup_form">
+  <div class="signup_tabs">
+    <div class="tab active">&darr; Start</div>
+    <div class="tab"><a href="https://piazza.com/demo_login?nid=gw9jakygzvs616&auth=50e021f" target="_blank">View a Real Class</a></div>
+  </div>
+  <div class="signup_body">
+    <div class="scrawl_message scrawl_creating_a_class hidden-phone"></div>
+    <a class="btn btn-warning btn-large btn-block" href="/instructors/school-search">Instructors Get Started</a>
+    
+      <a class="btn btn-success btn-large btn-block" href="/school-search">Students Get Started</a>
+    
+    <div class="visible-phone more_info">
+      <span>Want more info?</span> <a href="/pdfs/piazza_product_introduction.pdf" target="_blank">Read our Product PDF</a>
+    </div>
+    <div class="more_info position-outside hidden-phone">
+      <span>Want more info?</span>
+      <a href="/pdfs/piazza_product_introduction.pdf" target="_blank" class="btn log_click" id="product_pdf_signup_form">Read <span class="hidden-tablet">our </span>Product PDF</a>
+    </div>
+  </div>
+</form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section gray_section log_visibility" id="home_scroll_subject_checker">
+      <div class="container">
+  <div class="row">
+    <div class="span12">
+      <h2>Learn How Piazza Works For Your Subject:</h2>
+    </div>
+  </div>
+  <div class="row checker_grid">
+    <div class="span3">
+      <a class="square image_cell odd" href="/subjects/computer_science">
+        <span>Computer Science</span>
+        <i class="computer_science"></i>
+      </a>
+    </div>
+    <div class="span3">
+      <a class="square image_cell even" href="/subjects/engineering">
+        <span>Engineering</span>
+        <i class="engineering"></i>
+      </a>
+    </div>
+    <div class="span3">
+      <a class="square image_cell odd" href="/subjects/math">
+        <span>Math</span>
+        <i class="math"></i>
+      </a>
+    </div>
+    <div class="span3">
+      <a class="square image_cell even" href="/subjects/physics">
+        <span>Physics</span>
+        <i class="physics"></i>
+      </a>
+    </div>
+  </div>
+  <div class="row checker_grid">
+    <div class="span3">
+      <a class="square image_cell even" href="/subjects/economics">
+        <span>Economics</span>
+        <i class="economics"></i>
+      </a>
+    </div>
+    <div class="span3">
+      <a class="square image_cell odd" href="/subjects/chemistry">
+        <span>Chemistry</span>
+        <i class="chemistry"></i>
+      </a>
+    </div>
+    <div class="span3">
+      <a class="square image_cell even" href="/subjects/psychology">
+        <span>Psychology</span>
+        <i class="psychology"></i>
+      </a>
+    </div>
+    <div class="span3">
+      <a class="square image_cell odd" href="/subjects/biology">
+        <span>Biology</span>
+        <i class="biology"></i>
+      </a>
+    </div>
+  </div>
+  <div class="row bootstrap-grid-override">
+    <div class="span2">
+      <h2>See:</h2>
+    </div>
+    <div class="span4 override-50pct">
+      <ul class="brand_bullets">
+        <li>Professors in your subject using Piazza</li>
+        <li>Testimonials from professors</li>
+      </ul>
+    </div>
+    <div class="span4 override-50pct">
+      <ul class="brand_bullets">
+        <li>Features customized for your subject</li>
+        <li>Real class examples in your subject</li>
+      </ul>
+    </div>
+  </div>
+</div>
+    </div>
+    <div class="section blue_section log_visibility" id="home_scroll_school_list">
+      <div class="container">
+  <div class="row">
+    <div class="span12">
+      <h2>See Professors Using Piazza At:</h2>
+    </div>
+  </div>
+  <div class="expandable-list line-spacing-175pct">
+    <div class="row">
+      <div class="span4">
+        <ul>
+          <li><a target="_blank" href="/school/stanford/l3">Stanford University</a></li>
+          <li><a target="_blank" href="/school/mit/l3">MIT</a></li>
+          <li><a target="_blank" href="/school/berkeley/l3">UC Berkeley</a></li>
+          <li><a target="_blank" href="/school/csulb/l3">CSU Long Beach</a></li>
+          <li><a target="_blank" href="/school/colorado/l3">University of Colorado</a></li>
+          <li><a target="_blank" href="/school/gmu/l3">George Mason University</a></li>
+          <li><a target="_blank" href="/school/nyu/l3">New York University</a></li>
+          <li><a target="_blank" href="/school/umich/l3">University of Michigan</a></li>
+
+          <li class="separator show-on-expand"></li>
+
+          <li class="show-on-expand"><a target="_blank" href="/school/uic/l3">U of I at Chicago</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/northeastern/l3">Northeastern University</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/utdallas/l3">University of TX at Dallas</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/buffalo/l3">University of Buffalo</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/rice/l3">Rice University</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/byu/l3">Brigham Young Unviersity</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/umkc/l3">U of M - Kansas City</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/ttu/l3">Texas Tech University</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/carleton.ca/l3">Carleton University</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/uchicago/l3">University of Chicago</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/cincinnati/l3">University of Cincinnati</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/ucdenver/l3">University of Col. Denver</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/ucsc/l3">UC Santa Cruz</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/uci/l3">UC Irvine</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/uml/l3">Universtiy of Mass. - Lowell</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/brocku.ca/l3">Brock University</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/virginia/l3">University of Virginia</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/illinois/l3">University of Illinois</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/uky/l3">University of Kentucky</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/tamu/l3">Texas A&amp;M Universtiy</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/utoronto.ca/l3">University of Toronto</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/calpoly/l3">Cal Poly</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/gvsu/l3">Grand Valley State</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/rochester/l3">University of Rochester</a></li>
+        </ul>
+      </div>
+      <div class="span4">
+        <ul>
+          <li><a target="_blank" href="/school/harvard/l3">Harvard University</a></li>
+          <li><a target="_blank" href="/school/princeton/l3">Princeton University</a></li>
+          <li><a target="_blank" href="/school/nd/l3">University of Notre Dame</a></li>
+          <li><a target="_blank" href="/school/msu/l3">Michigan State</a></li>
+          <li><a target="_blank" href="/school/caltech/l3">Caltech</a></li>
+          <li><a target="_blank" href="/school/ucf/l3">University of Central Florida</a></li>
+          <li><a target="_blank" href="/school/cmu/l3">Carnegie Mellon University</a></li>
+          <li><a target="_blank" href="/school/upenn/l3">University of Pennsylvania</a></li>
+
+          <li class="separator show-on-expand"></li>
+
+          <li class="show-on-expand"><a target="_blank" href="/school/umn/l3">University of Minnesota</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/mst/l3">Missouri S&amp;T University</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/ua/l3">University of Alabama</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/rutgers/l3">Rutgers University</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/columbia/l3">Columbia University</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/northwestern/l3">Northwestern University</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/oregonstate/l3">Oregon State University</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/udel/l3">University of Delaware</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/rpi/l3">RPI</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/ncsu/l3">North Carolina State</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/unh/l3">University of New Hampshire</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/colostate/l3">Colorado State University</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/ubc.ca/l3">University of British Columbia</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/ucalgary.ca/l3">University of Calgary</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/ucdavis/l3">UC Davis</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/depaul/l3">DePaul University</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/fiu/l3">Florida International University</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/iastate/l3">Iowa State University</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/uwaterloo.ca/l3">University of Waterloo</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/wisc/l3">University of Wisconsin</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/wsu/l3">Washington State</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/unc/l3">University of North Carolina</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/uoregon/l3">University of Oregon</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/psu/l3">Penn State</a></li>
+        </ul>
+      </div>
+      <div class="span4">
+        <ul>
+          <li><a target="_blank" href="/school/cornell/l3">Cornell University</a></li>
+          <li><a target="_blank" href="/school/purdue/l3">Purdue University</a></li>
+          <li><a target="_blank" href="/school/arizona/l3">University of Arizona</a></li>
+          <li><a target="_blank" href="/school/duke/l3">Duke University</a></li>
+          <li><a target="_blank" href="/school/mines/l3">Colorado School of Mines</a></li>
+          <li><a target="_blank" href="/school/gatech/l3">Georgia Tech</a></li>
+          <li><a target="_blank" href="/school/ucsd/l3">UC San Diego</a></li>
+          <li><a target="_blank" href="/school/jhu/l3">Johns Hopkins University</a></li>
+
+          <li class="separator show-on-expand"></li>
+
+          <li class="show-on-expand"><a target="_blank" href="/school/jmu/l3">James Madison University</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/sjsu/l3">San Jose State University</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/bu/l3">Boston University</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/umd/l3">University of Maryland</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/umass/l3">University of Massachusetts</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/stonybrook/l3">Stony Brook University</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/washington/l3">University of Washington</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/muohio/l3">Miami University</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/mtu/l3">Michigan Tech University</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/ucla/l3">UCLA</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/ucmerced/l3">UC Merced</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/ucr/l3">UC Riverside</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/vt/l3">Virginia Tech</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/wustl/l3">Washington University in St. Louis</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/osu/l3">The Ohio State University</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/utexas/l3">The University of TX Austin</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/tufts/l3">Tufts University</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/ucsb/l3">UC Santa Barbara</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/ufl/l3">University of Florida</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/uconn/l3">University of Connecticut</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/asu/l3">Arizona State University</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/usc/l3">University of Southern California</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/utk/l3">University of Tennessee</a></li>
+          <li class="show-on-expand"><a target="_blank" href="/school/iit/l3">Illinois Institute of Technology</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="align-right">
+      <a class="toggle-is-expanded">
+        <span id="see_full_school_list" class="hide-on-expand log_click">See Full List &darr;</span>
+        <span id="hide_full_school_list" class="show-on-expand log_click">Hide Full List &uarr;</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+$(document).ready(function() {
+
+  var topbarHeight = 45;
+
+  $('.expandable-list .toggle-is-expanded').on('click', function() {
+
+    var $wrapper = $(this).closest('.expandable-list');
+    var $section = $(this).closest('.section');
+
+    if ($wrapper.size() == 0) {
+      return false;
+    }
+
+    if ($wrapper.hasClass('is-expanded')) {
+      $wrapper.removeClass('is-expanded');
+    } else {
+      $wrapper.addClass('is-expanded');
+    }
+
+    $('html, body').animate({
+      scrollTop: $section.offset().top - topbarHeight
+    }, 500);
+  });
+
+});
+</script>
+
+    </div>
+    <div class="section log_visibility" id="home_scroll_feature_overview">
+      <div class="container">
+  <div class="row">
+    <div class="span12">
+      <h2>Use Piazza For:</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="span3">
+      <div class="image_cell large">
+        <div class="image_cell_body">
+          <i class="q_and_a"></i>
+          <span>Q &amp; A</span>
+        </div>
+        <div class="image_cell_hover">
+          <ul class="brand_bullets">
+            <li>Questions</li>
+            <li>Peer Answers</li>
+            <li>Professor-Led</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="span3">
+      <div class="image_cell large">
+        <div class="image_cell_body">
+          <i class="polls"></i>
+          <span>Polls</span>
+        </div>
+        <div class="image_cell_hover">
+          <ul class="brand_bullets">
+            <li>In-Class Quizzes</li>
+            <li>Exam Feedback</li>
+            <li>Quick Surveys</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="span3">
+      <div class="image_cell large">
+        <div class="image_cell_body">
+          <i class="class_resources"></i>
+          <span>Class Resources</span>
+        </div>
+        <div class="image_cell_hover">
+          <ul class="brand_bullets">
+            <li>Syllabus</li>
+            <li>Lecture Notes</li>
+            <li>Homework Files</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="span3">
+      <div class="image_cell large">
+        <div class="image_cell_body">
+          <i class="statistics"></i>
+          <span>Statistics</span>
+        </div>
+        <div class="image_cell_hover">
+          <ul class="brand_bullets">
+            <li>Engagement</li>
+            <li>Participation</li>
+            <li>Class Trends</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="align-center more_info clearfix">
+    <span>Want more info?</span> <a href="/pdfs/piazza_product_introduction.pdf" target="_blank" class="btn log_click" id="product_pdf_feature_overview">Read our Product PDF</a>
+  </div>
+</div>
+
+    </div>
+    <div class="section gray_section log_visibility" id="home_scroll_founder_video">
+      <div class="container">
+  <div class="row">
+    <div class="span12">
+      <h2>Our Story:</h2>
+    </div>
+  </div>
+  <div class="row">
+
+    
+      <div class="span6 hidden-phone">
+        <h4 class="heading-flush">Watch our 1-minute Founder Video &darr;</h4>
+        <!-- Fancybox Content -->
+<div class="hidden" style="position: absolute; display: none;">
+  <div id="OverviewVideo"></div>
+</div>
+<div class="preview our-story-video log_click" rel="fancybox-amazon" rev="intro-guru" id="WatchVideoFounder">
+   <div class="screen-overlay">
+    <!--
+    <div class="screen-overlay-glare"></div>
+  -->
+    <div class="screen-overlay-play-pill">
+      <i></i>
+    </div>
+  </div>
+</div>
+<script>
+$(document).ready(function() {
+  $('div[rel=fancybox-amazon]').click(function() {
+    var id = $(this).attr("id");
+    var vid = $(this).attr("rev");
+    if (id == "WatchVideoFounder")
+      PA.call_pj("generic.page_event", {type:"homepage.watch_video_founder"}, 1, function(){});
+    jwplayer('OverviewVideo').setup({
+      levels: [
+        { file: 'https://d26vy68u0k3u92.cloudfront.net/homepage/piazza-'+vid+'-480.mp4' },
+        { file: 'https://d26vy68u0k3u92.cloudfront.net/homepage/piazza-'+vid+'-480.ogv' },
+        { file: 'https://d26vy68u0k3u92.cloudfront.net/homepage/piazza-'+vid+'-480.webm' }
+      ],
+      'centerOnScroll': true,
+      'controlbar': 'over',
+      'bufferlength': '5',
+      'autostart': 'true',
+      'width': '640',
+      'height': '360',
+      'modes': [
+        {type: 'flash', src: "https://dvngeac8rg9mb.cloudfront.net/js/jwplayer/player.swf"},
+        {type: 'html5'},
+        {type: 'download'}
+      ]
+    });
+
+    $.fancybox({
+      'autoScale'		: false,
+      'title'			: this.title,
+      'width'			: 640,
+      'height'		    : 360,
+      'autoDimensions'  : false,
+      'href'			: "#OverviewVideo",
+      'type'			: 'inline',
+      'onClosed'                : function() {
+        //$('#OverviewVideo').html('');
+        //var dur = (new Date()).getTime() - opened;
+        //dur = dur / 1000;
+        //var data = {'view_time': dur};
+        //PA.trackEvent(true, "video_closed/"+id, loc(), data);
+      }
+    });
+
+    //var video_name = id;
+    //if (video_name == "WatchVideoButton")
+    //  video_name = "WelcomeToPiazza";
+
+    //pageTracker._trackPageview("video_view/" + video_name);
+    //_gaq.push(['_trackPageview', 'video_view/' + video_name]); //new GA tracking
+
+
+    //PA.trackEvent(true, "video_view/" + video_name, loc());
+    //opened = (new Date()).getTime();
+    //pageTracker._trackPageview("/video_view/" + name_video($(this)));
+  });
+});
+</script>
+      </div>
+      <div class="span6">
+        <h4 class="heading-flush hidden-phone">&nbsp;</h4>
+    
+      <p>Piazza is designed to connect students, TAs, and professors so every student can get the help they need when they need it.</p>
+      <p>Today, hundreds of thousands of students across hundreds of campuses are using Piazza for their classes. It warms me to think I started something that is impacting the way students learn and the way instructors teach.</p>
+      <p>I sincerely hope Piazza enhances your experience as a student, as a TA, and as a professor.</p>
+      <span class="pull-right muted">
+        &mdash; Pooja Nath Sankar, Piazza Founder &amp; CEO
+      </span>
+    </div>
+  </div>
+  <div class="clearfix">
+    <a class="pull-right" href="/story.html">Read more &rarr;</a>
+  </div>
+</div>
+    </div>
+    <div class="section log_visibility" id="home_scroll_news_logo">
+      <div class="container overflow-hidden">
+  <div class="row">
+    <div class="span12">
+      <h2>Read About Piazza In:</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="span12 align-center">
+      <a target="_blank" class="news_logo techcrunch" href="http://techcrunch.com/tag/piazza/">
+        <span class="backup-text">Techcrunch</span>
+      </a>
+      <a target="_blank" class="news_logo nyt" href="http://www.nytimes.com/2011/07/04/technology/04piazza.html">
+        <span class="backup-text">The New York Times</span>
+      </a>
+      <a target="_blank" class="news_logo npr" href="http://www.npr.org/2013/04/03/176130221/does-leaning-in-actually-work-for-women-at-the-starting-line">
+        <span class="backup-text">NPR</span>
+      </a>
+      <a target="_blank" class="news_logo mercury_news" href="http://www.mercurynews.com/business/ci_19687785">
+        <span class="backup-text">MercuryNews.com</span>
+      </a>
+      <a target="_blank" class="news_logo cnn_money" href="http://postcards.blogs.fortune.cnn.com/2013/02/19/pooja-sankar-piazza/">
+        <span class="backup-text">CNN Money</span>
+      </a>
+      <a target="_blank" class="news_logo forbes" href="http://www.forbes.com/sites/meghancasserly/2012/09/18/mommy-ceo-pooja-sankar-on-raising-a-baby-a-business-and-a-new-school-of-role-models/">
+        <span class="backup-text">Forbes</span>
+      </a>
+      <a target="_blank" class="news_logo huff_post" href="http://www.huffingtonpost.com/2011/08/08/female-tech-founders_n_916751.html#s322806title=Pooja_Sankar_Piazza">
+        <span class="backup-text">The Huffington Post</span>
+      </a>
+      <a target="_blank" class="news_logo atlantic" href="http://www.theatlantic.com/technology/archive/2012/06/nerds-of-the-world-unite-itunes-u-just-got-interactive/258701/#">
+        <span class="backup-text">The Atlantic</span>
+      </a>
+    </div>
+  </div>
+  <div class="clearfix">
+    <a class="pull-right" href="/news">See more &rarr;</a>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+  <div class="footer">
+  <div class="container">
+    <div class="row"> 
+      
+      <!-- Internal Links -->
+      <div class="span10">
+        <div class="row">
+          <div class="span2">
+            <h6 class="title">About</h6>
+            <ul>
+              <li><a href="/about/story">Our Story</a></li>
+              <li><a href="/about/team">Team</a></li>
+              <li><a href="/about/investors">Investors</a></li>
+              <li><a href="/about/news">News</a></li>
+              <li><a href="/about/jobs">Jobs</a></li>
+            </ul>
+          </div>
+          <div class="span2">
+            <h6 class="title">Product</h6>
+            <ul>
+              <li><a href="/product/overview">Why Piazza Works</a></li>
+              <li><a href="/product/features">Features</a></li>
+              <li><a href="/product/mobile">Mobile Apps</a></li>
+              <li><a href="/product/lti">LMS Integration</a></li>
+              <li><a href="/product/accessibility">Accessibility</a></li>
+            </ul>
+          </div>
+          <div class="span2">
+            <h6 class="title">Support</h6>
+            <ul>
+              <li><a href="/support/help">Help</a></li>
+              
+                <li><a href="#" rel="fancybox-dashboard">Product FAQ</a></li>
+                <li><a href="#" rel="fancybox-dashboard-faq">Instructor FAQ</a></li>
+              
+              <li><a href="/product/overview#instructor-resources">Instructor Resources</a></li>
+              <li><a href="/support/contact">Contact Us</a></li>
+            </ul>
+          </div>
+          <div class="span2">
+            <h6 class="title">Legal</h6>
+            <ul>
+              <li><a href="/legal/privacy">Privacy Policy</a></li>
+              <li><a href="/legal/copyright">Copyright Policy</a></li>
+              <li><a href="/legal/terms">Terms of Service</a></li>
+              <li><a href="/legal/ferpa">FERPA Compliance</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Social & Legal -->
+      <div class="span2">
+        <ul class="social">
+          <li>
+            <a class="twitter-link" href="http://twitter.com/#!/piazza" target="_blank" onClick="PA.trackEvent(true, 'twitter_button', '/');"></a>
+          </li>
+          <li>
+            <a class="facebook-link" href="http://www.facebook.com/piazzza" target="_blank" onClick="PA.trackEvent(true, 'facebook_button', '/');"></a>
+          </li>
+        </ul>
+        <div class="legal">
+          <div id="CopyrightInfo">
+            Copyright &#169; 2013<br/>Piazza Technologies<br/>All Rights Reserved
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <hr/>
+    
+    <div class="align-center">
+      Our terms changed on July 14, 2013. Please review the new <a href="/legal/terms">Piazza Terms of Service</a>.
+    </div>
+
+  </div>
+</div>
+
+
+  <!-- Javascripts -->
+  
+
+  <!-- ===================================================================== -->
+  <!-- JAVASCRIPTS -->
+  <!-- ===================================================================== -->
+
+  <!-- Third-Party -->
+  <script type="text/javascript" src="/javascripts/bootstrap.min.js?v=296"></script>
+<!--https://dvngeac8rg9mb.cloudfront.net-->
+  <script type="text/javascript" src="/javascripts/jquery.blockUI.js?v=296"></script>
+<!--https://dvngeac8rg9mb.cloudfront.net-->
+
+  <script type="text/javascript" src="/javascripts/jquery.fancybox-1.3.4.pack.js?v=296"></script>
+<!--https://dvngeac8rg9mb.cloudfront.net-->
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-21514163-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+  <!-- Piazza -->
+  <script type="text/javascript" src="/modules/event_manager.js?v=296"></script>
+<!--https://dvngeac8rg9mb.cloudfront.net-->
+  <script type="text/javascript" src="/modules/helpers.js?v=296"></script>
+<!--https://dvngeac8rg9mb.cloudfront.net-->
+  <script type="text/javascript" src="/modules/ajax.js?v=296"></script>
+<!--https://dvngeac8rg9mb.cloudfront.net-->
+  <script type="text/javascript" src="/js/splash/splash.js?v=296"></script>
+<!--https://dvngeac8rg9mb.cloudfront.net-->
+  
+  
+    <script type="text/javascript" src="/js/jwplayer/jwplayer.js?v=296"></script>
+<!--https://dvngeac8rg9mb.cloudfront.net-->
+
+  
+  <script type="text/javascript" src="/javascripts/jquery.fancybox-1.3.4.pack.js?v=296"></script>
+<!--https://dvngeac8rg9mb.cloudfront.net-->
+  <script type="text/javascript" src="/js/splash/splash.js?v=296"></script>
+<!--https://dvngeac8rg9mb.cloudfront.net-->
+
+  <script type="text/javascript">
+    function view_demo(url){
+      var demo_url = url;
+      window.open(demo_url, '_blank');
+    }
+    var wasVisible = {};
+    var scrollOffsets = {};
+    $(document).ready(function() {
+      var params = {
+        type: "hp_window_size",
+        int1: $(window).width(),
+        int2: $(window).height()
+      }
+      PA.call_pj("generic.page_event", params, 1, function(){});
+      $('.log_click').click(function(){
+        var id = $(this).attr("id");
+        if (id) {
+          id = "homepage." + id;
+          PA.call_pj("generic.page_event", {type:id}, 1, function(){});
+        }
+      });
+      $('.log_visibility').each(function(){
+        var id = $(this).attr("id");
+        if (id) {
+          scrollOffsets[id] = $(this).offset().top;
+        }
+      });
+    });
+    var recordVisisbleSections;
+    $(window).scroll(function() {
+      var top = $('body').scrollTop();
+      if ($('html').scrollTop() > top)
+        top = $('html').scrollTop();
+      for (var id in scrollOffsets) {
+        if (top + 200 > scrollOffsets[id]) {
+          if (!wasVisible[id]) {
+            PA.call_pj("generic.page_event", {type:"homepage.scroll",text1:id}, 1);
+          }
+          wasVisible[id] = 1;
+        }
+      }
+    });
+  </script>
+
+</body>
+
+<script src="/js/splash/smart-app-banner.min.js"></script>
+
+</html>

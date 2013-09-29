@@ -1,0 +1,1039 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    
+
+  <!-- ===================================================================== -->
+  <!-- PAGE TITLE -->
+  <!-- ===================================================================== -->
+  <title>Piazza &#8226; For Chemistry Classes</title>
+
+
+  <!-- ===================================================================== -->
+  <!-- META TAGS -->
+  <!-- ===================================================================== -->
+
+  <!-- Forces page to render at the client device's width. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Specify character set -->
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=EDGE"/>
+
+  <!-- Description for search results -->
+  <meta name="description" content="Piazza is a free online gathering place where students can ask, answer, and explore 24/7, under the guidance of their instructors. Students as well as instructors can answer questions, fueling a healthy, collaborative discussion." />
+  <meta name="keywords" content="classroom,homework,help,q&amp;a,question and answer,school,university" />
+
+  <!-- Description for Facebook -->
+  <meta property="og:title" content="Piazza &#8226; For Chemistry Classes"/>
+  <meta property="og:image" content="http://piazza.com/images/splash/PageTop/Piazza-Icon.png"/>
+  <meta property="og:url"
+    
+      content="https://piazza.com/subjects/chemistry"
+    
+  />
+  <meta property="og:description" content="With Piazza, easily answer questions, manage course materials, and track student participation. It'll save you time, and your students will love using it. It's free, and easy to get started."/>
+  
+
+  <!-- ===================================================================== -->
+  <!-- CSS -->
+  <!-- ===================================================================== -->
+
+  <!-- Third-Party -->
+  <link rel="stylesheet" type="text/css" href="/css/shared/lib/bootstrap/bootstrap.min.css?v=296" />
+<!-- https://dvngeac8rg9mb.cloudfront.net -->
+
+  <link rel="stylesheet" type="text/css" href="/css/shared/lib/bootstrap/bootstrap-responsive.min.css?v=296" />
+<!-- https://dvngeac8rg9mb.cloudfront.net -->
+
+  <link rel="stylesheet" type="text/css" href="/css/plugins/fancybox-1.3.4.css?v=296" />
+<!-- https://dvngeac8rg9mb.cloudfront.net -->
+
+
+  <!-- ===================================================================== -->
+  <!-- JQUERY -->
+  <!-- ===================================================================== -->
+
+  <!-- jQuery is the one JS file we do include at the top of the page, since so much HTML-nested code requires it. -->
+  <script type="text/javascript" src="/javascripts/jquery-1.7.1.min.js?v=296"></script>
+<!--https://dvngeac8rg9mb.cloudfront.net-->
+
+  <!-- CSS -->  
+  <link rel="stylesheet" type="text/css" href="/css/plugins/fancybox-1.3.4.css?v=296" />
+<!-- https://dvngeac8rg9mb.cloudfront.net -->
+  <link rel="stylesheet" type="text/css" href="/css/splash/splash-responsive.css?v=296" />
+<!-- https://dvngeac8rg9mb.cloudfront.net -->
+</head>
+<body class="splash has_navbar" data-spy="scroll" data-target=".navbar">
+  
+  <div class="topbar">
+  <div class="container">
+    <a class="logo" href="/signup"></a>
+
+    <!-- Back Button (for splash pages only) -->
+    
+      <a class="back_to_home_button hidden-phone" onClick="window.history.back();"><i class="icon-arrow-left"></i>Back</a>
+    
+
+    <!-- Signup Buttons -->
+    <div class="btn-group pull-right">
+      <a class="btn btn-topbar dropdown-toggle log_click" id="signup_dropdown" data-toggle="dropdown" href="#">
+        Sign Up
+        <span class="caret"></span>
+      </a>
+      <ul class="dropdown-menu">
+        <li><button class="btn btn-warning btn-large btn-block" onClick="location.href='/instructors/school-search'">Instructors Get Started</button></li>
+        <li><button class="btn btn-success btn-large btn-block" onClick="location.href='/school-search'">Students Get Started</button></li>
+      </ul>
+    </div>
+
+    <!-- Login Buttons -->
+    <button id="topbar_login" class="btn btn-topbar pull-right log_click" href="#myModal" onclick="showLogin();">Log in</button>
+
+    
+      <a href="/pdfs/piazza_product_introduction.pdf" target="_blank"class="btn btn-topbar hidden-phone pull-right">Product PDF</a>
+    
+
+  </div>
+</div><script>
+  function submitenter(myfield,e) {
+    var keycode;
+    if (window.event) keycode = window.event.keyCode;
+    else if (e) keycode = e.which;
+    else return true;
+
+    if (keycode == 13) {
+      myfield.form.submit();
+      return false;
+    } else return true;
+  }
+</script>
+<div class="modal modal-small hide" id="login">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h3>Log in</h3>
+  </div>
+  
+  <div class="modal-body">
+    <form class="form-horizontal" id="login-form" method="post" action="https://piazza.com/class">
+      <input type="hidden" name="from" value="/signup"/>
+      <div>
+        <div class="control-group">
+          <label class="control-label" for="inputEmail">Email:</label>
+          <div class="controls">
+            <input type="text" class="input-block-level" id="email_field" name="email" value=""/>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="inputPassword">Password:</label>
+          <div class="controls">
+            <input type="password" class="input-block-level" id="password_field" name="password" onKeyPress="return submitenter(this,event)"/>
+          </div>
+        </div>
+        <div class="control-group">
+          <div class="controls">
+            <label class="checkbox">
+              <input type="checkbox" id="remember" name="remember" checked="checked"/> Remember me
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="btn-toolbar">
+        <button class="btn btn-link" onclick="window.location.href='/account/password/forgot'; return false;">Forgot your password?</button>
+        <button class="btn pull-right">Log in</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+
+<script type="text/javascript">
+
+function showLogin() {
+  $('#login').modal('show');
+  
+  $('#email_field').focus();
+  
+}
+
+</script>
+  <div class="navbar">
+    <div class="container">
+      <ul class="nav">
+        <li class="active" is_for='demo'><a class="log_click" id="carousel_example" href="#">Real Class Example</a></li>
+        <li is_for='top_classes'><a class="log_click" id="carousel_classes" href="#">Professors Using Piazza</a></li>
+        <li is_for='features'><a class="log_click" id="carousel_features" href="#">Features</a></li>
+        <li is_for='testimonials'><a class="log_click" id="carousel_testimonials" href="#">Testimonials</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="page">
+    <div id="demo" class="section log_visibility">
+      <div class="container">
+        <div class="row">
+          <div class="span12">
+            <h2>See a Real Chemistry Class On Piazza</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="span6">
+            <div class="demo_laptop">
+              <div class="preview">
+                <div class="screen-overlay" onclick="view_demo('https://piazza.com/demo_login?nid=gqlmvvjxDJ2&auth=2fba5dd');">
+                  <!--<div class="screen-overlay-glare"></div>-->
+                  <div class="screen-overlay-icon"></div>
+                  <div class="screen-overlay-play-pill">
+                    View &rarr;
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="span6 prof_info_for_demo">
+            <div class="media">
+              
+              <div class="media-object prof_photo david-zax pull-left"></div>
+              
+              <div class="media-body">
+                <div class="demo_meta_prof">David Zax</div>
+                <div class="demo_meta_info">Cornell University</div>
+                <div class="demo_meta_info">General Chemistry</div>
+                <div class="demo_meta_info">CHEM 2070</div>
+              </div>
+            </div>
+            <div class="demo_arrow" style="display:none;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="top_classes" class="section log_visibility gray_section">
+      <div class="container">
+        <div class="row">
+          <div class="span12">
+            <h2>Chemistry Professors Using Piazza</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="span6">
+            <ul class="stacked">
+              
+                
+                <li class="course_listing ">
+                  <span class="professor">David Zax</span>
+                  <span class="institution">Cornell</span>
+                  <span class="course_number">CHEM 2070</span>
+                  <span class="course_title">General Chemistry</span>
+                </li>
+              
+                
+                
+                <li class="course_listing ">
+                  <span class="professor">Kathleen Nolta</span>
+                  <span class="institution">Michigan</span>
+                  <span class="course_number">CHEM 230</span>
+                  <span class="course_title">Physical Chemical Principles and Applications</span>
+                </li>
+              
+                
+                
+                <li class="course_listing ">
+                  <span class="professor">Jennifer Schwartz</span>
+                  <span class="institution">Stanford</span>
+                  <span class="course_number">CHEM 31A</span>
+                  <span class="course_title">Chemical Principals I</span>
+                </li>
+              
+                
+                
+                <li class="course_listing ">
+                  <span class="professor">Jimmy Rogers</span>
+                  <span class="institution">UT Arlington</span>
+                  <span class="course_number">CHEM 1442</span>
+                  <span class="course_title">General Chemistry II</span>
+                </li>
+              
+                
+                
+                <li class="course_listing ">
+                  <span class="professor">EmmaLou Satterfield</span>
+                  <span class="institution">Missouri S&T</span>
+                  <span class="course_number">CHEM 001</span>
+                  <span class="course_title">General Chemistry</span>
+                </li>
+              
+                
+                
+                <li class="course_listing ">
+                  <span class="professor">David Wemmer</span>
+                  <span class="institution">UC Berkeley</span>
+                  <span class="course_number">MCB 100A</span>
+                  <span class="course_title">Biophysical Chemistry</span>
+                </li>
+              
+                
+                
+                <li class="course_listing ">
+                  <span class="professor">Binyomin Abrams</span>
+                  <span class="institution">Boston</span>
+                  <span class="course_number">CH 101</span>
+                  <span class="course_title">General Chemistry</span>
+                </li>
+              
+                
+                
+                <li class="course_listing ">
+                  <span class="professor">Jennifer Schwartz</span>
+                  <span class="institution">Stanford</span>
+                  <span class="course_number">CHEM 31B</span>
+                  <span class="course_title">Chemical Principles II</span>
+                </li>
+              
+                
+                
+                <li class="course_listing ">
+                  <span class="professor">Paul McCord</span>
+                  <span class="institution">UT Austin</span>
+                  <span class="course_number">CH 301</span>
+                  <span class="course_title">Principles of Chemistry I</span>
+                </li>
+              
+                
+                
+                <li class="course_listing ">
+                  <span class="professor">Stacy Sparks</span>
+                  <span class="institution">UT Austin</span>
+                  <span class="course_number">CH 301</span>
+                  <span class="course_title">Principles of Chemistry I</span>
+                </li>
+              
+                
+                
+                <li class="course_listing hide_class">
+                  <span class="professor">Amy Gottfried</span>
+                  <span class="institution">Michigan</span>
+                  <span class="course_number">CHEM 230</span>
+                  <span class="course_title">Physical Chemical Principles and Analysis</span>
+                </li>
+              
+                
+                
+                <li class="course_listing hide_class">
+                  <span class="professor">Alex Golger</span>
+                  <span class="institution">Boston</span>
+                  <span class="course_number">CH 102</span>
+                  <span class="course_title">General Chemistry</span>
+                </li>
+              
+                
+                
+                <li class="course_listing hide_class">
+                  <span class="professor">David Vanden Bout</span>
+                  <span class="institution">UT Austin</span>
+                  <span class="course_number">CH 302</span>
+                  <span class="course_title">Principles of Chemistry II</span>
+                </li>
+              
+                
+                
+                <li class="course_listing hide_class">
+                  <span class="professor">Anna Mapp</span>
+                  <span class="institution">Michigan</span>
+                  <span class="course_number">CHEM 215</span>
+                  <span class="course_title">Structures and Reactions II</span>
+                </li>
+              
+                
+                
+                <li class="course_listing hide_class">
+                  <span class="professor">Eric Potma</span>
+                  <span class="institution">UC Irvine</span>
+                  <span class="course_number">CHEM 1B</span>
+                  <span class="course_title">General Chemistry</span>
+                </li>
+              
+                
+                
+                <li class="course_listing hide_class">
+                  <span class="professor">Tom Keyes</span>
+                  <span class="institution">Boston</span>
+                  <span class="course_number">CH 101</span>
+                  <span class="course_title">General Chemistry</span>
+                </li>
+              
+                
+            </ul>
+          </div>
+          <div class="span6">
+            <ul class="stacked">
+              
+                
+                
+                <li class="course_listing ">
+                  <span class="professor">Ming Hammond</span>
+                  <span class="institution">UC Berkeley</span>
+                  <span class="course_number">CHEM 135</span>
+                  <span class="course_title">Chemical Biology</span>
+                </li>
+              
+                
+                
+                <li class="course_listing ">
+                  <span class="professor">Dotie Sipowska</span>
+                  <span class="institution">Michigan</span>
+                  <span class="course_number">CHEM 130</span>
+                  <span class="course_title">General Chemistry</span>
+                </li>
+              
+                
+                
+                <li class="course_listing ">
+                  <span class="professor">Deb Walker</span>
+                  <span class="institution">UT Austin</span>
+                  <span class="course_number">CH 301</span>
+                  <span class="course_title">Principles of Chemistry I</span>
+                </li>
+              
+                
+                
+                <li class="course_listing ">
+                  <span class="professor">Randa Roland</span>
+                  <span class="institution">UCSC</span>
+                  <span class="course_number">CHEM 1C</span>
+                  <span class="course_title">General Chemistry</span>
+                </li>
+              
+                
+                
+                <li class="course_listing ">
+                  <span class="professor">Binyomin Abrams</span>
+                  <span class="institution">Boston</span>
+                  <span class="course_number">CH 102</span>
+                  <span class="course_title">General Chemistry II</span>
+                </li>
+              
+                
+                
+                <li class="course_listing ">
+                  <span class="professor">Patricia Clark</span>
+                  <span class="institution">Notre Dame</span>
+                  <span class="course_number">CHEM 40420</span>
+                  <span class="course_title">Principles of Biochemistry</span>
+                </li>
+              
+                
+                
+                <li class="course_listing ">
+                  <span class="professor">Dan Dill</span>
+                  <span class="institution">Boston</span>
+                  <span class="course_number">CH 101</span>
+                  <span class="course_title">General Chemistry</span>
+                </li>
+              
+                
+                
+                <li class="course_listing ">
+                  <span class="professor">Robert Waymouth</span>
+                  <span class="institution">Stanford</span>
+                  <span class="course_number">CHEM 31A</span>
+                  <span class="course_title">Chemical Principals I</span>
+                </li>
+              
+                
+                
+                <li class="course_listing ">
+                  <span class="professor">Cynthia LaBrake</span>
+                  <span class="institution">UT Austin</span>
+                  <span class="course_number">CH 301</span>
+                  <span class="course_title">Principles of Chemistry I</span>
+                </li>
+              
+                
+                
+                <li class="course_listing ">
+                  <span class="professor">David Ballou</span>
+                  <span class="institution">Michigan</span>
+                  <span class="course_number">BIOLCHEM 415/515</span>
+                  <span class="course_title">Introductory Biochemistry</span>
+                </li>
+              
+                
+                
+                <li class="course_listing hide_class">
+                  <span class="professor">Haley Redmond</span>
+                  <span class="institution">Texas Tech</span>
+                  <span class="course_number">CHEM 1307</span>
+                  <span class="course_title">General Chemistry</span>
+                </li>
+              
+                
+                
+                <li class="course_listing hide_class">
+                  <span class="professor">Michael Pirrung</span>
+                  <span class="institution">UC Riverside</span>
+                  <span class="course_number">CHEM 112A</span>
+                  <span class="course_title">Organic Chemistry</span>
+                </li>
+              
+                
+                
+                <li class="course_listing hide_class">
+                  <span class="professor">Thomas Wahl</span>
+                  <span class="institution">Northeastern</span>
+                  <span class="course_number">CS 2800</span>
+                  <span class="course_title">Logic and Computation</span>
+                </li>
+              
+                
+                
+                <li class="course_listing hide_class">
+                  <span class="professor">Ingrid Ulbrich</span>
+                  <span class="institution">Colorado</span>
+                  <span class="course_number">CHEM 1113</span>
+                  <span class="course_title">General Chemistry I</span>
+                </li>
+              
+                
+                
+                <li class="course_listing hide_class">
+                  <span class="professor">Jennifer Schwartz</span>
+                  <span class="institution">Stanford</span>
+                  <span class="course_number">CHEM 33</span>
+                  <span class="course_title">Organic Chemistry</span>
+                </li>
+              
+                
+                
+                <li class="course_listing hide_class">
+                  <span class="professor">Shawn Miller</span>
+                  <span class="institution">UC Irvine</span>
+                  <span class="course_number">CHEM 51LC</span>
+                  <span class="course_title">Organic Chemistry Lab</span>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+        
+        <div class="align-center">
+          <a class="see_more_classes pull-right" href="#">See More Classes &rarr;</a>
+        </div>
+        
+      </div>
+    </div>
+    <div id="features" class="section log_visibility">
+      <div class="container">
+        <div class="row">
+          <div class="span12">
+            <h2>Features Customized for Chemistry</h2>
+          </div>
+          <div class="span6">
+            <ul class="class_facts_features">
+
+              
+                <li>
+                  <span class="content">
+                    Piazza has a <b>robust LaTeX equation editor</b> for chemical formulas and mathematical expressions
+                  </span>
+                </li>
+              
+                <li>
+                  <span class="content">
+                    The Piazza mobile apps let students upload photos from their phones, which is excellent for documenting issues or results from laboratory experiments
+                  </span>
+                </li>
+              
+                <li>
+                  <span class="content">
+                    Piazza allows students to gain clarity on questions and problems - <b>removing ambiguity and confusion outside the classroom</b>
+                  </span>
+                </li>
+              
+                <li>
+                  <span class="content">
+                    Piazza supports multimedia embedding, so you and your students can <b>share diagrams, images, and videos</b>
+                  </span>
+                </li>
+              
+                <li>
+                  <span class="content">
+                    Our in-class polls feature allows for <b>in-class quizzes</b> and feedback
+                  </span>
+                </li>
+              
+                <li>
+                  <span class="content">
+                    Instructors can upload <b>homework assignments and other resources</b> to our course pages
+                  </span>
+                </li>
+              
+            </ul>
+          </div>
+          <div class="span6">
+            <div class="subject_page_image">
+              <img src="/images/splash/subject-pages-cs.jpg">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="testimonials" class="section log_visibility section gray_section">
+      <div class="container">
+        <div class="row">
+          <div class="span12">
+            <h2>Professor Testimonials</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="span12">
+             <ul class="media-list">
+              
+
+
+              <!--Second list-->
+                <li class="media">
+                  <div class="media-object prof_photo surjit-chandhoke pull-left"></div>
+                  <div class="media-body">
+                    <p>Thank you for Piazza! It has been an excellent resource for our new introductory biology courses here at Yale. Piazza is a great forum for those students who are too shy to ask questions in class and who post anonymously - and then this benefits all the students who read the answers. Plus, I have had students say that they love how quickly their questions get answered, instead of waiting for office hours or the next lecture.</p>
+                    <p>
+                      <strong>Surjit Chandhoke</strong> &mdash;
+                      <em class="muted">Yale University, Biology</em>
+                    </p>
+                  </div>
+                </li>
+
+                <li class="media">
+                  <div class="media-object prof_photo robert-neer pull-left"></div>
+                  <div class="media-body">
+                    <p>Piazza is the state of the art for online classroom discussions. My students and I experimented with numerous leading systems over several weeks. Piazza won hands-down. In fact, my students preferred it so much we ended the comparative experiment early, on humanitarian grounds.</p>
+                    <p>
+                      <strong>Bob Neer</strong> &mdash;
+                      <em class="muted">Columbia University, History</em>
+                    </p>
+                  </div>
+                </li>
+
+                <li class="media">
+                  <div class="media-object prof_photo nathan-collie pull-left"></div>
+                  <div class="media-body">
+                    <p>Piazza is easy to learn, easy to enroll students in a flash, and the payback is enormous: imagine students answering other student's questions, and when you answer, it may only have to be once for the entire class. Piazza is a better way to make critical class announcements on media that reaches them immediately where they live (phone, tablet, computer) without taking up lecture time in the classroom.</p>
+                    <p>
+                      <strong>Nathan Collie</strong> &mdash;
+                      <em class="muted">Texas Tech University, Biology</em>
+                    </p>
+                  </div>
+                </li>
+
+                <li class="media">
+                  <div class="media-object prof_photo amy-gottfried pull-left"></div>
+                  <div class="media-body">
+                    <p>Piazza is the most efficient way for students to ask questions, to get answers, and to learn by helping others. It is a reliable, searchable, easy to use, organizable tool for interactive student learning. And the icing on the cake: the staff is very responsive, helpful, and creative.</p>
+                    <p>
+                      <strong>Amy Gottfried</strong> &mdash;
+                      <em class="muted">University of Michigan, Chemistry</em>
+                    </p>
+                  </div>
+                </li>
+
+                <li class="media">
+                  <div class="media-object prof_photo presley-martin pull-left"></div>
+                  <div class="media-body">
+                    <p>I used Piazza in a very small class last spring to see how it worked. Even though the class was small Piazza provided benefits to the students particularly when they were working on some challenging homework problems. They were able to figure out among themselves what the critical questions were, and make suggestions about how to proceed. I really enjoyed the collaborative atmosphere that Piazza supported, and felt that the exchanges that the students had via Piazza, helped them be more prepared and confident in classroom discussions.</p>
+                    <p>
+                      <strong>Presley Martin</strong> &mdash;
+                      <em class="muted">Hamline University, Biology</em>
+                    </p>
+                  </div>
+                </li>
+
+                <li class="media">
+                  <div class="media-object prof_photo andrey-liscovich pull-left"></div>
+                  <div class="media-body">
+                    <p>I've explored a number of courseware products developed by various startups and other universities, but Piazza has so far been the only one that feels like it was built by people who actually care about our problems and understand how to solve them.</p>
+                    <p>
+                      <strong>Andrey Liscovich</strong> &mdash;
+                      <em class="muted">Harvard University, Economics</em>
+                    </p>
+                  </div>
+                </li>
+
+                <li class="media">
+                  <div class="media-object prof_photo stephen-van-hook pull-left"></div>
+                  <div class="media-body">
+                    <p>I used it in PHYS 212 and it was extremely helpful as an unofficial course website since our official website is so out of date that simple things like posting files is a pain. The flexibility of Piazza allowed me to create a weekly guide to activities (a "pin"ned note) that not only told the students what the activities were but also how they fit together. And I could post all relevant course materials as attachments on that note. So this was extremely helpful.</p>
+                    <p>
+                      <strong>Stephen Van Hook</strong> &mdash;
+                      <em class="muted">Penn State University, Physics</em>
+                    </p>
+                  </div>
+                </li>
+
+                <li class="media">
+                  <div class="media-object prof_photo kenneth-norman pull-left"></div>
+                  <div class="media-body">
+                    <p>Discussion tools need to be nearly perfect (in terms of ease-of-use and functionality) to entice people to actually use them, and Piazza is the closest-to-perfect tool that I've seen for online discussion.</p>
+                    <p>
+                      <strong>Kenneth Norman</strong> &mdash;
+                      <em class="muted">Princeton University, Psychology</em>
+                    </p>
+                  </div>
+                </li>
+
+                <li class="media">
+                  <div class="media-object prof_photo chrissy-spencer pull-left"></div>
+                  <div class="media-body">
+                    <p>Piazza is an amazing way to keep tabs on the pulse of your class. Student posts give me timely feedback on what concepts need clarification, provide live feedback during in-class group activities, communicate issues about how we run the course and why, and allow students to share science finds in articles or videos. I've found some great teaching material in articles and videos. The additional bonus is how much lighter my e-mail inbox is for BIOL 1510.</p>
+                    <p>
+                      <strong>Chrissy Spencer</strong> &mdash;
+                      <em class="muted">Georgia Tech, Biology</em>
+                    </p>
+                  </div>
+                </li>
+
+                <li class="media">
+                  <div class="media-object prof_photo klara-grodzinsky pull-left"></div>
+                  <div class="media-body">
+                    <p>Piazza is very nice, my students are enjoying it. I particularly like being able to use LaTex commands to display the mathematical formulas. We hold on-line review sessions before every test, and it's much neater than the whiteboard options.</p>
+                    <p>
+                      <strong>Klara Grodzinsky</strong> &mdash;
+                      <em class="muted">Georgia Tech, Mathematics</em>
+                    </p>
+                  </div>
+                </li>
+
+                <li class="media">
+                  <div class="media-object prof_photo john-ousterhout pull-left"></div>
+                  <div class="media-body">
+                    <p>We were very happy with Piazza in CS 142 so I'd give it a strong positive recommendation. It's easy-to-use, the students really enjoyed it (particularly in comparison to the newsgroup approach we used in previous offerings of the class), it was reliable, and the course staff liked it. We'll definitely use it again.</p>
+                    <p>
+                      <strong>John Ousterhout</strong> &mdash;
+                      <em class="muted">Stanford University, Computer Science</em>
+                    </p>
+                  </div>
+                </li>
+
+                <li class="media">
+                  <div class="media-object prof_photo sean-laraway pull-left"></div>
+                  <div class="media-body">
+                    <p>Piazza provides a convenient and user-friendly platform for holding online class discussions, answering questions, making announcements, and posting course materials. Piazza makes it incredibly easy for me to communicate with my students outside of the classroom.</p>
+                    <p>
+                      <strong>Sean Laraway</strong> &mdash;
+                      <em class="muted">San Jose State University, Psychology</em>
+                    </p>
+                  </div>
+                </li>
+
+                <li class="media">
+                  <div class="media-object prof_photo jarrod-hayes pull-left"></div>
+                  <div class="media-body">
+                    <p>Unlike many of the presentation software options, Piazza is constantly innovating to find effective ways of communicating information. I really value these efforts, because so much about the educational environment is changing so quickly, it is great to have a partner in there trying to figure things out with you. As for the qualities of what they have done, well the features speak for themselves.</p>
+                    <p>
+                      <strong>Jarrod Hayes</strong> &mdash;
+                      <em class="muted">Georgia Tech, International Affairs</em>
+                    </p>
+                  </div>
+                </li>
+                <li class="media">
+                  <div class="media-object prof_photo dan-garcia pull-left"></div>
+                  <div class="media-body">
+                    <p>Piazza has become the single source of truth about all our course-related information. I've never seen a tool that so directly hits the nail on the head in terms of every information-flow problem I've been struggling with for the 19 years I've been teaching.</p>
+                    <p>
+                      <strong>Dan Garcia</strong> &mdash;
+                      <em class="muted">UC Berkeley, Computer Science</em>
+                    </p>
+                  </div>
+                </li>
+                <li class="media">
+                  <div class="media-object prof_photo benjamin-antieau pull-left"></div>
+                  <div class="media-body">
+                    <p>Piazza has been a wonderful tool to use. Nearly 100% of my students have signed up, and at least 75% use it every week. Amazing! Several students have taken the lead in answering other students' questions which has been great for reducing my e-mail load in this large class and also creating good opportunities for the better students to test themselves by teaching. I also love that there is LaTeX support.</p>
+                    <p>
+                      <strong>Benjamin Antieau</strong> &mdash;
+                      <em class="muted">UCLA, Mathematics</em>
+                    </p>
+                  </div>
+                </li>
+
+                <li class="media">
+                  <div class="media-object prof_photo beth-ingram pull-left"></div>
+                  <div class="media-body">
+                    <p>I’ve tried discussion boards before, but they’ve never worked. Piazza did. Out of my 80 students, 50 were frequent contributors, and all of them were at least “listeners.” Honestly, I don’t know how I would get along without it.</p>
+                    <p>
+                      <strong>Beth Ingram</strong> &mdash;
+                      <em class="muted">University of Iowa, Economics</em>
+                    </p>
+                  </div>
+                </li>
+
+                <li class="media">
+                  <div class="media-object prof_photo robyn-raschke pull-left"></div>
+                  <div class="media-body">
+                    <p>Piazza helps me focus my time supporting my students with homework and assignments as its highly likely that a student may have similar questions. I can also say my inbox is more streamlined, I love the dashboard that lets me know how quickly I am responding to students, I use the iPhone app so my stats are within 68 minutes so I think that is really very cool.</p>
+                    <p>
+                      <strong>Robyn Raschke</strong> &mdash;
+                      <em class="muted">UNLV, Accounting</em>
+                    </p>
+                  </div>
+                </li>
+
+                <li class="media">
+                  <div class="media-object prof_photo lorenzo-sadun pull-left"></div>
+                  <div class="media-body">
+                    <p>Piazza is a nice auxiliary meeting-place (as the name implies!). I let the students use it themselves, which they do plenty, and the TA and I will chime in with occasional hints.</p>
+                    <p>
+                      <strong>Lorenzo Sadun</strong> &mdash;
+                      <em class="muted">University of Texas, Mathematics</em>
+                    </p>
+                  </div>
+                </li>
+                <li class="media">
+                  <div class="media-object prof_photo greg-morrisett pull-left"></div>
+                  <div class="media-body">
+                    <p>Piazza has proven to be an ideal forum for my class. Compared to conventional bulletin boards, the design makes it much easier for students to find relevant posts, and for my staff and me to keep track of outstanding questions. On top of this, the folks at Piazza have been wonderfully supportive and very responsive to our needs.</p>
+                    <p>
+                      <strong>Greg Morrisett</strong> &mdash;
+                      <em class="muted">Harvard University, Computer Science</em>
+                    </p>
+                  </div>
+                </li>
+                <li class="media">
+                  <div class="media-object prof_photo amy-wagler pull-left"></div>
+                  <div class="media-body">
+                    <p>Piazza is more than a class management system. It's design makes discussion between my students very natural. I am able to understand at a glance any misconceptions or problems students are having which allows me to offer immediate feedback that facilitates learning. Thanks for being so responsive to my students requests!</p>
+                    <p>
+                      <strong>Amy Wagler</strong> &mdash;
+                      <em class="muted">University of Texas - El Paso, Mathematics</em>
+                    </p>
+                  </div>
+                </li>
+
+                <li class="media">
+                  <div class="media-object prof_photo michael-koelle pull-left"></div>
+                  <div class="media-body">
+                    <p>I have used Piazza with two different large-enrollment biology courses at Yale. We have had high participation in the site, with many students asking questions and many students answering each others' questions. Piazza has been a valuable way for me to see what issues are confusing to the students, and I have really enjoyed posting answers. Especially in larger courses, in which students can have little direct interaction with the professor, having this further mechanism for dialog with the students is really great.</p>
+                    <p>
+                      <strong>Michael Koelle</strong> &mdash;
+                      <em class="muted">Yale University, Biology</em>
+                    </p>
+                  </div>
+                </li>
+
+                <li class="media">
+                  <div class="media-object prof_photo anton-betten pull-left"></div>
+                  <div class="media-body">
+                    <p>Piazza was suggested to me by a new colleague. I am very thankful to him. I used to explain the same kind of questions over and over by email. Now, if I find that a question is of general interest, I can direct the student to post that question on piazza and then my answer helps out possibly hundreds of students. Secondly, I found that Piazza created a positive dynamic among my students. Homework problems were discussed between the students, and this showed me that they were taken more seriously. Students would give each other hints on how to attack certain problems. Students were careful not to give away the solution, but to give meaningful advice. I enjoyed watching these conversations and rarely had to post things myself.</p>
+                    <p>
+                      <strong>Anton Betten</strong> &mdash;
+                      <em class="muted">Colorado State University, Mathematics</em>
+                    </p>
+                  </div>
+                </li>
+
+                <li class="media">
+                  <div class="media-object prof_photo steve-van-hooser pull-left"></div>
+                  <div class="media-body">
+                    <p>Piazza helps me organize and respond to student's questions in my class. This not only saves considerable time, but also helps to keep the questions and answers conceptually organized for me, the TAs, and the class. The students like to help each other and contribute their own ideas, anonymously if they prefer.</p>
+                    <p>
+                      <strong>Steve Van Hooser</strong> &mdash;
+                      <em class="muted">Brandeis University, Biology</em>
+                    </p>
+                  </div>
+                </li>
+                
+            </ul>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+  <div class="container">
+    <div class="row"> 
+      
+      <!-- Internal Links -->
+      <div class="span10">
+        <div class="row">
+          <div class="span2">
+            <h6 class="title">About</h6>
+            <ul>
+              <li><a href="/about/story">Our Story</a></li>
+              <li><a href="/about/team">Team</a></li>
+              <li><a href="/about/investors">Investors</a></li>
+              <li><a href="/about/news">News</a></li>
+              <li><a href="/about/jobs">Jobs</a></li>
+            </ul>
+          </div>
+          <div class="span2">
+            <h6 class="title">Product</h6>
+            <ul>
+              <li><a href="/product/overview">Why Piazza Works</a></li>
+              <li><a href="/product/features">Features</a></li>
+              <li><a href="/product/mobile">Mobile Apps</a></li>
+              <li><a href="/product/lti">LMS Integration</a></li>
+              <li><a href="/product/accessibility">Accessibility</a></li>
+            </ul>
+          </div>
+          <div class="span2">
+            <h6 class="title">Support</h6>
+            <ul>
+              <li><a href="/support/help">Help</a></li>
+              
+                <li><a href="#" rel="fancybox-dashboard">Product FAQ</a></li>
+                <li><a href="#" rel="fancybox-dashboard-faq">Instructor FAQ</a></li>
+              
+              <li><a href="/product/overview#instructor-resources">Instructor Resources</a></li>
+              <li><a href="/support/contact">Contact Us</a></li>
+            </ul>
+          </div>
+          <div class="span2">
+            <h6 class="title">Legal</h6>
+            <ul>
+              <li><a href="/legal/privacy">Privacy Policy</a></li>
+              <li><a href="/legal/copyright">Copyright Policy</a></li>
+              <li><a href="/legal/terms">Terms of Service</a></li>
+              <li><a href="/legal/ferpa">FERPA Compliance</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Social & Legal -->
+      <div class="span2">
+        <ul class="social">
+          <li>
+            <a class="twitter-link" href="http://twitter.com/#!/piazza" target="_blank" onClick="PA.trackEvent(true, 'twitter_button', '/subjects/chemistry');"></a>
+          </li>
+          <li>
+            <a class="facebook-link" href="http://www.facebook.com/piazzza" target="_blank" onClick="PA.trackEvent(true, 'facebook_button', '/subjects/chemistry');"></a>
+          </li>
+        </ul>
+        <div class="legal">
+          <div id="CopyrightInfo">
+            Copyright &#169; 2013<br/>Piazza Technologies<br/>All Rights Reserved
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <hr/>
+    
+    <div class="align-center">
+      Our terms changed on July 14, 2013. Please review the new <a href="/legal/terms">Piazza Terms of Service</a>.
+    </div>
+
+  </div>
+</div>
+
+  
+  <!-- Javascripts -->
+  
+
+  <!-- ===================================================================== -->
+  <!-- JAVASCRIPTS -->
+  <!-- ===================================================================== -->
+
+  <!-- Third-Party -->
+  <script type="text/javascript" src="/javascripts/bootstrap.min.js?v=296"></script>
+<!--https://dvngeac8rg9mb.cloudfront.net-->
+  <script type="text/javascript" src="/javascripts/jquery.blockUI.js?v=296"></script>
+<!--https://dvngeac8rg9mb.cloudfront.net-->
+
+  <script type="text/javascript" src="/javascripts/jquery.fancybox-1.3.4.pack.js?v=296"></script>
+<!--https://dvngeac8rg9mb.cloudfront.net-->
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-21514163-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+  <!-- Piazza -->
+  <script type="text/javascript" src="/modules/event_manager.js?v=296"></script>
+<!--https://dvngeac8rg9mb.cloudfront.net-->
+  <script type="text/javascript" src="/modules/helpers.js?v=296"></script>
+<!--https://dvngeac8rg9mb.cloudfront.net-->
+  <script type="text/javascript" src="/modules/ajax.js?v=296"></script>
+<!--https://dvngeac8rg9mb.cloudfront.net-->
+  <script type="text/javascript" src="/js/splash/splash.js?v=296"></script>
+<!--https://dvngeac8rg9mb.cloudfront.net-->
+  
+  <script type="text/javascript" src="/javascripts/jquery.fancybox-1.3.4.pack.js?v=296"></script>
+<!--https://dvngeac8rg9mb.cloudfront.net-->
+  <script type="text/javascript" src="/js/splash/splash.js?v=296"></script>
+<!--https://dvngeac8rg9mb.cloudfront.net-->
+  <script type="text/javascript">
+    function view_demo(url){
+      var demo_url = url;
+      window.open(demo_url, '_blank');
+    }
+    var wasVisible = {};
+    var scrollOffsets = {};
+    var clickedCarousel = false;
+    function calcOffsets() {
+      $('.log_visibility').each(function(){
+        var id = $(this).attr("id");
+        if (id) {
+          scrollOffsets[id] = $(this).offset().top;
+        }
+      });
+    }
+    $(document).ready(function() {
+      $(".see_more_classes").click(function() {
+        $(".course_listing.hide_class").removeClass('hide_class');
+        $('.see_more_classes').hide();
+        calcOffsets();
+        return false;
+      });
+      $('.log_click').click(function(e){
+        var id = $(this).attr("id");
+        if (id) {
+          id = "subjects/chemistry.click." + id;
+          PA.call_pj("generic.page_event", {type:id}, 1, function(){});
+          clickedCarousel = true;
+        }
+      });
+      calcOffsets();
+      $('.navbar li a').click(function(){
+        var li = $(this).parent();
+        var id = li.attr('is_for');
+        $('body,html').scrollTop(scrollOffsets[id] - 99);
+        return false;
+      });
+    });
+    var recordVisisbleSections;
+    $(window).scroll(function() {
+      var stopLogScroll = false;
+      if (clickedCarousel) {
+        clickedCarousel = false;
+        stopLogScroll = true;
+      }
+      var top = $('body').scrollTop();
+      if ($('html').scrollTop() > top)
+        top = $('html').scrollTop();
+      var last = "";
+      for (var id in scrollOffsets) {
+        if (top + 100 > scrollOffsets[id]) {
+          if (!wasVisible[id] && !stopLogScroll) {
+            PA.call_pj("generic.page_event", {type:"subjects/chemistry.scroll",text1:id}, 1);
+          }
+          wasVisible[id] = 1;
+          last = id;
+        }
+      }
+      $('.navbar li').removeClass('active');
+      $('.navbar li[is_for=' + last + ']').addClass('active');
+    });
+  </script>
+</body>
+</html>
