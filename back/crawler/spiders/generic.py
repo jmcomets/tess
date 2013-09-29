@@ -31,7 +31,7 @@ def generate_spider(domain, category, settings):
         name = params['name']
         main_domain = domain
         allowed_domains = [domain]
-        start_urls = ['http://www.ldlc.com/navigation/souris/'] # ['http://{}'.format(domain)]
+        start_urls = ['http://{}'.format(domain)]
         fields_xpath = params['rules']
         rules = [Rule(SgmlLinkExtractor(allow=params['pattern']), 'parse_product', follow=True),
                 Rule(SgmlLinkExtractor(allow=('.*', )), 'detect_product',follow=True)]
@@ -42,7 +42,7 @@ def generate_spider(domain, category, settings):
             classes_freq = Counter(lxml.html.fromstring(response.body).xpath('//@class'))
             prediction = predict.make_prediction(classes_freq.items())
             
-            log.msg('###########\n\n {} -> {} \n\n###############'.format(response.url, prediction))
+            # log.msg('###########\n\n {} -> {} \n\n###############'.format(response.url, prediction))
 
         def parse_product(self, response):
             """ Parses a product page """
