@@ -14,13 +14,15 @@
 }
 
 .result img {
-  max-width: 300px;
+  max-width: 150px;
   margin: 10px;
   display: inline-block;
 }
 
 .thumbnail {
     display: inline-block;
+    height: 150px;
+    overflow: hidden;
 }
 
 .product-info {
