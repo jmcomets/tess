@@ -4,6 +4,7 @@ from scrapy.contrib.spiders import CrawlSpider, Rule
 from scrapy import log
 
 from items import ProductItem
+from learning import predict
 
 from collections import defaultdict, Counter
 
@@ -30,7 +31,7 @@ def generate_spider(domain, category, settings):
         name = params['name']
         main_domain = domain
         allowed_domains = [domain]
-        start_urls = ['http://{}'.format(domain)]
+        start_urls = ['http://www.ldlc.com/navigation/souris/'] # ['http://{}'.format(domain)]
         fields_xpath = params['rules']
         rules = [Rule(SgmlLinkExtractor(allow=params['pattern']), 'parse_product', follow=True),
                 Rule(SgmlLinkExtractor(allow=('.*', )), 'detect_product',follow=True)]
@@ -38,10 +39,10 @@ def generate_spider(domain, category, settings):
         def detect_product(self, response):
             """ Detects if the crawled page is a product page """
 
-            #classes_freq = Counter(lxml.html.fromstring(response.body).xpath('//@class'))
-            # predictor = self.settings.PREDICTOR
-            # prediction = predictor.predict(classes_freq.items())
-            pass
+            classes_freq = Counter(lxml.html.fromstring(response.body).xpath('//@class'))
+            prediction = predict.make_prediction(classes_freq.items())
+            
+            log.msg('###########\n\n {} -> {} \n\n###############'.format(response.url, prediction))
 
         def parse_product(self, response):
             """ Parses a product page """

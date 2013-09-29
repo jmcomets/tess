@@ -5,8 +5,6 @@ from spiders.generic import generate_spider
 from scrapy.utils.project import get_project_settings
 
 import sys
-import pickle
-from learning import predict
 
 def setup_crawler(domain, category, settings, spider_cache={}):
     # TODO : detect the category
@@ -47,10 +45,9 @@ if __name__ == '__main__':
 
 
     # Setting up the predictor
-    with open(settings['PREDICTOR_PATH']) as predictor_file:
-        # settings.PREDICTOR = predict.Predictor.from_file(predictor_file)
-        pass
-
+    # with open(settings['PREDICTOR_PATH']) as predictor_file:
+    #     settings.PREDICTOR = predict.Predictor.from_file(predictor_file)
+        
     # Setting up the logger
     loglevel = log.DEBUG if '--debug' in sys.argv else log.INFO
     log.start(loglevel=loglevel, logstdout=True)

@@ -6,7 +6,7 @@ from sklearn import linear_model
 
 __all__ = ('Classifier', 'Predictor', 'classify')
 
-pickle_file = 'predictor.txt'
+pickle_file = 'learning/predictor.txt'
 
 _global_predictor = None
 _global_attributes = None
@@ -19,7 +19,6 @@ def make_prediction(attr_scores):
     global _global_attributes
     if _global_attributes is None:
         _global_attributes = list(get_headers())
-    return _global_attributes
     for attr in _global_attributes:
         found = False
         for attr_, score in attr_scores:
@@ -30,7 +29,7 @@ def make_prediction(attr_scores):
         if not found:
             formatted_attrs.append(0)
     assert len(formatted_attrs) == len(_global_attributes)
-    return _global_predictor.predict(formatted_attrs)
+    return _global_predictor.predict(formatted_attrs)[0]
 
 class Classifier(object):
     def __init__(self):
@@ -75,13 +74,13 @@ class Predictor(object):
 
 def get_headers(fp=None):
     if fp is None:
-        fp = open('headers.txt', 'r')
+        fp = open('learning/headers.txt', 'r')
     delimiter = '\n'
     return it.ifilter(None, fp.read().strip('\r\n').split(delimiter))
 
 def get_data(attributes, fp=None):
     if fp is None:
-        fp = open('data.csv', 'r')
+        fp = open('learning/data.csv', 'r')
     # read data from file
     reader = csv.reader(fp, delimiter=',')
     for row in reader:
