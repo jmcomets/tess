@@ -20,7 +20,7 @@
       </a>
       <div class="caption">
         <p><%= results[i].description %></p>
-        <% if (results.price) { %>
+        <% if (results[i].price) { %>
             <p class="prix"><%= results[i].price.value %><span class="currency"><%= results[i].price.currency %></span></p>
         <% } %>
       </div>
