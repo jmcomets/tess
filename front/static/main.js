@@ -1,11 +1,12 @@
 var QUERY_URL = "/api/search?query=",
-    $resultBox = $('.result-box');
+    $resultBox = $('.result-box'),
+    $searchBar = $('#search-bar');
 
-$('#search-btn').click(function(e) {
+$searchBar.keyup(function(e) {
   e.stopPropagation();
   e.preventDefault();
 
-  var text = $('#search-bar').val();
+  var text = $searchBar.val();
   if (!text) return;
 
   var query_url = QUERY_URL + formatForUrl(text);
