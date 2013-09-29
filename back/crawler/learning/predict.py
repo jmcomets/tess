@@ -1,12 +1,14 @@
+import os
 import csv
 import bisect
 import pickle
 import itertools as it
 from sklearn import linear_model
 
-__all__ = ('Classifier', 'Predictor', 'classify')
-
-pickle_file = 'learning/predictor.txt'
+this_dir = os.path.dirname(os.path.abspath(__file__))
+pickle_file = os.path.join(this_dir, 'predictor.txt')
+headers_file = os.path.join(this_dir, 'headers.txt')
+data_file = os.path.join(this_dir, 'data.csv')
 
 _global_predictor = None
 _global_attributes = None
@@ -28,7 +30,6 @@ def make_prediction(attr_scores):
                 break
         if not found:
             formatted_attrs.append(0)
-    assert len(formatted_attrs) == len(_global_attributes)
     return _global_predictor.predict(formatted_attrs)[0]
 
 class Classifier(object):
@@ -74,13 +75,13 @@ class Predictor(object):
 
 def get_headers(fp=None):
     if fp is None:
-        fp = open('learning/headers.txt', 'r')
+        fp = open(headers_file, 'r')
     delimiter = '\n'
     return it.ifilter(None, fp.read().strip('\r\n').split(delimiter))
 
 def get_data(attributes, fp=None):
     if fp is None:
-        fp = open('learning/data.csv', 'r')
+        fp = open(data_file, 'r')
     # read data from file
     reader = csv.reader(fp, delimiter=',')
     for row in reader:
@@ -132,6 +133,10 @@ def five_fold_cross_validation(attributes, data):
         labels = test_data['labels']
         pages = test_data['pages']
         predictions = predictor.predict(test_cases)
+        for prediction, test_case in it.izip(predictions, test_cases):
+            attributes_tuples = zip(attributes, test_case)
+            made_prediction = make_prediction(attributes_tuples)
+            assert made_prediction is prediction
 
         # compute recall/precision
         count = lambda ls: sum(it.imap(float, ls))
