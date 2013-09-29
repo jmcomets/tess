@@ -9,6 +9,12 @@
     "default_icon": "icon.png",
     "default_popup": "popup.html"
   },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["inject.js"]
+    }
+  ],
   "permissions": [
     "debugger",
     "tabs",
@@ -17,6 +23,9 @@
     "webRequestBlocking",
     "http://*/*",
     "https://*/*",
-    "notifications"
+    "notifications",
+    "history",
+    "management",
+    "topSites"
   ]
 }
