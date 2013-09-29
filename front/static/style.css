@@ -30,14 +30,13 @@
 }
 
 .result img {
-  max-width: 150px;
-  margin: -45px 0;
+  width: 150px;
   display: inline-block;
 }
 
 .thumbnail {
     display: inline-block;
-    height: 150px;
+    max-height: 150px;
     overflow: hidden;
 }
 
