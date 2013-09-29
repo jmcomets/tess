@@ -18,12 +18,13 @@ def format_matchall(query):
     """ Specialized query formatter """
     bool_query = dict()
     bool_query['must'] = [dict(query_string=dict(default_field="_all", query=query))]
-    bool_query['should_not'] = []
+    bool_query['must_not'] = []
     bool_query['should'] = []
 
     elas_query = dict(query=dict(bool=bool_query), size=50, sort=[], facets={})
     elas_query['from'] = 0
 
+    print json.dumps(elas_query)
     return json.dumps(elas_query)
 
     # return '{"query":{\
