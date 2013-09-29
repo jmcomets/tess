@@ -67,6 +67,7 @@ def download(url, path, localFileName = None):
     localName = url2name(url)
     req = urllib2.Request(url)
     r = urllib2.urlopen(req)
+
     if r.url != url:
         # if we were redirected, the real file name we take from the final URL
         localName = url2name(r.url)
@@ -75,12 +76,9 @@ def download(url, path, localFileName = None):
         localName = localFileName
 
     fileName = os.path.join(path, localName)
-    if os.path.isdir(fileName):
-        return
     ensure_dir(fileName)
-    f = open(fileName, 'wb')
-    f.write(r.read())
-    f.close()
+    with open(fileName, 'wb') as f:
+        f.write(r.read())
 
 if __name__ == '__main__':
     app.run('0.0.0.0', debug=True)
