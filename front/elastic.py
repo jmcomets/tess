@@ -34,7 +34,6 @@ def format_matchall(query):
     elas_query = dict(query=dict(bool=bool_query), size=60, sort=[], facets={})
     elas_query['from'] = 0
 
-    print json.dumps(elas_query)
     return json.dumps(elas_query)
 
     # return '{"query":{\

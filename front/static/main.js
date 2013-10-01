@@ -6,9 +6,17 @@ $(function() {
     options = {
       serviceUrl: AC_URL,
       onSelect: function(value, data) {
+        console.log("AUTOC. :");
+        console.log(value);
         renderResults(value.value);
       }
     };
+
+function imgError(image) {
+    image.onerror = "";
+    image.src = "/static/no_image.png";
+    return true;
+}
 
 $searchBar.autocomplete(options);
 
