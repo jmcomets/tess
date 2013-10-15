@@ -55,7 +55,12 @@ class ProductItem(Item):
 
         if 1 <= len(price.split(',')) <= 2:
             price = price.replace(',', '.').replace(' ', '')
-            self['price']['value'] = float(price)
+
+            # Debug, shouldn't throw an exception in prod.
+            try:
+                self['price']['value'] = float(price)
+            except ValueError:
+                self['price']['value'] = 'N/A'
 
         # DEBUG ONLY:
         if price_cur is None:
@@ -72,4 +77,4 @@ class PersonItem(Item):
     industry = Field()
 
     def clean(self):
-        pass
+        pass1
