@@ -3,8 +3,11 @@
 import os
 import csv
 import sys
+import copy
+import random
 import itertools as it
-from attributes import Classifier, dump_classifier
+from __init__ import index, guess
+from attributes import Classifier
 
 _this_dir = os.path.dirname(os.path.abspath(__file__))
 headers_file = os.path.join(_this_dir, 'headers.txt')
@@ -25,7 +28,7 @@ def get_data(attributes, fp=None):
     for row in reader:
         page_data = {
                 'page': row.pop(0), # FIXME: not used (for now)
-                'product': int(row.pop(0)),
+                'class': int(row.pop(0)),
                 'attributes': [],
                 }
         for attr_score in row:
@@ -50,46 +53,39 @@ def format_data(attributes, data):
             index = attributes.index(attr['name'])
             row[index] = attr['score']
         matrix.append(row)
-        labels.append(page_data['product'])
+        labels.append(page_data['class'])
     return {
             'matrix': matrix,
             'labels': labels,
             }
 
-def run_and_index(attributes, data):
-    """
-    Run the classification indexing based on the
-    given attributes/data.
-    """
-    cls = Classifier(attributes)
-    fmt_data = format_data(attributes, data)
-    cls.learn(**fmt_data)
-    with open(pickle_file, 'w') as fp:
-        dump_classifier(cls, fp)
-
-def five_fold_cross_validations(attributes, data):
+def five_fold_cross_validations(attributes, raw_data):
     """
     Validation of the machine learning, using the five
     fold cross validation technique.
     """
-    import random
+    assert isinstance(raw_data, (list, tuple))
+
+    # don't harm the initial dataset
+    test_data = copy.deepcopy(raw_data)
+    test_size = len(test_data) / 5
+
     for _ in xrange(5):
         # shuffle the dataset
-        random.shuffle(data)
+        random.shuffle(test_data)
 
         # step 1: teach the classifier
         cls = Classifier(attributes)
-        fmt_data = format_data(attributes, data)
-        test_size = len(data) / 5
-        learn_data, test_data = fmt_data[:test_size], fmt_data[test_size:]
-        cls.learn(attributes, **learn_data)
+        learn_data, test_data = map(lambda x: format_data(attributes, x),
+                (test_data[:test_size], test_data[test_size:]))
+        cls.learn(**learn_data)
 
         # step 2: check test cases
         test_cases = test_data['matrix']
         predictions = cls.predict(test_cases)
         for prediction, test_case in it.izip(predictions, test_cases):
             attributes_tuples = zip(attributes, test_case)
-            made_prediction = make_prediction(attributes_tuples)
+            made_prediction = guess(attributes_tuples)
             assert made_prediction is prediction
 
         # compute recall/precision
@@ -119,9 +115,9 @@ def test_classification(attributes, data):
 attributes = get_headers()
 assert sorted(attributes), 'Headers must be sorted'
 data = get_data(attributes)
-data = format_data(attributes, data)
+fmt_data = format_data(attributes, data)
 
 if '--test' in sys.argv:
     test_classification(attributes, data)
 else:
-    run_and_index(attributes, data)
+    index(attributes, fmt_data)

@@ -1,22 +1,26 @@
-import pickle # TODO cPickle ?
+import cPickle as pickle
 from sklearn import linear_model
 
 class Classifier(object):
     """
     Low-level classifier using sklearn to built machine learning
-    from an input of labeled objects.
+    from an input of labeled objects. Takes N attributes defining
+    the model used for the machine learning
     """
     def __init__(self, attributes):
         super(Classifier, self).__init__()
         self.learned = False
         self.attributes = attributes
+        self.clf = linear_model.BayesianRidge() # TODO add different methods
 
     def learn(self, matrix, labels):
+        """
+        Teach the Classifier about a dataset, where matrix/labels
+        are both of width/length N.
+        """
         self.matrix = matrix
         self.labels = labels
-        clf = linear_model.BayesianRidge()
-        clf.fit(self.matrix, self.labels)
-        self.clf = clf
+        self.clf.fit(self.matrix, self.labels)
         self.learned = True
 
     def predict(self, attr_scores):
@@ -37,15 +41,19 @@ def dump_classifier(cls, file_):
     assert cls.learned, 'Classifier must learn before being dumped'
     if isinstance(file_, str):
         with open(file_, 'r') as fp:
-            pickle.dump(cls.clf, fp)
+            pickle.dump(cls, fp)
     else:
-        pickle.dump(cls.clf, file_)
+        pickle.dump(cls, file_)
 
-def load_classifier(fp):
+def load_classifier(file_):
     """
     Load a Classifier from a given text file.
     """
-    cls = Classifier()
-    cls.clf = pickle.load(fp)
+    if isinstance(file_, str):
+        with open(file_, 'r') as fp:
+            cls = pickle.load(fp)
+    else:
+        cls = pickle.load(file_)
+    assert isinstance(cls, Classifier)
     cls.learned = True
     return cls
