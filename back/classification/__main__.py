@@ -6,8 +6,7 @@ import sys
 import copy
 import random
 import itertools as it
-from __init__ import index, guess
-from attributes import Classifier
+from __init__ import index, guess, Classifier
 
 _this_dir = os.path.dirname(os.path.abspath(__file__))
 headers_file = os.path.join(_this_dir, 'headers.txt')
@@ -67,26 +66,29 @@ def five_fold_cross_validations(attributes, raw_data):
     assert isinstance(raw_data, (list, tuple))
 
     # don't harm the initial dataset
-    test_data = copy.deepcopy(raw_data)
-    test_size = len(test_data) / 5
+    raw_test_data = copy.deepcopy(raw_data)
+    test_size = len(raw_test_data) / 5
 
     for _ in xrange(5):
         # shuffle the dataset
-        random.shuffle(test_data)
+        random.shuffle(raw_test_data)
 
         # step 1: teach the classifier
         cls = Classifier(attributes)
         learn_data, test_data = map(lambda x: format_data(attributes, x),
-                (test_data[:test_size], test_data[test_size:]))
+                (raw_test_data[:test_size], raw_test_data[test_size:]))
         cls.learn(**learn_data)
 
         # step 2: check test cases
+        predictions = []
         test_cases = test_data['matrix']
-        predictions = cls.predict(test_cases)
-        for prediction, test_case in it.izip(predictions, test_cases):
-            attributes_tuples = zip(attributes, test_case)
-            made_prediction = guess(attributes_tuples)
-            assert made_prediction is prediction
+        for test_case in test_cases:
+            prediction = cls.predict(test_case)
+            made_prediction = guess(zip(attributes, test_case))
+            #print 'prediction =', prediction
+            #print 'made prediction =', made_prediction
+            #assert made_prediction is prediction
+            predictions.append(prediction)
 
         # compute recall/precision
         count = lambda ls: sum(it.imap(float, ls))
@@ -102,13 +104,30 @@ def five_fold_cross_validations(attributes, raw_data):
         yield recall, precision
 
 def test_classification(attributes, data):
-    ffcv = five_fold_cross_validations
     print 'Five-fold Cross-validation'
+    print '--------------------------'
+    print
+    average_recall = 0
+    average_precision = 0
+    nb_steps = 0
+    ffcv = five_fold_cross_validations
     for step, recall_precision in enumerate(ffcv(attributes, data)):
         recall, precision = recall_precision
-        print '- step', step
-        print '  - recall', recall
-        print '  - precision', precision
+        average_recall += recall
+        average_precision += precision
+        nb_steps += 1
+        print '## Step', step
+        print
+        print '* recall =', recall
+        print '* precision =', precision
+        print
+    average_recall /= nb_steps
+    average_precision /= nb_steps
+    print '# Summary'
+    print
+    print '* average recall =', average_recall
+    print '* average precision =', average_precision
+    #print '# Summary :
 
 # main program
 

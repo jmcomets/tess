@@ -29,10 +29,7 @@ class Classifier(object):
         handled by our Classifier (which can be accessed via the attributes
         property).
         """
-        prediction = self.clf.predict(attr_scores)
-        # TODO do something to format the prediction (round to nearest ?)
-        print prediction
-        return prediction
+        return self.clf.predict(attr_scores)
 
 def dump_classifier(cls, file_):
     """

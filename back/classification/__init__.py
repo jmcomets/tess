@@ -1,5 +1,6 @@
 import os
-from attributes import Classifier, load_classifier, dump_classifier
+import itertools as it
+from classifier import Classifier, load_classifier, dump_classifier
 
 _this_dir = os.path.dirname(os.path.abspath(__file__))
 pickle_file = os.path.join(_this_dir, 'predictor.txt')
@@ -10,8 +11,7 @@ def guess(attr_scores):
     Encapsulation of the load/predict procedure, using a global
     classifier object (saved via a pickle file).
     """
-
-    # Lazy loading of classifier
+    # Lazy loading of classifier (~Singleton)
     global _classifier
     if _classifier is None:
         _classifier = load_classifier(pickle_file)
@@ -28,7 +28,8 @@ def guess(attr_scores):
         if not found:
             formatted_attrs.append(0)
 
-    return _classifier.predict(formatted_attrs)[0]
+    prediction = _classifier.predict([formatted_attrs])[0]
+    return prediction
 
 def index(attributes, data):
     """
