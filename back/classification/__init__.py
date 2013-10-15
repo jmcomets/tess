@@ -14,7 +14,10 @@ def guess(attr_scores):
     # Lazy loading of classifier (~Singleton)
     global _classifier
     if _classifier is None:
-        _classifier = load_classifier(pickle_file)
+        try:
+            _classifier = load_classifier(pickle_file)
+        except IOError:
+            raise AssertionError('Classifier hasn\'t learned anything yet')
 
     # TODO write using FP
     formatted_attrs = []
