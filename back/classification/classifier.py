@@ -11,7 +11,7 @@ class Classifier(object):
         super(Classifier, self).__init__()
         self.learned = False
         self.attributes = attributes
-        self.clf = linear_model.BayesianRidge() # TODO add different methods
+        self.clf = linear_model.LinearRegression() # TODO add different methods
 
     def learn(self, matrix, labels):
         """
