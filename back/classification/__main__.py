@@ -11,6 +11,7 @@ def five_fold_cross_validations(attributes, raw_data):
     """
     Validation of the machine learning, using the five
     fold cross validation technique.
+    Generates (recall, precision) tuples.
     """
     assert isinstance(raw_data, (list, tuple))
 

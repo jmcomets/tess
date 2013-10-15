@@ -1,6 +1,5 @@
 import os
 import csv
-import copy
 
 _this_dir = os.path.dirname(os.path.abspath(__file__))
 headers_file = os.path.join(_this_dir, 'headers.txt')
