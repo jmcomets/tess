@@ -4,7 +4,7 @@ from scrapy.contrib.spiders import CrawlSpider, Rule
 from scrapy import log
 
 from items import ProductItem, PersonItem
-from learning import predict
+#from learning import predict
 
 from collections import defaultdict, Counter
 
@@ -51,7 +51,7 @@ def generate_spider(domain, category, settings):
 
             classes_freq = Counter(lxml.html.fromstring(response.body).xpath('//@class'))
             # prediction = predict.make_prediction(classes_freq.items())
-            
+
             # log.msg('###########\n\n {} -> {} \n\n###############'.format(response.url, prediction))
 
         def parse_product(self, response):
@@ -72,7 +72,7 @@ def generate_spider(domain, category, settings):
                 # Removing trailing spaces from extracted data
                 for i, element in enumerate(product[field]):
                     product[field][i] = element.strip()
-                    
+
                 # log.msg('Applying "{}" for "{}" -> {}'.format(xpath, field, product[field]))
 
             #product['_id'] = hashlib.sha256(response.url).hexdigest()
